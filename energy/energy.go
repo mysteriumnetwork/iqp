@@ -39,7 +39,7 @@ type EffectiveEnergyCalculationParams struct {
 }
 
 func HalfLife(in HalfLifeParams) (*big.Int, error) {
-	initialValue := in.InitialValue
+	initialValue := new(big.Int).Set(in.InitialValue)
 	if initialValue.Sign() == -1 {
 		return nil, errors.New("initial value underflow")
 	}
