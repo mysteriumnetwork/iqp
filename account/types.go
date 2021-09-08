@@ -13,6 +13,7 @@ type AccountState struct {
 	AccountID          string
 	GapHalvingPeriod   int64
 	Power              *big.Int
+	LockedPower        *big.Int
 	EnergyCap          *big.Int
 	Energy             *big.Int
 	EnergyCalculatedAt int64
