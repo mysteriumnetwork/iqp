@@ -35,15 +35,15 @@ func (a AccountID) ChainID() int64 {
 	return a.chainID
 }
 
-func NewAccountID(chainID ChainIdentitifier, address common.Address) (*AccountID, error) {
-	aid := &AccountID{
+func NewAccountID(chainID ChainIdentitifier, address common.Address) (AccountID, error) {
+	aid := AccountID{
 		chainIdentifier: chainID,
 		address:         address,
 	}
 
 	chid, err := extractChainID(chainID)
 	if err != nil {
-		return nil, err
+		return AccountID{}, err
 	}
 	aid.chainID = chid
 	return aid, nil

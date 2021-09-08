@@ -29,6 +29,11 @@ func (ms *MemoryStorage) GetAccount(id string) (Account, error) {
 }
 
 func (ms *MemoryStorage) DeleteAccount(id string) error {
+	_, ok := ms.accounts[id]
+	if !ok {
+		return fmt.Errorf("account %w", ErrNotFound)
+	}
+
 	delete(ms.accounts, id)
 	return nil
 }
