@@ -2,9 +2,12 @@ package account
 
 import (
 	"bytes"
+	"encoding/binary"
+	"encoding/hex"
 	"errors"
 	"fmt"
 	"math/big"
+	"strings"
 
 	"github.com/ethereum/go-ethereum/accounts"
 	"github.com/ethereum/go-ethereum/common"
@@ -52,7 +55,7 @@ func GenerateAccountOwnershipClaim(accountID AccountID, version string) (core.Ty
 
 	message := core.TypedDataMessage{
 		"claim":   "Hereby I confirm to be the owner of the following address",
-		"address": accountID.Address().Hex(),
+		"address": strings.ToLower(accountID.Address().Hex()),
 	}
 
 	data := core.TypedData{
@@ -73,9 +76,18 @@ func SignClaim(addr common.Address, claim core.TypedData, hashSigner HashSigner)
 	if err != nil {
 		return nil, err
 	}
-	return hashSigner.SignHash(accounts.Account{
+	signature, err := hashSigner.SignHash(accounts.Account{
 		Address: addr,
 	}, sighash)
+	if err != nil {
+		return nil, err
+	}
+
+	var v = 27 + (uint64(signature[len(signature)-1]) % 2)
+	buffer := make([]byte, 1)
+	_ = binary.PutUvarint(buffer, v)
+	signature[64] = buffer[0]
+	return signature, nil
 }
 
 func TypedDataToHash(claim core.TypedData) ([]byte, error) {
@@ -88,6 +100,8 @@ func TypedDataToHash(claim core.TypedData) ([]byte, error) {
 		return nil, fmt.Errorf("has struct PrimaryType %w", err)
 	}
 	rawData := []byte(fmt.Sprintf("\x19\x01%s%s", string(domainSeparator), string(typedDataHash)))
+	preHash := hex.EncodeToString(rawData)
+	fmt.Println("prehash", preHash)
 	return crypto.Keccak256(rawData), nil
 }
 
@@ -95,6 +109,11 @@ func VerifyClaimSignature(typedData core.TypedData, signature []byte, addr commo
 	if len(signature) != 65 {
 		return fmt.Errorf("invalid signature length: %d", len(signature))
 	}
+
+	if signature[64] != 27 && signature[64] != 28 {
+		return fmt.Errorf("invalid recovery id: %d", signature[64])
+	}
+	signature[64] -= 27
 
 	hash, err := TypedDataToHash(typedData)
 	if err != nil {
@@ -113,7 +132,7 @@ func VerifyClaimSignature(typedData core.TypedData, signature []byte, addr commo
 
 	recoveredAddr := crypto.PubkeyToAddress(*pubKey)
 	if !bytes.Equal(addr.Bytes(), recoveredAddr.Bytes()) {
-		return errors.New("addresses do not match")
+		return fmt.Errorf("addresses do not match. Expected %v, got %v", addr.Hex(), recoveredAddr.Hex())
 	}
 
 	return nil
