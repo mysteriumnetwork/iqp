@@ -12,7 +12,7 @@ var ErrAccountStateValidation = errors.New("invalid account state")
 
 func (d DefaultStateValidator) Validate(as AccountState) error {
 	if as.Power == nil {
-		return fmt.Errorf("power cannot be nil %w", ErrAccountStateValidation)
+		return fmt.Errorf("power can not be nil %w", ErrAccountStateValidation)
 	}
 
 	if as.LockedPower == nil {
@@ -32,7 +32,7 @@ func (d DefaultStateValidator) Validate(as AccountState) error {
 	}
 
 	if as.LockedPower.Cmp(new(big.Int)) == -1 {
-		return fmt.Errorf("power can not be negative %w", ErrAccountStateValidation)
+		return fmt.Errorf("locked power can not be negative %w", ErrAccountStateValidation)
 	}
 
 	if as.GapHalvingPeriod <= 0 {
@@ -44,7 +44,7 @@ func (d DefaultStateValidator) Validate(as AccountState) error {
 	}
 
 	if as.EnergyCalculatedAt < 0 {
-		return fmt.Errorf("negative energy calculation cap %w", ErrAccountStateValidation)
+		return fmt.Errorf("negative energy calculation %w", ErrAccountStateValidation)
 	}
 	return nil
 }
