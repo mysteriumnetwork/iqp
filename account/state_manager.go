@@ -7,7 +7,7 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/mysteriumnetwork/iqp/blockchain"
+	blockchain "github.com/mysteriumnetwork/iqp/blockchain/eip155"
 	"github.com/mysteriumnetwork/iqp/energy"
 )
 

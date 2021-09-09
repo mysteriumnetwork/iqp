@@ -3,7 +3,6 @@ package account
 import (
 	"bytes"
 	"encoding/binary"
-	"encoding/hex"
 	"errors"
 	"fmt"
 	"math/big"
@@ -100,8 +99,6 @@ func TypedDataToHash(claim core.TypedData) ([]byte, error) {
 		return nil, fmt.Errorf("has struct PrimaryType %w", err)
 	}
 	rawData := []byte(fmt.Sprintf("\x19\x01%s%s", string(domainSeparator), string(typedDataHash)))
-	preHash := hex.EncodeToString(rawData)
-	fmt.Println("prehash", preHash)
 	return crypto.Keccak256(rawData), nil
 }
 
@@ -109,18 +106,20 @@ func VerifyClaimSignature(typedData core.TypedData, signature []byte, addr commo
 	if len(signature) != 65 {
 		return fmt.Errorf("invalid signature length: %d", len(signature))
 	}
+	copiedSignature := make([]byte, len(signature))
+	copy(copiedSignature, signature)
 
-	if signature[64] != 27 && signature[64] != 28 {
-		return fmt.Errorf("invalid recovery id: %d", signature[64])
+	if copiedSignature[64] != 27 && copiedSignature[64] != 28 {
+		return fmt.Errorf("invalid recovery id: %d", copiedSignature[64])
 	}
-	signature[64] -= 27
+	copiedSignature[64] -= 27
 
 	hash, err := TypedDataToHash(typedData)
 	if err != nil {
 		return err
 	}
 
-	pubKeyRaw, err := crypto.Ecrecover(hash, signature)
+	pubKeyRaw, err := crypto.Ecrecover(hash, copiedSignature)
 	if err != nil {
 		return fmt.Errorf("invalid signature: %s", err.Error())
 	}
