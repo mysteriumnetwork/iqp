@@ -72,7 +72,7 @@ var ErrAlreadyInitialized = errors.New("already initialized")
 func (ms *MemoryStorage) InitAccountState(accountState AccountState) (AccountState, error) {
 	_, ok := ms.accounts[accountState.AccountID]
 	if !ok {
-		return AccountState{}, fmt.Errorf("account %w", ErrNotFound)
+		ms.accounts[accountState.AccountID] = Account{ID: accountState.AccountID}
 	}
 
 	if states, ok := ms.states[accountState.AccountID]; ok {
