@@ -23,15 +23,21 @@ type bc interface {
 	GetAccountState(serviceAddress, accountAddress common.Address) (blockchain.AccountState, error)
 }
 
+type StateValidator interface {
+	Validate(as AccountState) error
+}
+
 type StateManager struct {
 	storage accountStateStorage
 	bc      bc
+	sv      StateValidator
 }
 
-func NewStateManager(storage accountStateStorage, bc bc) *StateManager {
+func NewStateManager(storage accountStateStorage, bc bc, sv StateValidator) *StateManager {
 	return &StateManager{
 		storage: storage,
 		bc:      bc,
+		sv:      sv,
 	}
 }
 
@@ -58,7 +64,7 @@ func (sm *StateManager) InitAccountState(
 		return AccountState{}, err
 	}
 
-	return sm.storage.InitAccountState(AccountState{
+	as := AccountState{
 		ServiceID:          serviceID.String(),
 		AccountID:          accountID.String(),
 		GapHalvingPeriod:   gapHalvingPeriod,
@@ -67,7 +73,14 @@ func (sm *StateManager) InitAccountState(
 		EnergyCap:          energyCap,
 		Energy:             energy,
 		EnergyCalculatedAt: energyCalculatedAt,
-	})
+	}
+
+	err := sm.sv.Validate(as)
+	if err != nil {
+		return AccountState{}, err
+	}
+
+	return sm.storage.InitAccountState(as)
 }
 
 func (sm *StateManager) InitAccountStateFromBlockchain(serviceID, accountID AccountID) (AccountState, error) {
@@ -100,7 +113,7 @@ func (sm *StateManager) InitAccountStateFromBlockchain(serviceID, accountID Acco
 	}
 
 	if serviceInfoErr != nil {
-		return AccountState{}, fmt.Errorf("could not get service info from bc: %w", accStateErr)
+		return AccountState{}, fmt.Errorf("could not get service info from bc: %w", serviceInfoErr)
 	}
 
 	return sm.InitAccountState(
@@ -201,6 +214,12 @@ func (sm *StateManager) changeState(serviceID, accountID AccountID, key stateCha
 		ServiceID:          currentState.ServiceID,
 		AccountID:          currentState.AccountID,
 		GapHalvingPeriod:   currentState.GapHalvingPeriod,
+	}
+
+	fmt.Println(newState.LockedPower)
+	err = sm.sv.Validate(newState)
+	if err != nil {
+		return AccountState{}, err
 	}
 
 	return sm.storage.ChangeAccountState(currentState, newState)
