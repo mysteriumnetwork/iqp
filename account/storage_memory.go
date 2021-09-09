@@ -22,7 +22,7 @@ var ErrNotFound = errors.New("not found")
 func (ms *MemoryStorage) GetAccount(id string) (Account, error) {
 	acc, ok := ms.accounts[id]
 	if !ok {
-		return Account{}, fmt.Errorf("account %w", ErrNotFound)
+		return Account{}, fmt.Errorf("account %v: %w", id, ErrNotFound)
 	}
 
 	return acc, nil
@@ -41,12 +41,12 @@ func (ms *MemoryStorage) DeleteAccount(id string) error {
 func (ms *MemoryStorage) GetAccountState(serviceID string, accountID string) (AccountState, error) {
 	v, ok := ms.states[accountID]
 	if !ok {
-		return AccountState{}, fmt.Errorf("account %w", ErrNotFound)
+		return AccountState{}, fmt.Errorf("account %v: %w", accountID, ErrNotFound)
 	}
 
 	s, ok := v[serviceID]
 	if !ok {
-		return AccountState{}, fmt.Errorf("service %w", ErrNotFound)
+		return AccountState{}, fmt.Errorf("service %v: %w", serviceID, ErrNotFound)
 	}
 
 	return s, nil
@@ -55,11 +55,11 @@ func (ms *MemoryStorage) GetAccountState(serviceID string, accountID string) (Ac
 func (ms *MemoryStorage) DeleteAccountState(serviceID string, accountID string) error {
 	v, ok := ms.states[accountID]
 	if !ok {
-		return fmt.Errorf("account %w", ErrNotFound)
+		return fmt.Errorf("account %v: %w", accountID, ErrNotFound)
 	}
 
 	if _, ok := v[serviceID]; !ok {
-		return fmt.Errorf("service %w", ErrNotFound)
+		return fmt.Errorf("service %v: %w", serviceID, ErrNotFound)
 	}
 
 	delete(v, serviceID)
@@ -98,7 +98,7 @@ var ErrStateNotInitialized = errors.New("state not initialized")
 func (ms *MemoryStorage) ChangeAccountState(previous, new AccountState) (AccountState, error) {
 	_, ok := ms.accounts[previous.AccountID]
 	if !ok {
-		return AccountState{}, fmt.Errorf("account %w", ErrNotFound)
+		return AccountState{}, fmt.Errorf("account %v: %w", previous.AccountID, ErrNotFound)
 	}
 
 	if _, ok := ms.states[previous.AccountID]; !ok {

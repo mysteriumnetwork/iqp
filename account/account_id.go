@@ -8,7 +8,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 )
 
-type ChainIdentitifier string
+type ChainIdentifier string
 
 const (
 	ChainMaticMumbai  = "eip155:80001"
@@ -18,7 +18,7 @@ const (
 )
 
 type AccountID struct {
-	chainIdentifier ChainIdentitifier
+	chainIdentifier ChainIdentifier
 	chainID         int64
 	address         common.Address
 }
@@ -35,7 +35,7 @@ func (a AccountID) ChainID() int64 {
 	return a.chainID
 }
 
-func NewAccountID(chainID ChainIdentitifier, address common.Address) (AccountID, error) {
+func NewAccountID(chainID ChainIdentifier, address common.Address) (AccountID, error) {
 	aid := AccountID{
 		chainIdentifier: chainID,
 		address:         address,
@@ -49,7 +49,7 @@ func NewAccountID(chainID ChainIdentitifier, address common.Address) (AccountID,
 	return aid, nil
 }
 
-func extractChainID(chid ChainIdentitifier) (int64, error) {
+func extractChainID(chid ChainIdentifier) (int64, error) {
 	splits := strings.Split(string(chid), ":")
 	return strconv.ParseInt(splits[len(splits)-1], 10, 64)
 }

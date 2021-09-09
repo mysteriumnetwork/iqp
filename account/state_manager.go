@@ -179,6 +179,10 @@ func (sm *StateManager) changeState(serviceID, accountID AccountID, key stateCha
 	case stateChangeLockedPower:
 		lockedPower = new(big.Int).Add(lockedPower, delta)
 		effectivePower = new(big.Int).Sub(effectivePower, delta)
+	case stateChangeEnergy:
+		break
+	default:
+		return AccountState{}, fmt.Errorf("unknown key %v", key)
 	}
 
 	effective, err := energy.CalculateEffectiveEnergy(

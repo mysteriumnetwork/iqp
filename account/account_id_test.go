@@ -18,7 +18,7 @@ func TestAccountID(t *testing.T) {
 
 func Test_extractChainID(t *testing.T) {
 	type args struct {
-		chid ChainIdentitifier
+		chid ChainIdentifier
 	}
 	tests := []struct {
 		name    string
