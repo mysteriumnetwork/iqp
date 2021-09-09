@@ -216,7 +216,6 @@ func (sm *StateManager) changeState(serviceID, accountID AccountID, key stateCha
 		GapHalvingPeriod:   currentState.GapHalvingPeriod,
 	}
 
-	fmt.Println(newState.LockedPower)
 	err = sm.sv.Validate(newState)
 	if err != nil {
 		return AccountState{}, err
