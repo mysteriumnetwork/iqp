@@ -114,8 +114,6 @@ func TestHalfLife(t *testing.T) {
 				},
 			}
 			got, err := HalfLife(in)
-			fmt.Println(err != nil)
-			fmt.Println(!tt.wantErr)
 			if (err != nil) && !tt.wantErr {
 				t.Errorf("HalfLife() error = %v, wantErr %v", err, tt.wantErr)
 				return
