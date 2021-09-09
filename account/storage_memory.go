@@ -58,6 +58,10 @@ func (ms *MemoryStorage) DeleteAccountState(serviceID string, accountID string) 
 		return fmt.Errorf("account %w", ErrNotFound)
 	}
 
+	if _, ok := v[serviceID]; !ok {
+		return fmt.Errorf("service %w", ErrNotFound)
+	}
+
 	delete(v, serviceID)
 	return nil
 }
