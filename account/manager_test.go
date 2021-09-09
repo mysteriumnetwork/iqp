@@ -1,7 +1,6 @@
 package account
 
 import (
-	"errors"
 	"testing"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -18,7 +17,7 @@ func TestAccountManager(t *testing.T) {
 			assert.NoError(t, err)
 
 			_, err = manager.GetAccount(addr)
-			assert.True(t, errors.Is(err, ErrNotFound))
+			assert.ErrorIs(t, err, ErrNotFound)
 		})
 
 		t.Run("returns ErrNotFound upon deletion", func(t *testing.T) {
@@ -29,7 +28,7 @@ func TestAccountManager(t *testing.T) {
 			assert.NoError(t, err)
 
 			err = manager.DeleteAccount(addr)
-			assert.True(t, errors.Is(err, ErrNotFound))
+			assert.ErrorIs(t, err, ErrNotFound)
 		})
 
 		t.Run("allows to create new account", func(t *testing.T) {
@@ -60,7 +59,7 @@ func TestAccountManager(t *testing.T) {
 			assert.NoError(t, err)
 
 			_, err = manager.GetAccount(address)
-			assert.True(t, errors.Is(err, ErrNotFound))
+			assert.ErrorIs(t, err, ErrNotFound)
 		})
 	})
 }
