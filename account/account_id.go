@@ -17,6 +17,20 @@ const (
 	ChainEthMainnet   = "eip155:1"
 )
 
+func ChainIDToIdentitifier(chainID int64) (ChainIdentifier, error) {
+	switch chainID {
+	case 5:
+		return ChainEthGoerli, nil
+	case 1:
+		return ChainEthMainnet, nil
+	case 137:
+		return ChainMaticMainnet, nil
+	case 80001:
+		return ChainMaticMumbai, nil
+	}
+	return "", fmt.Errorf("unknown chain %v", chainID)
+}
+
 type AccountID struct {
 	chainIdentifier ChainIdentifier
 	chainID         int64
@@ -46,6 +60,21 @@ func NewAccountID(chainID ChainIdentifier, address common.Address) (AccountID, e
 		return AccountID{}, err
 	}
 	aid.chainID = chid
+	return aid, nil
+}
+
+func NewAccountIDWithRawChain(chainID int64, address common.Address) (AccountID, error) {
+	idf, err := ChainIDToIdentitifier(chainID)
+	if err != nil {
+		return AccountID{}, err
+	}
+
+	aid := AccountID{
+		chainIdentifier: idf,
+		address:         address,
+	}
+
+	aid.chainID = chainID
 	return aid, nil
 }
 
