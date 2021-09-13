@@ -28,7 +28,7 @@ func ChainIDToIdentitifier(chainID int64) (ChainIdentifier, error) {
 	case 80001:
 		return ChainMaticMumbai, nil
 	}
-	return ChainEthMainnet, fmt.Errorf("unknown chain %v", chainID)
+	return "", fmt.Errorf("unknown chain %v", chainID)
 }
 
 type AccountID struct {
