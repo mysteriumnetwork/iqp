@@ -1,0 +1,8 @@
+version: '3.4'
+services:
+  ganachel1:
+    image: trufflesuite/ganache-cli:v6.12.0
+    ports:
+      - '8548:8545'
+    command: >
+      --chainId 31337 --mnemonic "amused glory pen avocado toilet dragon entry kitchen cliff retreat canyon danger"
