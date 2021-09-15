@@ -2,8 +2,6 @@ package account
 
 import (
 	"encoding/hex"
-	"encoding/json"
-	"fmt"
 	"testing"
 
 	"github.com/ethereum/go-ethereum/accounts/keystore"
@@ -41,9 +39,6 @@ func TestOwnershipVerification(t *testing.T) {
 
 		claim, err := GenerateAccountOwnershipClaim(accID, "1")
 		assert.NoError(t, err)
-
-		res, _ := json.Marshal(claim)
-		fmt.Println(string(res))
 
 		decoded, err := hex.DecodeString(signature)
 		assert.NoError(t, err)

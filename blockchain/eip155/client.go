@@ -14,16 +14,18 @@ import (
 )
 
 type Client struct {
-	c         *ethclient.Client
-	bcTimeout time.Duration
-	signerFn  bind.SignerFn
+	c             *ethclient.Client
+	bcTimeout     time.Duration
+	signerFn      bind.SignerFn
+	signerAddress common.Address
 }
 
-func NewClient(c *ethclient.Client, bcTimeout time.Duration, signerFunc bind.SignerFn) *Client {
+func NewClient(c *ethclient.Client, bcTimeout time.Duration, signerAddress common.Address, signerFunc bind.SignerFn) *Client {
 	return &Client{
-		c:         c,
-		bcTimeout: bcTimeout,
-		signerFn:  signerFunc,
+		c:             c,
+		bcTimeout:     bcTimeout,
+		signerFn:      signerFunc,
+		signerAddress: signerAddress,
 	}
 }
 
@@ -194,12 +196,14 @@ func (c *Client) callOpts() (*bind.CallOpts, func()) {
 	ctx, cancel := c.newContext()
 	return &bind.CallOpts{
 		Context: ctx,
+		From:    c.signerAddress,
 	}, cancel
 }
 
 func (c *Client) transactOpts() (*bind.TransactOpts, func()) {
 	ctx, cancel := c.newContext()
 	return &bind.TransactOpts{
+		From:    c.signerAddress,
 		Context: ctx,
 		Signer:  c.signerFn,
 	}, cancel
@@ -680,9 +684,10 @@ func (c *Client) GetInterestTokenIDs(enterpriseAddress, accountAddress common.Ad
 }
 
 type LiquidityInfo struct {
-	Amount *big.Int
-	Shares *big.Int
-	Block  *big.Int
+	Amount  *big.Int
+	Shares  *big.Int
+	Block   *big.Int
+	TokenID *big.Int
 }
 
 func (c *Client) GetLiquidityInfo(enterpriseAddress common.Address, interestTokenID *big.Int) (LiquidityInfo, error) {
@@ -697,9 +702,10 @@ func (c *Client) GetLiquidityInfo(enterpriseAddress common.Address, interestToke
 		return LiquidityInfo{}, err
 	}
 	return LiquidityInfo{
-		Amount: info.Amount,
-		Shares: info.Shares,
-		Block:  info.Block,
+		TokenID: interestTokenID,
+		Amount:  info.Amount,
+		Shares:  info.Shares,
+		Block:   info.Block,
 	}, nil
 }
 
