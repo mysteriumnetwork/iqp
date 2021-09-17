@@ -1,4 +1,8 @@
-# Setting up the environment
+# IQ protocol go SDK 
+
+This repository contains the go bindings to interact with IQ protocol.
+
+## Setting up the environment
 
 To use this repository you'll need a Go environment set up. See the [official Go documentation](https://golang.org/doc/install) for help with that.
 
@@ -11,5 +15,11 @@ To run unit tests, run:
 
 ```
 go run mage.go test
+```
+
+To run integration tests, run:
+
+```
+go run mage.go testintegration
 ```
 
