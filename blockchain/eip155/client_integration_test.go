@@ -901,7 +901,7 @@ func TestEip155ClientIntegration(t *testing.T) {
 
 									info, err := borrowerClient.GetLoanInfo(deployedEnterprise, res[0])
 									assert.NoError(t, err)
-									assert.Equal(t, new(big.Int).Mul(oneToken, big.NewInt(1000)), info.Amount)
+									assert.Equal(t, new(big.Int).Mul(oneToken, big.NewInt(100)), info.Amount)
 								})
 								t.Run("allows to return a loan", func(t *testing.T) {
 									res, err := borrowerClient.GetBorrowTokenIds(deployedEnterprise, borrowerAddress)

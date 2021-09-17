@@ -26,3 +26,18 @@ type AccountState struct {
 	Energy             *big.Int `json:"energy,omitempty"`
 	EnergyCalculatedAt int64    `json:"energy_calculated_at,omitempty"`
 }
+
+func (as *AccountState) FillDefaults() {
+	if as.Power == nil {
+		as.Power = big.NewInt(0)
+	}
+	if as.EnergyCap == nil {
+		as.EnergyCap = big.NewInt(0)
+	}
+	if as.LockedPower == nil {
+		as.LockedPower = big.NewInt(0)
+	}
+	if as.Energy == nil {
+		as.Energy = big.NewInt(0)
+	}
+}
