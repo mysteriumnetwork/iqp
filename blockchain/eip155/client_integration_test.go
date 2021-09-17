@@ -430,6 +430,7 @@ func TestEip155ClientIntegration(t *testing.T) {
 					assert.Equal(t, service1Address, state.ServiceAddress)
 					assert.Equal(t, big.NewInt(0).Int64(), state.Balance.Int64())
 					assert.Equal(t, big.NewInt(0).Int64(), state.Energy.Int64())
+					assert.Equal(t, big.NewInt(0).Int64(), state.LockedBalance.Int64())
 					assert.Equal(t, int64(0), state.Timestamp)
 				})
 

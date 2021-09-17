@@ -1229,6 +1229,7 @@ func (c *Client) GetAccountState(serviceAddress, accountAddress common.Address) 
 		AccountAddress: accountAddress,
 		Balance:        balance,
 		Energy:         state.Energy,
+		LockedBalance:  state.LockedBalance,
 		Timestamp:      int64(state.Timestamp),
 	}, nil
 }
@@ -1238,6 +1239,7 @@ type AccountState struct {
 	AccountAddress common.Address
 	Balance        *big.Int
 	Energy         *big.Int
+	LockedBalance  *big.Int
 	Timestamp      int64
 }
 
