@@ -37,19 +37,19 @@ func (m *MockEnterpriseBlockchain) EXPECT() *MockEnterpriseBlockchainMockRecorde
 	return m.recorder
 }
 
-// AddLiquidity mocks base method.
-func (m *MockEnterpriseBlockchain) AddLiquidity(arg0 common.Address, arg1 *big.Int) (*types.Transaction, error) {
+// Stake mocks base method.
+func (m *MockEnterpriseBlockchain) Stake(arg0 common.Address, arg1 *big.Int) (*types.Transaction, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "AddLiquidity", arg0, arg1)
+	ret := m.ctrl.Call(m, "Stake", arg0, arg1)
 	ret0, _ := ret[0].(*types.Transaction)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// AddLiquidity indicates an expected call of AddLiquidity.
-func (mr *MockEnterpriseBlockchainMockRecorder) AddLiquidity(arg0, arg1 interface{}) *gomock.Call {
+// Stake indicates an expected call of Stake.
+func (mr *MockEnterpriseBlockchainMockRecorder) Stake(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddLiquidity", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).AddLiquidity), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Stake", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).Stake), arg0, arg1)
 }
 
 // ApproveLiquidityTokensToEnterprise mocks base method.
@@ -82,8 +82,8 @@ func (mr *MockEnterpriseBlockchainMockRecorder) ApproveLiquidityTokensToService(
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ApproveLiquidityTokensToService", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).ApproveLiquidityTokensToService), arg0, arg1)
 }
 
-// Borrow mocks base method.
-func (m *MockEnterpriseBlockchain) Borrow(arg0, arg1, arg2 common.Address, arg3, arg4 *big.Int, arg5 uint32) (*types.Transaction, error) {
+// ClaimS mocks base method.
+func (m *MockEnterpriseBlockchain) ClaimStakingReward(arg0, arg1, arg2 common.Address, arg3, arg4 *big.Int, arg5 uint32) (*types.Transaction, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Borrow", arg0, arg1, arg2, arg3, arg4, arg5)
 	ret0, _ := ret[0].(*types.Transaction)
@@ -91,25 +91,25 @@ func (m *MockEnterpriseBlockchain) Borrow(arg0, arg1, arg2 common.Address, arg3,
 	return ret0, ret1
 }
 
-// Borrow indicates an expected call of Borrow.
-func (mr *MockEnterpriseBlockchainMockRecorder) Borrow(arg0, arg1, arg2, arg3, arg4, arg5 interface{}) *gomock.Call {
+// ClaimS indicates an expected call of Borrow.
+func (mr *MockEnterpriseBlockchainMockRecorder) ClaimStakingReward(arg0, arg1, arg2, arg3, arg4, arg5 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Borrow", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).Borrow), arg0, arg1, arg2, arg3, arg4, arg5)
 }
 
-// DecreaseLiquidity mocks base method.
-func (m *MockEnterpriseBlockchain) DecreaseLiquidity(arg0 common.Address, arg1, arg2 *big.Int) (*types.Transaction, error) {
+// DecreaseStake mocks base method.
+func (m *MockEnterpriseBlockchain) DecreaseStake(arg0 common.Address, arg1, arg2 *big.Int) (*types.Transaction, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DecreaseLiquidity", arg0, arg1, arg2)
+	ret := m.ctrl.Call(m, "DecreaseStake", arg0, arg1, arg2)
 	ret0, _ := ret[0].(*types.Transaction)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// DecreaseLiquidity indicates an expected call of DecreaseLiquidity.
-func (mr *MockEnterpriseBlockchainMockRecorder) DecreaseLiquidity(arg0, arg1, arg2 interface{}) *gomock.Call {
+// DecreaseStake indicates an expected call of DecreaseStake.
+func (mr *MockEnterpriseBlockchainMockRecorder) DecreaseStake(arg0, arg1, arg2 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DecreaseLiquidity", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).DecreaseLiquidity), arg0, arg1, arg2)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DecreaseStake", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).DecreaseStake), arg0, arg1, arg2)
 }
 
 // EstimateLoan mocks base method.
@@ -367,19 +367,19 @@ func (mr *MockEnterpriseBlockchainMockRecorder) GetEnterpriseInfo(arg0 interface
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEnterpriseInfo", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).GetEnterpriseInfo), arg0)
 }
 
-// GetEnterpriseLoanCollectGracePeriod mocks base method.
-func (m *MockEnterpriseBlockchain) GetEnterpriseLoanCollectGracePeriod(arg0 common.Address) (uint32, error) {
+// GetEnterpriseToken mocks base method.
+func (m *MockEnterpriseBlockchain) GetEnterpriseToken(arg0 common.Address) (uint32, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetEnterpriseLoanCollectGracePeriod", arg0)
+	ret := m.ctrl.Call(m, "GetEnterpriseToken", arg0)
 	ret0, _ := ret[0].(uint32)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// GetEnterpriseLoanCollectGracePeriod indicates an expected call of GetEnterpriseLoanCollectGracePeriod.
-func (mr *MockEnterpriseBlockchainMockRecorder) GetEnterpriseLoanCollectGracePeriod(arg0 interface{}) *gomock.Call {
+// GetEnterpriseToken indicates an expected call of GetEnterpriseToken.
+func (mr *MockEnterpriseBlockchainMockRecorder) GetEnterpriseToken(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEnterpriseLoanCollectGracePeriod", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).GetEnterpriseLoanCollectGracePeriod), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEnterpriseToken", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).GetEnterpriseToken), arg0)
 }
 
 // GetEnterpriseVaultAddress mocks base method.
@@ -502,19 +502,19 @@ func (mr *MockEnterpriseBlockchainMockRecorder) GetLiquidityTokenServiceAllowanc
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetLiquidityTokenServiceAllowance", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).GetLiquidityTokenServiceAllowance), arg0, arg1)
 }
 
-// GetLoanInfo mocks base method.
-func (m *MockEnterpriseBlockchain) GetLoanInfo(arg0 common.Address, arg1 *big.Int) (eip155.LoanInfo, error) {
+// GetRentalAgreement mocks base method.
+func (m *MockEnterpriseBlockchain) GetRentalAgreement(arg0 common.Address, arg1 *big.Int) (eip155.LoanInfo, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetLoanInfo", arg0, arg1)
+	ret := m.ctrl.Call(m, "GetRentalAgreement", arg0, arg1)
 	ret0, _ := ret[0].(eip155.LoanInfo)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// GetLoanInfo indicates an expected call of GetLoanInfo.
-func (mr *MockEnterpriseBlockchainMockRecorder) GetLoanInfo(arg0, arg1 interface{}) *gomock.Call {
+// GetRentalAgreement indicates an expected call of GetRentalAgreement.
+func (mr *MockEnterpriseBlockchainMockRecorder) GetRentalAgreement(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetLoanInfo", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).GetLoanInfo), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetRentalAgreement", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).GetRentalAgreement), arg0, arg1)
 }
 
 // GetMaxLoanDuration mocks base method.
@@ -697,19 +697,19 @@ func (mr *MockEnterpriseBlockchainMockRecorder) GetUsedReserve(arg0 interface{})
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUsedReserve", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).GetUsedReserve), arg0)
 }
 
-// IncreaseLiquidity mocks base method.
-func (m *MockEnterpriseBlockchain) IncreaseLiquidity(arg0 common.Address, arg1, arg2 *big.Int) (*types.Transaction, error) {
+// IncreaseStake mocks base method.
+func (m *MockEnterpriseBlockchain) IncreaseStake(arg0 common.Address, arg1, arg2 *big.Int) (*types.Transaction, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "IncreaseLiquidity", arg0, arg1, arg2)
+	ret := m.ctrl.Call(m, "IncreaseStake", arg0, arg1, arg2)
 	ret0, _ := ret[0].(*types.Transaction)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// IncreaseLiquidity indicates an expected call of IncreaseLiquidity.
-func (mr *MockEnterpriseBlockchainMockRecorder) IncreaseLiquidity(arg0, arg1, arg2 interface{}) *gomock.Call {
+// IncreaseStake indicates an expected call of IncreaseStake.
+func (mr *MockEnterpriseBlockchainMockRecorder) IncreaseStake(arg0, arg1, arg2 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IncreaseLiquidity", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).IncreaseLiquidity), arg0, arg1, arg2)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IncreaseStake", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).IncreaseStake), arg0, arg1, arg2)
 }
 
 // IsRegisteredService mocks base method.
@@ -727,34 +727,34 @@ func (mr *MockEnterpriseBlockchainMockRecorder) IsRegisteredService(arg0, arg1 i
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IsRegisteredService", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).IsRegisteredService), arg0, arg1)
 }
 
-// RemoveLiquidity mocks base method.
-func (m *MockEnterpriseBlockchain) RemoveLiquidity(arg0 common.Address, arg1 *big.Int) (*types.Transaction, error) {
+// Unstake mocks base method.
+func (m *MockEnterpriseBlockchain) Unstake(arg0 common.Address, arg1 *big.Int) (*types.Transaction, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "RemoveLiquidity", arg0, arg1)
+	ret := m.ctrl.Call(m, "Unstake", arg0, arg1)
 	ret0, _ := ret[0].(*types.Transaction)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// RemoveLiquidity indicates an expected call of RemoveLiquidity.
-func (mr *MockEnterpriseBlockchainMockRecorder) RemoveLiquidity(arg0, arg1 interface{}) *gomock.Call {
+// Unstake indicates an expected call of Unstake.
+func (mr *MockEnterpriseBlockchainMockRecorder) Unstake(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RemoveLiquidity", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).RemoveLiquidity), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Unstake", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).Unstake), arg0, arg1)
 }
 
-// ReturnLoan mocks base method.
-func (m *MockEnterpriseBlockchain) ReturnLoan(arg0 common.Address, arg1 *big.Int) (*types.Transaction, error) {
+// ReturnRental mocks base method.
+func (m *MockEnterpriseBlockchain) ReturnRental(arg0 common.Address, arg1 *big.Int) (*types.Transaction, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ReturnLoan", arg0, arg1)
+	ret := m.ctrl.Call(m, "ReturnRental", arg0, arg1)
 	ret0, _ := ret[0].(*types.Transaction)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// ReturnLoan indicates an expected call of ReturnLoan.
-func (mr *MockEnterpriseBlockchainMockRecorder) ReturnLoan(arg0, arg1 interface{}) *gomock.Call {
+// ReturnRental indicates an expected call of ReturnRental.
+func (mr *MockEnterpriseBlockchainMockRecorder) ReturnRental(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReturnLoan", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).ReturnLoan), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReturnRental", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).ReturnRental), arg0, arg1)
 }
 
 // SetBaseRate mocks base method.
@@ -847,34 +847,34 @@ func (mr *MockEnterpriseBlockchainMockRecorder) SetEnterpriseCollectorAddress(ar
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetEnterpriseCollectorAddress", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).SetEnterpriseCollectorAddress), arg0, arg1)
 }
 
-// SetEnterpriseLoanCollectGracePeriod mocks base method.
-func (m *MockEnterpriseBlockchain) SetEnterpriseLoanCollectGracePeriod(arg0 common.Address, arg1 uint32) (*types.Transaction, error) {
+// SetEnterpriseLoanCollectionPeriod mocks base method.
+func (m *MockEnterpriseBlockchain) SetEnterpriseLoanCollectionPeriod(arg0 common.Address, arg1 uint32) (*types.Transaction, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SetEnterpriseLoanCollectGracePeriod", arg0, arg1)
+	ret := m.ctrl.Call(m, "SetEnterpriseLoanCollectionPeriod", arg0, arg1)
 	ret0, _ := ret[0].(*types.Transaction)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// SetEnterpriseLoanCollectGracePeriod indicates an expected call of SetEnterpriseLoanCollectGracePeriod.
-func (mr *MockEnterpriseBlockchainMockRecorder) SetEnterpriseLoanCollectGracePeriod(arg0, arg1 interface{}) *gomock.Call {
+// SetEnterpriseLoanCollectionPeriod indicates an expected call of SetEnterpriseLoanCollectionPeriod.
+func (mr *MockEnterpriseBlockchainMockRecorder) SetEnterpriseLoanCollectionPeriod(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetEnterpriseLoanCollectGracePeriod", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).SetEnterpriseLoanCollectGracePeriod), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetEnterpriseLoanCollectionPeriod", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).SetEnterpriseLoanCollectionPeriod), arg0, arg1)
 }
 
-// SetEnterpriseVaultAddress mocks base method.
-func (m *MockEnterpriseBlockchain) SetEnterpriseVaultAddress(arg0, arg1 common.Address) (*types.Transaction, error) {
+// SetEnterpriseWalletAddress mocks base method.
+func (m *MockEnterpriseBlockchain) SetEnterpriseWalletAddress(arg0, arg1 common.Address) (*types.Transaction, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SetEnterpriseVaultAddress", arg0, arg1)
+	ret := m.ctrl.Call(m, "SetEnterpriseWalletAddress", arg0, arg1)
 	ret0, _ := ret[0].(*types.Transaction)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// SetEnterpriseVaultAddress indicates an expected call of SetEnterpriseVaultAddress.
-func (mr *MockEnterpriseBlockchainMockRecorder) SetEnterpriseVaultAddress(arg0, arg1 interface{}) *gomock.Call {
+// SetEnterpriseWalletAddress indicates an expected call of SetEnterpriseWalletAddress.
+func (mr *MockEnterpriseBlockchainMockRecorder) SetEnterpriseWalletAddress(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetEnterpriseVaultAddress", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).SetEnterpriseVaultAddress), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetEnterpriseWalletAddress", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).SetEnterpriseWalletAddress), arg0, arg1)
 }
 
 // SetGCFeePercent mocks base method.
@@ -892,19 +892,19 @@ func (mr *MockEnterpriseBlockchainMockRecorder) SetGCFeePercent(arg0, arg1 inter
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetGCFeePercent", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).SetGCFeePercent), arg0, arg1)
 }
 
-// SetInterestGapHalvingPeriod mocks base method.
-func (m *MockEnterpriseBlockchain) SetInterestGapHalvingPeriod(arg0 common.Address, arg1 uint32) (*types.Transaction, error) {
+// SetStreamingReserveHalvingPeriod mocks base method.
+func (m *MockEnterpriseBlockchain) SetStreamingReserveHalvingPeriod(arg0 common.Address, arg1 uint32) (*types.Transaction, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SetInterestGapHalvingPeriod", arg0, arg1)
+	ret := m.ctrl.Call(m, "SetStreamingReserveHalvingPeriod", arg0, arg1)
 	ret0, _ := ret[0].(*types.Transaction)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// SetInterestGapHalvingPeriod indicates an expected call of SetInterestGapHalvingPeriod.
-func (mr *MockEnterpriseBlockchainMockRecorder) SetInterestGapHalvingPeriod(arg0, arg1 interface{}) *gomock.Call {
+// SetStreamingReserveHalvingPeriod indicates an expected call of SetStreamingReserveHalvingPeriod.
+func (mr *MockEnterpriseBlockchainMockRecorder) SetStreamingReserveHalvingPeriod(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetInterestGapHalvingPeriod", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).SetInterestGapHalvingPeriod), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetStreamingReserveHalvingPeriod", reflect.TypeOf((*MockEnterpriseBlockchain)(nil).SetStreamingReserveHalvingPeriod), arg0, arg1)
 }
 
 // SetLoanDurationLimits mocks base method.

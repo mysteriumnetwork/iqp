@@ -98,10 +98,10 @@ func TestEnterprise(t *testing.T) {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
 		mockBc := mocks.NewMockEnterpriseBlockchain(mockCtrl)
-		mockBc.EXPECT().ReturnLoan(enterpriseAdress, borrowTokenID).Times(1)
+		mockBc.EXPECT().ReturnRental(enterpriseAdress, borrowTokenID).Times(1)
 
 		s := NewEnterprise(enterpriseAdress, mockBc)
-		_, err := s.ReturnLoan(borrowTokenID)
+		_, err := s.ReturnRental(borrowTokenID)
 		assert.NoError(t, err)
 	})
 }

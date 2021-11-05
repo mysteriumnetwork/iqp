@@ -34,23 +34,17 @@
         {
           "indexed": false,
           "internalType": "uint32",
-          "name": "minDuration",
+          "name": "minRentalPeriod",
           "type": "uint32"
         },
         {
           "indexed": false,
           "internalType": "uint32",
-          "name": "maxDuration",
+          "name": "maxRentalPeriod",
           "type": "uint32"
         }
       ],
-      "name": "LoanDurationLimitsChanged",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [],
-      "name": "PerpetualAllowed",
+      "name": "RentalPeriodLimitsChanged",
       "type": "event"
     },
     {
@@ -67,23 +61,29 @@
       "type": "event"
     },
     {
+      "anonymous": false,
       "inputs": [],
-      "name": "allowPerpetualForever",
+      "name": "SwappingEnabled",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "TransferEnabled",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "enableSwappingForever",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
       "inputs": [],
-      "name": "getAllowsPerpetual",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "stateMutability": "view",
+      "name": "enableTransferForever",
+      "outputs": [],
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -114,12 +114,12 @@
     },
     {
       "inputs": [],
-      "name": "getEnterprise",
+      "name": "getEnergyGapHalvingPeriod",
       "outputs": [
         {
-          "internalType": "contract Enterprise",
+          "internalType": "uint32",
           "name": "",
-          "type": "address"
+          "type": "uint32"
         }
       ],
       "stateMutability": "view",
@@ -127,12 +127,12 @@
     },
     {
       "inputs": [],
-      "name": "getGapHalvingPeriod",
+      "name": "getEnterprise",
       "outputs": [
         {
-          "internalType": "uint32",
+          "internalType": "contract IEnterprise",
           "name": "",
-          "type": "uint32"
+          "type": "address"
         }
       ],
       "stateMutability": "view",
@@ -153,7 +153,7 @@
     },
     {
       "inputs": [],
-      "name": "getMaxLoanDuration",
+      "name": "getMaxRentalPeriod",
       "outputs": [
         {
           "internalType": "uint32",
@@ -179,7 +179,7 @@
     },
     {
       "inputs": [],
-      "name": "getMinLoanDuration",
+      "name": "getMinRentalPeriod",
       "outputs": [
         {
           "internalType": "uint32",
@@ -242,8 +242,13 @@
     {
       "inputs": [
         {
-          "internalType": "contract Enterprise",
+          "internalType": "contract IEnterprise",
           "name": "enterprise",
+          "type": "address"
+        },
+        {
+          "internalType": "contract IERC20Metadata",
+          "name": "baseToken",
           "type": "address"
         },
         {
@@ -257,8 +262,13 @@
           "type": "uint96"
         },
         {
+          "internalType": "uint16",
+          "name": "serviceFeePercent",
+          "type": "uint16"
+        },
+        {
           "internalType": "uint32",
-          "name": "gapHalvingPeriod",
+          "name": "energyGapHalvingPeriod",
           "type": "uint32"
         },
         {
@@ -267,28 +277,18 @@
           "type": "uint16"
         },
         {
-          "internalType": "contract IERC20Metadata",
-          "name": "baseToken",
-          "type": "address"
-        },
-        {
           "internalType": "uint32",
-          "name": "minLoanDuration",
+          "name": "minRentalPeriod",
           "type": "uint32"
         },
         {
           "internalType": "uint32",
-          "name": "maxLoanDuration",
+          "name": "maxRentalPeriod",
           "type": "uint32"
-        },
-        {
-          "internalType": "uint16",
-          "name": "serviceFeePercent",
-          "type": "uint16"
         },
         {
           "internalType": "bool",
-          "name": "allowsPerpetual",
+          "name": "swappingEnabled",
           "type": "bool"
         }
       ],
@@ -300,7 +300,7 @@
     {
       "inputs": [
         {
-          "internalType": "contract Enterprise",
+          "internalType": "contract IEnterprise",
           "name": "enterprise",
           "type": "address"
         }
@@ -314,11 +314,37 @@
       "inputs": [
         {
           "internalType": "uint32",
-          "name": "duration",
+          "name": "period",
           "type": "uint32"
         }
       ],
-      "name": "isAllowedLoanDuration",
+      "name": "isAllowedRentalPeriod",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isSwappingEnabled",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isTransferEnabled",
       "outputs": [
         {
           "internalType": "bool",
@@ -356,16 +382,16 @@
       "inputs": [
         {
           "internalType": "uint32",
-          "name": "minLoanDuration",
+          "name": "minRentalPeriod",
           "type": "uint32"
         },
         {
           "internalType": "uint32",
-          "name": "maxLoanDuration",
+          "name": "maxRentalPeriod",
           "type": "uint32"
         }
       ],
-      "name": "setLoanDurationLimits",
+      "name": "setRentalPeriodLimits",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"

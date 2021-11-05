@@ -260,7 +260,7 @@ func TestEip155ClientIntegration(t *testing.T) {
 
 		t.Run("allows to set an enterprise vault address", func(t *testing.T) {
 			vault := common.HexToAddress("0x1E60bE47921E15FBc9e9246daC71F771d4b78a6c")
-			tx, err := client.SetEnterpriseVaultAddress(deployedEnterprise, vault)
+			tx, err := client.SetEnterpriseWalletAddress(deployedEnterprise, vault)
 
 			assert.NoError(t, err)
 
@@ -313,12 +313,12 @@ func TestEip155ClientIntegration(t *testing.T) {
 
 		t.Run("allows to set a collector grace period", func(t *testing.T) {
 			var period uint32 = 14 * 3600
-			tx, err := client.SetEnterpriseLoanCollectGracePeriod(deployedEnterprise, period)
+			tx, err := client.SetEnterpriseLoanCollectionPeriod(deployedEnterprise, period)
 			assert.NoError(t, err)
 
 			assertTxSuccess(t, tx, ethClient)
 
-			p, err := client.GetEnterpriseLoanCollectGracePeriod(deployedEnterprise)
+			p, err := client.GetEnterpriseToken(deployedEnterprise)
 			assert.NoError(t, err)
 			assert.Equal(t, period, p)
 		})
@@ -337,7 +337,7 @@ func TestEip155ClientIntegration(t *testing.T) {
 
 		t.Run("allows to set interest gap halving period", func(t *testing.T) {
 			var period uint32 = 6 * 3600
-			tx, err := client.SetInterestGapHalvingPeriod(deployedEnterprise, period)
+			tx, err := client.SetStreamingReserveHalvingPeriod(deployedEnterprise, period)
 			assert.NoError(t, err)
 
 			assertTxSuccess(t, tx, ethClient)
@@ -692,7 +692,7 @@ func TestEip155ClientIntegration(t *testing.T) {
 						assert.Equal(t, oneToken, res)
 					})
 					t.Run("allows to add liquidity", func(t *testing.T) {
-						tx, err := lpClient.AddLiquidity(deployedEnterprise, oneToken)
+						tx, err := lpClient.Stake(deployedEnterprise, oneToken)
 						assert.NoError(t, err)
 						assertTxSuccess(t, tx, ethClient)
 					})
@@ -703,11 +703,11 @@ func TestEip155ClientIntegration(t *testing.T) {
 							assert.NoError(t, err)
 							assertTxSuccess(t, tx, ethClient)
 
-							tx, err = lpClient.AddLiquidity(deployedEnterprise, new(big.Int).Mul(oneToken, big.NewInt(1000)))
+							tx, err = lpClient.Stake(deployedEnterprise, new(big.Int).Mul(oneToken, big.NewInt(1000)))
 							assert.NoError(t, err)
 							assertTxSuccess(t, tx, ethClient)
 
-							tx, err = lpClient.AddLiquidity(deployedEnterprise, new(big.Int).Mul(oneToken, big.NewInt(799)))
+							tx, err = lpClient.Stake(deployedEnterprise, new(big.Int).Mul(oneToken, big.NewInt(799)))
 							assert.NoError(t, err)
 							assertTxSuccess(t, tx, ethClient)
 						})
@@ -728,7 +728,7 @@ func TestEip155ClientIntegration(t *testing.T) {
 						t.Run("allows to increase liquidity", func(t *testing.T) {
 							ids, err := lpClient.GetInterestTokenIDs(deployedEnterprise, liquidityProviderAddress)
 							assert.NoError(t, err)
-							tx, err := lpClient.IncreaseLiquidity(deployedEnterprise, ids[1], new(big.Int).Mul(oneToken, big.NewInt(200)))
+							tx, err := lpClient.IncreaseStake(deployedEnterprise, ids[1], new(big.Int).Mul(oneToken, big.NewInt(200)))
 							assert.NoError(t, err)
 							assertTxSuccess(t, tx, ethClient)
 
@@ -741,7 +741,7 @@ func TestEip155ClientIntegration(t *testing.T) {
 						t.Run("allows to decrease liquidity", func(t *testing.T) {
 							ids, err := lpClient.GetInterestTokenIDs(deployedEnterprise, liquidityProviderAddress)
 							assert.NoError(t, err)
-							tx, err := lpClient.DecreaseLiquidity(deployedEnterprise, ids[1], new(big.Int).Mul(oneToken, big.NewInt(200)))
+							tx, err := lpClient.DecreaseStake(deployedEnterprise, ids[1], new(big.Int).Mul(oneToken, big.NewInt(200)))
 							assert.NoError(t, err)
 							assertTxSuccess(t, tx, ethClient)
 
@@ -754,7 +754,7 @@ func TestEip155ClientIntegration(t *testing.T) {
 						t.Run("allows to remove liquidity", func(t *testing.T) {
 							ids, err := lpClient.GetInterestTokenIDs(deployedEnterprise, liquidityProviderAddress)
 							assert.NoError(t, err)
-							tx, err := lpClient.RemoveLiquidity(deployedEnterprise, ids[2])
+							tx, err := lpClient.Unstake(deployedEnterprise, ids[2])
 							assert.NoError(t, err)
 							assertTxSuccess(t, tx, ethClient)
 							removedID := ids[2]
@@ -821,7 +821,7 @@ func TestEip155ClientIntegration(t *testing.T) {
 									assert.NoError(t, err)
 									assertTxSuccess(t, tx, ethClient)
 
-									tx, err = client.SetEnterpriseLoanCollectGracePeriod(deployedEnterprise, 24*3600)
+									tx, err = client.SetEnterpriseLoanCollectionPeriod(deployedEnterprise, 24*3600)
 									assert.NoError(t, err)
 									assertTxSuccess(t, tx, ethClient)
 
@@ -829,7 +829,7 @@ func TestEip155ClientIntegration(t *testing.T) {
 									assert.NoError(t, err)
 									assertTxSuccess(t, tx, ethClient)
 
-									tx, err = client.SetInterestGapHalvingPeriod(deployedEnterprise, 24*3600*7)
+									tx, err = client.SetStreamingReserveHalvingPeriod(deployedEnterprise, 24*3600*7)
 									assert.NoError(t, err)
 									assertTxSuccess(t, tx, ethClient)
 								})
@@ -865,7 +865,7 @@ func TestEip155ClientIntegration(t *testing.T) {
 								assert.NoError(t, err)
 								assertTxSuccess(t, tx, ethClient)
 
-								tx, err = borrowerClient.Borrow(deployedEnterprise, service3Address, baseEnterpriseParams.LiquidityTokenAddress, amount, estimate, duration)
+								tx, err = borrowerClient.ClaimStakingReward(deployedEnterprise, service3Address, baseEnterpriseParams.LiquidityTokenAddress, amount, estimate, duration)
 								assert.NoError(t, err)
 								assertTxSuccess(t, tx, ethClient)
 
@@ -900,7 +900,7 @@ func TestEip155ClientIntegration(t *testing.T) {
 									res, err := borrowerClient.GetBorrowTokenIds(deployedEnterprise, borrowerAddress)
 									assert.NoError(t, err)
 
-									info, err := borrowerClient.GetLoanInfo(deployedEnterprise, res[0])
+									info, err := borrowerClient.GetRentalAgreement(deployedEnterprise, res[0])
 									assert.NoError(t, err)
 									assert.Equal(t, new(big.Int).Mul(oneToken, big.NewInt(100)), info.Amount)
 								})
@@ -908,7 +908,7 @@ func TestEip155ClientIntegration(t *testing.T) {
 									res, err := borrowerClient.GetBorrowTokenIds(deployedEnterprise, borrowerAddress)
 									assert.NoError(t, err)
 
-									tx, err := borrowerClient.ReturnLoan(deployedEnterprise, res[0])
+									tx, err := borrowerClient.ReturnRental(deployedEnterprise, res[0])
 									assert.NoError(t, err)
 									assertTxSuccess(t, tx, ethClient)
 								})

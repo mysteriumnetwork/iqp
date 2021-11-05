@@ -240,18 +240,18 @@ func (c *Client) GetServices(enterpriseAddress common.Address) ([]common.Address
 }
 
 type EnterpriseInfo struct {
-	Name                             string
-	BaseUri                          string
-	TotalShares                      *big.Int
-	InterestGapHalvingPeriod         uint32
-	BorrowerLoanReturnGracePeriod    uint32
-	EnterpriseLoanCollectGracePeriod uint32
-	GCFeePercent                     uint16
-	FixedReserve                     *big.Int
-	UsedReserve                      *big.Int
-	StreamingReserve                 *big.Int
-	StreamingReserveTarget           *big.Int
-	StreamingReserveUpdated          uint32
+	Name                           string
+	BaseUri                        string
+	TotalShares                    *big.Int
+	StreamingReserveHalvingPeriod  uint32
+	RenterOnlyReturnPeriod         uint32
+	EnterpriseOnlyCollectionPeriod uint32
+	GCFeePercent                   uint16
+	FixedReserve                   *big.Int
+	UsedReserve                    *big.Int
+	StreamingReserve               *big.Int
+	StreamingReserveTarget         *big.Int
+	StreamingReserveUpdated        uint32
 }
 
 func (c *Client) GetEnterpriseInfo(enterpriseAddress common.Address) (EnterpriseInfo, error) {
@@ -267,18 +267,18 @@ func (c *Client) GetEnterpriseInfo(enterpriseAddress common.Address) (Enterprise
 	}
 
 	return EnterpriseInfo{
-		Name:                             info.Name,
-		BaseUri:                          info.BaseUri,
-		TotalShares:                      info.TotalShares,
-		InterestGapHalvingPeriod:         info.InterestGapHalvingPeriod,
-		BorrowerLoanReturnGracePeriod:    info.BorrowerLoanReturnGracePeriod,
-		EnterpriseLoanCollectGracePeriod: info.EnterpriseLoanCollectGracePeriod,
-		GCFeePercent:                     info.GcFeePercent,
-		FixedReserve:                     info.FixedReserve,
-		UsedReserve:                      info.UsedReserve,
-		StreamingReserve:                 info.StreamingReserve,
-		StreamingReserveTarget:           info.StreamingReserveTarget,
-		StreamingReserveUpdated:          info.StreamingReserveUpdated,
+		Name:                           info.Name,
+		BaseUri:                        info.BaseUri,
+		TotalShares:                    info.TotalShares,
+		StreamingReserveHalvingPeriod:  info.StreamingReserveHalvingPeriod,
+		RenterOnlyReturnPeriod:         info.RenterOnlyReturnPeriod,
+		EnterpriseOnlyCollectionPeriod: info.EnterpriseOnlyCollectionPeriod,
+		GCFeePercent:                   info.GcFeePercent,
+		FixedReserve:                   info.FixedReserve,
+		UsedReserve:                    info.UsedReserve,
+		StreamingReserve:               info.StreamingReserve,
+		StreamingReserveTarget:         info.StreamingReserveTarget,
+		StreamingReserveUpdated:        info.StreamingReserveUpdated,
 	}, nil
 }
 
@@ -337,74 +337,64 @@ func (c *Client) RegisterService(enterpriseAddress common.Address, params Servic
 	)
 }
 
-func (c *Client) AddLiquidity(enterpriseAddress common.Address, amount *big.Int) (*types.Transaction, error) {
+func (c *Client) Stake(enterpriseAddress common.Address, amount *big.Int) (*types.Transaction, error) {
 	transactor, opts, cancel, err := c.newEnterpriseTransactor(enterpriseAddress)
 	if err != nil {
 		return nil, err
 	}
 	defer cancel()
 
-	return transactor.AddLiquidity(opts, amount)
+	return transactor.Stake(opts, amount)
 }
 
-func (c *Client) RemoveLiquidity(enterpriseAddress common.Address, interestTokenID *big.Int) (*types.Transaction, error) {
+func (c *Client) Unstake(enterpriseAddress common.Address, interestTokenID *big.Int) (*types.Transaction, error) {
 	transactor, opts, cancel, err := c.newEnterpriseTransactor(enterpriseAddress)
 	if err != nil {
 		return nil, err
 	}
 	defer cancel()
 
-	return transactor.RemoveLiquidity(opts, interestTokenID)
+	return transactor.Unstake(opts, interestTokenID)
 }
 
-func (c *Client) IncreaseLiquidity(enterpriseAddress common.Address, interestTokenID, amount *big.Int) (*types.Transaction, error) {
+func (c *Client) IncreaseStake(enterpriseAddress common.Address, interestTokenID, amount *big.Int) (*types.Transaction, error) {
 	transactor, opts, cancel, err := c.newEnterpriseTransactor(enterpriseAddress)
 	if err != nil {
 		return nil, err
 	}
 	defer cancel()
 
-	return transactor.IncreaseLiquidity(opts, interestTokenID, amount)
+	return transactor.IncreaseStake(opts, interestTokenID, amount)
 }
 
-func (c *Client) DecreaseLiquidity(enterpriseAddress common.Address, interestTokenID, amount *big.Int) (*types.Transaction, error) {
+func (c *Client) DecreaseStake(enterpriseAddress common.Address, interestTokenID, amount *big.Int) (*types.Transaction, error) {
 	transactor, opts, cancel, err := c.newEnterpriseTransactor(enterpriseAddress)
 	if err != nil {
 		return nil, err
 	}
 	defer cancel()
 
-	return transactor.DecreaseLiquidity(opts, interestTokenID, amount)
+	return transactor.DecreaseStake(opts, interestTokenID, amount)
 }
 
-func (c *Client) WithdrawInterest(enterpriseAddress common.Address, interestTokenID *big.Int) (*types.Transaction, error) {
+func (c *Client) ClaimStakingReward(enterpriseAddress common.Address, stakeTokenID *big.Int) (*types.Transaction, error) {
 	transactor, opts, cancel, err := c.newEnterpriseTransactor(enterpriseAddress)
 	if err != nil {
 		return nil, err
 	}
 	defer cancel()
 
-	return transactor.WithdrawInterest(opts, interestTokenID)
+	return transactor.ClaimStakingReward(opts, stakeTokenID)
 }
 
-func (c *Client) Borrow(enterpriseAddress, serviceAddress, paymentTokenAddress common.Address, amount, maxPayment *big.Int, duration uint32) (*types.Transaction, error) {
+func (c *Client) ReturnRental(enterpriseAddress common.Address, borrowTokenId *big.Int) (*types.Transaction, error) {
 	transactor, opts, cancel, err := c.newEnterpriseTransactor(enterpriseAddress)
 	if err != nil {
 		return nil, err
 	}
 	defer cancel()
 
-	return transactor.Borrow(opts, serviceAddress, paymentTokenAddress, amount, duration, maxPayment)
-}
-
-func (c *Client) ReturnLoan(enterpriseAddress common.Address, borrowTokenId *big.Int) (*types.Transaction, error) {
-	transactor, opts, cancel, err := c.newEnterpriseTransactor(enterpriseAddress)
-	if err != nil {
-		return nil, err
-	}
-	defer cancel()
-
-	return transactor.ReturnLoan(opts, borrowTokenId)
+	return transactor.ReturnRental(opts, borrowTokenId)
 }
 
 func (c *Client) ApproveLiquidityTokensToEnterprise(enterpriseAddress common.Address, amount *big.Int) (*types.Transaction, error) {
@@ -416,7 +406,7 @@ func (c *Client) ApproveLiquidityTokensToEnterprise(enterpriseAddress common.Add
 	copts, ccancel := c.callOpts()
 	defer ccancel()
 
-	token, err := caller.GetLiquidityToken(copts)
+	token, err := caller.GetProxyAdmin(copts)
 	if err != nil {
 		return nil, err
 	}
@@ -452,16 +442,6 @@ func (c *Client) SetBondingCurve(enterpriseAddress common.Address, pole, slope *
 	return transactor.SetBondingCurve(opts, pole, slope)
 }
 
-func (c *Client) SetBorrowerLoanReturnGracePeriod(enterpriseAddress common.Address, period uint32) (*types.Transaction, error) {
-	transactor, opts, cancel, err := c.newEnterpriseTransactor(enterpriseAddress)
-	if err != nil {
-		return nil, err
-	}
-	defer cancel()
-
-	return transactor.SetBorrowerLoanReturnGracePeriod(opts, period)
-}
-
 func (c *Client) SetConverterAddress(enterpriseAddress, converter common.Address) (*types.Transaction, error) {
 	transactor, opts, cancel, err := c.newEnterpriseTransactor(enterpriseAddress)
 	if err != nil {
@@ -482,14 +462,14 @@ func (c *Client) SetEnterpriseCollectorAddress(enterpriseAddress, collector comm
 	return transactor.SetEnterpriseCollector(opts, collector)
 }
 
-func (c *Client) SetEnterpriseLoanCollectGracePeriod(enterpriseAddress common.Address, period uint32) (*types.Transaction, error) {
+func (c *Client) SetEnterpriseLoanCollectionPeriod(enterpriseAddress common.Address, period uint32) (*types.Transaction, error) {
 	transactor, opts, cancel, err := c.newEnterpriseTransactor(enterpriseAddress)
 	if err != nil {
 		return nil, err
 	}
 	defer cancel()
 
-	return transactor.SetEnterpriseLoanCollectGracePeriod(opts, period)
+	return transactor.SetEnterpriseOnlyCollectionPeriod(opts, period)
 }
 
 func (c *Client) SetEnterpriseVaultAddress(enterpriseAddress, vaultAddress common.Address) (*types.Transaction, error) {
@@ -499,7 +479,7 @@ func (c *Client) SetEnterpriseVaultAddress(enterpriseAddress, vaultAddress commo
 	}
 	defer cancel()
 
-	return transactor.SetEnterpriseVault(opts, vaultAddress)
+	return transactor.SetEnterpriseWallet(opts, vaultAddress)
 }
 
 func (c *Client) SetGCFeePercent(enterpriseAddress common.Address, percent uint16) (*types.Transaction, error) {
@@ -512,14 +492,14 @@ func (c *Client) SetGCFeePercent(enterpriseAddress common.Address, percent uint1
 	return transactor.SetGcFeePercent(opts, percent)
 }
 
-func (c *Client) SetInterestGapHalvingPeriod(enterpriseAddress common.Address, interestGapHalvingPeriod uint32) (*types.Transaction, error) {
+func (c *Client) SetInterestReserveHalvingPeriod(enterpriseAddress common.Address, interestGapHalvingPeriod uint32) (*types.Transaction, error) {
 	transactor, opts, cancel, err := c.newEnterpriseTransactor(enterpriseAddress)
 	if err != nil {
 		return nil, err
 	}
 	defer cancel()
 
-	return transactor.SetInterestGapHalvingPeriod(opts, interestGapHalvingPeriod)
+	return transactor.SetStreamingReserveHalvingPeriod(opts, interestGapHalvingPeriod)
 }
 
 func (c *Client) GetReserve(enterpriseAddress common.Address) (*big.Int, error) {
@@ -553,26 +533,6 @@ func (c *Client) GetAvailableReserve(enterpriseAddress common.Address) (*big.Int
 	return caller.GetAvailableReserve(opts)
 }
 
-func (c *Client) EstimateLoan(enterpriseAddress, serviceAddress, paymentTokenAddress common.Address, amount *big.Int, duration uint32) (*big.Int, error) {
-	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
-	if err != nil {
-		return nil, err
-	}
-	defer cancel()
-
-	return caller.EstimateLoan(opts, serviceAddress, paymentTokenAddress, amount, duration)
-}
-
-func (c *Client) GetAccruedInterest(enterpriseAddress common.Address, interestTokenID *big.Int) (*big.Int, error) {
-	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
-	if err != nil {
-		return nil, err
-	}
-	defer cancel()
-
-	return caller.GetAccruedInterest(opts, interestTokenID)
-}
-
 func (c *Client) GetLiquidityTokenEnterpriseAllowance(enterpriseAddress, accountAddress common.Address) (*big.Int, error) {
 	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
 	if err != nil {
@@ -580,7 +540,7 @@ func (c *Client) GetLiquidityTokenEnterpriseAllowance(enterpriseAddress, account
 	}
 	defer cancel()
 
-	tkn, err := caller.GetLiquidityToken(opts)
+	tkn, err := caller.GetProxyAdmin(opts)
 	if err != nil {
 		return nil, err
 	}
@@ -596,62 +556,52 @@ func (c *Client) GetLiquidityTokenEnterpriseAllowance(enterpriseAddress, account
 	return tknCaller.Allowance(tknCallOpts, accountAddress, enterpriseAddress)
 }
 
-func (c *Client) GetLiquidityTokenAddress(enterpriseAddress common.Address) (common.Address, error) {
+func (c *Client) GetProxyAdmin(enterpriseAddress common.Address) (common.Address, error) {
 	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
 	if err != nil {
 		return common.Address{}, err
 	}
 	defer cancel()
 
-	return caller.GetLiquidityToken(opts)
+	return caller.GetProxyAdmin(opts)
 }
 
 func (c *Client) GetLiquidityTokenMetadata(enterpriseAddress common.Address) (ERC20Metadata, error) {
-	tkn, err := c.GetLiquidityTokenAddress(enterpriseAddress)
+	tkn, err := c.GetProxyAdmin(enterpriseAddress)
 	if err != nil {
 		return ERC20Metadata{}, err
 	}
 	return c.GetERC20Metadata(tkn)
-}
-
-func (c *Client) GetBorrowTokenAddress(enterpriseAddress common.Address) (common.Address, error) {
-	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
-	if err != nil {
-		return common.Address{}, err
-	}
-	defer cancel()
-
-	return caller.GetBorrowToken(opts)
 }
 
 func (c *Client) GetBorrowTokenMetadata(enterpriseAddress common.Address) (ERC20Metadata, error) {
-	tkn, err := c.GetBorrowTokenAddress(enterpriseAddress)
+	tkn, err := c.GetConverterAddress(enterpriseAddress)
 	if err != nil {
 		return ERC20Metadata{}, err
 	}
 	return c.GetERC20Metadata(tkn)
 }
 
-func (c *Client) GetInterestTokenAddress(enterpriseAddress common.Address) (common.Address, error) {
+func (c *Client) GetPaymentToken(enterpriseAddress common.Address, index *big.Int) (common.Address, error) {
 	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
 	if err != nil {
 		return common.Address{}, err
 	}
 	defer cancel()
 
-	return caller.GetInterestToken(opts)
+	return caller.GetPaymentToken(opts, index)
 }
 
-func (c *Client) GetInterestTokenMetadata(enterpriseAddress common.Address) (ERC20Metadata, error) {
-	tkn, err := c.GetInterestTokenAddress(enterpriseAddress)
+func (c *Client) GetPaymentTokenMetadata(enterpriseAddress common.Address, index *big.Int) (ERC20Metadata, error) {
+	tkn, err := c.GetPaymentToken(enterpriseAddress, index)
 	if err != nil {
 		return ERC20Metadata{}, err
 	}
 	return c.GetERC20Metadata(tkn)
 }
 
-func (c *Client) GetInterestTokenIDs(enterpriseAddress, accountAddress common.Address) ([]*big.Int, error) {
-	tokenAddress, err := c.GetInterestTokenAddress(enterpriseAddress)
+func (c *Client) GetPaymentTokenIDs(enterpriseAddress, accountAddress common.Address, index *big.Int) ([]*big.Int, error) {
+	tokenAddress, err := c.GetPaymentToken(enterpriseAddress, index)
 	if err != nil {
 		return nil, err
 	}
@@ -683,34 +633,8 @@ func (c *Client) GetInterestTokenIDs(enterpriseAddress, accountAddress common.Ad
 	return res, nil
 }
 
-type LiquidityInfo struct {
-	Amount  *big.Int
-	Shares  *big.Int
-	Block   *big.Int
-	TokenID *big.Int
-}
-
-func (c *Client) GetLiquidityInfo(enterpriseAddress common.Address, interestTokenID *big.Int) (LiquidityInfo, error) {
-	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
-	if err != nil {
-		return LiquidityInfo{}, err
-	}
-	defer cancel()
-
-	info, err := caller.GetLiquidityInfo(opts, interestTokenID)
-	if err != nil {
-		return LiquidityInfo{}, err
-	}
-	return LiquidityInfo{
-		TokenID: interestTokenID,
-		Amount:  info.Amount,
-		Shares:  info.Shares,
-		Block:   info.Block,
-	}, nil
-}
-
-func (c *Client) GetBorrowTokenIds(enterpriseAddress, accountAddress common.Address) ([]*big.Int, error) {
-	borrowToken, err := c.GetBorrowTokenAddress(enterpriseAddress)
+func (c *Client) GetConvertTokenIDs(enterpriseAddress, accountAddress common.Address) ([]*big.Int, error) {
+	borrowToken, err := c.GetConverterAddress(enterpriseAddress)
 	if err != nil {
 		return nil, err
 	}
@@ -741,39 +665,39 @@ func (c *Client) GetBorrowTokenIds(enterpriseAddress, accountAddress common.Addr
 }
 
 type LoanInfo struct {
-	Amount                     *big.Int
-	PowerTokenIndex            uint16
-	BorrowingTime              uint32
-	MaturityTime               uint32
-	BorrowerReturnGraceTime    uint32
-	EnterpriseCollectGraceTime uint32
-	GcFee                      *big.Int
-	GcFeeTokenIndex            uint16
-	TokenID                    *big.Int
+	RentalAmount                 *big.Int
+	PowerTokenIndex              uint16
+	StartTime                    uint32
+	EndTime                      uint32
+	RenterOnlyReturnTime         uint32
+	EnterpriseOnlyCollectionTime uint32
+	GcRewardAmount               *big.Int
+	GcRewardTokenIndex           uint16
+	TokenID                      *big.Int
 }
 
-func (c *Client) GetLoanInfo(enterpriseAddress common.Address, borrowTokenID *big.Int) (LoanInfo, error) {
+func (c *Client) GetRentalAgreement(enterpriseAddress common.Address, rentalTokenID *big.Int) (LoanInfo, error) {
 	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
 	if err != nil {
 		return LoanInfo{}, err
 	}
 	defer cancel()
 
-	info, err := caller.GetLoanInfo(opts, borrowTokenID)
+	info, err := caller.GetRentalAgreement(opts, rentalTokenID)
 	if err != nil {
 		return LoanInfo{}, err
 	}
 
 	return LoanInfo{
-		TokenID:                    borrowTokenID,
-		Amount:                     info.Amount,
-		PowerTokenIndex:            info.PowerTokenIndex,
-		BorrowingTime:              info.BorrowingTime,
-		MaturityTime:               info.MaturityTime,
-		BorrowerReturnGraceTime:    info.BorrowerReturnGraceTime,
-		EnterpriseCollectGraceTime: info.EnterpriseCollectGraceTime,
-		GcFee:                      info.GcFee,
-		GcFeeTokenIndex:            info.GcFeeTokenIndex,
+		TokenID:                      rentalTokenID,
+		RentalAmount:                 info.RentalAmount,
+		PowerTokenIndex:              info.PowerTokenIndex,
+		StartTime:                    info.StartTime,
+		EndTime:                      info.EndTime,
+		RenterOnlyReturnTime:         info.RenterOnlyReturnTime,
+		EnterpriseOnlyCollectionTime: info.EnterpriseOnlyCollectionTime,
+		GcRewardAmount:               info.GcRewardAmount,
+		GcRewardTokenIndex:           info.GcRewardTokenIndex,
 	}, nil
 }
 
@@ -819,16 +743,6 @@ func (c *Client) GetBondingCurve(enterpriseAddress common.Address) (BondingCurve
 	}, nil
 }
 
-func (c *Client) GetBorrowerLoanReturnGracePeriod(enterpriseAddress common.Address) (uint32, error) {
-	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
-	if err != nil {
-		return 0, err
-	}
-	defer cancel()
-
-	return caller.GetBorrowerLoanReturnGracePeriod(opts)
-}
-
 func (c *Client) GetConverterAddress(enterpriseAddress common.Address) (common.Address, error) {
 	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
 	if err != nil {
@@ -849,24 +763,24 @@ func (c *Client) GetEnterpriseCollectorAddress(enterpriseAddress common.Address)
 	return caller.GetEnterpriseCollector(opts)
 }
 
-func (c *Client) GetEnterpriseLoanCollectGracePeriod(enterpriseAddress common.Address) (uint32, error) {
-	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
-	if err != nil {
-		return 0, err
-	}
-	defer cancel()
-
-	return caller.GetEnterpriseLoanCollectGracePeriod(opts)
-}
-
-func (c *Client) GetEnterpriseVaultAddress(enterpriseAddress common.Address) (common.Address, error) {
+func (c *Client) GetEnterpriseTokenAddress(enterpriseAddress common.Address) (common.Address, error) {
 	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
 	if err != nil {
 		return common.Address{}, err
 	}
 	defer cancel()
 
-	return caller.GetEnterpriseVault(opts)
+	return caller.GetEnterpriseToken(opts)
+}
+
+func (c *Client) GetEnterpriseWalletAddress(enterpriseAddress common.Address) (common.Address, error) {
+	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
+	if err != nil {
+		return common.Address{}, err
+	}
+	defer cancel()
+
+	return caller.GetEnterpriseWallet(opts)
 }
 
 func (c *Client) GetGCFeePercent(enterpriseAddress common.Address) (uint16, error) {
@@ -877,16 +791,6 @@ func (c *Client) GetGCFeePercent(enterpriseAddress common.Address) (uint16, erro
 	defer cancel()
 
 	return caller.GetGCFeePercent(opts)
-}
-
-func (c *Client) GetInterestGapHalvingPeriod(enterpriseAddress common.Address) (uint32, error) {
-	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
-	if err != nil {
-		return 0, err
-	}
-	defer cancel()
-
-	return caller.GetInterestGapHalvingPeriod(opts)
 }
 
 func (c *Client) GetProxyAdminAddress(enterpriseAddress common.Address) (common.Address, error) {
@@ -933,7 +837,7 @@ func (c *Client) ApproveLiquidityTokensToService(serviceAddress common.Address, 
 		return nil, err
 	}
 
-	liquidityTokenAddr, err := c.GetLiquidityTokenAddress(enterprise)
+	liquidityTokenAddr, err := c.GetProxyAdmin(enterprise)
 	if err != nil {
 		return nil, err
 	}
@@ -948,34 +852,24 @@ func (c *Client) ApproveLiquidityTokensToService(serviceAddress common.Address, 
 	return erc20Transactor.Approve(topts, serviceAddress, amount)
 }
 
-func (c *Client) Wrap(serviceAddress common.Address, amount *big.Int) (*types.Transaction, error) {
+func (c *Client) Transfer(serviceAddress common.Address, recipient common.Address, amount *big.Int) (*types.Transaction, error) {
 	transactor, opts, cancel, err := c.newPowerTokenTransactor(serviceAddress)
 	if err != nil {
 		return nil, err
 	}
 	defer cancel()
 
-	return transactor.Wrap(opts, amount)
+	return transactor.Transfer(opts, recipient, amount)
 }
 
-func (c *Client) WrapTo(serviceAddress, accountAddress common.Address, amount *big.Int) (*types.Transaction, error) {
+func (c *Client) TransferFrom(serviceAddress, sender, recipient common.Address, amount *big.Int) (*types.Transaction, error) {
 	transactor, opts, cancel, err := c.newPowerTokenTransactor(serviceAddress)
 	if err != nil {
 		return nil, err
 	}
 	defer cancel()
 
-	return transactor.WrapTo(opts, accountAddress, amount)
-}
-
-func (c *Client) Unwrap(serviceAddress common.Address, amount *big.Int) (*types.Transaction, error) {
-	transactor, opts, cancel, err := c.newPowerTokenTransactor(serviceAddress)
-	if err != nil {
-		return nil, err
-	}
-	defer cancel()
-
-	return transactor.Unwrap(opts, amount)
+	return transactor.TransferFrom(opts, sender, recipient, amount)
 }
 
 func (c *Client) SetBaseRate(serviceAddress, baseToken common.Address, baseRate, minGcFee *big.Int) (*types.Transaction, error) {
@@ -988,14 +882,14 @@ func (c *Client) SetBaseRate(serviceAddress, baseToken common.Address, baseRate,
 	return transactor.SetBaseRate(opts, baseRate, baseToken, minGcFee)
 }
 
-func (c *Client) SetLoanDurationLimits(serviceAddress common.Address, minLoanDuration, maxLoanDuration uint32) (*types.Transaction, error) {
+func (c *Client) SetRentalPeriodLimits(serviceAddress common.Address, minLoanDuration, maxLoanDuration uint32) (*types.Transaction, error) {
 	transactor, opts, cancel, err := c.newPowerTokenTransactor(serviceAddress)
 	if err != nil {
 		return nil, err
 	}
 	defer cancel()
 
-	return transactor.SetLoanDurationLimits(opts, minLoanDuration, maxLoanDuration)
+	return transactor.SetRentalPeriodLimits(opts, minLoanDuration, maxLoanDuration)
 }
 
 func (c *Client) SetServiceFeePercent(serviceAddress common.Address, feePercent uint16) (*types.Transaction, error) {
@@ -1009,12 +903,13 @@ func (c *Client) SetServiceFeePercent(serviceAddress common.Address, feePercent 
 }
 
 func (c *Client) GetAllowsPerpetual(serviceAddress common.Address) (bool, error) {
-	res, err := c.GetServiceInfo(serviceAddress)
-	if err != nil {
-		return false, err
-	}
+	return false, nil
+	// res, err := c.GetServiceInfo(serviceAddress)
+	// if err != nil {
+	// 	return false, err
+	// }
 
-	return res.AllowsPerpetual, nil
+	// return res.AllowsPerpetual, nil
 }
 
 func (c *Client) GetBaseRate(serviceAddress common.Address) (*big.Int, error) {
@@ -1035,31 +930,31 @@ func (c *Client) GetBaseTokenAddress(serviceAddress common.Address) (common.Addr
 	return res.BaseToken, nil
 }
 
-func (c *Client) GetGapHalvingPeriod(serviceAddress common.Address) (int64, error) {
+func (c *Client) GetEnergyGapHalvingPeriod(serviceAddress common.Address) (uint32, error) {
 	res, err := c.GetServiceInfo(serviceAddress)
 	if err != nil {
 		return 0, err
 	}
 
-	return res.GapHalvingPeriod, nil
+	return res.EnergyGapHalvingPeriod, nil
 }
 
-func (c *Client) GetMaxLoanDuration(serviceAddress common.Address) (int64, error) {
+func (c *Client) GetRentalPeriod(serviceAddress common.Address) (uint32, error) {
 	res, err := c.GetServiceInfo(serviceAddress)
 	if err != nil {
 		return 0, err
 	}
 
-	return res.MaxLoanDuration, nil
+	return res.MaxRentalPeriod, nil
 }
 
-func (c *Client) GetMinLoanDuration(serviceAddress common.Address) (int64, error) {
+func (c *Client) GetMinRentalDuration(serviceAddress common.Address) (uint32, error) {
 	res, err := c.GetServiceInfo(serviceAddress)
 	if err != nil {
 		return 0, err
 	}
 
-	return res.MinLoanDuration, nil
+	return res.MinRentalPeriod, nil
 }
 
 func (c *Client) GetMinGCFee(serviceAddress common.Address) (*big.Int, error) {
@@ -1071,7 +966,7 @@ func (c *Client) GetMinGCFee(serviceAddress common.Address) (*big.Int, error) {
 	return res.MinGCFee, nil
 }
 
-func (c *Client) GetServiceFeePercent(serviceAddress common.Address) (int64, error) {
+func (c *Client) GetServiceFeePercent(serviceAddress common.Address) (uint16, error) {
 	res, err := c.GetServiceInfo(serviceAddress)
 	if err != nil {
 		return 0, err
@@ -1080,7 +975,7 @@ func (c *Client) GetServiceFeePercent(serviceAddress common.Address) (int64, err
 	return res.ServiceFeePercent, nil
 }
 
-func (c *Client) GetServiceIndex(serviceAddress common.Address) (int64, error) {
+func (c *Client) GetServiceIndex(serviceAddress common.Address) (uint16, error) {
 	res, err := c.GetServiceInfo(serviceAddress)
 	if err != nil {
 		return 0, err
@@ -1089,7 +984,7 @@ func (c *Client) GetServiceIndex(serviceAddress common.Address) (int64, error) {
 	return res.Index, nil
 }
 
-func (c *Client) GetLiquidityTokenServiceAllowance(serviceAddress, accountAddress common.Address) (*big.Int, error) {
+func (c *Client) GetProxyAdminTokenServiceAllowance(serviceAddress, accountAddress common.Address) (*big.Int, error) {
 	transactor, err := bindings.NewPowerToken(serviceAddress, c.c)
 	if err != nil {
 		return nil, err
@@ -1103,7 +998,7 @@ func (c *Client) GetLiquidityTokenServiceAllowance(serviceAddress, accountAddres
 		return nil, err
 	}
 
-	tkn, err := c.GetLiquidityTokenAddress(enterprise)
+	tkn, err := c.GetProxyAdmin(enterprise)
 	if err != nil {
 		return nil, err
 	}
@@ -1147,24 +1042,24 @@ func (c *Client) GetEnergyAt(serviceAddress, accountAddress common.Address, time
 }
 
 type LoanEstimateDetailed struct {
-	Interest   *big.Int
+	PoolFee    *big.Int
 	ServiceFee *big.Int
 	GcFee      *big.Int
 }
 
-func (c *Client) EstimateLoanDetailed(serviceAddress, paymentTokenAddress common.Address, amount *big.Int, duration uint32) (LoanEstimateDetailed, error) {
+func (c *Client) EstimateRentalFee(serviceAddress, paymentTokenAddress common.Address, amount *big.Int, duration uint32) (LoanEstimateDetailed, error) {
 	caller, opts, cancel, err := c.newPowerTokenCaller(serviceAddress)
 	if err != nil {
 		return LoanEstimateDetailed{}, err
 	}
 	defer cancel()
 
-	info, err := caller.EstimateLoanDetailed(opts, paymentTokenAddress, amount, duration)
+	info, err := caller.EstimateRentalFee(opts, paymentTokenAddress, amount, duration)
 	if err != nil {
 		return LoanEstimateDetailed{}, err
 	}
 	return LoanEstimateDetailed{
-		Interest:   info.Interest,
+		PoolFee:    info.PoolFee,
 		ServiceFee: info.ServiceFee,
 		GcFee:      info.GcFee,
 	}, nil
@@ -1187,18 +1082,18 @@ func (c *Client) GetServiceInfo(serviceAddress common.Address) (ServiceInfo, err
 	}
 
 	return ServiceInfo{
-		Address:           serviceAddress,
-		Name:              res.Name,
-		Symbol:            res.Symbol,
-		BaseRate:          res.BaseRate,
-		MinGCFee:          res.MinGCFee,
-		GapHalvingPeriod:  int64(res.GapHalvingPeriod),
-		Index:             int64(res.Index),
-		BaseToken:         res.BaseToken,
-		MinLoanDuration:   int64(res.MinLoanDuration),
-		MaxLoanDuration:   int64(res.MaxLoanDuration),
-		ServiceFeePercent: int64(res.ServiceFeePercent),
-		AllowsPerpetual:   res.AllowsPerpetual,
+		Name:                   res.Name,
+		Symbol:                 res.Symbol,
+		BaseRate:               res.BaseRate,
+		BaseToken:              res.BaseToken,
+		MinGCFee:               res.MinGCFee,
+		ServiceFeePercent:      res.ServiceFeePercent,
+		EnergyGapHalvingPeriod: res.EnergyGapHalvingPeriod,
+		Index:                  res.Index,
+		MinRentalPeriod:        res.MinRentalPeriod,
+		MaxRentalPeriod:        res.MaxRentalPeriod,
+		SwappingEnabled:        res.SwappingEnabled,
+		TransferEnabled:        res.TransferEnabled,
 	}, nil
 }
 
@@ -1244,16 +1139,16 @@ type AccountState struct {
 }
 
 type ServiceInfo struct {
-	Address           common.Address
-	Name              string
-	Symbol            string
-	BaseRate          *big.Int
-	MinGCFee          *big.Int
-	GapHalvingPeriod  int64
-	Index             int64
-	BaseToken         common.Address
-	MinLoanDuration   int64
-	MaxLoanDuration   int64
-	ServiceFeePercent int64
-	AllowsPerpetual   bool
+	Name                   string
+	Symbol                 string
+	BaseToken              common.Address
+	BaseRate               *big.Int
+	MinGCFee               *big.Int
+	ServiceFeePercent      uint16
+	EnergyGapHalvingPeriod uint32
+	Index                  uint16
+	MinRentalPeriod        uint32
+	MaxRentalPeriod        uint32
+	SwappingEnabled        bool
+	TransferEnabled        bool
 }
