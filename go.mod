@@ -5,6 +5,7 @@ go 1.16
 require (
 	github.com/ethereum/go-ethereum v1.10.8
 	github.com/golang/mock v1.6.0
+	github.com/google/uuid v1.3.0 // indirect
 	github.com/lib/pq v1.10.3 // indirect
 	github.com/magefile/mage v1.11.0
 	github.com/stretchr/testify v1.7.0

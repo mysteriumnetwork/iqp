@@ -118,7 +118,7 @@ func (sm *StateManager) InitAccountStateFromBlockchain(serviceID, accountID Acco
 
 	return sm.InitAccountState(
 		serviceID, accountID,
-		serviceInfo.GapHalvingPeriod,
+		int64(serviceInfo.EnergyGapHalvingPeriod),
 		accState.Balance,
 		new(big.Int),
 		accState.Energy,

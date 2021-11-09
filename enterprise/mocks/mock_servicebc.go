@@ -52,19 +52,19 @@ func (mr *MockServiceBlockchainMockRecorder) ApproveLiquidityTokensToService(arg
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ApproveLiquidityTokensToService", reflect.TypeOf((*MockServiceBlockchain)(nil).ApproveLiquidityTokensToService), arg0, arg1)
 }
 
-// EstimateLoanDetailed mocks base method.
-func (m *MockServiceBlockchain) EstimateLoanDetailed(arg0, arg1 common.Address, arg2 *big.Int, arg3 uint32) (eip155.LoanEstimateDetailed, error) {
+// EstimateRentalFee mocks base method.
+func (m *MockServiceBlockchain) EstimateRentalFee(arg0, arg1 common.Address, arg2 *big.Int, arg3 uint32) (eip155.LoanEstimateDetailed, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "EstimateLoanDetailed", arg0, arg1, arg2, arg3)
+	ret := m.ctrl.Call(m, "EstimateRentalFee", arg0, arg1, arg2, arg3)
 	ret0, _ := ret[0].(eip155.LoanEstimateDetailed)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// EstimateLoanDetailed indicates an expected call of EstimateLoanDetailed.
-func (mr *MockServiceBlockchainMockRecorder) EstimateLoanDetailed(arg0, arg1, arg2, arg3 interface{}) *gomock.Call {
+// EstimateRentalFee indicates an expected call of EstimateRentalFee.
+func (mr *MockServiceBlockchainMockRecorder) EstimateRentalFee(arg0, arg1, arg2, arg3 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "EstimateLoanDetailed", reflect.TypeOf((*MockServiceBlockchain)(nil).EstimateLoanDetailed), arg0, arg1, arg2, arg3)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "EstimateRentalFee", reflect.TypeOf((*MockServiceBlockchain)(nil).EstimateRentalFee), arg0, arg1, arg2, arg3)
 }
 
 // GetAccountState mocks base method.
@@ -82,19 +82,19 @@ func (mr *MockServiceBlockchainMockRecorder) GetAccountState(arg0, arg1 interfac
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAccountState", reflect.TypeOf((*MockServiceBlockchain)(nil).GetAccountState), arg0, arg1)
 }
 
-// GetAllowsPerpetual mocks base method.
-func (m *MockServiceBlockchain) GetAllowsPerpetual(arg0 common.Address) (bool, error) {
+// GetAllowsSwapping mocks base method.
+func (m *MockServiceBlockchain) GetAllowsSwapping(arg0 common.Address) (bool, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetAllowsPerpetual", arg0)
+	ret := m.ctrl.Call(m, "GetAllowsSwapping", arg0)
 	ret0, _ := ret[0].(bool)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// GetAllowsPerpetual indicates an expected call of GetAllowsPerpetual.
-func (mr *MockServiceBlockchainMockRecorder) GetAllowsPerpetual(arg0 interface{}) *gomock.Call {
+// GetAllowsSwapping indicates an expected call of GetAllowsSwapping.
+func (mr *MockServiceBlockchainMockRecorder) GetAllowsSwapping(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAllowsPerpetual", reflect.TypeOf((*MockServiceBlockchain)(nil).GetAllowsPerpetual), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAllowsSwapping", reflect.TypeOf((*MockServiceBlockchain)(nil).GetAllowsSwapping), arg0)
 }
 
 // GetBaseRate mocks base method.
@@ -157,49 +157,34 @@ func (mr *MockServiceBlockchainMockRecorder) GetEnergyAt(arg0, arg1, arg2 interf
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEnergyAt", reflect.TypeOf((*MockServiceBlockchain)(nil).GetEnergyAt), arg0, arg1, arg2)
 }
 
-// GetGapHalvingPeriod mocks base method.
-func (m *MockServiceBlockchain) GetGapHalvingPeriod(arg0 common.Address) (int64, error) {
+// GetEnergyGapHalvingPeriod mocks base method.
+func (m *MockServiceBlockchain) GetEnergyGapHalvingPeriod(arg0 common.Address) (uint32, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetGapHalvingPeriod", arg0)
-	ret0, _ := ret[0].(int64)
+	ret := m.ctrl.Call(m, "GetEnergyGapHalvingPeriod", arg0)
+	ret0, _ := ret[0].(uint32)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// GetGapHalvingPeriod indicates an expected call of GetGapHalvingPeriod.
-func (mr *MockServiceBlockchainMockRecorder) GetGapHalvingPeriod(arg0 interface{}) *gomock.Call {
+// GetEnergyGapHalvingPeriod indicates an expected call of GetEnergyGapHalvingPeriod.
+func (mr *MockServiceBlockchainMockRecorder) GetEnergyGapHalvingPeriod(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetGapHalvingPeriod", reflect.TypeOf((*MockServiceBlockchain)(nil).GetGapHalvingPeriod), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEnergyGapHalvingPeriod", reflect.TypeOf((*MockServiceBlockchain)(nil).GetEnergyGapHalvingPeriod), arg0)
 }
 
-// GetLiquidityTokenServiceAllowance mocks base method.
-func (m *MockServiceBlockchain) GetLiquidityTokenServiceAllowance(arg0, arg1 common.Address) (*big.Int, error) {
+// GetMaxRentalDuration mocks base method.
+func (m *MockServiceBlockchain) GetMaxRentalDuration(arg0 common.Address) (uint32, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetLiquidityTokenServiceAllowance", arg0, arg1)
-	ret0, _ := ret[0].(*big.Int)
+	ret := m.ctrl.Call(m, "GetMaxRentalDuration", arg0)
+	ret0, _ := ret[0].(uint32)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// GetLiquidityTokenServiceAllowance indicates an expected call of GetLiquidityTokenServiceAllowance.
-func (mr *MockServiceBlockchainMockRecorder) GetLiquidityTokenServiceAllowance(arg0, arg1 interface{}) *gomock.Call {
+// GetMaxRentalDuration indicates an expected call of GetMaxRentalDuration.
+func (mr *MockServiceBlockchainMockRecorder) GetMaxRentalDuration(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetLiquidityTokenServiceAllowance", reflect.TypeOf((*MockServiceBlockchain)(nil).GetLiquidityTokenServiceAllowance), arg0, arg1)
-}
-
-// GetMaxLoanDuration mocks base method.
-func (m *MockServiceBlockchain) GetMaxLoanDuration(arg0 common.Address) (int64, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetMaxLoanDuration", arg0)
-	ret0, _ := ret[0].(int64)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
-}
-
-// GetMaxLoanDuration indicates an expected call of GetMaxLoanDuration.
-func (mr *MockServiceBlockchainMockRecorder) GetMaxLoanDuration(arg0 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetMaxLoanDuration", reflect.TypeOf((*MockServiceBlockchain)(nil).GetMaxLoanDuration), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetMaxRentalDuration", reflect.TypeOf((*MockServiceBlockchain)(nil).GetMaxRentalDuration), arg0)
 }
 
 // GetMinGCFee mocks base method.
@@ -217,19 +202,19 @@ func (mr *MockServiceBlockchainMockRecorder) GetMinGCFee(arg0 interface{}) *gomo
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetMinGCFee", reflect.TypeOf((*MockServiceBlockchain)(nil).GetMinGCFee), arg0)
 }
 
-// GetMinLoanDuration mocks base method.
-func (m *MockServiceBlockchain) GetMinLoanDuration(arg0 common.Address) (int64, error) {
+// GetMinRentalDuration mocks base method.
+func (m *MockServiceBlockchain) GetMinRentalDuration(arg0 common.Address) (uint32, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetMinLoanDuration", arg0)
-	ret0, _ := ret[0].(int64)
+	ret := m.ctrl.Call(m, "GetMinRentalDuration", arg0)
+	ret0, _ := ret[0].(uint32)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// GetMinLoanDuration indicates an expected call of GetMinLoanDuration.
-func (mr *MockServiceBlockchainMockRecorder) GetMinLoanDuration(arg0 interface{}) *gomock.Call {
+// GetMinRentalDuration indicates an expected call of GetMinRentalDuration.
+func (mr *MockServiceBlockchainMockRecorder) GetMinRentalDuration(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetMinLoanDuration", reflect.TypeOf((*MockServiceBlockchain)(nil).GetMinLoanDuration), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetMinRentalDuration", reflect.TypeOf((*MockServiceBlockchain)(nil).GetMinRentalDuration), arg0)
 }
 
 // GetPowerTokenAvailableBalance mocks base method.
@@ -262,11 +247,26 @@ func (mr *MockServiceBlockchainMockRecorder) GetPowerTokenBalance(arg0, arg1 int
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPowerTokenBalance", reflect.TypeOf((*MockServiceBlockchain)(nil).GetPowerTokenBalance), arg0, arg1)
 }
 
+// GetProxyAdminTokenServiceAllowance mocks base method.
+func (m *MockServiceBlockchain) GetProxyAdminTokenServiceAllowance(arg0, arg1 common.Address) (*big.Int, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetProxyAdminTokenServiceAllowance", arg0, arg1)
+	ret0, _ := ret[0].(*big.Int)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetProxyAdminTokenServiceAllowance indicates an expected call of GetProxyAdminTokenServiceAllowance.
+func (mr *MockServiceBlockchainMockRecorder) GetProxyAdminTokenServiceAllowance(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetProxyAdminTokenServiceAllowance", reflect.TypeOf((*MockServiceBlockchain)(nil).GetProxyAdminTokenServiceAllowance), arg0, arg1)
+}
+
 // GetServiceFeePercent mocks base method.
-func (m *MockServiceBlockchain) GetServiceFeePercent(arg0 common.Address) (int64, error) {
+func (m *MockServiceBlockchain) GetServiceFeePercent(arg0 common.Address) (uint16, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetServiceFeePercent", arg0)
-	ret0, _ := ret[0].(int64)
+	ret0, _ := ret[0].(uint16)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
@@ -278,10 +278,10 @@ func (mr *MockServiceBlockchainMockRecorder) GetServiceFeePercent(arg0 interface
 }
 
 // GetServiceIndex mocks base method.
-func (m *MockServiceBlockchain) GetServiceIndex(arg0 common.Address) (int64, error) {
+func (m *MockServiceBlockchain) GetServiceIndex(arg0 common.Address) (uint16, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetServiceIndex", arg0)
-	ret0, _ := ret[0].(int64)
+	ret0, _ := ret[0].(uint16)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
@@ -322,19 +322,19 @@ func (mr *MockServiceBlockchainMockRecorder) SetBaseRate(arg0, arg1, arg2, arg3 
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetBaseRate", reflect.TypeOf((*MockServiceBlockchain)(nil).SetBaseRate), arg0, arg1, arg2, arg3)
 }
 
-// SetLoanDurationLimits mocks base method.
-func (m *MockServiceBlockchain) SetLoanDurationLimits(arg0 common.Address, arg1, arg2 uint32) (*types.Transaction, error) {
+// SetRentalPeriodLimits mocks base method.
+func (m *MockServiceBlockchain) SetRentalPeriodLimits(arg0 common.Address, arg1, arg2 uint32) (*types.Transaction, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SetLoanDurationLimits", arg0, arg1, arg2)
+	ret := m.ctrl.Call(m, "SetRentalPeriodLimits", arg0, arg1, arg2)
 	ret0, _ := ret[0].(*types.Transaction)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// SetLoanDurationLimits indicates an expected call of SetLoanDurationLimits.
-func (mr *MockServiceBlockchainMockRecorder) SetLoanDurationLimits(arg0, arg1, arg2 interface{}) *gomock.Call {
+// SetRentalPeriodLimits indicates an expected call of SetRentalPeriodLimits.
+func (mr *MockServiceBlockchainMockRecorder) SetRentalPeriodLimits(arg0, arg1, arg2 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetLoanDurationLimits", reflect.TypeOf((*MockServiceBlockchain)(nil).SetLoanDurationLimits), arg0, arg1, arg2)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetRentalPeriodLimits", reflect.TypeOf((*MockServiceBlockchain)(nil).SetRentalPeriodLimits), arg0, arg1, arg2)
 }
 
 // SetServiceFeePercent mocks base method.
@@ -352,47 +352,32 @@ func (mr *MockServiceBlockchainMockRecorder) SetServiceFeePercent(arg0, arg1 int
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetServiceFeePercent", reflect.TypeOf((*MockServiceBlockchain)(nil).SetServiceFeePercent), arg0, arg1)
 }
 
-// Unwrap mocks base method.
-func (m *MockServiceBlockchain) Unwrap(arg0 common.Address, arg1 *big.Int) (*types.Transaction, error) {
+// SwapIn mocks base method.
+func (m *MockServiceBlockchain) SwapIn(arg0 common.Address, arg1 *big.Int) (*types.Transaction, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Unwrap", arg0, arg1)
+	ret := m.ctrl.Call(m, "SwapIn", arg0, arg1)
 	ret0, _ := ret[0].(*types.Transaction)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// Unwrap indicates an expected call of Unwrap.
-func (mr *MockServiceBlockchainMockRecorder) Unwrap(arg0, arg1 interface{}) *gomock.Call {
+// SwapIn indicates an expected call of SwapIn.
+func (mr *MockServiceBlockchainMockRecorder) SwapIn(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Unwrap", reflect.TypeOf((*MockServiceBlockchain)(nil).Unwrap), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SwapIn", reflect.TypeOf((*MockServiceBlockchain)(nil).SwapIn), arg0, arg1)
 }
 
-// Wrap mocks base method.
-func (m *MockServiceBlockchain) Wrap(arg0 common.Address, arg1 *big.Int) (*types.Transaction, error) {
+// SwapOut mocks base method.
+func (m *MockServiceBlockchain) SwapOut(arg0 common.Address, arg1 *big.Int) (*types.Transaction, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Wrap", arg0, arg1)
+	ret := m.ctrl.Call(m, "SwapOut", arg0, arg1)
 	ret0, _ := ret[0].(*types.Transaction)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// Wrap indicates an expected call of Wrap.
-func (mr *MockServiceBlockchainMockRecorder) Wrap(arg0, arg1 interface{}) *gomock.Call {
+// SwapOut indicates an expected call of SwapOut.
+func (mr *MockServiceBlockchainMockRecorder) SwapOut(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Wrap", reflect.TypeOf((*MockServiceBlockchain)(nil).Wrap), arg0, arg1)
-}
-
-// WrapTo mocks base method.
-func (m *MockServiceBlockchain) WrapTo(arg0, arg1 common.Address, arg2 *big.Int) (*types.Transaction, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "WrapTo", arg0, arg1, arg2)
-	ret0, _ := ret[0].(*types.Transaction)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
-}
-
-// WrapTo indicates an expected call of WrapTo.
-func (mr *MockServiceBlockchainMockRecorder) WrapTo(arg0, arg1, arg2 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "WrapTo", reflect.TypeOf((*MockServiceBlockchain)(nil).WrapTo), arg0, arg1, arg2)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SwapOut", reflect.TypeOf((*MockServiceBlockchain)(nil).SwapOut), arg0, arg1)
 }

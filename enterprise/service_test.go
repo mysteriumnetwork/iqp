@@ -6,7 +6,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/golang/mock/gomock"
 	"github.com/mysteriumnetwork/iqp/blockchain/eip155"
-	"github.com/mysteriumnetwork/iqp/enterprise/mocks/mocks"
+	"github.com/mysteriumnetwork/iqp/enterprise/mocks"
 	"github.com/stretchr/testify/assert"
 )
 

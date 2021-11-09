@@ -14,15 +14,13 @@ type EnterpriseBlockchain interface {
 	ServiceBlockchain
 	GetEnterpriseInfo(enterpriseAddress common.Address) (eip155.EnterpriseInfo, error)
 	GetServices(enterpriseAddress common.Address) ([]common.Address, error)
-	EstimateLoan(enterpriseAddress, serviceAddress, paymentTokenAddress common.Address, amount *big.Int, duration uint32) (*big.Int, error)
-	ClaimStakingReward(enterpriseAddress, serviceAddress, paymentTokenAddress common.Address, amount, maxPayment *big.Int, duration uint32) (*types.Transaction, error)
-	GetAccruedInterest(enterpriseAddress common.Address, interestTokenID *big.Int) (*big.Int, error)
-	WithdrawInterest(enterpriseAddress common.Address, interestTokenID *big.Int) (*types.Transaction, error)
+	ClaimStakingReward(enterpriseAddress common.Address, stakeTokenID *big.Int) (*types.Transaction, error)
+	GetStakingReward(enterpriseAddress common.Address, interestTokenID *big.Int) (*big.Int, error)
 	ReturnRental(enterpriseAddress common.Address, borrowTokenId *big.Int) (*types.Transaction, error)
-	GetBorrowTokenIds(enterpriseAddress, accountAddress common.Address) ([]*big.Int, error)
+	GetRentalTokenIDs(enterpriseAddress, accountAddress common.Address) ([]*big.Int, error)
 	GetRentalAgreement(enterpriseAddress common.Address, borrowTokenID *big.Int) (eip155.LoanInfo, error)
-	GetInterestTokenIDs(enterpriseAddress, accountAddress common.Address) ([]*big.Int, error)
-	GetLiquidityInfo(enterpriseAddress common.Address, interestTokenID *big.Int) (eip155.LiquidityInfo, error)
+	GetPaymentTokenIDs(enterpriseAddress, accountAddress, liquidityTokenAddr common.Address) ([]*big.Int, error)
+	GetStake(enterpriseAddress common.Address, interestTokenID *big.Int) (eip155.Stake, error)
 	Stake(enterpriseAddress common.Address, amount *big.Int) (*types.Transaction, error)
 	Unstake(enterpriseAddress common.Address, interestTokenID *big.Int) (*types.Transaction, error)
 	IncreaseStake(enterpriseAddress common.Address, interestTokenID, amount *big.Int) (*types.Transaction, error)
@@ -32,10 +30,10 @@ type EnterpriseBlockchain interface {
 	IsRegisteredService(enterpriseAddress, serviceAddress common.Address) (bool, error)
 	GetProxyAdminAddress(enterpriseAddress common.Address) (common.Address, error)
 	GetEnterpriseCollectorAddress(enterpriseAddress common.Address) (common.Address, error)
-	GetEnterpriseVaultAddress(enterpriseAddress common.Address) (common.Address, error)
-	GetBorrowerLoanReturnGracePeriod(enterpriseAddress common.Address) (uint32, error)
-	GetEnterpriseToken(enterpriseAddress common.Address) (uint32, error)
-	GetInterestGapHalvingPeriod(enterpriseAddress common.Address) (uint32, error)
+	GetEnterpriseWalletAddress(enterpriseAddress common.Address) (common.Address, error)
+	GetRenterOnlyReturnPeriod(enterpriseAddress common.Address) (uint32, error)
+	GetEnterpriseTokenAddress(enterpriseAddress common.Address) (common.Address, error)
+	GetInterestReserveHalvingPeriod(enterpriseAddress common.Address) (uint32, error)
 	GetConverterAddress(enterpriseAddress common.Address) (common.Address, error)
 	GetBaseUri(enterpriseAddress common.Address) (string, error)
 	GetReserve(enterpriseAddress common.Address) (*big.Int, error)
@@ -47,10 +45,10 @@ type EnterpriseBlockchain interface {
 	SetEnterpriseCollectorAddress(enterpriseAddress, collector common.Address) (*types.Transaction, error)
 	SetConverterAddress(enterpriseAddress, converter common.Address) (*types.Transaction, error)
 	SetBondingCurve(enterpriseAddress common.Address, pole, slope *big.Int) (*types.Transaction, error)
-	SetBorrowerLoanReturnGracePeriod(enterpriseAddress common.Address, period uint32) (*types.Transaction, error)
+	SetRenterOnlyReturnPeriod(enterpriseAddress common.Address, period uint32) (*types.Transaction, error)
 	SetEnterpriseLoanCollectionPeriod(enterpriseAddress common.Address, period uint32) (*types.Transaction, error)
 	SetBaseUri(enterpriseAddress common.Address, address string) (*types.Transaction, error)
-	SetStreamingReserveHalvingPeriod(enterpriseAddress common.Address, interestGapHalvingPeriod uint32) (*types.Transaction, error)
+	SetInterestReserveHalvingPeriod(enterpriseAddress common.Address, interestGapHalvingPeriod uint32) (*types.Transaction, error)
 	SetGCFeePercent(enterpriseAddress common.Address, percent uint16) (*types.Transaction, error)
 }
 
@@ -97,20 +95,16 @@ func (e *Enterprise) GetServices() ([]*Service, error) {
 	return res, nil
 }
 
-func (e *Enterprise) EstimateLoan(serviceAddress, paymentTokenAddress common.Address, amount *big.Int, duration uint32) (*big.Int, error) {
-	return e.blockchain.EstimateLoan(e.address, serviceAddress, paymentTokenAddress, amount, duration)
+func (e *Enterprise) EstimateRentalFee(serviceAddress, paymentTokenAddress common.Address, amount *big.Int, duration uint32) (eip155.LoanEstimateDetailed, error) {
+	return e.blockchain.EstimateRentalFee(serviceAddress, paymentTokenAddress, amount, duration)
 }
 
-func (e *Enterprise) ClaimStakingReward(serviceAddress, paymentTokenAddress common.Address, amount, maxPayment *big.Int, duration uint32) (*types.Transaction, error) {
-	return e.blockchain.ClaimStakingReward(e.address, serviceAddress, paymentTokenAddress, amount, maxPayment, duration)
+func (e *Enterprise) ClaimStakingReward(stakeTokenID *big.Int) (*types.Transaction, error) {
+	return e.blockchain.ClaimStakingReward(e.address, stakeTokenID)
 }
 
-func (e *Enterprise) GetAccruedInterest(interestTokenID *big.Int) (*big.Int, error) {
-	return e.blockchain.GetAccruedInterest(e.address, interestTokenID)
-}
-
-func (e *Enterprise) WithdrawInterest(interestTokenID *big.Int) (*types.Transaction, error) {
-	return e.blockchain.WithdrawInterest(e.address, interestTokenID)
+func (e *Enterprise) GetStakingReward(interestTokenID *big.Int) (*big.Int, error) {
+	return e.blockchain.GetStakingReward(e.address, interestTokenID)
 }
 
 func (e *Enterprise) ReturnRental(interestTokenID *big.Int) (*types.Transaction, error) {
@@ -118,7 +112,7 @@ func (e *Enterprise) ReturnRental(interestTokenID *big.Int) (*types.Transaction,
 }
 
 func (e *Enterprise) ListLoanInfo(accountAddress common.Address) ([]eip155.LoanInfo, error) {
-	borrowTokenIDs, err := e.blockchain.GetBorrowTokenIds(e.address, accountAddress)
+	borrowTokenIDs, err := e.blockchain.GetRentalTokenIDs(e.address, accountAddress)
 	if err != nil {
 		return nil, err
 	}
@@ -160,8 +154,8 @@ func (e *Enterprise) GetRentalAgreement(borrowTokenID *big.Int) (eip155.LoanInfo
 	return e.blockchain.GetRentalAgreement(e.address, borrowTokenID)
 }
 
-func (e *Enterprise) ListLiquidityInfo(accountAddress common.Address) ([]eip155.LiquidityInfo, error) {
-	liquidityTokenIDs, err := e.blockchain.GetInterestTokenIDs(e.address, accountAddress)
+func (e *Enterprise) ListLiquidityInfo(accountAddress, liquidityTokenAddress common.Address) ([]eip155.Stake, error) {
+	liquidityTokenIDs, err := e.blockchain.GetPaymentTokenIDs(e.address, accountAddress, liquidityTokenAddress)
 	if err != nil {
 		return nil, err
 	}
@@ -170,7 +164,7 @@ func (e *Enterprise) ListLiquidityInfo(accountAddress common.Address) ([]eip155.
 	wg.Add(len(liquidityTokenIDs))
 
 	type fetchResult struct {
-		liquidityInfo eip155.LiquidityInfo
+		liquidityInfo eip155.Stake
 		err           error
 	}
 
@@ -178,7 +172,7 @@ func (e *Enterprise) ListLiquidityInfo(accountAddress common.Address) ([]eip155.
 	for i := range liquidityTokenIDs {
 		go func(idx int) {
 			defer wg.Done()
-			info, err := e.blockchain.GetLiquidityInfo(e.address, liquidityTokenIDs[idx])
+			info, err := e.blockchain.GetStake(e.address, liquidityTokenIDs[idx])
 			res[idx] = fetchResult{
 				liquidityInfo: info,
 				err:           err,
@@ -188,7 +182,7 @@ func (e *Enterprise) ListLiquidityInfo(accountAddress common.Address) ([]eip155.
 
 	wg.Wait()
 
-	result := make([]eip155.LiquidityInfo, len(res))
+	result := make([]eip155.Stake, len(res))
 	for i := range res {
 		if res[i].err != nil {
 			return nil, err
@@ -199,8 +193,8 @@ func (e *Enterprise) ListLiquidityInfo(accountAddress common.Address) ([]eip155.
 	return result, nil
 }
 
-func (e *Enterprise) GetLiquidityInfo(interestTokenID *big.Int) (eip155.LiquidityInfo, error) {
-	return e.blockchain.GetLiquidityInfo(e.address, interestTokenID)
+func (e *Enterprise) GetStake(interestTokenID *big.Int) (eip155.Stake, error) {
+	return e.blockchain.GetStake(e.address, interestTokenID)
 }
 
 func (e *Enterprise) Stake(amount *big.Int) (*types.Transaction, error) {
@@ -239,20 +233,20 @@ func (e *Enterprise) GetCollectorAddress() (common.Address, error) {
 	return e.blockchain.GetEnterpriseCollectorAddress(e.address)
 }
 
-func (e *Enterprise) GetVaultAddress() (common.Address, error) {
-	return e.blockchain.GetEnterpriseVaultAddress(e.address)
+func (e *Enterprise) GetWalletAddress() (common.Address, error) {
+	return e.blockchain.GetEnterpriseWalletAddress(e.address)
 }
 
-func (e *Enterprise) GetBorrowerLoanReturnGracePeriod() (uint32, error) {
-	return e.blockchain.GetBorrowerLoanReturnGracePeriod(e.address)
+func (e *Enterprise) GetRenterOnlyReturnPeriod() (uint32, error) {
+	return e.blockchain.GetRenterOnlyReturnPeriod(e.address)
 }
 
-func (e *Enterprise) GetLoanCollectGracePeriod() (uint32, error) {
-	return e.blockchain.GetEnterpriseToken(e.address)
+func (e *Enterprise) GetEnterpriseTokenAddress() (common.Address, error) {
+	return e.blockchain.GetEnterpriseTokenAddress(e.address)
 }
 
-func (e *Enterprise) GetInterestGapHalvingPeriod() (uint32, error) {
-	return e.blockchain.GetInterestGapHalvingPeriod(e.address)
+func (e *Enterprise) GetStreamingReserveHalvingPeriod() (uint32, error) {
+	return e.blockchain.GetInterestReserveHalvingPeriod(e.address)
 }
 func (e *Enterprise) GetConverterAddress() (common.Address, error) {
 	return e.blockchain.GetConverterAddress(e.address)
@@ -298,8 +292,8 @@ func (e *Enterprise) SetBondingCurve(pole, slope *big.Int) (*types.Transaction, 
 	return e.blockchain.SetBondingCurve(e.address, pole, slope)
 }
 
-func (e *Enterprise) SetBorrowerLoanReturnGracePeriod(period uint32) (*types.Transaction, error) {
-	return e.blockchain.SetBorrowerLoanReturnGracePeriod(e.address, period)
+func (e *Enterprise) SetRenterOnlyReturnPeriod(period uint32) (*types.Transaction, error) {
+	return e.blockchain.SetRenterOnlyReturnPeriod(e.address, period)
 }
 
 func (e *Enterprise) SetLoanCollectGracePeriod(period uint32) (*types.Transaction, error) {
@@ -310,8 +304,8 @@ func (e *Enterprise) SetBaseUri(address string) (*types.Transaction, error) {
 	return e.blockchain.SetBaseUri(e.address, address)
 }
 
-func (e *Enterprise) SetStreamingReserveHalvingPeriod(interestGapHalvingPeriod uint32) (*types.Transaction, error) {
-	return e.blockchain.SetStreamingReserveHalvingPeriod(e.address, interestGapHalvingPeriod)
+func (e *Enterprise) SetInterestReserveHalvingPeriod(interestGapHalvingPeriod uint32) (*types.Transaction, error) {
+	return e.blockchain.SetInterestReserveHalvingPeriod(e.address, interestGapHalvingPeriod)
 }
 
 func (e *Enterprise) SetGCFeePercent(percent uint16) (*types.Transaction, error) {

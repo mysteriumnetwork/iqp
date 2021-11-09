@@ -217,6 +217,26 @@ type EnterpriseParams struct {
 	Converter             common.Address
 }
 
+func (c *Client) SetRenterOnlyReturnPeriod(enterpriseAddress common.Address, period uint32) (*types.Transaction, error) {
+	transactor, opts, cancel, err := c.newEnterpriseTransactor(enterpriseAddress)
+	if err != nil {
+		return nil, err
+	}
+	defer cancel()
+
+	return transactor.SetRenterOnlyReturnPeriod(opts, period)
+}
+
+func (c *Client) GetRenterOnlyReturnPeriod(enterpriseAddress common.Address) (uint32, error) {
+	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
+	if err != nil {
+		return 0, err
+	}
+	defer cancel()
+
+	return caller.GetRenterOnlyReturnPeriod(opts)
+}
+
 func (c *Client) DeployEnterprise(enterpriseFactoryAddress common.Address, params EnterpriseParams) (*types.Transaction, error) {
 	transactor, err := bindings.NewEnterpriseFactoryTransactor(enterpriseFactoryAddress, c.c)
 	if err != nil {
@@ -303,16 +323,16 @@ func (c *Client) newEnterpriseTransactor(enterpriseAddress common.Address) (*bin
 }
 
 type ServiceParams struct {
-	Name                         string
-	Symbol                       string
-	GapHalvingPeriod             uint32
-	BaseRate                     *big.Int
-	BaseToken                    common.Address
-	ServiceFeePercent            uint16
-	MinLoanDuration              uint32
-	MaxLoanDuration              uint32
-	MinGCFee                     *big.Int
-	AllowsPerpetualTokensForever bool
+	Name              string
+	Symbol            string
+	GapHalvingPeriod  uint32
+	BaseRate          *big.Int
+	BaseToken         common.Address
+	ServiceFeePercent uint16
+	MinLoanDuration   uint32
+	MaxLoanDuration   uint32
+	MinGCFee          *big.Int
+	SwappingEnabled   bool
 }
 
 func (c *Client) RegisterService(enterpriseAddress common.Address, params ServiceParams) (*types.Transaction, error) {
@@ -333,7 +353,7 @@ func (c *Client) RegisterService(enterpriseAddress common.Address, params Servic
 		params.MinLoanDuration,
 		params.MaxLoanDuration,
 		params.MinGCFee,
-		params.AllowsPerpetualTokensForever,
+		params.SwappingEnabled,
 	)
 }
 
@@ -397,21 +417,54 @@ func (c *Client) ReturnRental(enterpriseAddress common.Address, borrowTokenId *b
 	return transactor.ReturnRental(opts, borrowTokenId)
 }
 
+func (c *Client) Rent(enterpriseAddress, serviceAddress, paymentTokenAddress common.Address, amount, maxPayment *big.Int, duration uint32) (*types.Transaction, error) {
+	transactor, opts, cancel, err := c.newEnterpriseTransactor(enterpriseAddress)
+	if err != nil {
+		return nil, err
+	}
+	defer cancel()
+	return transactor.Rent(opts, serviceAddress, paymentTokenAddress, amount, duration, maxPayment)
+}
+
+func (c *Client) GetRentalTokenIDs(enterpriseAddress, accountAddress common.Address) ([]*big.Int, error) {
+	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
+	if err != nil {
+		return nil, err
+	}
+	defer cancel()
+
+	tkn, err := caller.GetRentalToken(opts)
+	if err != nil {
+		return nil, err
+	}
+
+	cc, err := bindings.NewRentalTokenCaller(tkn, c.c)
+	if err != nil {
+		return nil, err
+	}
+	tokenCount, err := cc.BalanceOf(opts, accountAddress)
+	if err != nil {
+		return nil, err
+	}
+	tokenIDs := make([]*big.Int, 0)
+	var i int64
+	for i = 0; i < tokenCount.Int64(); i++ {
+		tknID, err := cc.TokenOfOwnerByIndex(opts, accountAddress, big.NewInt(i))
+		if err != nil {
+			return nil, err
+		}
+		tokenIDs = append(tokenIDs, tknID)
+	}
+	return tokenIDs, nil
+}
+
 func (c *Client) ApproveLiquidityTokensToEnterprise(enterpriseAddress common.Address, amount *big.Int) (*types.Transaction, error) {
-	caller, err := bindings.NewEnterprise(enterpriseAddress, c.c)
+	liquidityTokenAddr, err := c.GetLiquidityTokenMetadata(enterpriseAddress)
 	if err != nil {
 		return nil, err
 	}
 
-	copts, ccancel := c.callOpts()
-	defer ccancel()
-
-	token, err := caller.GetProxyAdmin(copts)
-	if err != nil {
-		return nil, err
-	}
-
-	erc20Transactor, err := bindings.NewERC20Transactor(token, c.c)
+	erc20Transactor, err := bindings.NewERC20Transactor(liquidityTokenAddr.Address, c.c)
 	if err != nil {
 		return nil, err
 	}
@@ -472,7 +525,17 @@ func (c *Client) SetEnterpriseLoanCollectionPeriod(enterpriseAddress common.Addr
 	return transactor.SetEnterpriseOnlyCollectionPeriod(opts, period)
 }
 
-func (c *Client) SetEnterpriseVaultAddress(enterpriseAddress, vaultAddress common.Address) (*types.Transaction, error) {
+func (c *Client) GetEnterpriseLoanCollectionPeriod(enterpriseAddress common.Address) (uint32, error) {
+	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
+	if err != nil {
+		return 0, err
+	}
+	defer cancel()
+
+	return caller.GetEnterpriseOnlyCollectionPeriod(opts)
+}
+
+func (c *Client) SetEnterpriseWalletAddress(enterpriseAddress, vaultAddress common.Address) (*types.Transaction, error) {
 	transactor, opts, cancel, err := c.newEnterpriseTransactor(enterpriseAddress)
 	if err != nil {
 		return nil, err
@@ -500,6 +563,16 @@ func (c *Client) SetInterestReserveHalvingPeriod(enterpriseAddress common.Addres
 	defer cancel()
 
 	return transactor.SetStreamingReserveHalvingPeriod(opts, interestGapHalvingPeriod)
+}
+
+func (c *Client) GetInterestReserveHalvingPeriod(enterpriseAddress common.Address) (uint32, error) {
+	transactor, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
+	if err != nil {
+		return 0, err
+	}
+	defer cancel()
+
+	return transactor.GetStreamingReserveHalvingPeriod(opts)
 }
 
 func (c *Client) GetReserve(enterpriseAddress common.Address) (*big.Int, error) {
@@ -540,12 +613,12 @@ func (c *Client) GetLiquidityTokenEnterpriseAllowance(enterpriseAddress, account
 	}
 	defer cancel()
 
-	tkn, err := caller.GetProxyAdmin(opts)
+	tknAddr, err := caller.GetEnterpriseToken(opts)
 	if err != nil {
 		return nil, err
 	}
 
-	tknCaller, err := bindings.NewERC20Caller(tkn, c.c)
+	tknCaller, err := bindings.NewERC20Caller(tknAddr, c.c)
 	if err != nil {
 		return nil, err
 	}
@@ -567,7 +640,18 @@ func (c *Client) GetProxyAdmin(enterpriseAddress common.Address) (common.Address
 }
 
 func (c *Client) GetLiquidityTokenMetadata(enterpriseAddress common.Address) (ERC20Metadata, error) {
-	tkn, err := c.GetProxyAdmin(enterpriseAddress)
+	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
+	if err != nil {
+		return ERC20Metadata{}, err
+	}
+	defer cancel()
+
+	tknAddr, err := caller.GetEnterpriseToken(opts)
+	if err != nil {
+		return ERC20Metadata{}, err
+	}
+
+	tkn, err := c.GetPaymentToken(enterpriseAddress, tknAddr)
 	if err != nil {
 		return ERC20Metadata{}, err
 	}
@@ -582,39 +666,47 @@ func (c *Client) GetBorrowTokenMetadata(enterpriseAddress common.Address) (ERC20
 	return c.GetERC20Metadata(tkn)
 }
 
-func (c *Client) GetPaymentToken(enterpriseAddress common.Address, index *big.Int) (common.Address, error) {
+func (c *Client) GetPaymentToken(enterpriseAddress common.Address, tokenAddress common.Address) (common.Address, error) {
 	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
 	if err != nil {
 		return common.Address{}, err
 	}
 	defer cancel()
 
-	return caller.GetPaymentToken(opts, index)
+	idx, err := caller.GetPaymentTokenIndex(opts, tokenAddress)
+	if err != nil {
+		return common.Address{}, err
+	}
+
+	return caller.GetPaymentToken(opts, big.NewInt(0).SetInt64(int64(idx)))
 }
 
-func (c *Client) GetPaymentTokenMetadata(enterpriseAddress common.Address, index *big.Int) (ERC20Metadata, error) {
-	tkn, err := c.GetPaymentToken(enterpriseAddress, index)
+func (c *Client) GetPaymentTokenMetadata(enterpriseAddress common.Address, tokenAddress common.Address) (ERC20Metadata, error) {
+	tkn, err := c.GetPaymentToken(enterpriseAddress, tokenAddress)
 	if err != nil {
 		return ERC20Metadata{}, err
 	}
 	return c.GetERC20Metadata(tkn)
 }
 
-func (c *Client) GetPaymentTokenIDs(enterpriseAddress, accountAddress common.Address, index *big.Int) ([]*big.Int, error) {
-	tokenAddress, err := c.GetPaymentToken(enterpriseAddress, index)
+func (c *Client) GetPaymentTokenIDs(enterpriseAddress, accountAddress, liquidityTokenAddr common.Address) ([]*big.Int, error) {
+	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
 	if err != nil {
 		return nil, err
 	}
 
-	caller, err := bindings.NewInterestTokenCaller(tokenAddress, c.c)
-	if err != nil {
-		return nil, err
-	}
-
-	opts, cancel := c.callOpts()
 	defer cancel()
+	token, err := caller.GetStakeToken(opts)
+	if err != nil {
+		return nil, err
+	}
 
-	tokenCount, err := caller.BalanceOf(opts, accountAddress)
+	cc, err := bindings.NewStakeTokenCaller(token, c.c)
+	if err != nil {
+		return nil, err
+	}
+
+	tokenCount, err := cc.BalanceOf(opts, accountAddress)
 	if err != nil {
 		return nil, err
 	}
@@ -622,7 +714,7 @@ func (c *Client) GetPaymentTokenIDs(enterpriseAddress, accountAddress common.Add
 	res := make([]*big.Int, 0)
 	var i int64
 	for i = 0; i < tokenCount.Int64(); i++ {
-		r, err := caller.TokenOfOwnerByIndex(opts, accountAddress, big.NewInt(i))
+		r, err := cc.TokenOfOwnerByIndex(opts, accountAddress, big.NewInt(i))
 		if err != nil {
 			return nil, err
 		}
@@ -633,13 +725,69 @@ func (c *Client) GetPaymentTokenIDs(enterpriseAddress, accountAddress common.Add
 	return res, nil
 }
 
+type Stake struct {
+	Amount  *big.Int
+	Shares  *big.Int
+	Block   *big.Int
+	TokenID *big.Int
+}
+
+func (c *Client) GetStakingReward(enterpriseAddress common.Address, interestTokenID *big.Int) (*big.Int, error) {
+	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
+	if err != nil {
+		return nil, err
+	}
+	defer cancel()
+
+	return caller.GetStakingReward(opts, interestTokenID)
+}
+
+func (c *Client) GetStake(enterpriseAddress common.Address, interestTokenID *big.Int) (Stake, error) {
+	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
+	if err != nil {
+		return Stake{}, err
+	}
+	defer cancel()
+
+	info, err := caller.GetStake(opts, interestTokenID)
+	if err != nil {
+		return Stake{}, err
+	}
+	return Stake{
+		TokenID: interestTokenID,
+		Amount:  info.Amount,
+		Shares:  info.Shares,
+		Block:   info.Block,
+	}, nil
+}
+
+func (c *Client) SwapIn(serviceAddress common.Address, amount *big.Int) (*types.Transaction, error) {
+	transactor, opts, cancel, err := c.newPowerTokenTransactor(serviceAddress)
+	if err != nil {
+		return nil, err
+	}
+	defer cancel()
+
+	return transactor.SwapIn(opts, amount)
+}
+
+func (c *Client) SwapOut(serviceAddress common.Address, amount *big.Int) (*types.Transaction, error) {
+	transactor, opts, cancel, err := c.newPowerTokenTransactor(serviceAddress)
+	if err != nil {
+		return nil, err
+	}
+	defer cancel()
+
+	return transactor.SwapOut(opts, amount)
+}
+
 func (c *Client) GetConvertTokenIDs(enterpriseAddress, accountAddress common.Address) ([]*big.Int, error) {
 	borrowToken, err := c.GetConverterAddress(enterpriseAddress)
 	if err != nil {
 		return nil, err
 	}
 
-	caller, err := bindings.NewBorrowTokenCaller(borrowToken, c.c)
+	caller, err := bindings.NewRentalTokenCaller(borrowToken, c.c)
 	if err != nil {
 		return nil, err
 	}
@@ -837,12 +985,12 @@ func (c *Client) ApproveLiquidityTokensToService(serviceAddress common.Address, 
 		return nil, err
 	}
 
-	liquidityTokenAddr, err := c.GetProxyAdmin(enterprise)
+	liquidityTokenAddr, err := c.GetLiquidityTokenMetadata(enterprise)
 	if err != nil {
 		return nil, err
 	}
 
-	erc20Transactor, err := bindings.NewERC20Transactor(liquidityTokenAddr, c.c)
+	erc20Transactor, err := bindings.NewERC20Transactor(liquidityTokenAddr.Address, c.c)
 	if err != nil {
 		return nil, err
 	}
@@ -902,14 +1050,13 @@ func (c *Client) SetServiceFeePercent(serviceAddress common.Address, feePercent 
 	return transactor.SetServiceFeePercent(opts, feePercent)
 }
 
-func (c *Client) GetAllowsPerpetual(serviceAddress common.Address) (bool, error) {
-	return false, nil
-	// res, err := c.GetServiceInfo(serviceAddress)
-	// if err != nil {
-	// 	return false, err
-	// }
+func (c *Client) GetAllowsSwapping(serviceAddress common.Address) (bool, error) {
+	res, err := c.GetServiceInfo(serviceAddress)
+	if err != nil {
+		return false, err
+	}
 
-	// return res.AllowsPerpetual, nil
+	return res.SwappingEnabled, nil
 }
 
 func (c *Client) GetBaseRate(serviceAddress common.Address) (*big.Int, error) {
@@ -957,6 +1104,15 @@ func (c *Client) GetMinRentalDuration(serviceAddress common.Address) (uint32, er
 	return res.MinRentalPeriod, nil
 }
 
+func (c *Client) GetMaxRentalDuration(serviceAddress common.Address) (uint32, error) {
+	res, err := c.GetServiceInfo(serviceAddress)
+	if err != nil {
+		return 0, err
+	}
+
+	return res.MaxRentalPeriod, nil
+}
+
 func (c *Client) GetMinGCFee(serviceAddress common.Address) (*big.Int, error) {
 	res, err := c.GetServiceInfo(serviceAddress)
 	if err != nil {
@@ -984,7 +1140,7 @@ func (c *Client) GetServiceIndex(serviceAddress common.Address) (uint16, error) 
 	return res.Index, nil
 }
 
-func (c *Client) GetProxyAdminTokenServiceAllowance(serviceAddress, accountAddress common.Address) (*big.Int, error) {
+func (c *Client) GetLiquidityTokenServiceAllowance(serviceAddress, accountAddress common.Address) (*big.Int, error) {
 	transactor, err := bindings.NewPowerToken(serviceAddress, c.c)
 	if err != nil {
 		return nil, err
@@ -998,12 +1154,12 @@ func (c *Client) GetProxyAdminTokenServiceAllowance(serviceAddress, accountAddre
 		return nil, err
 	}
 
-	tkn, err := c.GetProxyAdmin(enterprise)
+	tkn, err := c.GetLiquidityTokenMetadata(enterprise)
 	if err != nil {
 		return nil, err
 	}
 
-	erc20Caller, err := bindings.NewERC20Caller(tkn, c.c)
+	erc20Caller, err := bindings.NewERC20Caller(tkn.Address, c.c)
 	if err != nil {
 		return nil, err
 	}
