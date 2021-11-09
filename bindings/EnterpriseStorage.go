@@ -28,9 +28,28 @@ var (
 	_ = event.NewSubscription
 )
 
+// EnterpriseStorageStake is an auto generated low-level Go binding around an user-defined struct.
+type EnterpriseStorageStake struct {
+	Amount *big.Int
+	Shares *big.Int
+	Block  *big.Int
+}
+
+// IEnterpriseStorageRentalAgreement is an auto generated low-level Go binding around an user-defined struct.
+type IEnterpriseStorageRentalAgreement struct {
+	RentalAmount                 *big.Int
+	PowerTokenIndex              uint16
+	StartTime                    uint32
+	EndTime                      uint32
+	RenterOnlyReturnTime         uint32
+	EnterpriseOnlyCollectionTime uint32
+	GcRewardAmount               *big.Int
+	GcRewardTokenIndex           uint16
+}
+
 // EnterpriseStorageMetaData contains all meta data concerning the EnterpriseStorage contract.
 var EnterpriseStorageMetaData = &bind.MetaData{
-	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"baseUri\",\"type\":\"string\"}],\"name\":\"BaseUriChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"pole\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"slope\",\"type\":\"uint256\"}],\"name\":\"BondingChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"period\",\"type\":\"uint32\"}],\"name\":\"BorrowerLoanReturnGracePeriodChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"converter\",\"type\":\"address\"}],\"name\":\"ConverterChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"collector\",\"type\":\"address\"}],\"name\":\"EnterpriseCollectorChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"period\",\"type\":\"uint32\"}],\"name\":\"EnterpriseLoanCollectGracePeriodChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"EnterpriseShutdown\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"vault\",\"type\":\"address\"}],\"name\":\"EnterpriseVaultChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"fixedReserve\",\"type\":\"uint256\"}],\"name\":\"FixedReserveChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"percent\",\"type\":\"uint16\"}],\"name\":\"GcFeePercentChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"period\",\"type\":\"uint32\"}],\"name\":\"InterestGapHalvingPeriodChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"paymentToken\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"enabled\",\"type\":\"bool\"}],\"name\":\"PaymentTokenChange\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint112\",\"name\":\"streamingReserve\",\"type\":\"uint112\"},{\"indexed\":false,\"internalType\":\"uint112\",\"name\":\"streamingReserveTarget\",\"type\":\"uint112\"}],\"name\":\"StreamingReserveChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"totalShares\",\"type\":\"uint256\"}],\"name\":\"TotalSharesChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"fixedReserve\",\"type\":\"uint256\"}],\"name\":\"UsedReserveChanged\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"disablePaymentToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"enablePaymentToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAvailableReserve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBaseUri\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBondingCurve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"pole\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"slope\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBorrowToken\",\"outputs\":[{\"internalType\":\"contractIBorrowToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBorrowerLoanReturnGracePeriod\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getConverter\",\"outputs\":[{\"internalType\":\"contractIConverter\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnterpriseCollector\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnterpriseLoanCollectGracePeriod\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnterpriseVault\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getGCFeePercent\",\"outputs\":[{\"internalType\":\"uint16\",\"name\":\"\",\"type\":\"uint16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getInfo\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"baseUri\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"totalShares\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"interestGapHalvingPeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"borrowerLoanReturnGracePeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"enterpriseLoanCollectGracePeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint16\",\"name\":\"gcFeePercent\",\"type\":\"uint16\"},{\"internalType\":\"uint256\",\"name\":\"fixedReserve\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"usedReserve\",\"type\":\"uint256\"},{\"internalType\":\"uint112\",\"name\":\"streamingReserve\",\"type\":\"uint112\"},{\"internalType\":\"uint112\",\"name\":\"streamingReserveTarget\",\"type\":\"uint112\"},{\"internalType\":\"uint32\",\"name\":\"streamingReserveUpdated\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getInterestGapHalvingPeriod\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getInterestToken\",\"outputs\":[{\"internalType\":\"contractIInterestToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"interestTokenId\",\"type\":\"uint256\"}],\"name\":\"getLiquidityInfo\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"shares\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"block\",\"type\":\"uint256\"}],\"internalType\":\"structEnterpriseStorage.LiquidityInfo\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLiquidityToken\",\"outputs\":[{\"internalType\":\"contractIERC20Metadata\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"borrowTokenId\",\"type\":\"uint256\"}],\"name\":\"getLoanInfo\",\"outputs\":[{\"components\":[{\"internalType\":\"uint112\",\"name\":\"amount\",\"type\":\"uint112\"},{\"internalType\":\"uint16\",\"name\":\"powerTokenIndex\",\"type\":\"uint16\"},{\"internalType\":\"uint32\",\"name\":\"borrowingTime\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maturityTime\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"borrowerReturnGraceTime\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"enterpriseCollectGraceTime\",\"type\":\"uint32\"},{\"internalType\":\"uint112\",\"name\":\"gcFee\",\"type\":\"uint112\"},{\"internalType\":\"uint16\",\"name\":\"gcFeeTokenIndex\",\"type\":\"uint16\"}],\"internalType\":\"structEnterpriseStorage.LoanInfo\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPowerTokens\",\"outputs\":[{\"internalType\":\"contractPowerToken[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getProxyAdmin\",\"outputs\":[{\"internalType\":\"contractProxyAdmin\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getReserve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getUsedReserve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"enterpriseName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"baseUri\",\"type\":\"string\"},{\"internalType\":\"uint16\",\"name\":\"gcFeePercent\",\"type\":\"uint16\"},{\"internalType\":\"contractIConverter\",\"name\":\"converter\",\"type\":\"address\"},{\"internalType\":\"contractProxyAdmin\",\"name\":\"proxyAdmin\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"initialOwner\",\"type\":\"address\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIERC20Metadata\",\"name\":\"liquidityToken\",\"type\":\"address\"},{\"internalType\":\"contractIInterestToken\",\"name\":\"interestToken\",\"type\":\"address\"},{\"internalType\":\"contractIBorrowToken\",\"name\":\"borrowToken\",\"type\":\"address\"}],\"name\":\"initializeTokens\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractPowerToken\",\"name\":\"powerToken\",\"type\":\"address\"}],\"name\":\"isRegisteredPowerToken\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"isSupportedPaymentToken\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"paymentToken\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"paymentTokenIndex\",\"outputs\":[{\"internalType\":\"int16\",\"name\":\"\",\"type\":\"int16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"baseUri\",\"type\":\"string\"}],\"name\":\"setBaseUri\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"pole\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"slope\",\"type\":\"uint256\"}],\"name\":\"setBondingCurve\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"newPeriod\",\"type\":\"uint32\"}],\"name\":\"setBorrowerLoanReturnGracePeriod\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIConverter\",\"name\":\"newConverter\",\"type\":\"address\"}],\"name\":\"setConverter\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newCollector\",\"type\":\"address\"}],\"name\":\"setEnterpriseCollector\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"newPeriod\",\"type\":\"uint32\"}],\"name\":\"setEnterpriseLoanCollectGracePeriod\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newVault\",\"type\":\"address\"}],\"name\":\"setEnterpriseVault\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint16\",\"name\":\"newGcFeePercent\",\"type\":\"uint16\"}],\"name\":\"setGcFeePercent\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"interestGapHalvingPeriod\",\"type\":\"uint32\"}],\"name\":\"setInterestGapHalvingPeriod\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"}],\"name\":\"upgradeBorrowToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"}],\"name\":\"upgradeEnterprise\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"}],\"name\":\"upgradeInterestToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractPowerToken\",\"name\":\"powerToken\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"}],\"name\":\"upgradePowerToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"baseUri\",\"type\":\"string\"}],\"name\":\"BaseUriChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"pole\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"slope\",\"type\":\"uint256\"}],\"name\":\"BondingChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"converter\",\"type\":\"address\"}],\"name\":\"ConverterChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"collector\",\"type\":\"address\"}],\"name\":\"EnterpriseCollectorChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"period\",\"type\":\"uint32\"}],\"name\":\"EnterpriseOnlyCollectionPeriodChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"EnterpriseShutdown\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"wallet\",\"type\":\"address\"}],\"name\":\"EnterpriseWalletChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"fixedReserve\",\"type\":\"uint256\"}],\"name\":\"FixedReserveChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"percent\",\"type\":\"uint16\"}],\"name\":\"GcFeePercentChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"paymentToken\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"enabled\",\"type\":\"bool\"}],\"name\":\"PaymentTokenChange\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"period\",\"type\":\"uint32\"}],\"name\":\"RenterOnlyReturnPeriodChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint112\",\"name\":\"streamingReserve\",\"type\":\"uint112\"},{\"indexed\":false,\"internalType\":\"uint112\",\"name\":\"streamingReserveTarget\",\"type\":\"uint112\"}],\"name\":\"StreamingReserveChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"period\",\"type\":\"uint32\"}],\"name\":\"StreamingReserveHalvingPeriodChanged\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"disablePaymentToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"enablePaymentToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAvailableReserve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBaseUri\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBondingCurve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"pole\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"slope\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getConverter\",\"outputs\":[{\"internalType\":\"contractIConverter\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnterpriseCollector\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnterpriseOnlyCollectionPeriod\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnterpriseToken\",\"outputs\":[{\"internalType\":\"contractIERC20Metadata\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnterpriseWallet\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getFactory\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getGCFeePercent\",\"outputs\":[{\"internalType\":\"uint16\",\"name\":\"\",\"type\":\"uint16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getInfo\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"baseUri\",\"type\":\"string\"},{\"internalType\":\"uint32\",\"name\":\"streamingReserveHalvingPeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"renterOnlyReturnPeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"enterpriseOnlyCollectionPeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint16\",\"name\":\"gcFeePercent\",\"type\":\"uint16\"},{\"internalType\":\"uint256\",\"name\":\"totalShares\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"fixedReserve\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"usedReserve\",\"type\":\"uint256\"},{\"internalType\":\"uint112\",\"name\":\"streamingReserve\",\"type\":\"uint112\"},{\"internalType\":\"uint112\",\"name\":\"streamingReserveTarget\",\"type\":\"uint112\"},{\"internalType\":\"uint32\",\"name\":\"streamingReserveUpdated\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"getPaymentToken\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"getPaymentTokenIndex\",\"outputs\":[{\"internalType\":\"int16\",\"name\":\"\",\"type\":\"int16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPowerTokens\",\"outputs\":[{\"internalType\":\"contractIPowerToken[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getProxyAdmin\",\"outputs\":[{\"internalType\":\"contractProxyAdmin\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"rentalTokenId\",\"type\":\"uint256\"}],\"name\":\"getRentalAgreement\",\"outputs\":[{\"components\":[{\"internalType\":\"uint112\",\"name\":\"rentalAmount\",\"type\":\"uint112\"},{\"internalType\":\"uint16\",\"name\":\"powerTokenIndex\",\"type\":\"uint16\"},{\"internalType\":\"uint32\",\"name\":\"startTime\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"endTime\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"renterOnlyReturnTime\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"enterpriseOnlyCollectionTime\",\"type\":\"uint32\"},{\"internalType\":\"uint112\",\"name\":\"gcRewardAmount\",\"type\":\"uint112\"},{\"internalType\":\"uint16\",\"name\":\"gcRewardTokenIndex\",\"type\":\"uint16\"}],\"internalType\":\"structIEnterpriseStorage.RentalAgreement\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getRentalToken\",\"outputs\":[{\"internalType\":\"contractIRentalToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getRenterOnlyReturnPeriod\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getReserve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"stakeTokenId\",\"type\":\"uint256\"}],\"name\":\"getStake\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"shares\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"block\",\"type\":\"uint256\"}],\"internalType\":\"structEnterpriseStorage.Stake\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getStakeToken\",\"outputs\":[{\"internalType\":\"contractIStakeToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getStreamingReserveHalvingPeriod\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getUsedReserve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"enterpriseName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"baseUri\",\"type\":\"string\"},{\"internalType\":\"uint16\",\"name\":\"gcFeePercent\",\"type\":\"uint16\"},{\"internalType\":\"contractIConverter\",\"name\":\"converter\",\"type\":\"address\"},{\"internalType\":\"contractProxyAdmin\",\"name\":\"proxyAdmin\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"initialOwner\",\"type\":\"address\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIERC20Metadata\",\"name\":\"enterpriseToken\",\"type\":\"address\"},{\"internalType\":\"contractIStakeToken\",\"name\":\"stakeToken\",\"type\":\"address\"},{\"internalType\":\"contractIRentalToken\",\"name\":\"rentalToken\",\"type\":\"address\"}],\"name\":\"initializeTokens\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"powerToken\",\"type\":\"address\"}],\"name\":\"isRegisteredPowerToken\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"isSupportedPaymentToken\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"baseUri\",\"type\":\"string\"}],\"name\":\"setBaseUri\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"pole\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"slope\",\"type\":\"uint256\"}],\"name\":\"setBondingCurve\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIConverter\",\"name\":\"newConverter\",\"type\":\"address\"}],\"name\":\"setConverter\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newCollector\",\"type\":\"address\"}],\"name\":\"setEnterpriseCollector\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"newPeriod\",\"type\":\"uint32\"}],\"name\":\"setEnterpriseOnlyCollectionPeriod\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newWallet\",\"type\":\"address\"}],\"name\":\"setEnterpriseWallet\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint16\",\"name\":\"newGcFeePercent\",\"type\":\"uint16\"}],\"name\":\"setGcFeePercent\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"newPeriod\",\"type\":\"uint32\"}],\"name\":\"setRenterOnlyReturnPeriod\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"streamingReserveHalvingPeriod\",\"type\":\"uint32\"}],\"name\":\"setStreamingReserveHalvingPeriod\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"enterpriseFactory\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"enterpriseImplementation\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"rentalTokenImplementation\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"stakeTokenImplementation\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"powerTokenImplementation\",\"type\":\"address\"},{\"internalType\":\"address[]\",\"name\":\"powerTokens\",\"type\":\"address[]\"}],\"name\":\"upgrade\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
 }
 
 // EnterpriseStorageABI is the input ABI used to generate the binding from.
@@ -286,68 +305,6 @@ func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetBondingCurve() (str
 	return _EnterpriseStorage.Contract.GetBondingCurve(&_EnterpriseStorage.CallOpts)
 }
 
-// GetBorrowToken is a free data retrieval call binding the contract method 0xc93d0b92.
-//
-// Solidity: function getBorrowToken() view returns(address)
-func (_EnterpriseStorage *EnterpriseStorageCaller) GetBorrowToken(opts *bind.CallOpts) (common.Address, error) {
-	var out []interface{}
-	err := _EnterpriseStorage.contract.Call(opts, &out, "getBorrowToken")
-
-	if err != nil {
-		return *new(common.Address), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-
-	return out0, err
-
-}
-
-// GetBorrowToken is a free data retrieval call binding the contract method 0xc93d0b92.
-//
-// Solidity: function getBorrowToken() view returns(address)
-func (_EnterpriseStorage *EnterpriseStorageSession) GetBorrowToken() (common.Address, error) {
-	return _EnterpriseStorage.Contract.GetBorrowToken(&_EnterpriseStorage.CallOpts)
-}
-
-// GetBorrowToken is a free data retrieval call binding the contract method 0xc93d0b92.
-//
-// Solidity: function getBorrowToken() view returns(address)
-func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetBorrowToken() (common.Address, error) {
-	return _EnterpriseStorage.Contract.GetBorrowToken(&_EnterpriseStorage.CallOpts)
-}
-
-// GetBorrowerLoanReturnGracePeriod is a free data retrieval call binding the contract method 0x8188d50d.
-//
-// Solidity: function getBorrowerLoanReturnGracePeriod() view returns(uint32)
-func (_EnterpriseStorage *EnterpriseStorageCaller) GetBorrowerLoanReturnGracePeriod(opts *bind.CallOpts) (uint32, error) {
-	var out []interface{}
-	err := _EnterpriseStorage.contract.Call(opts, &out, "getBorrowerLoanReturnGracePeriod")
-
-	if err != nil {
-		return *new(uint32), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(uint32)).(*uint32)
-
-	return out0, err
-
-}
-
-// GetBorrowerLoanReturnGracePeriod is a free data retrieval call binding the contract method 0x8188d50d.
-//
-// Solidity: function getBorrowerLoanReturnGracePeriod() view returns(uint32)
-func (_EnterpriseStorage *EnterpriseStorageSession) GetBorrowerLoanReturnGracePeriod() (uint32, error) {
-	return _EnterpriseStorage.Contract.GetBorrowerLoanReturnGracePeriod(&_EnterpriseStorage.CallOpts)
-}
-
-// GetBorrowerLoanReturnGracePeriod is a free data retrieval call binding the contract method 0x8188d50d.
-//
-// Solidity: function getBorrowerLoanReturnGracePeriod() view returns(uint32)
-func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetBorrowerLoanReturnGracePeriod() (uint32, error) {
-	return _EnterpriseStorage.Contract.GetBorrowerLoanReturnGracePeriod(&_EnterpriseStorage.CallOpts)
-}
-
 // GetConverter is a free data retrieval call binding the contract method 0x2261b07f.
 //
 // Solidity: function getConverter() view returns(address)
@@ -410,12 +367,12 @@ func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetEnterpriseCollector
 	return _EnterpriseStorage.Contract.GetEnterpriseCollector(&_EnterpriseStorage.CallOpts)
 }
 
-// GetEnterpriseLoanCollectGracePeriod is a free data retrieval call binding the contract method 0xa0efd118.
+// GetEnterpriseOnlyCollectionPeriod is a free data retrieval call binding the contract method 0x9f52673c.
 //
-// Solidity: function getEnterpriseLoanCollectGracePeriod() view returns(uint32)
-func (_EnterpriseStorage *EnterpriseStorageCaller) GetEnterpriseLoanCollectGracePeriod(opts *bind.CallOpts) (uint32, error) {
+// Solidity: function getEnterpriseOnlyCollectionPeriod() view returns(uint32)
+func (_EnterpriseStorage *EnterpriseStorageCaller) GetEnterpriseOnlyCollectionPeriod(opts *bind.CallOpts) (uint32, error) {
 	var out []interface{}
-	err := _EnterpriseStorage.contract.Call(opts, &out, "getEnterpriseLoanCollectGracePeriod")
+	err := _EnterpriseStorage.contract.Call(opts, &out, "getEnterpriseOnlyCollectionPeriod")
 
 	if err != nil {
 		return *new(uint32), err
@@ -427,26 +384,26 @@ func (_EnterpriseStorage *EnterpriseStorageCaller) GetEnterpriseLoanCollectGrace
 
 }
 
-// GetEnterpriseLoanCollectGracePeriod is a free data retrieval call binding the contract method 0xa0efd118.
+// GetEnterpriseOnlyCollectionPeriod is a free data retrieval call binding the contract method 0x9f52673c.
 //
-// Solidity: function getEnterpriseLoanCollectGracePeriod() view returns(uint32)
-func (_EnterpriseStorage *EnterpriseStorageSession) GetEnterpriseLoanCollectGracePeriod() (uint32, error) {
-	return _EnterpriseStorage.Contract.GetEnterpriseLoanCollectGracePeriod(&_EnterpriseStorage.CallOpts)
+// Solidity: function getEnterpriseOnlyCollectionPeriod() view returns(uint32)
+func (_EnterpriseStorage *EnterpriseStorageSession) GetEnterpriseOnlyCollectionPeriod() (uint32, error) {
+	return _EnterpriseStorage.Contract.GetEnterpriseOnlyCollectionPeriod(&_EnterpriseStorage.CallOpts)
 }
 
-// GetEnterpriseLoanCollectGracePeriod is a free data retrieval call binding the contract method 0xa0efd118.
+// GetEnterpriseOnlyCollectionPeriod is a free data retrieval call binding the contract method 0x9f52673c.
 //
-// Solidity: function getEnterpriseLoanCollectGracePeriod() view returns(uint32)
-func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetEnterpriseLoanCollectGracePeriod() (uint32, error) {
-	return _EnterpriseStorage.Contract.GetEnterpriseLoanCollectGracePeriod(&_EnterpriseStorage.CallOpts)
+// Solidity: function getEnterpriseOnlyCollectionPeriod() view returns(uint32)
+func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetEnterpriseOnlyCollectionPeriod() (uint32, error) {
+	return _EnterpriseStorage.Contract.GetEnterpriseOnlyCollectionPeriod(&_EnterpriseStorage.CallOpts)
 }
 
-// GetEnterpriseVault is a free data retrieval call binding the contract method 0x7791c42d.
+// GetEnterpriseToken is a free data retrieval call binding the contract method 0x60f87087.
 //
-// Solidity: function getEnterpriseVault() view returns(address)
-func (_EnterpriseStorage *EnterpriseStorageCaller) GetEnterpriseVault(opts *bind.CallOpts) (common.Address, error) {
+// Solidity: function getEnterpriseToken() view returns(address)
+func (_EnterpriseStorage *EnterpriseStorageCaller) GetEnterpriseToken(opts *bind.CallOpts) (common.Address, error) {
 	var out []interface{}
-	err := _EnterpriseStorage.contract.Call(opts, &out, "getEnterpriseVault")
+	err := _EnterpriseStorage.contract.Call(opts, &out, "getEnterpriseToken")
 
 	if err != nil {
 		return *new(common.Address), err
@@ -458,18 +415,80 @@ func (_EnterpriseStorage *EnterpriseStorageCaller) GetEnterpriseVault(opts *bind
 
 }
 
-// GetEnterpriseVault is a free data retrieval call binding the contract method 0x7791c42d.
+// GetEnterpriseToken is a free data retrieval call binding the contract method 0x60f87087.
 //
-// Solidity: function getEnterpriseVault() view returns(address)
-func (_EnterpriseStorage *EnterpriseStorageSession) GetEnterpriseVault() (common.Address, error) {
-	return _EnterpriseStorage.Contract.GetEnterpriseVault(&_EnterpriseStorage.CallOpts)
+// Solidity: function getEnterpriseToken() view returns(address)
+func (_EnterpriseStorage *EnterpriseStorageSession) GetEnterpriseToken() (common.Address, error) {
+	return _EnterpriseStorage.Contract.GetEnterpriseToken(&_EnterpriseStorage.CallOpts)
 }
 
-// GetEnterpriseVault is a free data retrieval call binding the contract method 0x7791c42d.
+// GetEnterpriseToken is a free data retrieval call binding the contract method 0x60f87087.
 //
-// Solidity: function getEnterpriseVault() view returns(address)
-func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetEnterpriseVault() (common.Address, error) {
-	return _EnterpriseStorage.Contract.GetEnterpriseVault(&_EnterpriseStorage.CallOpts)
+// Solidity: function getEnterpriseToken() view returns(address)
+func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetEnterpriseToken() (common.Address, error) {
+	return _EnterpriseStorage.Contract.GetEnterpriseToken(&_EnterpriseStorage.CallOpts)
+}
+
+// GetEnterpriseWallet is a free data retrieval call binding the contract method 0xdccdc7d9.
+//
+// Solidity: function getEnterpriseWallet() view returns(address)
+func (_EnterpriseStorage *EnterpriseStorageCaller) GetEnterpriseWallet(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _EnterpriseStorage.contract.Call(opts, &out, "getEnterpriseWallet")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// GetEnterpriseWallet is a free data retrieval call binding the contract method 0xdccdc7d9.
+//
+// Solidity: function getEnterpriseWallet() view returns(address)
+func (_EnterpriseStorage *EnterpriseStorageSession) GetEnterpriseWallet() (common.Address, error) {
+	return _EnterpriseStorage.Contract.GetEnterpriseWallet(&_EnterpriseStorage.CallOpts)
+}
+
+// GetEnterpriseWallet is a free data retrieval call binding the contract method 0xdccdc7d9.
+//
+// Solidity: function getEnterpriseWallet() view returns(address)
+func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetEnterpriseWallet() (common.Address, error) {
+	return _EnterpriseStorage.Contract.GetEnterpriseWallet(&_EnterpriseStorage.CallOpts)
+}
+
+// GetFactory is a free data retrieval call binding the contract method 0x88cc58e4.
+//
+// Solidity: function getFactory() view returns(address)
+func (_EnterpriseStorage *EnterpriseStorageCaller) GetFactory(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _EnterpriseStorage.contract.Call(opts, &out, "getFactory")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// GetFactory is a free data retrieval call binding the contract method 0x88cc58e4.
+//
+// Solidity: function getFactory() view returns(address)
+func (_EnterpriseStorage *EnterpriseStorageSession) GetFactory() (common.Address, error) {
+	return _EnterpriseStorage.Contract.GetFactory(&_EnterpriseStorage.CallOpts)
+}
+
+// GetFactory is a free data retrieval call binding the contract method 0x88cc58e4.
+//
+// Solidity: function getFactory() view returns(address)
+func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetFactory() (common.Address, error) {
+	return _EnterpriseStorage.Contract.GetFactory(&_EnterpriseStorage.CallOpts)
 }
 
 // GetGCFeePercent is a free data retrieval call binding the contract method 0xb406bf6d.
@@ -505,37 +524,37 @@ func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetGCFeePercent() (uin
 
 // GetInfo is a free data retrieval call binding the contract method 0x5a9b0b89.
 //
-// Solidity: function getInfo() view returns(string name, string baseUri, uint256 totalShares, uint32 interestGapHalvingPeriod, uint32 borrowerLoanReturnGracePeriod, uint32 enterpriseLoanCollectGracePeriod, uint16 gcFeePercent, uint256 fixedReserve, uint256 usedReserve, uint112 streamingReserve, uint112 streamingReserveTarget, uint32 streamingReserveUpdated)
+// Solidity: function getInfo() view returns(string name, string baseUri, uint32 streamingReserveHalvingPeriod, uint32 renterOnlyReturnPeriod, uint32 enterpriseOnlyCollectionPeriod, uint16 gcFeePercent, uint256 totalShares, uint256 fixedReserve, uint256 usedReserve, uint112 streamingReserve, uint112 streamingReserveTarget, uint32 streamingReserveUpdated)
 func (_EnterpriseStorage *EnterpriseStorageCaller) GetInfo(opts *bind.CallOpts) (struct {
-	Name                             string
-	BaseUri                          string
-	TotalShares                      *big.Int
-	InterestGapHalvingPeriod         uint32
-	BorrowerLoanReturnGracePeriod    uint32
-	EnterpriseLoanCollectGracePeriod uint32
-	GcFeePercent                     uint16
-	FixedReserve                     *big.Int
-	UsedReserve                      *big.Int
-	StreamingReserve                 *big.Int
-	StreamingReserveTarget           *big.Int
-	StreamingReserveUpdated          uint32
+	Name                           string
+	BaseUri                        string
+	StreamingReserveHalvingPeriod  uint32
+	RenterOnlyReturnPeriod         uint32
+	EnterpriseOnlyCollectionPeriod uint32
+	GcFeePercent                   uint16
+	TotalShares                    *big.Int
+	FixedReserve                   *big.Int
+	UsedReserve                    *big.Int
+	StreamingReserve               *big.Int
+	StreamingReserveTarget         *big.Int
+	StreamingReserveUpdated        uint32
 }, error) {
 	var out []interface{}
 	err := _EnterpriseStorage.contract.Call(opts, &out, "getInfo")
 
 	outstruct := new(struct {
-		Name                             string
-		BaseUri                          string
-		TotalShares                      *big.Int
-		InterestGapHalvingPeriod         uint32
-		BorrowerLoanReturnGracePeriod    uint32
-		EnterpriseLoanCollectGracePeriod uint32
-		GcFeePercent                     uint16
-		FixedReserve                     *big.Int
-		UsedReserve                      *big.Int
-		StreamingReserve                 *big.Int
-		StreamingReserveTarget           *big.Int
-		StreamingReserveUpdated          uint32
+		Name                           string
+		BaseUri                        string
+		StreamingReserveHalvingPeriod  uint32
+		RenterOnlyReturnPeriod         uint32
+		EnterpriseOnlyCollectionPeriod uint32
+		GcFeePercent                   uint16
+		TotalShares                    *big.Int
+		FixedReserve                   *big.Int
+		UsedReserve                    *big.Int
+		StreamingReserve               *big.Int
+		StreamingReserveTarget         *big.Int
+		StreamingReserveUpdated        uint32
 	})
 	if err != nil {
 		return *outstruct, err
@@ -543,11 +562,11 @@ func (_EnterpriseStorage *EnterpriseStorageCaller) GetInfo(opts *bind.CallOpts) 
 
 	outstruct.Name = *abi.ConvertType(out[0], new(string)).(*string)
 	outstruct.BaseUri = *abi.ConvertType(out[1], new(string)).(*string)
-	outstruct.TotalShares = *abi.ConvertType(out[2], new(*big.Int)).(**big.Int)
-	outstruct.InterestGapHalvingPeriod = *abi.ConvertType(out[3], new(uint32)).(*uint32)
-	outstruct.BorrowerLoanReturnGracePeriod = *abi.ConvertType(out[4], new(uint32)).(*uint32)
-	outstruct.EnterpriseLoanCollectGracePeriod = *abi.ConvertType(out[5], new(uint32)).(*uint32)
-	outstruct.GcFeePercent = *abi.ConvertType(out[6], new(uint16)).(*uint16)
+	outstruct.StreamingReserveHalvingPeriod = *abi.ConvertType(out[2], new(uint32)).(*uint32)
+	outstruct.RenterOnlyReturnPeriod = *abi.ConvertType(out[3], new(uint32)).(*uint32)
+	outstruct.EnterpriseOnlyCollectionPeriod = *abi.ConvertType(out[4], new(uint32)).(*uint32)
+	outstruct.GcFeePercent = *abi.ConvertType(out[5], new(uint16)).(*uint16)
+	outstruct.TotalShares = *abi.ConvertType(out[6], new(*big.Int)).(**big.Int)
 	outstruct.FixedReserve = *abi.ConvertType(out[7], new(*big.Int)).(**big.Int)
 	outstruct.UsedReserve = *abi.ConvertType(out[8], new(*big.Int)).(**big.Int)
 	outstruct.StreamingReserve = *abi.ConvertType(out[9], new(*big.Int)).(**big.Int)
@@ -560,81 +579,50 @@ func (_EnterpriseStorage *EnterpriseStorageCaller) GetInfo(opts *bind.CallOpts) 
 
 // GetInfo is a free data retrieval call binding the contract method 0x5a9b0b89.
 //
-// Solidity: function getInfo() view returns(string name, string baseUri, uint256 totalShares, uint32 interestGapHalvingPeriod, uint32 borrowerLoanReturnGracePeriod, uint32 enterpriseLoanCollectGracePeriod, uint16 gcFeePercent, uint256 fixedReserve, uint256 usedReserve, uint112 streamingReserve, uint112 streamingReserveTarget, uint32 streamingReserveUpdated)
+// Solidity: function getInfo() view returns(string name, string baseUri, uint32 streamingReserveHalvingPeriod, uint32 renterOnlyReturnPeriod, uint32 enterpriseOnlyCollectionPeriod, uint16 gcFeePercent, uint256 totalShares, uint256 fixedReserve, uint256 usedReserve, uint112 streamingReserve, uint112 streamingReserveTarget, uint32 streamingReserveUpdated)
 func (_EnterpriseStorage *EnterpriseStorageSession) GetInfo() (struct {
-	Name                             string
-	BaseUri                          string
-	TotalShares                      *big.Int
-	InterestGapHalvingPeriod         uint32
-	BorrowerLoanReturnGracePeriod    uint32
-	EnterpriseLoanCollectGracePeriod uint32
-	GcFeePercent                     uint16
-	FixedReserve                     *big.Int
-	UsedReserve                      *big.Int
-	StreamingReserve                 *big.Int
-	StreamingReserveTarget           *big.Int
-	StreamingReserveUpdated          uint32
+	Name                           string
+	BaseUri                        string
+	StreamingReserveHalvingPeriod  uint32
+	RenterOnlyReturnPeriod         uint32
+	EnterpriseOnlyCollectionPeriod uint32
+	GcFeePercent                   uint16
+	TotalShares                    *big.Int
+	FixedReserve                   *big.Int
+	UsedReserve                    *big.Int
+	StreamingReserve               *big.Int
+	StreamingReserveTarget         *big.Int
+	StreamingReserveUpdated        uint32
 }, error) {
 	return _EnterpriseStorage.Contract.GetInfo(&_EnterpriseStorage.CallOpts)
 }
 
 // GetInfo is a free data retrieval call binding the contract method 0x5a9b0b89.
 //
-// Solidity: function getInfo() view returns(string name, string baseUri, uint256 totalShares, uint32 interestGapHalvingPeriod, uint32 borrowerLoanReturnGracePeriod, uint32 enterpriseLoanCollectGracePeriod, uint16 gcFeePercent, uint256 fixedReserve, uint256 usedReserve, uint112 streamingReserve, uint112 streamingReserveTarget, uint32 streamingReserveUpdated)
+// Solidity: function getInfo() view returns(string name, string baseUri, uint32 streamingReserveHalvingPeriod, uint32 renterOnlyReturnPeriod, uint32 enterpriseOnlyCollectionPeriod, uint16 gcFeePercent, uint256 totalShares, uint256 fixedReserve, uint256 usedReserve, uint112 streamingReserve, uint112 streamingReserveTarget, uint32 streamingReserveUpdated)
 func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetInfo() (struct {
-	Name                             string
-	BaseUri                          string
-	TotalShares                      *big.Int
-	InterestGapHalvingPeriod         uint32
-	BorrowerLoanReturnGracePeriod    uint32
-	EnterpriseLoanCollectGracePeriod uint32
-	GcFeePercent                     uint16
-	FixedReserve                     *big.Int
-	UsedReserve                      *big.Int
-	StreamingReserve                 *big.Int
-	StreamingReserveTarget           *big.Int
-	StreamingReserveUpdated          uint32
+	Name                           string
+	BaseUri                        string
+	StreamingReserveHalvingPeriod  uint32
+	RenterOnlyReturnPeriod         uint32
+	EnterpriseOnlyCollectionPeriod uint32
+	GcFeePercent                   uint16
+	TotalShares                    *big.Int
+	FixedReserve                   *big.Int
+	UsedReserve                    *big.Int
+	StreamingReserve               *big.Int
+	StreamingReserveTarget         *big.Int
+	StreamingReserveUpdated        uint32
 }, error) {
 	return _EnterpriseStorage.Contract.GetInfo(&_EnterpriseStorage.CallOpts)
 }
 
-// GetInterestGapHalvingPeriod is a free data retrieval call binding the contract method 0x5a4598df.
+// GetPaymentToken is a free data retrieval call binding the contract method 0xcdc2aebf.
 //
-// Solidity: function getInterestGapHalvingPeriod() view returns(uint32)
-func (_EnterpriseStorage *EnterpriseStorageCaller) GetInterestGapHalvingPeriod(opts *bind.CallOpts) (uint32, error) {
+// Solidity: function getPaymentToken(uint256 index) view returns(address)
+func (_EnterpriseStorage *EnterpriseStorageCaller) GetPaymentToken(opts *bind.CallOpts, index *big.Int) (common.Address, error) {
 	var out []interface{}
-	err := _EnterpriseStorage.contract.Call(opts, &out, "getInterestGapHalvingPeriod")
-
-	if err != nil {
-		return *new(uint32), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(uint32)).(*uint32)
-
-	return out0, err
-
-}
-
-// GetInterestGapHalvingPeriod is a free data retrieval call binding the contract method 0x5a4598df.
-//
-// Solidity: function getInterestGapHalvingPeriod() view returns(uint32)
-func (_EnterpriseStorage *EnterpriseStorageSession) GetInterestGapHalvingPeriod() (uint32, error) {
-	return _EnterpriseStorage.Contract.GetInterestGapHalvingPeriod(&_EnterpriseStorage.CallOpts)
-}
-
-// GetInterestGapHalvingPeriod is a free data retrieval call binding the contract method 0x5a4598df.
-//
-// Solidity: function getInterestGapHalvingPeriod() view returns(uint32)
-func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetInterestGapHalvingPeriod() (uint32, error) {
-	return _EnterpriseStorage.Contract.GetInterestGapHalvingPeriod(&_EnterpriseStorage.CallOpts)
-}
-
-// GetInterestToken is a free data retrieval call binding the contract method 0x0ea1dc9e.
-//
-// Solidity: function getInterestToken() view returns(address)
-func (_EnterpriseStorage *EnterpriseStorageCaller) GetInterestToken(opts *bind.CallOpts) (common.Address, error) {
-	var out []interface{}
-	err := _EnterpriseStorage.contract.Call(opts, &out, "getInterestToken")
+	err := _EnterpriseStorage.contract.Call(opts, &out, "getPaymentToken", index)
 
 	if err != nil {
 		return *new(common.Address), err
@@ -646,111 +634,49 @@ func (_EnterpriseStorage *EnterpriseStorageCaller) GetInterestToken(opts *bind.C
 
 }
 
-// GetInterestToken is a free data retrieval call binding the contract method 0x0ea1dc9e.
+// GetPaymentToken is a free data retrieval call binding the contract method 0xcdc2aebf.
 //
-// Solidity: function getInterestToken() view returns(address)
-func (_EnterpriseStorage *EnterpriseStorageSession) GetInterestToken() (common.Address, error) {
-	return _EnterpriseStorage.Contract.GetInterestToken(&_EnterpriseStorage.CallOpts)
+// Solidity: function getPaymentToken(uint256 index) view returns(address)
+func (_EnterpriseStorage *EnterpriseStorageSession) GetPaymentToken(index *big.Int) (common.Address, error) {
+	return _EnterpriseStorage.Contract.GetPaymentToken(&_EnterpriseStorage.CallOpts, index)
 }
 
-// GetInterestToken is a free data retrieval call binding the contract method 0x0ea1dc9e.
+// GetPaymentToken is a free data retrieval call binding the contract method 0xcdc2aebf.
 //
-// Solidity: function getInterestToken() view returns(address)
-func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetInterestToken() (common.Address, error) {
-	return _EnterpriseStorage.Contract.GetInterestToken(&_EnterpriseStorage.CallOpts)
+// Solidity: function getPaymentToken(uint256 index) view returns(address)
+func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetPaymentToken(index *big.Int) (common.Address, error) {
+	return _EnterpriseStorage.Contract.GetPaymentToken(&_EnterpriseStorage.CallOpts, index)
 }
 
-// GetLiquidityInfo is a free data retrieval call binding the contract method 0xdf57f2fa.
+// GetPaymentTokenIndex is a free data retrieval call binding the contract method 0x0103f313.
 //
-// Solidity: function getLiquidityInfo(uint256 interestTokenId) view returns((uint256,uint256,uint256))
-func (_EnterpriseStorage *EnterpriseStorageCaller) GetLiquidityInfo(opts *bind.CallOpts, interestTokenId *big.Int) (EnterpriseStorageLiquidityInfo, error) {
+// Solidity: function getPaymentTokenIndex(address token) view returns(int16)
+func (_EnterpriseStorage *EnterpriseStorageCaller) GetPaymentTokenIndex(opts *bind.CallOpts, token common.Address) (int16, error) {
 	var out []interface{}
-	err := _EnterpriseStorage.contract.Call(opts, &out, "getLiquidityInfo", interestTokenId)
+	err := _EnterpriseStorage.contract.Call(opts, &out, "getPaymentTokenIndex", token)
 
 	if err != nil {
-		return *new(EnterpriseStorageLiquidityInfo), err
+		return *new(int16), err
 	}
 
-	out0 := *abi.ConvertType(out[0], new(EnterpriseStorageLiquidityInfo)).(*EnterpriseStorageLiquidityInfo)
+	out0 := *abi.ConvertType(out[0], new(int16)).(*int16)
 
 	return out0, err
 
 }
 
-// GetLiquidityInfo is a free data retrieval call binding the contract method 0xdf57f2fa.
+// GetPaymentTokenIndex is a free data retrieval call binding the contract method 0x0103f313.
 //
-// Solidity: function getLiquidityInfo(uint256 interestTokenId) view returns((uint256,uint256,uint256))
-func (_EnterpriseStorage *EnterpriseStorageSession) GetLiquidityInfo(interestTokenId *big.Int) (EnterpriseStorageLiquidityInfo, error) {
-	return _EnterpriseStorage.Contract.GetLiquidityInfo(&_EnterpriseStorage.CallOpts, interestTokenId)
+// Solidity: function getPaymentTokenIndex(address token) view returns(int16)
+func (_EnterpriseStorage *EnterpriseStorageSession) GetPaymentTokenIndex(token common.Address) (int16, error) {
+	return _EnterpriseStorage.Contract.GetPaymentTokenIndex(&_EnterpriseStorage.CallOpts, token)
 }
 
-// GetLiquidityInfo is a free data retrieval call binding the contract method 0xdf57f2fa.
+// GetPaymentTokenIndex is a free data retrieval call binding the contract method 0x0103f313.
 //
-// Solidity: function getLiquidityInfo(uint256 interestTokenId) view returns((uint256,uint256,uint256))
-func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetLiquidityInfo(interestTokenId *big.Int) (EnterpriseStorageLiquidityInfo, error) {
-	return _EnterpriseStorage.Contract.GetLiquidityInfo(&_EnterpriseStorage.CallOpts, interestTokenId)
-}
-
-// GetLiquidityToken is a free data retrieval call binding the contract method 0x644e44df.
-//
-// Solidity: function getLiquidityToken() view returns(address)
-func (_EnterpriseStorage *EnterpriseStorageCaller) GetLiquidityToken(opts *bind.CallOpts) (common.Address, error) {
-	var out []interface{}
-	err := _EnterpriseStorage.contract.Call(opts, &out, "getLiquidityToken")
-
-	if err != nil {
-		return *new(common.Address), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-
-	return out0, err
-
-}
-
-// GetLiquidityToken is a free data retrieval call binding the contract method 0x644e44df.
-//
-// Solidity: function getLiquidityToken() view returns(address)
-func (_EnterpriseStorage *EnterpriseStorageSession) GetLiquidityToken() (common.Address, error) {
-	return _EnterpriseStorage.Contract.GetLiquidityToken(&_EnterpriseStorage.CallOpts)
-}
-
-// GetLiquidityToken is a free data retrieval call binding the contract method 0x644e44df.
-//
-// Solidity: function getLiquidityToken() view returns(address)
-func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetLiquidityToken() (common.Address, error) {
-	return _EnterpriseStorage.Contract.GetLiquidityToken(&_EnterpriseStorage.CallOpts)
-}
-
-// GetLoanInfo is a free data retrieval call binding the contract method 0x0714012c.
-//
-// Solidity: function getLoanInfo(uint256 borrowTokenId) view returns((uint112,uint16,uint32,uint32,uint32,uint32,uint112,uint16))
-func (_EnterpriseStorage *EnterpriseStorageCaller) GetLoanInfo(opts *bind.CallOpts, borrowTokenId *big.Int) (EnterpriseStorageLoanInfo, error) {
-	var out []interface{}
-	err := _EnterpriseStorage.contract.Call(opts, &out, "getLoanInfo", borrowTokenId)
-
-	if err != nil {
-		return *new(EnterpriseStorageLoanInfo), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(EnterpriseStorageLoanInfo)).(*EnterpriseStorageLoanInfo)
-
-	return out0, err
-
-}
-
-// GetLoanInfo is a free data retrieval call binding the contract method 0x0714012c.
-//
-// Solidity: function getLoanInfo(uint256 borrowTokenId) view returns((uint112,uint16,uint32,uint32,uint32,uint32,uint112,uint16))
-func (_EnterpriseStorage *EnterpriseStorageSession) GetLoanInfo(borrowTokenId *big.Int) (EnterpriseStorageLoanInfo, error) {
-	return _EnterpriseStorage.Contract.GetLoanInfo(&_EnterpriseStorage.CallOpts, borrowTokenId)
-}
-
-// GetLoanInfo is a free data retrieval call binding the contract method 0x0714012c.
-//
-// Solidity: function getLoanInfo(uint256 borrowTokenId) view returns((uint112,uint16,uint32,uint32,uint32,uint32,uint112,uint16))
-func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetLoanInfo(borrowTokenId *big.Int) (EnterpriseStorageLoanInfo, error) {
-	return _EnterpriseStorage.Contract.GetLoanInfo(&_EnterpriseStorage.CallOpts, borrowTokenId)
+// Solidity: function getPaymentTokenIndex(address token) view returns(int16)
+func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetPaymentTokenIndex(token common.Address) (int16, error) {
+	return _EnterpriseStorage.Contract.GetPaymentTokenIndex(&_EnterpriseStorage.CallOpts, token)
 }
 
 // GetPowerTokens is a free data retrieval call binding the contract method 0xb96266fa.
@@ -815,6 +741,99 @@ func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetProxyAdmin() (commo
 	return _EnterpriseStorage.Contract.GetProxyAdmin(&_EnterpriseStorage.CallOpts)
 }
 
+// GetRentalAgreement is a free data retrieval call binding the contract method 0x18a8a6cf.
+//
+// Solidity: function getRentalAgreement(uint256 rentalTokenId) view returns((uint112,uint16,uint32,uint32,uint32,uint32,uint112,uint16))
+func (_EnterpriseStorage *EnterpriseStorageCaller) GetRentalAgreement(opts *bind.CallOpts, rentalTokenId *big.Int) (IEnterpriseStorageRentalAgreement, error) {
+	var out []interface{}
+	err := _EnterpriseStorage.contract.Call(opts, &out, "getRentalAgreement", rentalTokenId)
+
+	if err != nil {
+		return *new(IEnterpriseStorageRentalAgreement), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(IEnterpriseStorageRentalAgreement)).(*IEnterpriseStorageRentalAgreement)
+
+	return out0, err
+
+}
+
+// GetRentalAgreement is a free data retrieval call binding the contract method 0x18a8a6cf.
+//
+// Solidity: function getRentalAgreement(uint256 rentalTokenId) view returns((uint112,uint16,uint32,uint32,uint32,uint32,uint112,uint16))
+func (_EnterpriseStorage *EnterpriseStorageSession) GetRentalAgreement(rentalTokenId *big.Int) (IEnterpriseStorageRentalAgreement, error) {
+	return _EnterpriseStorage.Contract.GetRentalAgreement(&_EnterpriseStorage.CallOpts, rentalTokenId)
+}
+
+// GetRentalAgreement is a free data retrieval call binding the contract method 0x18a8a6cf.
+//
+// Solidity: function getRentalAgreement(uint256 rentalTokenId) view returns((uint112,uint16,uint32,uint32,uint32,uint32,uint112,uint16))
+func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetRentalAgreement(rentalTokenId *big.Int) (IEnterpriseStorageRentalAgreement, error) {
+	return _EnterpriseStorage.Contract.GetRentalAgreement(&_EnterpriseStorage.CallOpts, rentalTokenId)
+}
+
+// GetRentalToken is a free data retrieval call binding the contract method 0xb714ff53.
+//
+// Solidity: function getRentalToken() view returns(address)
+func (_EnterpriseStorage *EnterpriseStorageCaller) GetRentalToken(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _EnterpriseStorage.contract.Call(opts, &out, "getRentalToken")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// GetRentalToken is a free data retrieval call binding the contract method 0xb714ff53.
+//
+// Solidity: function getRentalToken() view returns(address)
+func (_EnterpriseStorage *EnterpriseStorageSession) GetRentalToken() (common.Address, error) {
+	return _EnterpriseStorage.Contract.GetRentalToken(&_EnterpriseStorage.CallOpts)
+}
+
+// GetRentalToken is a free data retrieval call binding the contract method 0xb714ff53.
+//
+// Solidity: function getRentalToken() view returns(address)
+func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetRentalToken() (common.Address, error) {
+	return _EnterpriseStorage.Contract.GetRentalToken(&_EnterpriseStorage.CallOpts)
+}
+
+// GetRenterOnlyReturnPeriod is a free data retrieval call binding the contract method 0x7e6a7cbb.
+//
+// Solidity: function getRenterOnlyReturnPeriod() view returns(uint32)
+func (_EnterpriseStorage *EnterpriseStorageCaller) GetRenterOnlyReturnPeriod(opts *bind.CallOpts) (uint32, error) {
+	var out []interface{}
+	err := _EnterpriseStorage.contract.Call(opts, &out, "getRenterOnlyReturnPeriod")
+
+	if err != nil {
+		return *new(uint32), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(uint32)).(*uint32)
+
+	return out0, err
+
+}
+
+// GetRenterOnlyReturnPeriod is a free data retrieval call binding the contract method 0x7e6a7cbb.
+//
+// Solidity: function getRenterOnlyReturnPeriod() view returns(uint32)
+func (_EnterpriseStorage *EnterpriseStorageSession) GetRenterOnlyReturnPeriod() (uint32, error) {
+	return _EnterpriseStorage.Contract.GetRenterOnlyReturnPeriod(&_EnterpriseStorage.CallOpts)
+}
+
+// GetRenterOnlyReturnPeriod is a free data retrieval call binding the contract method 0x7e6a7cbb.
+//
+// Solidity: function getRenterOnlyReturnPeriod() view returns(uint32)
+func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetRenterOnlyReturnPeriod() (uint32, error) {
+	return _EnterpriseStorage.Contract.GetRenterOnlyReturnPeriod(&_EnterpriseStorage.CallOpts)
+}
+
 // GetReserve is a free data retrieval call binding the contract method 0x59bf5d39.
 //
 // Solidity: function getReserve() view returns(uint256)
@@ -844,6 +863,99 @@ func (_EnterpriseStorage *EnterpriseStorageSession) GetReserve() (*big.Int, erro
 // Solidity: function getReserve() view returns(uint256)
 func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetReserve() (*big.Int, error) {
 	return _EnterpriseStorage.Contract.GetReserve(&_EnterpriseStorage.CallOpts)
+}
+
+// GetStake is a free data retrieval call binding the contract method 0xce325bf8.
+//
+// Solidity: function getStake(uint256 stakeTokenId) view returns((uint256,uint256,uint256))
+func (_EnterpriseStorage *EnterpriseStorageCaller) GetStake(opts *bind.CallOpts, stakeTokenId *big.Int) (EnterpriseStorageStake, error) {
+	var out []interface{}
+	err := _EnterpriseStorage.contract.Call(opts, &out, "getStake", stakeTokenId)
+
+	if err != nil {
+		return *new(EnterpriseStorageStake), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(EnterpriseStorageStake)).(*EnterpriseStorageStake)
+
+	return out0, err
+
+}
+
+// GetStake is a free data retrieval call binding the contract method 0xce325bf8.
+//
+// Solidity: function getStake(uint256 stakeTokenId) view returns((uint256,uint256,uint256))
+func (_EnterpriseStorage *EnterpriseStorageSession) GetStake(stakeTokenId *big.Int) (EnterpriseStorageStake, error) {
+	return _EnterpriseStorage.Contract.GetStake(&_EnterpriseStorage.CallOpts, stakeTokenId)
+}
+
+// GetStake is a free data retrieval call binding the contract method 0xce325bf8.
+//
+// Solidity: function getStake(uint256 stakeTokenId) view returns((uint256,uint256,uint256))
+func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetStake(stakeTokenId *big.Int) (EnterpriseStorageStake, error) {
+	return _EnterpriseStorage.Contract.GetStake(&_EnterpriseStorage.CallOpts, stakeTokenId)
+}
+
+// GetStakeToken is a free data retrieval call binding the contract method 0x500a1564.
+//
+// Solidity: function getStakeToken() view returns(address)
+func (_EnterpriseStorage *EnterpriseStorageCaller) GetStakeToken(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _EnterpriseStorage.contract.Call(opts, &out, "getStakeToken")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// GetStakeToken is a free data retrieval call binding the contract method 0x500a1564.
+//
+// Solidity: function getStakeToken() view returns(address)
+func (_EnterpriseStorage *EnterpriseStorageSession) GetStakeToken() (common.Address, error) {
+	return _EnterpriseStorage.Contract.GetStakeToken(&_EnterpriseStorage.CallOpts)
+}
+
+// GetStakeToken is a free data retrieval call binding the contract method 0x500a1564.
+//
+// Solidity: function getStakeToken() view returns(address)
+func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetStakeToken() (common.Address, error) {
+	return _EnterpriseStorage.Contract.GetStakeToken(&_EnterpriseStorage.CallOpts)
+}
+
+// GetStreamingReserveHalvingPeriod is a free data retrieval call binding the contract method 0xdd9919e7.
+//
+// Solidity: function getStreamingReserveHalvingPeriod() view returns(uint32)
+func (_EnterpriseStorage *EnterpriseStorageCaller) GetStreamingReserveHalvingPeriod(opts *bind.CallOpts) (uint32, error) {
+	var out []interface{}
+	err := _EnterpriseStorage.contract.Call(opts, &out, "getStreamingReserveHalvingPeriod")
+
+	if err != nil {
+		return *new(uint32), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(uint32)).(*uint32)
+
+	return out0, err
+
+}
+
+// GetStreamingReserveHalvingPeriod is a free data retrieval call binding the contract method 0xdd9919e7.
+//
+// Solidity: function getStreamingReserveHalvingPeriod() view returns(uint32)
+func (_EnterpriseStorage *EnterpriseStorageSession) GetStreamingReserveHalvingPeriod() (uint32, error) {
+	return _EnterpriseStorage.Contract.GetStreamingReserveHalvingPeriod(&_EnterpriseStorage.CallOpts)
+}
+
+// GetStreamingReserveHalvingPeriod is a free data retrieval call binding the contract method 0xdd9919e7.
+//
+// Solidity: function getStreamingReserveHalvingPeriod() view returns(uint32)
+func (_EnterpriseStorage *EnterpriseStorageCallerSession) GetStreamingReserveHalvingPeriod() (uint32, error) {
+	return _EnterpriseStorage.Contract.GetStreamingReserveHalvingPeriod(&_EnterpriseStorage.CallOpts)
 }
 
 // GetUsedReserve is a free data retrieval call binding the contract method 0xfcb2884e.
@@ -970,68 +1082,6 @@ func (_EnterpriseStorage *EnterpriseStorageCallerSession) Owner() (common.Addres
 	return _EnterpriseStorage.Contract.Owner(&_EnterpriseStorage.CallOpts)
 }
 
-// PaymentToken is a free data retrieval call binding the contract method 0x0e101b60.
-//
-// Solidity: function paymentToken(uint256 index) view returns(address)
-func (_EnterpriseStorage *EnterpriseStorageCaller) PaymentToken(opts *bind.CallOpts, index *big.Int) (common.Address, error) {
-	var out []interface{}
-	err := _EnterpriseStorage.contract.Call(opts, &out, "paymentToken", index)
-
-	if err != nil {
-		return *new(common.Address), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-
-	return out0, err
-
-}
-
-// PaymentToken is a free data retrieval call binding the contract method 0x0e101b60.
-//
-// Solidity: function paymentToken(uint256 index) view returns(address)
-func (_EnterpriseStorage *EnterpriseStorageSession) PaymentToken(index *big.Int) (common.Address, error) {
-	return _EnterpriseStorage.Contract.PaymentToken(&_EnterpriseStorage.CallOpts, index)
-}
-
-// PaymentToken is a free data retrieval call binding the contract method 0x0e101b60.
-//
-// Solidity: function paymentToken(uint256 index) view returns(address)
-func (_EnterpriseStorage *EnterpriseStorageCallerSession) PaymentToken(index *big.Int) (common.Address, error) {
-	return _EnterpriseStorage.Contract.PaymentToken(&_EnterpriseStorage.CallOpts, index)
-}
-
-// PaymentTokenIndex is a free data retrieval call binding the contract method 0xfbac9a55.
-//
-// Solidity: function paymentTokenIndex(address token) view returns(int16)
-func (_EnterpriseStorage *EnterpriseStorageCaller) PaymentTokenIndex(opts *bind.CallOpts, token common.Address) (int16, error) {
-	var out []interface{}
-	err := _EnterpriseStorage.contract.Call(opts, &out, "paymentTokenIndex", token)
-
-	if err != nil {
-		return *new(int16), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(int16)).(*int16)
-
-	return out0, err
-
-}
-
-// PaymentTokenIndex is a free data retrieval call binding the contract method 0xfbac9a55.
-//
-// Solidity: function paymentTokenIndex(address token) view returns(int16)
-func (_EnterpriseStorage *EnterpriseStorageSession) PaymentTokenIndex(token common.Address) (int16, error) {
-	return _EnterpriseStorage.Contract.PaymentTokenIndex(&_EnterpriseStorage.CallOpts, token)
-}
-
-// PaymentTokenIndex is a free data retrieval call binding the contract method 0xfbac9a55.
-//
-// Solidity: function paymentTokenIndex(address token) view returns(int16)
-func (_EnterpriseStorage *EnterpriseStorageCallerSession) PaymentTokenIndex(token common.Address) (int16, error) {
-	return _EnterpriseStorage.Contract.PaymentTokenIndex(&_EnterpriseStorage.CallOpts, token)
-}
-
 // DisablePaymentToken is a paid mutator transaction binding the contract method 0x9c7aa7f8.
 //
 // Solidity: function disablePaymentToken(address token) returns()
@@ -1118,23 +1168,23 @@ func (_EnterpriseStorage *EnterpriseStorageTransactorSession) Initialize0(initia
 
 // InitializeTokens is a paid mutator transaction binding the contract method 0xef1f9f39.
 //
-// Solidity: function initializeTokens(address liquidityToken, address interestToken, address borrowToken) returns()
-func (_EnterpriseStorage *EnterpriseStorageTransactor) InitializeTokens(opts *bind.TransactOpts, liquidityToken common.Address, interestToken common.Address, borrowToken common.Address) (*types.Transaction, error) {
-	return _EnterpriseStorage.contract.Transact(opts, "initializeTokens", liquidityToken, interestToken, borrowToken)
+// Solidity: function initializeTokens(address enterpriseToken, address stakeToken, address rentalToken) returns()
+func (_EnterpriseStorage *EnterpriseStorageTransactor) InitializeTokens(opts *bind.TransactOpts, enterpriseToken common.Address, stakeToken common.Address, rentalToken common.Address) (*types.Transaction, error) {
+	return _EnterpriseStorage.contract.Transact(opts, "initializeTokens", enterpriseToken, stakeToken, rentalToken)
 }
 
 // InitializeTokens is a paid mutator transaction binding the contract method 0xef1f9f39.
 //
-// Solidity: function initializeTokens(address liquidityToken, address interestToken, address borrowToken) returns()
-func (_EnterpriseStorage *EnterpriseStorageSession) InitializeTokens(liquidityToken common.Address, interestToken common.Address, borrowToken common.Address) (*types.Transaction, error) {
-	return _EnterpriseStorage.Contract.InitializeTokens(&_EnterpriseStorage.TransactOpts, liquidityToken, interestToken, borrowToken)
+// Solidity: function initializeTokens(address enterpriseToken, address stakeToken, address rentalToken) returns()
+func (_EnterpriseStorage *EnterpriseStorageSession) InitializeTokens(enterpriseToken common.Address, stakeToken common.Address, rentalToken common.Address) (*types.Transaction, error) {
+	return _EnterpriseStorage.Contract.InitializeTokens(&_EnterpriseStorage.TransactOpts, enterpriseToken, stakeToken, rentalToken)
 }
 
 // InitializeTokens is a paid mutator transaction binding the contract method 0xef1f9f39.
 //
-// Solidity: function initializeTokens(address liquidityToken, address interestToken, address borrowToken) returns()
-func (_EnterpriseStorage *EnterpriseStorageTransactorSession) InitializeTokens(liquidityToken common.Address, interestToken common.Address, borrowToken common.Address) (*types.Transaction, error) {
-	return _EnterpriseStorage.Contract.InitializeTokens(&_EnterpriseStorage.TransactOpts, liquidityToken, interestToken, borrowToken)
+// Solidity: function initializeTokens(address enterpriseToken, address stakeToken, address rentalToken) returns()
+func (_EnterpriseStorage *EnterpriseStorageTransactorSession) InitializeTokens(enterpriseToken common.Address, stakeToken common.Address, rentalToken common.Address) (*types.Transaction, error) {
+	return _EnterpriseStorage.Contract.InitializeTokens(&_EnterpriseStorage.TransactOpts, enterpriseToken, stakeToken, rentalToken)
 }
 
 // SetBaseUri is a paid mutator transaction binding the contract method 0xa0bcfc7f.
@@ -1179,27 +1229,6 @@ func (_EnterpriseStorage *EnterpriseStorageTransactorSession) SetBondingCurve(po
 	return _EnterpriseStorage.Contract.SetBondingCurve(&_EnterpriseStorage.TransactOpts, pole, slope)
 }
 
-// SetBorrowerLoanReturnGracePeriod is a paid mutator transaction binding the contract method 0x2e365ade.
-//
-// Solidity: function setBorrowerLoanReturnGracePeriod(uint32 newPeriod) returns()
-func (_EnterpriseStorage *EnterpriseStorageTransactor) SetBorrowerLoanReturnGracePeriod(opts *bind.TransactOpts, newPeriod uint32) (*types.Transaction, error) {
-	return _EnterpriseStorage.contract.Transact(opts, "setBorrowerLoanReturnGracePeriod", newPeriod)
-}
-
-// SetBorrowerLoanReturnGracePeriod is a paid mutator transaction binding the contract method 0x2e365ade.
-//
-// Solidity: function setBorrowerLoanReturnGracePeriod(uint32 newPeriod) returns()
-func (_EnterpriseStorage *EnterpriseStorageSession) SetBorrowerLoanReturnGracePeriod(newPeriod uint32) (*types.Transaction, error) {
-	return _EnterpriseStorage.Contract.SetBorrowerLoanReturnGracePeriod(&_EnterpriseStorage.TransactOpts, newPeriod)
-}
-
-// SetBorrowerLoanReturnGracePeriod is a paid mutator transaction binding the contract method 0x2e365ade.
-//
-// Solidity: function setBorrowerLoanReturnGracePeriod(uint32 newPeriod) returns()
-func (_EnterpriseStorage *EnterpriseStorageTransactorSession) SetBorrowerLoanReturnGracePeriod(newPeriod uint32) (*types.Transaction, error) {
-	return _EnterpriseStorage.Contract.SetBorrowerLoanReturnGracePeriod(&_EnterpriseStorage.TransactOpts, newPeriod)
-}
-
 // SetConverter is a paid mutator transaction binding the contract method 0xb19337a4.
 //
 // Solidity: function setConverter(address newConverter) returns()
@@ -1242,46 +1271,46 @@ func (_EnterpriseStorage *EnterpriseStorageTransactorSession) SetEnterpriseColle
 	return _EnterpriseStorage.Contract.SetEnterpriseCollector(&_EnterpriseStorage.TransactOpts, newCollector)
 }
 
-// SetEnterpriseLoanCollectGracePeriod is a paid mutator transaction binding the contract method 0xb56de97e.
+// SetEnterpriseOnlyCollectionPeriod is a paid mutator transaction binding the contract method 0xc9a304cb.
 //
-// Solidity: function setEnterpriseLoanCollectGracePeriod(uint32 newPeriod) returns()
-func (_EnterpriseStorage *EnterpriseStorageTransactor) SetEnterpriseLoanCollectGracePeriod(opts *bind.TransactOpts, newPeriod uint32) (*types.Transaction, error) {
-	return _EnterpriseStorage.contract.Transact(opts, "setEnterpriseLoanCollectGracePeriod", newPeriod)
+// Solidity: function setEnterpriseOnlyCollectionPeriod(uint32 newPeriod) returns()
+func (_EnterpriseStorage *EnterpriseStorageTransactor) SetEnterpriseOnlyCollectionPeriod(opts *bind.TransactOpts, newPeriod uint32) (*types.Transaction, error) {
+	return _EnterpriseStorage.contract.Transact(opts, "setEnterpriseOnlyCollectionPeriod", newPeriod)
 }
 
-// SetEnterpriseLoanCollectGracePeriod is a paid mutator transaction binding the contract method 0xb56de97e.
+// SetEnterpriseOnlyCollectionPeriod is a paid mutator transaction binding the contract method 0xc9a304cb.
 //
-// Solidity: function setEnterpriseLoanCollectGracePeriod(uint32 newPeriod) returns()
-func (_EnterpriseStorage *EnterpriseStorageSession) SetEnterpriseLoanCollectGracePeriod(newPeriod uint32) (*types.Transaction, error) {
-	return _EnterpriseStorage.Contract.SetEnterpriseLoanCollectGracePeriod(&_EnterpriseStorage.TransactOpts, newPeriod)
+// Solidity: function setEnterpriseOnlyCollectionPeriod(uint32 newPeriod) returns()
+func (_EnterpriseStorage *EnterpriseStorageSession) SetEnterpriseOnlyCollectionPeriod(newPeriod uint32) (*types.Transaction, error) {
+	return _EnterpriseStorage.Contract.SetEnterpriseOnlyCollectionPeriod(&_EnterpriseStorage.TransactOpts, newPeriod)
 }
 
-// SetEnterpriseLoanCollectGracePeriod is a paid mutator transaction binding the contract method 0xb56de97e.
+// SetEnterpriseOnlyCollectionPeriod is a paid mutator transaction binding the contract method 0xc9a304cb.
 //
-// Solidity: function setEnterpriseLoanCollectGracePeriod(uint32 newPeriod) returns()
-func (_EnterpriseStorage *EnterpriseStorageTransactorSession) SetEnterpriseLoanCollectGracePeriod(newPeriod uint32) (*types.Transaction, error) {
-	return _EnterpriseStorage.Contract.SetEnterpriseLoanCollectGracePeriod(&_EnterpriseStorage.TransactOpts, newPeriod)
+// Solidity: function setEnterpriseOnlyCollectionPeriod(uint32 newPeriod) returns()
+func (_EnterpriseStorage *EnterpriseStorageTransactorSession) SetEnterpriseOnlyCollectionPeriod(newPeriod uint32) (*types.Transaction, error) {
+	return _EnterpriseStorage.Contract.SetEnterpriseOnlyCollectionPeriod(&_EnterpriseStorage.TransactOpts, newPeriod)
 }
 
-// SetEnterpriseVault is a paid mutator transaction binding the contract method 0x90f55edd.
+// SetEnterpriseWallet is a paid mutator transaction binding the contract method 0x2107730c.
 //
-// Solidity: function setEnterpriseVault(address newVault) returns()
-func (_EnterpriseStorage *EnterpriseStorageTransactor) SetEnterpriseVault(opts *bind.TransactOpts, newVault common.Address) (*types.Transaction, error) {
-	return _EnterpriseStorage.contract.Transact(opts, "setEnterpriseVault", newVault)
+// Solidity: function setEnterpriseWallet(address newWallet) returns()
+func (_EnterpriseStorage *EnterpriseStorageTransactor) SetEnterpriseWallet(opts *bind.TransactOpts, newWallet common.Address) (*types.Transaction, error) {
+	return _EnterpriseStorage.contract.Transact(opts, "setEnterpriseWallet", newWallet)
 }
 
-// SetEnterpriseVault is a paid mutator transaction binding the contract method 0x90f55edd.
+// SetEnterpriseWallet is a paid mutator transaction binding the contract method 0x2107730c.
 //
-// Solidity: function setEnterpriseVault(address newVault) returns()
-func (_EnterpriseStorage *EnterpriseStorageSession) SetEnterpriseVault(newVault common.Address) (*types.Transaction, error) {
-	return _EnterpriseStorage.Contract.SetEnterpriseVault(&_EnterpriseStorage.TransactOpts, newVault)
+// Solidity: function setEnterpriseWallet(address newWallet) returns()
+func (_EnterpriseStorage *EnterpriseStorageSession) SetEnterpriseWallet(newWallet common.Address) (*types.Transaction, error) {
+	return _EnterpriseStorage.Contract.SetEnterpriseWallet(&_EnterpriseStorage.TransactOpts, newWallet)
 }
 
-// SetEnterpriseVault is a paid mutator transaction binding the contract method 0x90f55edd.
+// SetEnterpriseWallet is a paid mutator transaction binding the contract method 0x2107730c.
 //
-// Solidity: function setEnterpriseVault(address newVault) returns()
-func (_EnterpriseStorage *EnterpriseStorageTransactorSession) SetEnterpriseVault(newVault common.Address) (*types.Transaction, error) {
-	return _EnterpriseStorage.Contract.SetEnterpriseVault(&_EnterpriseStorage.TransactOpts, newVault)
+// Solidity: function setEnterpriseWallet(address newWallet) returns()
+func (_EnterpriseStorage *EnterpriseStorageTransactorSession) SetEnterpriseWallet(newWallet common.Address) (*types.Transaction, error) {
+	return _EnterpriseStorage.Contract.SetEnterpriseWallet(&_EnterpriseStorage.TransactOpts, newWallet)
 }
 
 // SetGcFeePercent is a paid mutator transaction binding the contract method 0x449497ec.
@@ -1305,25 +1334,46 @@ func (_EnterpriseStorage *EnterpriseStorageTransactorSession) SetGcFeePercent(ne
 	return _EnterpriseStorage.Contract.SetGcFeePercent(&_EnterpriseStorage.TransactOpts, newGcFeePercent)
 }
 
-// SetInterestGapHalvingPeriod is a paid mutator transaction binding the contract method 0xe1a5fa49.
+// SetRenterOnlyReturnPeriod is a paid mutator transaction binding the contract method 0x7c14d991.
 //
-// Solidity: function setInterestGapHalvingPeriod(uint32 interestGapHalvingPeriod) returns()
-func (_EnterpriseStorage *EnterpriseStorageTransactor) SetInterestGapHalvingPeriod(opts *bind.TransactOpts, interestGapHalvingPeriod uint32) (*types.Transaction, error) {
-	return _EnterpriseStorage.contract.Transact(opts, "setInterestGapHalvingPeriod", interestGapHalvingPeriod)
+// Solidity: function setRenterOnlyReturnPeriod(uint32 newPeriod) returns()
+func (_EnterpriseStorage *EnterpriseStorageTransactor) SetRenterOnlyReturnPeriod(opts *bind.TransactOpts, newPeriod uint32) (*types.Transaction, error) {
+	return _EnterpriseStorage.contract.Transact(opts, "setRenterOnlyReturnPeriod", newPeriod)
 }
 
-// SetInterestGapHalvingPeriod is a paid mutator transaction binding the contract method 0xe1a5fa49.
+// SetRenterOnlyReturnPeriod is a paid mutator transaction binding the contract method 0x7c14d991.
 //
-// Solidity: function setInterestGapHalvingPeriod(uint32 interestGapHalvingPeriod) returns()
-func (_EnterpriseStorage *EnterpriseStorageSession) SetInterestGapHalvingPeriod(interestGapHalvingPeriod uint32) (*types.Transaction, error) {
-	return _EnterpriseStorage.Contract.SetInterestGapHalvingPeriod(&_EnterpriseStorage.TransactOpts, interestGapHalvingPeriod)
+// Solidity: function setRenterOnlyReturnPeriod(uint32 newPeriod) returns()
+func (_EnterpriseStorage *EnterpriseStorageSession) SetRenterOnlyReturnPeriod(newPeriod uint32) (*types.Transaction, error) {
+	return _EnterpriseStorage.Contract.SetRenterOnlyReturnPeriod(&_EnterpriseStorage.TransactOpts, newPeriod)
 }
 
-// SetInterestGapHalvingPeriod is a paid mutator transaction binding the contract method 0xe1a5fa49.
+// SetRenterOnlyReturnPeriod is a paid mutator transaction binding the contract method 0x7c14d991.
 //
-// Solidity: function setInterestGapHalvingPeriod(uint32 interestGapHalvingPeriod) returns()
-func (_EnterpriseStorage *EnterpriseStorageTransactorSession) SetInterestGapHalvingPeriod(interestGapHalvingPeriod uint32) (*types.Transaction, error) {
-	return _EnterpriseStorage.Contract.SetInterestGapHalvingPeriod(&_EnterpriseStorage.TransactOpts, interestGapHalvingPeriod)
+// Solidity: function setRenterOnlyReturnPeriod(uint32 newPeriod) returns()
+func (_EnterpriseStorage *EnterpriseStorageTransactorSession) SetRenterOnlyReturnPeriod(newPeriod uint32) (*types.Transaction, error) {
+	return _EnterpriseStorage.Contract.SetRenterOnlyReturnPeriod(&_EnterpriseStorage.TransactOpts, newPeriod)
+}
+
+// SetStreamingReserveHalvingPeriod is a paid mutator transaction binding the contract method 0xf87c4261.
+//
+// Solidity: function setStreamingReserveHalvingPeriod(uint32 streamingReserveHalvingPeriod) returns()
+func (_EnterpriseStorage *EnterpriseStorageTransactor) SetStreamingReserveHalvingPeriod(opts *bind.TransactOpts, streamingReserveHalvingPeriod uint32) (*types.Transaction, error) {
+	return _EnterpriseStorage.contract.Transact(opts, "setStreamingReserveHalvingPeriod", streamingReserveHalvingPeriod)
+}
+
+// SetStreamingReserveHalvingPeriod is a paid mutator transaction binding the contract method 0xf87c4261.
+//
+// Solidity: function setStreamingReserveHalvingPeriod(uint32 streamingReserveHalvingPeriod) returns()
+func (_EnterpriseStorage *EnterpriseStorageSession) SetStreamingReserveHalvingPeriod(streamingReserveHalvingPeriod uint32) (*types.Transaction, error) {
+	return _EnterpriseStorage.Contract.SetStreamingReserveHalvingPeriod(&_EnterpriseStorage.TransactOpts, streamingReserveHalvingPeriod)
+}
+
+// SetStreamingReserveHalvingPeriod is a paid mutator transaction binding the contract method 0xf87c4261.
+//
+// Solidity: function setStreamingReserveHalvingPeriod(uint32 streamingReserveHalvingPeriod) returns()
+func (_EnterpriseStorage *EnterpriseStorageTransactorSession) SetStreamingReserveHalvingPeriod(streamingReserveHalvingPeriod uint32) (*types.Transaction, error) {
+	return _EnterpriseStorage.Contract.SetStreamingReserveHalvingPeriod(&_EnterpriseStorage.TransactOpts, streamingReserveHalvingPeriod)
 }
 
 // TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
@@ -1347,88 +1397,25 @@ func (_EnterpriseStorage *EnterpriseStorageTransactorSession) TransferOwnership(
 	return _EnterpriseStorage.Contract.TransferOwnership(&_EnterpriseStorage.TransactOpts, newOwner)
 }
 
-// UpgradeBorrowToken is a paid mutator transaction binding the contract method 0x7b024363.
+// Upgrade is a paid mutator transaction binding the contract method 0x6df0bb14.
 //
-// Solidity: function upgradeBorrowToken(address implementation) returns()
-func (_EnterpriseStorage *EnterpriseStorageTransactor) UpgradeBorrowToken(opts *bind.TransactOpts, implementation common.Address) (*types.Transaction, error) {
-	return _EnterpriseStorage.contract.Transact(opts, "upgradeBorrowToken", implementation)
+// Solidity: function upgrade(address enterpriseFactory, address enterpriseImplementation, address rentalTokenImplementation, address stakeTokenImplementation, address powerTokenImplementation, address[] powerTokens) returns()
+func (_EnterpriseStorage *EnterpriseStorageTransactor) Upgrade(opts *bind.TransactOpts, enterpriseFactory common.Address, enterpriseImplementation common.Address, rentalTokenImplementation common.Address, stakeTokenImplementation common.Address, powerTokenImplementation common.Address, powerTokens []common.Address) (*types.Transaction, error) {
+	return _EnterpriseStorage.contract.Transact(opts, "upgrade", enterpriseFactory, enterpriseImplementation, rentalTokenImplementation, stakeTokenImplementation, powerTokenImplementation, powerTokens)
 }
 
-// UpgradeBorrowToken is a paid mutator transaction binding the contract method 0x7b024363.
+// Upgrade is a paid mutator transaction binding the contract method 0x6df0bb14.
 //
-// Solidity: function upgradeBorrowToken(address implementation) returns()
-func (_EnterpriseStorage *EnterpriseStorageSession) UpgradeBorrowToken(implementation common.Address) (*types.Transaction, error) {
-	return _EnterpriseStorage.Contract.UpgradeBorrowToken(&_EnterpriseStorage.TransactOpts, implementation)
+// Solidity: function upgrade(address enterpriseFactory, address enterpriseImplementation, address rentalTokenImplementation, address stakeTokenImplementation, address powerTokenImplementation, address[] powerTokens) returns()
+func (_EnterpriseStorage *EnterpriseStorageSession) Upgrade(enterpriseFactory common.Address, enterpriseImplementation common.Address, rentalTokenImplementation common.Address, stakeTokenImplementation common.Address, powerTokenImplementation common.Address, powerTokens []common.Address) (*types.Transaction, error) {
+	return _EnterpriseStorage.Contract.Upgrade(&_EnterpriseStorage.TransactOpts, enterpriseFactory, enterpriseImplementation, rentalTokenImplementation, stakeTokenImplementation, powerTokenImplementation, powerTokens)
 }
 
-// UpgradeBorrowToken is a paid mutator transaction binding the contract method 0x7b024363.
+// Upgrade is a paid mutator transaction binding the contract method 0x6df0bb14.
 //
-// Solidity: function upgradeBorrowToken(address implementation) returns()
-func (_EnterpriseStorage *EnterpriseStorageTransactorSession) UpgradeBorrowToken(implementation common.Address) (*types.Transaction, error) {
-	return _EnterpriseStorage.Contract.UpgradeBorrowToken(&_EnterpriseStorage.TransactOpts, implementation)
-}
-
-// UpgradeEnterprise is a paid mutator transaction binding the contract method 0xc1fc16d8.
-//
-// Solidity: function upgradeEnterprise(address implementation) returns()
-func (_EnterpriseStorage *EnterpriseStorageTransactor) UpgradeEnterprise(opts *bind.TransactOpts, implementation common.Address) (*types.Transaction, error) {
-	return _EnterpriseStorage.contract.Transact(opts, "upgradeEnterprise", implementation)
-}
-
-// UpgradeEnterprise is a paid mutator transaction binding the contract method 0xc1fc16d8.
-//
-// Solidity: function upgradeEnterprise(address implementation) returns()
-func (_EnterpriseStorage *EnterpriseStorageSession) UpgradeEnterprise(implementation common.Address) (*types.Transaction, error) {
-	return _EnterpriseStorage.Contract.UpgradeEnterprise(&_EnterpriseStorage.TransactOpts, implementation)
-}
-
-// UpgradeEnterprise is a paid mutator transaction binding the contract method 0xc1fc16d8.
-//
-// Solidity: function upgradeEnterprise(address implementation) returns()
-func (_EnterpriseStorage *EnterpriseStorageTransactorSession) UpgradeEnterprise(implementation common.Address) (*types.Transaction, error) {
-	return _EnterpriseStorage.Contract.UpgradeEnterprise(&_EnterpriseStorage.TransactOpts, implementation)
-}
-
-// UpgradeInterestToken is a paid mutator transaction binding the contract method 0x2b2f6095.
-//
-// Solidity: function upgradeInterestToken(address implementation) returns()
-func (_EnterpriseStorage *EnterpriseStorageTransactor) UpgradeInterestToken(opts *bind.TransactOpts, implementation common.Address) (*types.Transaction, error) {
-	return _EnterpriseStorage.contract.Transact(opts, "upgradeInterestToken", implementation)
-}
-
-// UpgradeInterestToken is a paid mutator transaction binding the contract method 0x2b2f6095.
-//
-// Solidity: function upgradeInterestToken(address implementation) returns()
-func (_EnterpriseStorage *EnterpriseStorageSession) UpgradeInterestToken(implementation common.Address) (*types.Transaction, error) {
-	return _EnterpriseStorage.Contract.UpgradeInterestToken(&_EnterpriseStorage.TransactOpts, implementation)
-}
-
-// UpgradeInterestToken is a paid mutator transaction binding the contract method 0x2b2f6095.
-//
-// Solidity: function upgradeInterestToken(address implementation) returns()
-func (_EnterpriseStorage *EnterpriseStorageTransactorSession) UpgradeInterestToken(implementation common.Address) (*types.Transaction, error) {
-	return _EnterpriseStorage.Contract.UpgradeInterestToken(&_EnterpriseStorage.TransactOpts, implementation)
-}
-
-// UpgradePowerToken is a paid mutator transaction binding the contract method 0xc2294784.
-//
-// Solidity: function upgradePowerToken(address powerToken, address implementation) returns()
-func (_EnterpriseStorage *EnterpriseStorageTransactor) UpgradePowerToken(opts *bind.TransactOpts, powerToken common.Address, implementation common.Address) (*types.Transaction, error) {
-	return _EnterpriseStorage.contract.Transact(opts, "upgradePowerToken", powerToken, implementation)
-}
-
-// UpgradePowerToken is a paid mutator transaction binding the contract method 0xc2294784.
-//
-// Solidity: function upgradePowerToken(address powerToken, address implementation) returns()
-func (_EnterpriseStorage *EnterpriseStorageSession) UpgradePowerToken(powerToken common.Address, implementation common.Address) (*types.Transaction, error) {
-	return _EnterpriseStorage.Contract.UpgradePowerToken(&_EnterpriseStorage.TransactOpts, powerToken, implementation)
-}
-
-// UpgradePowerToken is a paid mutator transaction binding the contract method 0xc2294784.
-//
-// Solidity: function upgradePowerToken(address powerToken, address implementation) returns()
-func (_EnterpriseStorage *EnterpriseStorageTransactorSession) UpgradePowerToken(powerToken common.Address, implementation common.Address) (*types.Transaction, error) {
-	return _EnterpriseStorage.Contract.UpgradePowerToken(&_EnterpriseStorage.TransactOpts, powerToken, implementation)
+// Solidity: function upgrade(address enterpriseFactory, address enterpriseImplementation, address rentalTokenImplementation, address stakeTokenImplementation, address powerTokenImplementation, address[] powerTokens) returns()
+func (_EnterpriseStorage *EnterpriseStorageTransactorSession) Upgrade(enterpriseFactory common.Address, enterpriseImplementation common.Address, rentalTokenImplementation common.Address, stakeTokenImplementation common.Address, powerTokenImplementation common.Address, powerTokens []common.Address) (*types.Transaction, error) {
+	return _EnterpriseStorage.Contract.Upgrade(&_EnterpriseStorage.TransactOpts, enterpriseFactory, enterpriseImplementation, rentalTokenImplementation, stakeTokenImplementation, powerTokenImplementation, powerTokens)
 }
 
 // EnterpriseStorageBaseUriChangedIterator is returned from FilterBaseUriChanged and is used to iterate over the raw logs and unpacked data for BaseUriChanged events raised by the EnterpriseStorage contract.
@@ -1694,140 +1681,6 @@ func (_EnterpriseStorage *EnterpriseStorageFilterer) WatchBondingChanged(opts *b
 func (_EnterpriseStorage *EnterpriseStorageFilterer) ParseBondingChanged(log types.Log) (*EnterpriseStorageBondingChanged, error) {
 	event := new(EnterpriseStorageBondingChanged)
 	if err := _EnterpriseStorage.contract.UnpackLog(event, "BondingChanged", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-// EnterpriseStorageBorrowerLoanReturnGracePeriodChangedIterator is returned from FilterBorrowerLoanReturnGracePeriodChanged and is used to iterate over the raw logs and unpacked data for BorrowerLoanReturnGracePeriodChanged events raised by the EnterpriseStorage contract.
-type EnterpriseStorageBorrowerLoanReturnGracePeriodChangedIterator struct {
-	Event *EnterpriseStorageBorrowerLoanReturnGracePeriodChanged // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *EnterpriseStorageBorrowerLoanReturnGracePeriodChangedIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(EnterpriseStorageBorrowerLoanReturnGracePeriodChanged)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(EnterpriseStorageBorrowerLoanReturnGracePeriodChanged)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *EnterpriseStorageBorrowerLoanReturnGracePeriodChangedIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *EnterpriseStorageBorrowerLoanReturnGracePeriodChangedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// EnterpriseStorageBorrowerLoanReturnGracePeriodChanged represents a BorrowerLoanReturnGracePeriodChanged event raised by the EnterpriseStorage contract.
-type EnterpriseStorageBorrowerLoanReturnGracePeriodChanged struct {
-	Period uint32
-	Raw    types.Log // Blockchain specific contextual infos
-}
-
-// FilterBorrowerLoanReturnGracePeriodChanged is a free log retrieval operation binding the contract event 0xf6ae16e9e9771497fc501d1caac6168e19c36e4639d7273813e3b57066035f2a.
-//
-// Solidity: event BorrowerLoanReturnGracePeriodChanged(uint32 period)
-func (_EnterpriseStorage *EnterpriseStorageFilterer) FilterBorrowerLoanReturnGracePeriodChanged(opts *bind.FilterOpts) (*EnterpriseStorageBorrowerLoanReturnGracePeriodChangedIterator, error) {
-
-	logs, sub, err := _EnterpriseStorage.contract.FilterLogs(opts, "BorrowerLoanReturnGracePeriodChanged")
-	if err != nil {
-		return nil, err
-	}
-	return &EnterpriseStorageBorrowerLoanReturnGracePeriodChangedIterator{contract: _EnterpriseStorage.contract, event: "BorrowerLoanReturnGracePeriodChanged", logs: logs, sub: sub}, nil
-}
-
-// WatchBorrowerLoanReturnGracePeriodChanged is a free log subscription operation binding the contract event 0xf6ae16e9e9771497fc501d1caac6168e19c36e4639d7273813e3b57066035f2a.
-//
-// Solidity: event BorrowerLoanReturnGracePeriodChanged(uint32 period)
-func (_EnterpriseStorage *EnterpriseStorageFilterer) WatchBorrowerLoanReturnGracePeriodChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseStorageBorrowerLoanReturnGracePeriodChanged) (event.Subscription, error) {
-
-	logs, sub, err := _EnterpriseStorage.contract.WatchLogs(opts, "BorrowerLoanReturnGracePeriodChanged")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(EnterpriseStorageBorrowerLoanReturnGracePeriodChanged)
-				if err := _EnterpriseStorage.contract.UnpackLog(event, "BorrowerLoanReturnGracePeriodChanged", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseBorrowerLoanReturnGracePeriodChanged is a log parse operation binding the contract event 0xf6ae16e9e9771497fc501d1caac6168e19c36e4639d7273813e3b57066035f2a.
-//
-// Solidity: event BorrowerLoanReturnGracePeriodChanged(uint32 period)
-func (_EnterpriseStorage *EnterpriseStorageFilterer) ParseBorrowerLoanReturnGracePeriodChanged(log types.Log) (*EnterpriseStorageBorrowerLoanReturnGracePeriodChanged, error) {
-	event := new(EnterpriseStorageBorrowerLoanReturnGracePeriodChanged)
-	if err := _EnterpriseStorage.contract.UnpackLog(event, "BorrowerLoanReturnGracePeriodChanged", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
@@ -2102,9 +1955,9 @@ func (_EnterpriseStorage *EnterpriseStorageFilterer) ParseEnterpriseCollectorCha
 	return event, nil
 }
 
-// EnterpriseStorageEnterpriseLoanCollectGracePeriodChangedIterator is returned from FilterEnterpriseLoanCollectGracePeriodChanged and is used to iterate over the raw logs and unpacked data for EnterpriseLoanCollectGracePeriodChanged events raised by the EnterpriseStorage contract.
-type EnterpriseStorageEnterpriseLoanCollectGracePeriodChangedIterator struct {
-	Event *EnterpriseStorageEnterpriseLoanCollectGracePeriodChanged // Event containing the contract specifics and raw log
+// EnterpriseStorageEnterpriseOnlyCollectionPeriodChangedIterator is returned from FilterEnterpriseOnlyCollectionPeriodChanged and is used to iterate over the raw logs and unpacked data for EnterpriseOnlyCollectionPeriodChanged events raised by the EnterpriseStorage contract.
+type EnterpriseStorageEnterpriseOnlyCollectionPeriodChangedIterator struct {
+	Event *EnterpriseStorageEnterpriseOnlyCollectionPeriodChanged // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -2118,7 +1971,7 @@ type EnterpriseStorageEnterpriseLoanCollectGracePeriodChangedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *EnterpriseStorageEnterpriseLoanCollectGracePeriodChangedIterator) Next() bool {
+func (it *EnterpriseStorageEnterpriseOnlyCollectionPeriodChangedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -2127,7 +1980,7 @@ func (it *EnterpriseStorageEnterpriseLoanCollectGracePeriodChangedIterator) Next
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(EnterpriseStorageEnterpriseLoanCollectGracePeriodChanged)
+			it.Event = new(EnterpriseStorageEnterpriseOnlyCollectionPeriodChanged)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -2142,7 +1995,7 @@ func (it *EnterpriseStorageEnterpriseLoanCollectGracePeriodChangedIterator) Next
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(EnterpriseStorageEnterpriseLoanCollectGracePeriodChanged)
+		it.Event = new(EnterpriseStorageEnterpriseOnlyCollectionPeriodChanged)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -2158,41 +2011,41 @@ func (it *EnterpriseStorageEnterpriseLoanCollectGracePeriodChangedIterator) Next
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *EnterpriseStorageEnterpriseLoanCollectGracePeriodChangedIterator) Error() error {
+func (it *EnterpriseStorageEnterpriseOnlyCollectionPeriodChangedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *EnterpriseStorageEnterpriseLoanCollectGracePeriodChangedIterator) Close() error {
+func (it *EnterpriseStorageEnterpriseOnlyCollectionPeriodChangedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// EnterpriseStorageEnterpriseLoanCollectGracePeriodChanged represents a EnterpriseLoanCollectGracePeriodChanged event raised by the EnterpriseStorage contract.
-type EnterpriseStorageEnterpriseLoanCollectGracePeriodChanged struct {
+// EnterpriseStorageEnterpriseOnlyCollectionPeriodChanged represents a EnterpriseOnlyCollectionPeriodChanged event raised by the EnterpriseStorage contract.
+type EnterpriseStorageEnterpriseOnlyCollectionPeriodChanged struct {
 	Period uint32
 	Raw    types.Log // Blockchain specific contextual infos
 }
 
-// FilterEnterpriseLoanCollectGracePeriodChanged is a free log retrieval operation binding the contract event 0x7c5a703a1928f0d18042c0454d90ddfe036b518c756a39cd82aca939b71d801b.
+// FilterEnterpriseOnlyCollectionPeriodChanged is a free log retrieval operation binding the contract event 0xd076b5bc77c447b04d82e76a12ec958bfe6d48418cce446aaf9ebeb3136638eb.
 //
-// Solidity: event EnterpriseLoanCollectGracePeriodChanged(uint32 period)
-func (_EnterpriseStorage *EnterpriseStorageFilterer) FilterEnterpriseLoanCollectGracePeriodChanged(opts *bind.FilterOpts) (*EnterpriseStorageEnterpriseLoanCollectGracePeriodChangedIterator, error) {
+// Solidity: event EnterpriseOnlyCollectionPeriodChanged(uint32 period)
+func (_EnterpriseStorage *EnterpriseStorageFilterer) FilterEnterpriseOnlyCollectionPeriodChanged(opts *bind.FilterOpts) (*EnterpriseStorageEnterpriseOnlyCollectionPeriodChangedIterator, error) {
 
-	logs, sub, err := _EnterpriseStorage.contract.FilterLogs(opts, "EnterpriseLoanCollectGracePeriodChanged")
+	logs, sub, err := _EnterpriseStorage.contract.FilterLogs(opts, "EnterpriseOnlyCollectionPeriodChanged")
 	if err != nil {
 		return nil, err
 	}
-	return &EnterpriseStorageEnterpriseLoanCollectGracePeriodChangedIterator{contract: _EnterpriseStorage.contract, event: "EnterpriseLoanCollectGracePeriodChanged", logs: logs, sub: sub}, nil
+	return &EnterpriseStorageEnterpriseOnlyCollectionPeriodChangedIterator{contract: _EnterpriseStorage.contract, event: "EnterpriseOnlyCollectionPeriodChanged", logs: logs, sub: sub}, nil
 }
 
-// WatchEnterpriseLoanCollectGracePeriodChanged is a free log subscription operation binding the contract event 0x7c5a703a1928f0d18042c0454d90ddfe036b518c756a39cd82aca939b71d801b.
+// WatchEnterpriseOnlyCollectionPeriodChanged is a free log subscription operation binding the contract event 0xd076b5bc77c447b04d82e76a12ec958bfe6d48418cce446aaf9ebeb3136638eb.
 //
-// Solidity: event EnterpriseLoanCollectGracePeriodChanged(uint32 period)
-func (_EnterpriseStorage *EnterpriseStorageFilterer) WatchEnterpriseLoanCollectGracePeriodChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseStorageEnterpriseLoanCollectGracePeriodChanged) (event.Subscription, error) {
+// Solidity: event EnterpriseOnlyCollectionPeriodChanged(uint32 period)
+func (_EnterpriseStorage *EnterpriseStorageFilterer) WatchEnterpriseOnlyCollectionPeriodChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseStorageEnterpriseOnlyCollectionPeriodChanged) (event.Subscription, error) {
 
-	logs, sub, err := _EnterpriseStorage.contract.WatchLogs(opts, "EnterpriseLoanCollectGracePeriodChanged")
+	logs, sub, err := _EnterpriseStorage.contract.WatchLogs(opts, "EnterpriseOnlyCollectionPeriodChanged")
 	if err != nil {
 		return nil, err
 	}
@@ -2202,8 +2055,8 @@ func (_EnterpriseStorage *EnterpriseStorageFilterer) WatchEnterpriseLoanCollectG
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(EnterpriseStorageEnterpriseLoanCollectGracePeriodChanged)
-				if err := _EnterpriseStorage.contract.UnpackLog(event, "EnterpriseLoanCollectGracePeriodChanged", log); err != nil {
+				event := new(EnterpriseStorageEnterpriseOnlyCollectionPeriodChanged)
+				if err := _EnterpriseStorage.contract.UnpackLog(event, "EnterpriseOnlyCollectionPeriodChanged", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -2224,12 +2077,12 @@ func (_EnterpriseStorage *EnterpriseStorageFilterer) WatchEnterpriseLoanCollectG
 	}), nil
 }
 
-// ParseEnterpriseLoanCollectGracePeriodChanged is a log parse operation binding the contract event 0x7c5a703a1928f0d18042c0454d90ddfe036b518c756a39cd82aca939b71d801b.
+// ParseEnterpriseOnlyCollectionPeriodChanged is a log parse operation binding the contract event 0xd076b5bc77c447b04d82e76a12ec958bfe6d48418cce446aaf9ebeb3136638eb.
 //
-// Solidity: event EnterpriseLoanCollectGracePeriodChanged(uint32 period)
-func (_EnterpriseStorage *EnterpriseStorageFilterer) ParseEnterpriseLoanCollectGracePeriodChanged(log types.Log) (*EnterpriseStorageEnterpriseLoanCollectGracePeriodChanged, error) {
-	event := new(EnterpriseStorageEnterpriseLoanCollectGracePeriodChanged)
-	if err := _EnterpriseStorage.contract.UnpackLog(event, "EnterpriseLoanCollectGracePeriodChanged", log); err != nil {
+// Solidity: event EnterpriseOnlyCollectionPeriodChanged(uint32 period)
+func (_EnterpriseStorage *EnterpriseStorageFilterer) ParseEnterpriseOnlyCollectionPeriodChanged(log types.Log) (*EnterpriseStorageEnterpriseOnlyCollectionPeriodChanged, error) {
+	event := new(EnterpriseStorageEnterpriseOnlyCollectionPeriodChanged)
+	if err := _EnterpriseStorage.contract.UnpackLog(event, "EnterpriseOnlyCollectionPeriodChanged", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
@@ -2369,9 +2222,9 @@ func (_EnterpriseStorage *EnterpriseStorageFilterer) ParseEnterpriseShutdown(log
 	return event, nil
 }
 
-// EnterpriseStorageEnterpriseVaultChangedIterator is returned from FilterEnterpriseVaultChanged and is used to iterate over the raw logs and unpacked data for EnterpriseVaultChanged events raised by the EnterpriseStorage contract.
-type EnterpriseStorageEnterpriseVaultChangedIterator struct {
-	Event *EnterpriseStorageEnterpriseVaultChanged // Event containing the contract specifics and raw log
+// EnterpriseStorageEnterpriseWalletChangedIterator is returned from FilterEnterpriseWalletChanged and is used to iterate over the raw logs and unpacked data for EnterpriseWalletChanged events raised by the EnterpriseStorage contract.
+type EnterpriseStorageEnterpriseWalletChangedIterator struct {
+	Event *EnterpriseStorageEnterpriseWalletChanged // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -2385,7 +2238,7 @@ type EnterpriseStorageEnterpriseVaultChangedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *EnterpriseStorageEnterpriseVaultChangedIterator) Next() bool {
+func (it *EnterpriseStorageEnterpriseWalletChangedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -2394,7 +2247,7 @@ func (it *EnterpriseStorageEnterpriseVaultChangedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(EnterpriseStorageEnterpriseVaultChanged)
+			it.Event = new(EnterpriseStorageEnterpriseWalletChanged)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -2409,7 +2262,7 @@ func (it *EnterpriseStorageEnterpriseVaultChangedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(EnterpriseStorageEnterpriseVaultChanged)
+		it.Event = new(EnterpriseStorageEnterpriseWalletChanged)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -2425,41 +2278,41 @@ func (it *EnterpriseStorageEnterpriseVaultChangedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *EnterpriseStorageEnterpriseVaultChangedIterator) Error() error {
+func (it *EnterpriseStorageEnterpriseWalletChangedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *EnterpriseStorageEnterpriseVaultChangedIterator) Close() error {
+func (it *EnterpriseStorageEnterpriseWalletChangedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// EnterpriseStorageEnterpriseVaultChanged represents a EnterpriseVaultChanged event raised by the EnterpriseStorage contract.
-type EnterpriseStorageEnterpriseVaultChanged struct {
-	Vault common.Address
-	Raw   types.Log // Blockchain specific contextual infos
+// EnterpriseStorageEnterpriseWalletChanged represents a EnterpriseWalletChanged event raised by the EnterpriseStorage contract.
+type EnterpriseStorageEnterpriseWalletChanged struct {
+	Wallet common.Address
+	Raw    types.Log // Blockchain specific contextual infos
 }
 
-// FilterEnterpriseVaultChanged is a free log retrieval operation binding the contract event 0x0dc14fdd751203f0c4dac8cc93c303e991c5f8e60af35674d5c82061929762dd.
+// FilterEnterpriseWalletChanged is a free log retrieval operation binding the contract event 0x471e342623158b92281274ef7263e4f9a0e0b748c1c328113afbb58742c1789f.
 //
-// Solidity: event EnterpriseVaultChanged(address vault)
-func (_EnterpriseStorage *EnterpriseStorageFilterer) FilterEnterpriseVaultChanged(opts *bind.FilterOpts) (*EnterpriseStorageEnterpriseVaultChangedIterator, error) {
+// Solidity: event EnterpriseWalletChanged(address wallet)
+func (_EnterpriseStorage *EnterpriseStorageFilterer) FilterEnterpriseWalletChanged(opts *bind.FilterOpts) (*EnterpriseStorageEnterpriseWalletChangedIterator, error) {
 
-	logs, sub, err := _EnterpriseStorage.contract.FilterLogs(opts, "EnterpriseVaultChanged")
+	logs, sub, err := _EnterpriseStorage.contract.FilterLogs(opts, "EnterpriseWalletChanged")
 	if err != nil {
 		return nil, err
 	}
-	return &EnterpriseStorageEnterpriseVaultChangedIterator{contract: _EnterpriseStorage.contract, event: "EnterpriseVaultChanged", logs: logs, sub: sub}, nil
+	return &EnterpriseStorageEnterpriseWalletChangedIterator{contract: _EnterpriseStorage.contract, event: "EnterpriseWalletChanged", logs: logs, sub: sub}, nil
 }
 
-// WatchEnterpriseVaultChanged is a free log subscription operation binding the contract event 0x0dc14fdd751203f0c4dac8cc93c303e991c5f8e60af35674d5c82061929762dd.
+// WatchEnterpriseWalletChanged is a free log subscription operation binding the contract event 0x471e342623158b92281274ef7263e4f9a0e0b748c1c328113afbb58742c1789f.
 //
-// Solidity: event EnterpriseVaultChanged(address vault)
-func (_EnterpriseStorage *EnterpriseStorageFilterer) WatchEnterpriseVaultChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseStorageEnterpriseVaultChanged) (event.Subscription, error) {
+// Solidity: event EnterpriseWalletChanged(address wallet)
+func (_EnterpriseStorage *EnterpriseStorageFilterer) WatchEnterpriseWalletChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseStorageEnterpriseWalletChanged) (event.Subscription, error) {
 
-	logs, sub, err := _EnterpriseStorage.contract.WatchLogs(opts, "EnterpriseVaultChanged")
+	logs, sub, err := _EnterpriseStorage.contract.WatchLogs(opts, "EnterpriseWalletChanged")
 	if err != nil {
 		return nil, err
 	}
@@ -2469,8 +2322,8 @@ func (_EnterpriseStorage *EnterpriseStorageFilterer) WatchEnterpriseVaultChanged
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(EnterpriseStorageEnterpriseVaultChanged)
-				if err := _EnterpriseStorage.contract.UnpackLog(event, "EnterpriseVaultChanged", log); err != nil {
+				event := new(EnterpriseStorageEnterpriseWalletChanged)
+				if err := _EnterpriseStorage.contract.UnpackLog(event, "EnterpriseWalletChanged", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -2491,12 +2344,12 @@ func (_EnterpriseStorage *EnterpriseStorageFilterer) WatchEnterpriseVaultChanged
 	}), nil
 }
 
-// ParseEnterpriseVaultChanged is a log parse operation binding the contract event 0x0dc14fdd751203f0c4dac8cc93c303e991c5f8e60af35674d5c82061929762dd.
+// ParseEnterpriseWalletChanged is a log parse operation binding the contract event 0x471e342623158b92281274ef7263e4f9a0e0b748c1c328113afbb58742c1789f.
 //
-// Solidity: event EnterpriseVaultChanged(address vault)
-func (_EnterpriseStorage *EnterpriseStorageFilterer) ParseEnterpriseVaultChanged(log types.Log) (*EnterpriseStorageEnterpriseVaultChanged, error) {
-	event := new(EnterpriseStorageEnterpriseVaultChanged)
-	if err := _EnterpriseStorage.contract.UnpackLog(event, "EnterpriseVaultChanged", log); err != nil {
+// Solidity: event EnterpriseWalletChanged(address wallet)
+func (_EnterpriseStorage *EnterpriseStorageFilterer) ParseEnterpriseWalletChanged(log types.Log) (*EnterpriseStorageEnterpriseWalletChanged, error) {
+	event := new(EnterpriseStorageEnterpriseWalletChanged)
+	if err := _EnterpriseStorage.contract.UnpackLog(event, "EnterpriseWalletChanged", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
@@ -2765,140 +2618,6 @@ func (_EnterpriseStorage *EnterpriseStorageFilterer) WatchGcFeePercentChanged(op
 func (_EnterpriseStorage *EnterpriseStorageFilterer) ParseGcFeePercentChanged(log types.Log) (*EnterpriseStorageGcFeePercentChanged, error) {
 	event := new(EnterpriseStorageGcFeePercentChanged)
 	if err := _EnterpriseStorage.contract.UnpackLog(event, "GcFeePercentChanged", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-// EnterpriseStorageInterestGapHalvingPeriodChangedIterator is returned from FilterInterestGapHalvingPeriodChanged and is used to iterate over the raw logs and unpacked data for InterestGapHalvingPeriodChanged events raised by the EnterpriseStorage contract.
-type EnterpriseStorageInterestGapHalvingPeriodChangedIterator struct {
-	Event *EnterpriseStorageInterestGapHalvingPeriodChanged // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *EnterpriseStorageInterestGapHalvingPeriodChangedIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(EnterpriseStorageInterestGapHalvingPeriodChanged)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(EnterpriseStorageInterestGapHalvingPeriodChanged)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *EnterpriseStorageInterestGapHalvingPeriodChangedIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *EnterpriseStorageInterestGapHalvingPeriodChangedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// EnterpriseStorageInterestGapHalvingPeriodChanged represents a InterestGapHalvingPeriodChanged event raised by the EnterpriseStorage contract.
-type EnterpriseStorageInterestGapHalvingPeriodChanged struct {
-	Period uint32
-	Raw    types.Log // Blockchain specific contextual infos
-}
-
-// FilterInterestGapHalvingPeriodChanged is a free log retrieval operation binding the contract event 0x971f32e7fcf39ef3d42dd88b6e08b31dd4bd8f53e7299c95b669c82e23807e2f.
-//
-// Solidity: event InterestGapHalvingPeriodChanged(uint32 period)
-func (_EnterpriseStorage *EnterpriseStorageFilterer) FilterInterestGapHalvingPeriodChanged(opts *bind.FilterOpts) (*EnterpriseStorageInterestGapHalvingPeriodChangedIterator, error) {
-
-	logs, sub, err := _EnterpriseStorage.contract.FilterLogs(opts, "InterestGapHalvingPeriodChanged")
-	if err != nil {
-		return nil, err
-	}
-	return &EnterpriseStorageInterestGapHalvingPeriodChangedIterator{contract: _EnterpriseStorage.contract, event: "InterestGapHalvingPeriodChanged", logs: logs, sub: sub}, nil
-}
-
-// WatchInterestGapHalvingPeriodChanged is a free log subscription operation binding the contract event 0x971f32e7fcf39ef3d42dd88b6e08b31dd4bd8f53e7299c95b669c82e23807e2f.
-//
-// Solidity: event InterestGapHalvingPeriodChanged(uint32 period)
-func (_EnterpriseStorage *EnterpriseStorageFilterer) WatchInterestGapHalvingPeriodChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseStorageInterestGapHalvingPeriodChanged) (event.Subscription, error) {
-
-	logs, sub, err := _EnterpriseStorage.contract.WatchLogs(opts, "InterestGapHalvingPeriodChanged")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(EnterpriseStorageInterestGapHalvingPeriodChanged)
-				if err := _EnterpriseStorage.contract.UnpackLog(event, "InterestGapHalvingPeriodChanged", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseInterestGapHalvingPeriodChanged is a log parse operation binding the contract event 0x971f32e7fcf39ef3d42dd88b6e08b31dd4bd8f53e7299c95b669c82e23807e2f.
-//
-// Solidity: event InterestGapHalvingPeriodChanged(uint32 period)
-func (_EnterpriseStorage *EnterpriseStorageFilterer) ParseInterestGapHalvingPeriodChanged(log types.Log) (*EnterpriseStorageInterestGapHalvingPeriodChanged, error) {
-	event := new(EnterpriseStorageInterestGapHalvingPeriodChanged)
-	if err := _EnterpriseStorage.contract.UnpackLog(event, "InterestGapHalvingPeriodChanged", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
@@ -3193,6 +2912,140 @@ func (_EnterpriseStorage *EnterpriseStorageFilterer) ParsePaymentTokenChange(log
 	return event, nil
 }
 
+// EnterpriseStorageRenterOnlyReturnPeriodChangedIterator is returned from FilterRenterOnlyReturnPeriodChanged and is used to iterate over the raw logs and unpacked data for RenterOnlyReturnPeriodChanged events raised by the EnterpriseStorage contract.
+type EnterpriseStorageRenterOnlyReturnPeriodChangedIterator struct {
+	Event *EnterpriseStorageRenterOnlyReturnPeriodChanged // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *EnterpriseStorageRenterOnlyReturnPeriodChangedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(EnterpriseStorageRenterOnlyReturnPeriodChanged)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(EnterpriseStorageRenterOnlyReturnPeriodChanged)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *EnterpriseStorageRenterOnlyReturnPeriodChangedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *EnterpriseStorageRenterOnlyReturnPeriodChangedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// EnterpriseStorageRenterOnlyReturnPeriodChanged represents a RenterOnlyReturnPeriodChanged event raised by the EnterpriseStorage contract.
+type EnterpriseStorageRenterOnlyReturnPeriodChanged struct {
+	Period uint32
+	Raw    types.Log // Blockchain specific contextual infos
+}
+
+// FilterRenterOnlyReturnPeriodChanged is a free log retrieval operation binding the contract event 0x745abdabfd9615abf44cc5ea5223a16cd377282452510a2de5121d44b8c097f1.
+//
+// Solidity: event RenterOnlyReturnPeriodChanged(uint32 period)
+func (_EnterpriseStorage *EnterpriseStorageFilterer) FilterRenterOnlyReturnPeriodChanged(opts *bind.FilterOpts) (*EnterpriseStorageRenterOnlyReturnPeriodChangedIterator, error) {
+
+	logs, sub, err := _EnterpriseStorage.contract.FilterLogs(opts, "RenterOnlyReturnPeriodChanged")
+	if err != nil {
+		return nil, err
+	}
+	return &EnterpriseStorageRenterOnlyReturnPeriodChangedIterator{contract: _EnterpriseStorage.contract, event: "RenterOnlyReturnPeriodChanged", logs: logs, sub: sub}, nil
+}
+
+// WatchRenterOnlyReturnPeriodChanged is a free log subscription operation binding the contract event 0x745abdabfd9615abf44cc5ea5223a16cd377282452510a2de5121d44b8c097f1.
+//
+// Solidity: event RenterOnlyReturnPeriodChanged(uint32 period)
+func (_EnterpriseStorage *EnterpriseStorageFilterer) WatchRenterOnlyReturnPeriodChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseStorageRenterOnlyReturnPeriodChanged) (event.Subscription, error) {
+
+	logs, sub, err := _EnterpriseStorage.contract.WatchLogs(opts, "RenterOnlyReturnPeriodChanged")
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(EnterpriseStorageRenterOnlyReturnPeriodChanged)
+				if err := _EnterpriseStorage.contract.UnpackLog(event, "RenterOnlyReturnPeriodChanged", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseRenterOnlyReturnPeriodChanged is a log parse operation binding the contract event 0x745abdabfd9615abf44cc5ea5223a16cd377282452510a2de5121d44b8c097f1.
+//
+// Solidity: event RenterOnlyReturnPeriodChanged(uint32 period)
+func (_EnterpriseStorage *EnterpriseStorageFilterer) ParseRenterOnlyReturnPeriodChanged(log types.Log) (*EnterpriseStorageRenterOnlyReturnPeriodChanged, error) {
+	event := new(EnterpriseStorageRenterOnlyReturnPeriodChanged)
+	if err := _EnterpriseStorage.contract.UnpackLog(event, "RenterOnlyReturnPeriodChanged", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
 // EnterpriseStorageStreamingReserveChangedIterator is returned from FilterStreamingReserveChanged and is used to iterate over the raw logs and unpacked data for StreamingReserveChanged events raised by the EnterpriseStorage contract.
 type EnterpriseStorageStreamingReserveChangedIterator struct {
 	Event *EnterpriseStorageStreamingReserveChanged // Event containing the contract specifics and raw log
@@ -3328,9 +3181,9 @@ func (_EnterpriseStorage *EnterpriseStorageFilterer) ParseStreamingReserveChange
 	return event, nil
 }
 
-// EnterpriseStorageTotalSharesChangedIterator is returned from FilterTotalSharesChanged and is used to iterate over the raw logs and unpacked data for TotalSharesChanged events raised by the EnterpriseStorage contract.
-type EnterpriseStorageTotalSharesChangedIterator struct {
-	Event *EnterpriseStorageTotalSharesChanged // Event containing the contract specifics and raw log
+// EnterpriseStorageStreamingReserveHalvingPeriodChangedIterator is returned from FilterStreamingReserveHalvingPeriodChanged and is used to iterate over the raw logs and unpacked data for StreamingReserveHalvingPeriodChanged events raised by the EnterpriseStorage contract.
+type EnterpriseStorageStreamingReserveHalvingPeriodChangedIterator struct {
+	Event *EnterpriseStorageStreamingReserveHalvingPeriodChanged // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -3344,7 +3197,7 @@ type EnterpriseStorageTotalSharesChangedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *EnterpriseStorageTotalSharesChangedIterator) Next() bool {
+func (it *EnterpriseStorageStreamingReserveHalvingPeriodChangedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -3353,7 +3206,7 @@ func (it *EnterpriseStorageTotalSharesChangedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(EnterpriseStorageTotalSharesChanged)
+			it.Event = new(EnterpriseStorageStreamingReserveHalvingPeriodChanged)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -3368,7 +3221,7 @@ func (it *EnterpriseStorageTotalSharesChangedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(EnterpriseStorageTotalSharesChanged)
+		it.Event = new(EnterpriseStorageStreamingReserveHalvingPeriodChanged)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -3384,41 +3237,41 @@ func (it *EnterpriseStorageTotalSharesChangedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *EnterpriseStorageTotalSharesChangedIterator) Error() error {
+func (it *EnterpriseStorageStreamingReserveHalvingPeriodChangedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *EnterpriseStorageTotalSharesChangedIterator) Close() error {
+func (it *EnterpriseStorageStreamingReserveHalvingPeriodChangedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// EnterpriseStorageTotalSharesChanged represents a TotalSharesChanged event raised by the EnterpriseStorage contract.
-type EnterpriseStorageTotalSharesChanged struct {
-	TotalShares *big.Int
-	Raw         types.Log // Blockchain specific contextual infos
+// EnterpriseStorageStreamingReserveHalvingPeriodChanged represents a StreamingReserveHalvingPeriodChanged event raised by the EnterpriseStorage contract.
+type EnterpriseStorageStreamingReserveHalvingPeriodChanged struct {
+	Period uint32
+	Raw    types.Log // Blockchain specific contextual infos
 }
 
-// FilterTotalSharesChanged is a free log retrieval operation binding the contract event 0xf75b433a747ade2e089a9382669e86292bab6b6218af81254ef18440992bb264.
+// FilterStreamingReserveHalvingPeriodChanged is a free log retrieval operation binding the contract event 0x9b2baf1f9580f11e84f351d1ac9c543726f7023ba5d6d278fc487898fac055b6.
 //
-// Solidity: event TotalSharesChanged(uint256 totalShares)
-func (_EnterpriseStorage *EnterpriseStorageFilterer) FilterTotalSharesChanged(opts *bind.FilterOpts) (*EnterpriseStorageTotalSharesChangedIterator, error) {
+// Solidity: event StreamingReserveHalvingPeriodChanged(uint32 period)
+func (_EnterpriseStorage *EnterpriseStorageFilterer) FilterStreamingReserveHalvingPeriodChanged(opts *bind.FilterOpts) (*EnterpriseStorageStreamingReserveHalvingPeriodChangedIterator, error) {
 
-	logs, sub, err := _EnterpriseStorage.contract.FilterLogs(opts, "TotalSharesChanged")
+	logs, sub, err := _EnterpriseStorage.contract.FilterLogs(opts, "StreamingReserveHalvingPeriodChanged")
 	if err != nil {
 		return nil, err
 	}
-	return &EnterpriseStorageTotalSharesChangedIterator{contract: _EnterpriseStorage.contract, event: "TotalSharesChanged", logs: logs, sub: sub}, nil
+	return &EnterpriseStorageStreamingReserveHalvingPeriodChangedIterator{contract: _EnterpriseStorage.contract, event: "StreamingReserveHalvingPeriodChanged", logs: logs, sub: sub}, nil
 }
 
-// WatchTotalSharesChanged is a free log subscription operation binding the contract event 0xf75b433a747ade2e089a9382669e86292bab6b6218af81254ef18440992bb264.
+// WatchStreamingReserveHalvingPeriodChanged is a free log subscription operation binding the contract event 0x9b2baf1f9580f11e84f351d1ac9c543726f7023ba5d6d278fc487898fac055b6.
 //
-// Solidity: event TotalSharesChanged(uint256 totalShares)
-func (_EnterpriseStorage *EnterpriseStorageFilterer) WatchTotalSharesChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseStorageTotalSharesChanged) (event.Subscription, error) {
+// Solidity: event StreamingReserveHalvingPeriodChanged(uint32 period)
+func (_EnterpriseStorage *EnterpriseStorageFilterer) WatchStreamingReserveHalvingPeriodChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseStorageStreamingReserveHalvingPeriodChanged) (event.Subscription, error) {
 
-	logs, sub, err := _EnterpriseStorage.contract.WatchLogs(opts, "TotalSharesChanged")
+	logs, sub, err := _EnterpriseStorage.contract.WatchLogs(opts, "StreamingReserveHalvingPeriodChanged")
 	if err != nil {
 		return nil, err
 	}
@@ -3428,8 +3281,8 @@ func (_EnterpriseStorage *EnterpriseStorageFilterer) WatchTotalSharesChanged(opt
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(EnterpriseStorageTotalSharesChanged)
-				if err := _EnterpriseStorage.contract.UnpackLog(event, "TotalSharesChanged", log); err != nil {
+				event := new(EnterpriseStorageStreamingReserveHalvingPeriodChanged)
+				if err := _EnterpriseStorage.contract.UnpackLog(event, "StreamingReserveHalvingPeriodChanged", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -3450,146 +3303,12 @@ func (_EnterpriseStorage *EnterpriseStorageFilterer) WatchTotalSharesChanged(opt
 	}), nil
 }
 
-// ParseTotalSharesChanged is a log parse operation binding the contract event 0xf75b433a747ade2e089a9382669e86292bab6b6218af81254ef18440992bb264.
+// ParseStreamingReserveHalvingPeriodChanged is a log parse operation binding the contract event 0x9b2baf1f9580f11e84f351d1ac9c543726f7023ba5d6d278fc487898fac055b6.
 //
-// Solidity: event TotalSharesChanged(uint256 totalShares)
-func (_EnterpriseStorage *EnterpriseStorageFilterer) ParseTotalSharesChanged(log types.Log) (*EnterpriseStorageTotalSharesChanged, error) {
-	event := new(EnterpriseStorageTotalSharesChanged)
-	if err := _EnterpriseStorage.contract.UnpackLog(event, "TotalSharesChanged", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-// EnterpriseStorageUsedReserveChangedIterator is returned from FilterUsedReserveChanged and is used to iterate over the raw logs and unpacked data for UsedReserveChanged events raised by the EnterpriseStorage contract.
-type EnterpriseStorageUsedReserveChangedIterator struct {
-	Event *EnterpriseStorageUsedReserveChanged // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *EnterpriseStorageUsedReserveChangedIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(EnterpriseStorageUsedReserveChanged)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(EnterpriseStorageUsedReserveChanged)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *EnterpriseStorageUsedReserveChangedIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *EnterpriseStorageUsedReserveChangedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// EnterpriseStorageUsedReserveChanged represents a UsedReserveChanged event raised by the EnterpriseStorage contract.
-type EnterpriseStorageUsedReserveChanged struct {
-	FixedReserve *big.Int
-	Raw          types.Log // Blockchain specific contextual infos
-}
-
-// FilterUsedReserveChanged is a free log retrieval operation binding the contract event 0x80a06b510f93a5f9143990fd9bd6b2020b17681a30b6420dac3d79b20ce73585.
-//
-// Solidity: event UsedReserveChanged(uint256 fixedReserve)
-func (_EnterpriseStorage *EnterpriseStorageFilterer) FilterUsedReserveChanged(opts *bind.FilterOpts) (*EnterpriseStorageUsedReserveChangedIterator, error) {
-
-	logs, sub, err := _EnterpriseStorage.contract.FilterLogs(opts, "UsedReserveChanged")
-	if err != nil {
-		return nil, err
-	}
-	return &EnterpriseStorageUsedReserveChangedIterator{contract: _EnterpriseStorage.contract, event: "UsedReserveChanged", logs: logs, sub: sub}, nil
-}
-
-// WatchUsedReserveChanged is a free log subscription operation binding the contract event 0x80a06b510f93a5f9143990fd9bd6b2020b17681a30b6420dac3d79b20ce73585.
-//
-// Solidity: event UsedReserveChanged(uint256 fixedReserve)
-func (_EnterpriseStorage *EnterpriseStorageFilterer) WatchUsedReserveChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseStorageUsedReserveChanged) (event.Subscription, error) {
-
-	logs, sub, err := _EnterpriseStorage.contract.WatchLogs(opts, "UsedReserveChanged")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(EnterpriseStorageUsedReserveChanged)
-				if err := _EnterpriseStorage.contract.UnpackLog(event, "UsedReserveChanged", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseUsedReserveChanged is a log parse operation binding the contract event 0x80a06b510f93a5f9143990fd9bd6b2020b17681a30b6420dac3d79b20ce73585.
-//
-// Solidity: event UsedReserveChanged(uint256 fixedReserve)
-func (_EnterpriseStorage *EnterpriseStorageFilterer) ParseUsedReserveChanged(log types.Log) (*EnterpriseStorageUsedReserveChanged, error) {
-	event := new(EnterpriseStorageUsedReserveChanged)
-	if err := _EnterpriseStorage.contract.UnpackLog(event, "UsedReserveChanged", log); err != nil {
+// Solidity: event StreamingReserveHalvingPeriodChanged(uint32 period)
+func (_EnterpriseStorage *EnterpriseStorageFilterer) ParseStreamingReserveHalvingPeriodChanged(log types.Log) (*EnterpriseStorageStreamingReserveHalvingPeriodChanged, error) {
+	event := new(EnterpriseStorageStreamingReserveHalvingPeriodChanged)
+	if err := _EnterpriseStorage.contract.UnpackLog(event, "StreamingReserveHalvingPeriodChanged", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log

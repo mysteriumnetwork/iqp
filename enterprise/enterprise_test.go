@@ -8,7 +8,8 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/golang/mock/gomock"
-	"github.com/mysteriumnetwork/iqp/enterprise/mocks/mocks"
+	"github.com/mysteriumnetwork/iqp/blockchain/eip155"
+	"github.com/mysteriumnetwork/iqp/enterprise/mocks"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -54,7 +55,7 @@ func TestEnterprise(t *testing.T) {
 		assert.Equal(t, addr2, res[1].GetAddress())
 	})
 	t.Run("allows to estimate loan", func(t *testing.T) {
-		estimation := big.NewInt(250)
+		estimation := eip155.LoanEstimateDetailed{}
 		serviceAddress := common.HexToAddress("0x52De41D6a2104812f84ef596BE15B84d1d846ee5")
 		paymentTokenAddress := common.HexToAddress("0x2C368A2E9Bd1bf16eb3DfCd924CA7eF4969CBBD9")
 		amount := big.NewInt(1000)
@@ -62,10 +63,10 @@ func TestEnterprise(t *testing.T) {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
 		mockBc := mocks.NewMockEnterpriseBlockchain(mockCtrl)
-		mockBc.EXPECT().EstimateLoan(enterpriseAdress, serviceAddress, paymentTokenAddress, amount, duration).Times(1).Return(estimation, nil)
+		mockBc.EXPECT().EstimateRentalFee(serviceAddress, paymentTokenAddress, amount, duration).Times(1).Return(estimation, nil)
 
 		s := NewEnterprise(enterpriseAdress, mockBc)
-		res, err := s.EstimateLoan(serviceAddress, paymentTokenAddress, amount, duration)
+		res, err := s.EstimateRentalFee(serviceAddress, paymentTokenAddress, amount, duration)
 		assert.NoError(t, err)
 		assert.Equal(t, estimation, res)
 	})
@@ -75,10 +76,10 @@ func TestEnterprise(t *testing.T) {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
 		mockBc := mocks.NewMockEnterpriseBlockchain(mockCtrl)
-		mockBc.EXPECT().GetAccruedInterest(enterpriseAdress, interestTokenID).Times(1).Return(mockInterest, nil)
+		mockBc.EXPECT().GetStakingReward(enterpriseAdress, interestTokenID).Times(1).Return(mockInterest, nil)
 
 		s := NewEnterprise(enterpriseAdress, mockBc)
-		res, err := s.GetAccruedInterest(interestTokenID)
+		res, err := s.GetStakingReward(interestTokenID)
 		assert.NoError(t, err)
 		assert.Equal(t, mockInterest, res)
 	})
@@ -87,10 +88,10 @@ func TestEnterprise(t *testing.T) {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
 		mockBc := mocks.NewMockEnterpriseBlockchain(mockCtrl)
-		mockBc.EXPECT().WithdrawInterest(enterpriseAdress, interestTokenID).Times(1)
+		mockBc.EXPECT().ClaimStakingReward(enterpriseAdress, interestTokenID).Times(1)
 
 		s := NewEnterprise(enterpriseAdress, mockBc)
-		_, err := s.WithdrawInterest(interestTokenID)
+		_, err := s.ClaimStakingReward(interestTokenID)
 		assert.NoError(t, err)
 	})
 	t.Run("allows to return loan", func(t *testing.T) {
@@ -98,10 +99,10 @@ func TestEnterprise(t *testing.T) {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
 		mockBc := mocks.NewMockEnterpriseBlockchain(mockCtrl)
-		mockBc.EXPECT().ReturnLoan(enterpriseAdress, borrowTokenID).Times(1)
+		mockBc.EXPECT().ReturnRental(enterpriseAdress, borrowTokenID).Times(1)
 
 		s := NewEnterprise(enterpriseAdress, mockBc)
-		_, err := s.ReturnLoan(borrowTokenID)
+		_, err := s.ReturnRental(borrowTokenID)
 		assert.NoError(t, err)
 	})
 }

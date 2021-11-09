@@ -37,7 +37,7 @@ type PowerTokenStorageState struct {
 
 // PowerTokenStorageMetaData contains all meta data concerning the PowerTokenStorage contract.
 var PowerTokenStorageMetaData = &bind.MetaData{
-	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint112\",\"name\":\"baseRate\",\"type\":\"uint112\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"baseToken\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint96\",\"name\":\"minGCFee\",\"type\":\"uint96\"}],\"name\":\"BaseRateChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"minDuration\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"maxDuration\",\"type\":\"uint32\"}],\"name\":\"LoanDurationLimitsChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"PerpetualAllowed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"percent\",\"type\":\"uint16\"}],\"name\":\"ServiceFeePercentChanged\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"allowPerpetualForever\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllowsPerpetual\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBaseRate\",\"outputs\":[{\"internalType\":\"uint112\",\"name\":\"\",\"type\":\"uint112\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBaseToken\",\"outputs\":[{\"internalType\":\"contractIERC20Metadata\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnterprise\",\"outputs\":[{\"internalType\":\"contractEnterprise\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getGapHalvingPeriod\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getIndex\",\"outputs\":[{\"internalType\":\"uint16\",\"name\":\"\",\"type\":\"uint16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getMaxLoanDuration\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getMinGCFee\",\"outputs\":[{\"internalType\":\"uint96\",\"name\":\"\",\"type\":\"uint96\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getMinLoanDuration\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getServiceFeePercent\",\"outputs\":[{\"internalType\":\"uint16\",\"name\":\"\",\"type\":\"uint16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"getState\",\"outputs\":[{\"components\":[{\"internalType\":\"uint112\",\"name\":\"lockedBalance\",\"type\":\"uint112\"},{\"internalType\":\"uint112\",\"name\":\"energy\",\"type\":\"uint112\"},{\"internalType\":\"uint32\",\"name\":\"timestamp\",\"type\":\"uint32\"}],\"internalType\":\"structPowerTokenStorage.State\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractEnterprise\",\"name\":\"enterprise\",\"type\":\"address\"},{\"internalType\":\"uint112\",\"name\":\"baseRate\",\"type\":\"uint112\"},{\"internalType\":\"uint96\",\"name\":\"minGCFee\",\"type\":\"uint96\"},{\"internalType\":\"uint32\",\"name\":\"gapHalvingPeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint16\",\"name\":\"index\",\"type\":\"uint16\"},{\"internalType\":\"contractIERC20Metadata\",\"name\":\"baseToken\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"minLoanDuration\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxLoanDuration\",\"type\":\"uint32\"},{\"internalType\":\"uint16\",\"name\":\"serviceFeePercent\",\"type\":\"uint16\"},{\"internalType\":\"bool\",\"name\":\"allowsPerpetual\",\"type\":\"bool\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractEnterprise\",\"name\":\"enterprise\",\"type\":\"address\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"duration\",\"type\":\"uint32\"}],\"name\":\"isAllowedLoanDuration\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint112\",\"name\":\"baseRate\",\"type\":\"uint112\"},{\"internalType\":\"contractIERC20Metadata\",\"name\":\"baseToken\",\"type\":\"address\"},{\"internalType\":\"uint96\",\"name\":\"minGCFee\",\"type\":\"uint96\"}],\"name\":\"setBaseRate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"minLoanDuration\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxLoanDuration\",\"type\":\"uint32\"}],\"name\":\"setLoanDurationLimits\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint16\",\"name\":\"newServiceFeePercent\",\"type\":\"uint16\"}],\"name\":\"setServiceFeePercent\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint112\",\"name\":\"baseRate\",\"type\":\"uint112\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"baseToken\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint96\",\"name\":\"minGCFee\",\"type\":\"uint96\"}],\"name\":\"BaseRateChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"minRentalPeriod\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"maxRentalPeriod\",\"type\":\"uint32\"}],\"name\":\"RentalPeriodLimitsChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"percent\",\"type\":\"uint16\"}],\"name\":\"ServiceFeePercentChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"SwappingEnabled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"TransferEnabled\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"enableSwappingForever\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"enableTransferForever\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBaseRate\",\"outputs\":[{\"internalType\":\"uint112\",\"name\":\"\",\"type\":\"uint112\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBaseToken\",\"outputs\":[{\"internalType\":\"contractIERC20Metadata\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnergyGapHalvingPeriod\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnterprise\",\"outputs\":[{\"internalType\":\"contractIEnterprise\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getIndex\",\"outputs\":[{\"internalType\":\"uint16\",\"name\":\"\",\"type\":\"uint16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getMaxRentalPeriod\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getMinGCFee\",\"outputs\":[{\"internalType\":\"uint96\",\"name\":\"\",\"type\":\"uint96\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getMinRentalPeriod\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getServiceFeePercent\",\"outputs\":[{\"internalType\":\"uint16\",\"name\":\"\",\"type\":\"uint16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"getState\",\"outputs\":[{\"components\":[{\"internalType\":\"uint112\",\"name\":\"lockedBalance\",\"type\":\"uint112\"},{\"internalType\":\"uint112\",\"name\":\"energy\",\"type\":\"uint112\"},{\"internalType\":\"uint32\",\"name\":\"timestamp\",\"type\":\"uint32\"}],\"internalType\":\"structPowerTokenStorage.State\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIEnterprise\",\"name\":\"enterprise\",\"type\":\"address\"},{\"internalType\":\"contractIERC20Metadata\",\"name\":\"baseToken\",\"type\":\"address\"},{\"internalType\":\"uint112\",\"name\":\"baseRate\",\"type\":\"uint112\"},{\"internalType\":\"uint96\",\"name\":\"minGCFee\",\"type\":\"uint96\"},{\"internalType\":\"uint16\",\"name\":\"serviceFeePercent\",\"type\":\"uint16\"},{\"internalType\":\"uint32\",\"name\":\"energyGapHalvingPeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint16\",\"name\":\"index\",\"type\":\"uint16\"},{\"internalType\":\"uint32\",\"name\":\"minRentalPeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxRentalPeriod\",\"type\":\"uint32\"},{\"internalType\":\"bool\",\"name\":\"swappingEnabled\",\"type\":\"bool\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIEnterprise\",\"name\":\"enterprise\",\"type\":\"address\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"period\",\"type\":\"uint32\"}],\"name\":\"isAllowedRentalPeriod\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isSwappingEnabled\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isTransferEnabled\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint112\",\"name\":\"baseRate\",\"type\":\"uint112\"},{\"internalType\":\"contractIERC20Metadata\",\"name\":\"baseToken\",\"type\":\"address\"},{\"internalType\":\"uint96\",\"name\":\"minGCFee\",\"type\":\"uint96\"}],\"name\":\"setBaseRate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"minRentalPeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxRentalPeriod\",\"type\":\"uint32\"}],\"name\":\"setRentalPeriodLimits\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint16\",\"name\":\"newServiceFeePercent\",\"type\":\"uint16\"}],\"name\":\"setServiceFeePercent\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
 }
 
 // PowerTokenStorageABI is the input ABI used to generate the binding from.
@@ -186,37 +186,6 @@ func (_PowerTokenStorage *PowerTokenStorageTransactorRaw) Transact(opts *bind.Tr
 	return _PowerTokenStorage.Contract.contract.Transact(opts, method, params...)
 }
 
-// GetAllowsPerpetual is a free data retrieval call binding the contract method 0x927c9d87.
-//
-// Solidity: function getAllowsPerpetual() view returns(bool)
-func (_PowerTokenStorage *PowerTokenStorageCaller) GetAllowsPerpetual(opts *bind.CallOpts) (bool, error) {
-	var out []interface{}
-	err := _PowerTokenStorage.contract.Call(opts, &out, "getAllowsPerpetual")
-
-	if err != nil {
-		return *new(bool), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-
-	return out0, err
-
-}
-
-// GetAllowsPerpetual is a free data retrieval call binding the contract method 0x927c9d87.
-//
-// Solidity: function getAllowsPerpetual() view returns(bool)
-func (_PowerTokenStorage *PowerTokenStorageSession) GetAllowsPerpetual() (bool, error) {
-	return _PowerTokenStorage.Contract.GetAllowsPerpetual(&_PowerTokenStorage.CallOpts)
-}
-
-// GetAllowsPerpetual is a free data retrieval call binding the contract method 0x927c9d87.
-//
-// Solidity: function getAllowsPerpetual() view returns(bool)
-func (_PowerTokenStorage *PowerTokenStorageCallerSession) GetAllowsPerpetual() (bool, error) {
-	return _PowerTokenStorage.Contract.GetAllowsPerpetual(&_PowerTokenStorage.CallOpts)
-}
-
 // GetBaseRate is a free data retrieval call binding the contract method 0xb655d0c4.
 //
 // Solidity: function getBaseRate() view returns(uint112)
@@ -279,6 +248,37 @@ func (_PowerTokenStorage *PowerTokenStorageCallerSession) GetBaseToken() (common
 	return _PowerTokenStorage.Contract.GetBaseToken(&_PowerTokenStorage.CallOpts)
 }
 
+// GetEnergyGapHalvingPeriod is a free data retrieval call binding the contract method 0xcec2f246.
+//
+// Solidity: function getEnergyGapHalvingPeriod() view returns(uint32)
+func (_PowerTokenStorage *PowerTokenStorageCaller) GetEnergyGapHalvingPeriod(opts *bind.CallOpts) (uint32, error) {
+	var out []interface{}
+	err := _PowerTokenStorage.contract.Call(opts, &out, "getEnergyGapHalvingPeriod")
+
+	if err != nil {
+		return *new(uint32), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(uint32)).(*uint32)
+
+	return out0, err
+
+}
+
+// GetEnergyGapHalvingPeriod is a free data retrieval call binding the contract method 0xcec2f246.
+//
+// Solidity: function getEnergyGapHalvingPeriod() view returns(uint32)
+func (_PowerTokenStorage *PowerTokenStorageSession) GetEnergyGapHalvingPeriod() (uint32, error) {
+	return _PowerTokenStorage.Contract.GetEnergyGapHalvingPeriod(&_PowerTokenStorage.CallOpts)
+}
+
+// GetEnergyGapHalvingPeriod is a free data retrieval call binding the contract method 0xcec2f246.
+//
+// Solidity: function getEnergyGapHalvingPeriod() view returns(uint32)
+func (_PowerTokenStorage *PowerTokenStorageCallerSession) GetEnergyGapHalvingPeriod() (uint32, error) {
+	return _PowerTokenStorage.Contract.GetEnergyGapHalvingPeriod(&_PowerTokenStorage.CallOpts)
+}
+
 // GetEnterprise is a free data retrieval call binding the contract method 0xe298a2fd.
 //
 // Solidity: function getEnterprise() view returns(address)
@@ -308,37 +308,6 @@ func (_PowerTokenStorage *PowerTokenStorageSession) GetEnterprise() (common.Addr
 // Solidity: function getEnterprise() view returns(address)
 func (_PowerTokenStorage *PowerTokenStorageCallerSession) GetEnterprise() (common.Address, error) {
 	return _PowerTokenStorage.Contract.GetEnterprise(&_PowerTokenStorage.CallOpts)
-}
-
-// GetGapHalvingPeriod is a free data retrieval call binding the contract method 0x42bb702e.
-//
-// Solidity: function getGapHalvingPeriod() view returns(uint32)
-func (_PowerTokenStorage *PowerTokenStorageCaller) GetGapHalvingPeriod(opts *bind.CallOpts) (uint32, error) {
-	var out []interface{}
-	err := _PowerTokenStorage.contract.Call(opts, &out, "getGapHalvingPeriod")
-
-	if err != nil {
-		return *new(uint32), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(uint32)).(*uint32)
-
-	return out0, err
-
-}
-
-// GetGapHalvingPeriod is a free data retrieval call binding the contract method 0x42bb702e.
-//
-// Solidity: function getGapHalvingPeriod() view returns(uint32)
-func (_PowerTokenStorage *PowerTokenStorageSession) GetGapHalvingPeriod() (uint32, error) {
-	return _PowerTokenStorage.Contract.GetGapHalvingPeriod(&_PowerTokenStorage.CallOpts)
-}
-
-// GetGapHalvingPeriod is a free data retrieval call binding the contract method 0x42bb702e.
-//
-// Solidity: function getGapHalvingPeriod() view returns(uint32)
-func (_PowerTokenStorage *PowerTokenStorageCallerSession) GetGapHalvingPeriod() (uint32, error) {
-	return _PowerTokenStorage.Contract.GetGapHalvingPeriod(&_PowerTokenStorage.CallOpts)
 }
 
 // GetIndex is a free data retrieval call binding the contract method 0x81045ead.
@@ -372,12 +341,12 @@ func (_PowerTokenStorage *PowerTokenStorageCallerSession) GetIndex() (uint16, er
 	return _PowerTokenStorage.Contract.GetIndex(&_PowerTokenStorage.CallOpts)
 }
 
-// GetMaxLoanDuration is a free data retrieval call binding the contract method 0x5932f4ff.
+// GetMaxRentalPeriod is a free data retrieval call binding the contract method 0xd29cc7c0.
 //
-// Solidity: function getMaxLoanDuration() view returns(uint32)
-func (_PowerTokenStorage *PowerTokenStorageCaller) GetMaxLoanDuration(opts *bind.CallOpts) (uint32, error) {
+// Solidity: function getMaxRentalPeriod() view returns(uint32)
+func (_PowerTokenStorage *PowerTokenStorageCaller) GetMaxRentalPeriod(opts *bind.CallOpts) (uint32, error) {
 	var out []interface{}
-	err := _PowerTokenStorage.contract.Call(opts, &out, "getMaxLoanDuration")
+	err := _PowerTokenStorage.contract.Call(opts, &out, "getMaxRentalPeriod")
 
 	if err != nil {
 		return *new(uint32), err
@@ -389,18 +358,18 @@ func (_PowerTokenStorage *PowerTokenStorageCaller) GetMaxLoanDuration(opts *bind
 
 }
 
-// GetMaxLoanDuration is a free data retrieval call binding the contract method 0x5932f4ff.
+// GetMaxRentalPeriod is a free data retrieval call binding the contract method 0xd29cc7c0.
 //
-// Solidity: function getMaxLoanDuration() view returns(uint32)
-func (_PowerTokenStorage *PowerTokenStorageSession) GetMaxLoanDuration() (uint32, error) {
-	return _PowerTokenStorage.Contract.GetMaxLoanDuration(&_PowerTokenStorage.CallOpts)
+// Solidity: function getMaxRentalPeriod() view returns(uint32)
+func (_PowerTokenStorage *PowerTokenStorageSession) GetMaxRentalPeriod() (uint32, error) {
+	return _PowerTokenStorage.Contract.GetMaxRentalPeriod(&_PowerTokenStorage.CallOpts)
 }
 
-// GetMaxLoanDuration is a free data retrieval call binding the contract method 0x5932f4ff.
+// GetMaxRentalPeriod is a free data retrieval call binding the contract method 0xd29cc7c0.
 //
-// Solidity: function getMaxLoanDuration() view returns(uint32)
-func (_PowerTokenStorage *PowerTokenStorageCallerSession) GetMaxLoanDuration() (uint32, error) {
-	return _PowerTokenStorage.Contract.GetMaxLoanDuration(&_PowerTokenStorage.CallOpts)
+// Solidity: function getMaxRentalPeriod() view returns(uint32)
+func (_PowerTokenStorage *PowerTokenStorageCallerSession) GetMaxRentalPeriod() (uint32, error) {
+	return _PowerTokenStorage.Contract.GetMaxRentalPeriod(&_PowerTokenStorage.CallOpts)
 }
 
 // GetMinGCFee is a free data retrieval call binding the contract method 0x0aff9d19.
@@ -434,12 +403,12 @@ func (_PowerTokenStorage *PowerTokenStorageCallerSession) GetMinGCFee() (*big.In
 	return _PowerTokenStorage.Contract.GetMinGCFee(&_PowerTokenStorage.CallOpts)
 }
 
-// GetMinLoanDuration is a free data retrieval call binding the contract method 0x13e7e63b.
+// GetMinRentalPeriod is a free data retrieval call binding the contract method 0xfcc4b67d.
 //
-// Solidity: function getMinLoanDuration() view returns(uint32)
-func (_PowerTokenStorage *PowerTokenStorageCaller) GetMinLoanDuration(opts *bind.CallOpts) (uint32, error) {
+// Solidity: function getMinRentalPeriod() view returns(uint32)
+func (_PowerTokenStorage *PowerTokenStorageCaller) GetMinRentalPeriod(opts *bind.CallOpts) (uint32, error) {
 	var out []interface{}
-	err := _PowerTokenStorage.contract.Call(opts, &out, "getMinLoanDuration")
+	err := _PowerTokenStorage.contract.Call(opts, &out, "getMinRentalPeriod")
 
 	if err != nil {
 		return *new(uint32), err
@@ -451,18 +420,18 @@ func (_PowerTokenStorage *PowerTokenStorageCaller) GetMinLoanDuration(opts *bind
 
 }
 
-// GetMinLoanDuration is a free data retrieval call binding the contract method 0x13e7e63b.
+// GetMinRentalPeriod is a free data retrieval call binding the contract method 0xfcc4b67d.
 //
-// Solidity: function getMinLoanDuration() view returns(uint32)
-func (_PowerTokenStorage *PowerTokenStorageSession) GetMinLoanDuration() (uint32, error) {
-	return _PowerTokenStorage.Contract.GetMinLoanDuration(&_PowerTokenStorage.CallOpts)
+// Solidity: function getMinRentalPeriod() view returns(uint32)
+func (_PowerTokenStorage *PowerTokenStorageSession) GetMinRentalPeriod() (uint32, error) {
+	return _PowerTokenStorage.Contract.GetMinRentalPeriod(&_PowerTokenStorage.CallOpts)
 }
 
-// GetMinLoanDuration is a free data retrieval call binding the contract method 0x13e7e63b.
+// GetMinRentalPeriod is a free data retrieval call binding the contract method 0xfcc4b67d.
 //
-// Solidity: function getMinLoanDuration() view returns(uint32)
-func (_PowerTokenStorage *PowerTokenStorageCallerSession) GetMinLoanDuration() (uint32, error) {
-	return _PowerTokenStorage.Contract.GetMinLoanDuration(&_PowerTokenStorage.CallOpts)
+// Solidity: function getMinRentalPeriod() view returns(uint32)
+func (_PowerTokenStorage *PowerTokenStorageCallerSession) GetMinRentalPeriod() (uint32, error) {
+	return _PowerTokenStorage.Contract.GetMinRentalPeriod(&_PowerTokenStorage.CallOpts)
 }
 
 // GetServiceFeePercent is a free data retrieval call binding the contract method 0x6dfbee1b.
@@ -527,12 +496,12 @@ func (_PowerTokenStorage *PowerTokenStorageCallerSession) GetState(account commo
 	return _PowerTokenStorage.Contract.GetState(&_PowerTokenStorage.CallOpts, account)
 }
 
-// IsAllowedLoanDuration is a free data retrieval call binding the contract method 0x6e4d8983.
+// IsAllowedRentalPeriod is a free data retrieval call binding the contract method 0x70005557.
 //
-// Solidity: function isAllowedLoanDuration(uint32 duration) view returns(bool)
-func (_PowerTokenStorage *PowerTokenStorageCaller) IsAllowedLoanDuration(opts *bind.CallOpts, duration uint32) (bool, error) {
+// Solidity: function isAllowedRentalPeriod(uint32 period) view returns(bool)
+func (_PowerTokenStorage *PowerTokenStorageCaller) IsAllowedRentalPeriod(opts *bind.CallOpts, period uint32) (bool, error) {
 	var out []interface{}
-	err := _PowerTokenStorage.contract.Call(opts, &out, "isAllowedLoanDuration", duration)
+	err := _PowerTokenStorage.contract.Call(opts, &out, "isAllowedRentalPeriod", period)
 
 	if err != nil {
 		return *new(bool), err
@@ -544,60 +513,143 @@ func (_PowerTokenStorage *PowerTokenStorageCaller) IsAllowedLoanDuration(opts *b
 
 }
 
-// IsAllowedLoanDuration is a free data retrieval call binding the contract method 0x6e4d8983.
+// IsAllowedRentalPeriod is a free data retrieval call binding the contract method 0x70005557.
 //
-// Solidity: function isAllowedLoanDuration(uint32 duration) view returns(bool)
-func (_PowerTokenStorage *PowerTokenStorageSession) IsAllowedLoanDuration(duration uint32) (bool, error) {
-	return _PowerTokenStorage.Contract.IsAllowedLoanDuration(&_PowerTokenStorage.CallOpts, duration)
+// Solidity: function isAllowedRentalPeriod(uint32 period) view returns(bool)
+func (_PowerTokenStorage *PowerTokenStorageSession) IsAllowedRentalPeriod(period uint32) (bool, error) {
+	return _PowerTokenStorage.Contract.IsAllowedRentalPeriod(&_PowerTokenStorage.CallOpts, period)
 }
 
-// IsAllowedLoanDuration is a free data retrieval call binding the contract method 0x6e4d8983.
+// IsAllowedRentalPeriod is a free data retrieval call binding the contract method 0x70005557.
 //
-// Solidity: function isAllowedLoanDuration(uint32 duration) view returns(bool)
-func (_PowerTokenStorage *PowerTokenStorageCallerSession) IsAllowedLoanDuration(duration uint32) (bool, error) {
-	return _PowerTokenStorage.Contract.IsAllowedLoanDuration(&_PowerTokenStorage.CallOpts, duration)
+// Solidity: function isAllowedRentalPeriod(uint32 period) view returns(bool)
+func (_PowerTokenStorage *PowerTokenStorageCallerSession) IsAllowedRentalPeriod(period uint32) (bool, error) {
+	return _PowerTokenStorage.Contract.IsAllowedRentalPeriod(&_PowerTokenStorage.CallOpts, period)
 }
 
-// AllowPerpetualForever is a paid mutator transaction binding the contract method 0x27256486.
+// IsSwappingEnabled is a free data retrieval call binding the contract method 0x4aa5028b.
 //
-// Solidity: function allowPerpetualForever() returns()
-func (_PowerTokenStorage *PowerTokenStorageTransactor) AllowPerpetualForever(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _PowerTokenStorage.contract.Transact(opts, "allowPerpetualForever")
+// Solidity: function isSwappingEnabled() view returns(bool)
+func (_PowerTokenStorage *PowerTokenStorageCaller) IsSwappingEnabled(opts *bind.CallOpts) (bool, error) {
+	var out []interface{}
+	err := _PowerTokenStorage.contract.Call(opts, &out, "isSwappingEnabled")
+
+	if err != nil {
+		return *new(bool), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
+
+	return out0, err
+
 }
 
-// AllowPerpetualForever is a paid mutator transaction binding the contract method 0x27256486.
+// IsSwappingEnabled is a free data retrieval call binding the contract method 0x4aa5028b.
 //
-// Solidity: function allowPerpetualForever() returns()
-func (_PowerTokenStorage *PowerTokenStorageSession) AllowPerpetualForever() (*types.Transaction, error) {
-	return _PowerTokenStorage.Contract.AllowPerpetualForever(&_PowerTokenStorage.TransactOpts)
+// Solidity: function isSwappingEnabled() view returns(bool)
+func (_PowerTokenStorage *PowerTokenStorageSession) IsSwappingEnabled() (bool, error) {
+	return _PowerTokenStorage.Contract.IsSwappingEnabled(&_PowerTokenStorage.CallOpts)
 }
 
-// AllowPerpetualForever is a paid mutator transaction binding the contract method 0x27256486.
+// IsSwappingEnabled is a free data retrieval call binding the contract method 0x4aa5028b.
 //
-// Solidity: function allowPerpetualForever() returns()
-func (_PowerTokenStorage *PowerTokenStorageTransactorSession) AllowPerpetualForever() (*types.Transaction, error) {
-	return _PowerTokenStorage.Contract.AllowPerpetualForever(&_PowerTokenStorage.TransactOpts)
+// Solidity: function isSwappingEnabled() view returns(bool)
+func (_PowerTokenStorage *PowerTokenStorageCallerSession) IsSwappingEnabled() (bool, error) {
+	return _PowerTokenStorage.Contract.IsSwappingEnabled(&_PowerTokenStorage.CallOpts)
 }
 
-// Initialize is a paid mutator transaction binding the contract method 0x2ef0cf8b.
+// IsTransferEnabled is a free data retrieval call binding the contract method 0xcca5dcb6.
 //
-// Solidity: function initialize(address enterprise, uint112 baseRate, uint96 minGCFee, uint32 gapHalvingPeriod, uint16 index, address baseToken, uint32 minLoanDuration, uint32 maxLoanDuration, uint16 serviceFeePercent, bool allowsPerpetual) returns()
-func (_PowerTokenStorage *PowerTokenStorageTransactor) Initialize(opts *bind.TransactOpts, enterprise common.Address, baseRate *big.Int, minGCFee *big.Int, gapHalvingPeriod uint32, index uint16, baseToken common.Address, minLoanDuration uint32, maxLoanDuration uint32, serviceFeePercent uint16, allowsPerpetual bool) (*types.Transaction, error) {
-	return _PowerTokenStorage.contract.Transact(opts, "initialize", enterprise, baseRate, minGCFee, gapHalvingPeriod, index, baseToken, minLoanDuration, maxLoanDuration, serviceFeePercent, allowsPerpetual)
+// Solidity: function isTransferEnabled() view returns(bool)
+func (_PowerTokenStorage *PowerTokenStorageCaller) IsTransferEnabled(opts *bind.CallOpts) (bool, error) {
+	var out []interface{}
+	err := _PowerTokenStorage.contract.Call(opts, &out, "isTransferEnabled")
+
+	if err != nil {
+		return *new(bool), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
+
+	return out0, err
+
 }
 
-// Initialize is a paid mutator transaction binding the contract method 0x2ef0cf8b.
+// IsTransferEnabled is a free data retrieval call binding the contract method 0xcca5dcb6.
 //
-// Solidity: function initialize(address enterprise, uint112 baseRate, uint96 minGCFee, uint32 gapHalvingPeriod, uint16 index, address baseToken, uint32 minLoanDuration, uint32 maxLoanDuration, uint16 serviceFeePercent, bool allowsPerpetual) returns()
-func (_PowerTokenStorage *PowerTokenStorageSession) Initialize(enterprise common.Address, baseRate *big.Int, minGCFee *big.Int, gapHalvingPeriod uint32, index uint16, baseToken common.Address, minLoanDuration uint32, maxLoanDuration uint32, serviceFeePercent uint16, allowsPerpetual bool) (*types.Transaction, error) {
-	return _PowerTokenStorage.Contract.Initialize(&_PowerTokenStorage.TransactOpts, enterprise, baseRate, minGCFee, gapHalvingPeriod, index, baseToken, minLoanDuration, maxLoanDuration, serviceFeePercent, allowsPerpetual)
+// Solidity: function isTransferEnabled() view returns(bool)
+func (_PowerTokenStorage *PowerTokenStorageSession) IsTransferEnabled() (bool, error) {
+	return _PowerTokenStorage.Contract.IsTransferEnabled(&_PowerTokenStorage.CallOpts)
 }
 
-// Initialize is a paid mutator transaction binding the contract method 0x2ef0cf8b.
+// IsTransferEnabled is a free data retrieval call binding the contract method 0xcca5dcb6.
 //
-// Solidity: function initialize(address enterprise, uint112 baseRate, uint96 minGCFee, uint32 gapHalvingPeriod, uint16 index, address baseToken, uint32 minLoanDuration, uint32 maxLoanDuration, uint16 serviceFeePercent, bool allowsPerpetual) returns()
-func (_PowerTokenStorage *PowerTokenStorageTransactorSession) Initialize(enterprise common.Address, baseRate *big.Int, minGCFee *big.Int, gapHalvingPeriod uint32, index uint16, baseToken common.Address, minLoanDuration uint32, maxLoanDuration uint32, serviceFeePercent uint16, allowsPerpetual bool) (*types.Transaction, error) {
-	return _PowerTokenStorage.Contract.Initialize(&_PowerTokenStorage.TransactOpts, enterprise, baseRate, minGCFee, gapHalvingPeriod, index, baseToken, minLoanDuration, maxLoanDuration, serviceFeePercent, allowsPerpetual)
+// Solidity: function isTransferEnabled() view returns(bool)
+func (_PowerTokenStorage *PowerTokenStorageCallerSession) IsTransferEnabled() (bool, error) {
+	return _PowerTokenStorage.Contract.IsTransferEnabled(&_PowerTokenStorage.CallOpts)
+}
+
+// EnableSwappingForever is a paid mutator transaction binding the contract method 0x35528ee0.
+//
+// Solidity: function enableSwappingForever() returns()
+func (_PowerTokenStorage *PowerTokenStorageTransactor) EnableSwappingForever(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _PowerTokenStorage.contract.Transact(opts, "enableSwappingForever")
+}
+
+// EnableSwappingForever is a paid mutator transaction binding the contract method 0x35528ee0.
+//
+// Solidity: function enableSwappingForever() returns()
+func (_PowerTokenStorage *PowerTokenStorageSession) EnableSwappingForever() (*types.Transaction, error) {
+	return _PowerTokenStorage.Contract.EnableSwappingForever(&_PowerTokenStorage.TransactOpts)
+}
+
+// EnableSwappingForever is a paid mutator transaction binding the contract method 0x35528ee0.
+//
+// Solidity: function enableSwappingForever() returns()
+func (_PowerTokenStorage *PowerTokenStorageTransactorSession) EnableSwappingForever() (*types.Transaction, error) {
+	return _PowerTokenStorage.Contract.EnableSwappingForever(&_PowerTokenStorage.TransactOpts)
+}
+
+// EnableTransferForever is a paid mutator transaction binding the contract method 0x659262a0.
+//
+// Solidity: function enableTransferForever() returns()
+func (_PowerTokenStorage *PowerTokenStorageTransactor) EnableTransferForever(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _PowerTokenStorage.contract.Transact(opts, "enableTransferForever")
+}
+
+// EnableTransferForever is a paid mutator transaction binding the contract method 0x659262a0.
+//
+// Solidity: function enableTransferForever() returns()
+func (_PowerTokenStorage *PowerTokenStorageSession) EnableTransferForever() (*types.Transaction, error) {
+	return _PowerTokenStorage.Contract.EnableTransferForever(&_PowerTokenStorage.TransactOpts)
+}
+
+// EnableTransferForever is a paid mutator transaction binding the contract method 0x659262a0.
+//
+// Solidity: function enableTransferForever() returns()
+func (_PowerTokenStorage *PowerTokenStorageTransactorSession) EnableTransferForever() (*types.Transaction, error) {
+	return _PowerTokenStorage.Contract.EnableTransferForever(&_PowerTokenStorage.TransactOpts)
+}
+
+// Initialize is a paid mutator transaction binding the contract method 0xb29c98ad.
+//
+// Solidity: function initialize(address enterprise, address baseToken, uint112 baseRate, uint96 minGCFee, uint16 serviceFeePercent, uint32 energyGapHalvingPeriod, uint16 index, uint32 minRentalPeriod, uint32 maxRentalPeriod, bool swappingEnabled) returns()
+func (_PowerTokenStorage *PowerTokenStorageTransactor) Initialize(opts *bind.TransactOpts, enterprise common.Address, baseToken common.Address, baseRate *big.Int, minGCFee *big.Int, serviceFeePercent uint16, energyGapHalvingPeriod uint32, index uint16, minRentalPeriod uint32, maxRentalPeriod uint32, swappingEnabled bool) (*types.Transaction, error) {
+	return _PowerTokenStorage.contract.Transact(opts, "initialize", enterprise, baseToken, baseRate, minGCFee, serviceFeePercent, energyGapHalvingPeriod, index, minRentalPeriod, maxRentalPeriod, swappingEnabled)
+}
+
+// Initialize is a paid mutator transaction binding the contract method 0xb29c98ad.
+//
+// Solidity: function initialize(address enterprise, address baseToken, uint112 baseRate, uint96 minGCFee, uint16 serviceFeePercent, uint32 energyGapHalvingPeriod, uint16 index, uint32 minRentalPeriod, uint32 maxRentalPeriod, bool swappingEnabled) returns()
+func (_PowerTokenStorage *PowerTokenStorageSession) Initialize(enterprise common.Address, baseToken common.Address, baseRate *big.Int, minGCFee *big.Int, serviceFeePercent uint16, energyGapHalvingPeriod uint32, index uint16, minRentalPeriod uint32, maxRentalPeriod uint32, swappingEnabled bool) (*types.Transaction, error) {
+	return _PowerTokenStorage.Contract.Initialize(&_PowerTokenStorage.TransactOpts, enterprise, baseToken, baseRate, minGCFee, serviceFeePercent, energyGapHalvingPeriod, index, minRentalPeriod, maxRentalPeriod, swappingEnabled)
+}
+
+// Initialize is a paid mutator transaction binding the contract method 0xb29c98ad.
+//
+// Solidity: function initialize(address enterprise, address baseToken, uint112 baseRate, uint96 minGCFee, uint16 serviceFeePercent, uint32 energyGapHalvingPeriod, uint16 index, uint32 minRentalPeriod, uint32 maxRentalPeriod, bool swappingEnabled) returns()
+func (_PowerTokenStorage *PowerTokenStorageTransactorSession) Initialize(enterprise common.Address, baseToken common.Address, baseRate *big.Int, minGCFee *big.Int, serviceFeePercent uint16, energyGapHalvingPeriod uint32, index uint16, minRentalPeriod uint32, maxRentalPeriod uint32, swappingEnabled bool) (*types.Transaction, error) {
+	return _PowerTokenStorage.Contract.Initialize(&_PowerTokenStorage.TransactOpts, enterprise, baseToken, baseRate, minGCFee, serviceFeePercent, energyGapHalvingPeriod, index, minRentalPeriod, maxRentalPeriod, swappingEnabled)
 }
 
 // Initialize0 is a paid mutator transaction binding the contract method 0xc4d66de8.
@@ -642,25 +694,25 @@ func (_PowerTokenStorage *PowerTokenStorageTransactorSession) SetBaseRate(baseRa
 	return _PowerTokenStorage.Contract.SetBaseRate(&_PowerTokenStorage.TransactOpts, baseRate, baseToken, minGCFee)
 }
 
-// SetLoanDurationLimits is a paid mutator transaction binding the contract method 0xc0434352.
+// SetRentalPeriodLimits is a paid mutator transaction binding the contract method 0x6e4dba76.
 //
-// Solidity: function setLoanDurationLimits(uint32 minLoanDuration, uint32 maxLoanDuration) returns()
-func (_PowerTokenStorage *PowerTokenStorageTransactor) SetLoanDurationLimits(opts *bind.TransactOpts, minLoanDuration uint32, maxLoanDuration uint32) (*types.Transaction, error) {
-	return _PowerTokenStorage.contract.Transact(opts, "setLoanDurationLimits", minLoanDuration, maxLoanDuration)
+// Solidity: function setRentalPeriodLimits(uint32 minRentalPeriod, uint32 maxRentalPeriod) returns()
+func (_PowerTokenStorage *PowerTokenStorageTransactor) SetRentalPeriodLimits(opts *bind.TransactOpts, minRentalPeriod uint32, maxRentalPeriod uint32) (*types.Transaction, error) {
+	return _PowerTokenStorage.contract.Transact(opts, "setRentalPeriodLimits", minRentalPeriod, maxRentalPeriod)
 }
 
-// SetLoanDurationLimits is a paid mutator transaction binding the contract method 0xc0434352.
+// SetRentalPeriodLimits is a paid mutator transaction binding the contract method 0x6e4dba76.
 //
-// Solidity: function setLoanDurationLimits(uint32 minLoanDuration, uint32 maxLoanDuration) returns()
-func (_PowerTokenStorage *PowerTokenStorageSession) SetLoanDurationLimits(minLoanDuration uint32, maxLoanDuration uint32) (*types.Transaction, error) {
-	return _PowerTokenStorage.Contract.SetLoanDurationLimits(&_PowerTokenStorage.TransactOpts, minLoanDuration, maxLoanDuration)
+// Solidity: function setRentalPeriodLimits(uint32 minRentalPeriod, uint32 maxRentalPeriod) returns()
+func (_PowerTokenStorage *PowerTokenStorageSession) SetRentalPeriodLimits(minRentalPeriod uint32, maxRentalPeriod uint32) (*types.Transaction, error) {
+	return _PowerTokenStorage.Contract.SetRentalPeriodLimits(&_PowerTokenStorage.TransactOpts, minRentalPeriod, maxRentalPeriod)
 }
 
-// SetLoanDurationLimits is a paid mutator transaction binding the contract method 0xc0434352.
+// SetRentalPeriodLimits is a paid mutator transaction binding the contract method 0x6e4dba76.
 //
-// Solidity: function setLoanDurationLimits(uint32 minLoanDuration, uint32 maxLoanDuration) returns()
-func (_PowerTokenStorage *PowerTokenStorageTransactorSession) SetLoanDurationLimits(minLoanDuration uint32, maxLoanDuration uint32) (*types.Transaction, error) {
-	return _PowerTokenStorage.Contract.SetLoanDurationLimits(&_PowerTokenStorage.TransactOpts, minLoanDuration, maxLoanDuration)
+// Solidity: function setRentalPeriodLimits(uint32 minRentalPeriod, uint32 maxRentalPeriod) returns()
+func (_PowerTokenStorage *PowerTokenStorageTransactorSession) SetRentalPeriodLimits(minRentalPeriod uint32, maxRentalPeriod uint32) (*types.Transaction, error) {
+	return _PowerTokenStorage.Contract.SetRentalPeriodLimits(&_PowerTokenStorage.TransactOpts, minRentalPeriod, maxRentalPeriod)
 }
 
 // SetServiceFeePercent is a paid mutator transaction binding the contract method 0x0d148ab6.
@@ -820,9 +872,9 @@ func (_PowerTokenStorage *PowerTokenStorageFilterer) ParseBaseRateChanged(log ty
 	return event, nil
 }
 
-// PowerTokenStorageLoanDurationLimitsChangedIterator is returned from FilterLoanDurationLimitsChanged and is used to iterate over the raw logs and unpacked data for LoanDurationLimitsChanged events raised by the PowerTokenStorage contract.
-type PowerTokenStorageLoanDurationLimitsChangedIterator struct {
-	Event *PowerTokenStorageLoanDurationLimitsChanged // Event containing the contract specifics and raw log
+// PowerTokenStorageRentalPeriodLimitsChangedIterator is returned from FilterRentalPeriodLimitsChanged and is used to iterate over the raw logs and unpacked data for RentalPeriodLimitsChanged events raised by the PowerTokenStorage contract.
+type PowerTokenStorageRentalPeriodLimitsChangedIterator struct {
+	Event *PowerTokenStorageRentalPeriodLimitsChanged // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -836,7 +888,7 @@ type PowerTokenStorageLoanDurationLimitsChangedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *PowerTokenStorageLoanDurationLimitsChangedIterator) Next() bool {
+func (it *PowerTokenStorageRentalPeriodLimitsChangedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -845,7 +897,7 @@ func (it *PowerTokenStorageLoanDurationLimitsChangedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(PowerTokenStorageLoanDurationLimitsChanged)
+			it.Event = new(PowerTokenStorageRentalPeriodLimitsChanged)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -860,7 +912,7 @@ func (it *PowerTokenStorageLoanDurationLimitsChangedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(PowerTokenStorageLoanDurationLimitsChanged)
+		it.Event = new(PowerTokenStorageRentalPeriodLimitsChanged)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -876,42 +928,42 @@ func (it *PowerTokenStorageLoanDurationLimitsChangedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *PowerTokenStorageLoanDurationLimitsChangedIterator) Error() error {
+func (it *PowerTokenStorageRentalPeriodLimitsChangedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *PowerTokenStorageLoanDurationLimitsChangedIterator) Close() error {
+func (it *PowerTokenStorageRentalPeriodLimitsChangedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// PowerTokenStorageLoanDurationLimitsChanged represents a LoanDurationLimitsChanged event raised by the PowerTokenStorage contract.
-type PowerTokenStorageLoanDurationLimitsChanged struct {
-	MinDuration uint32
-	MaxDuration uint32
-	Raw         types.Log // Blockchain specific contextual infos
+// PowerTokenStorageRentalPeriodLimitsChanged represents a RentalPeriodLimitsChanged event raised by the PowerTokenStorage contract.
+type PowerTokenStorageRentalPeriodLimitsChanged struct {
+	MinRentalPeriod uint32
+	MaxRentalPeriod uint32
+	Raw             types.Log // Blockchain specific contextual infos
 }
 
-// FilterLoanDurationLimitsChanged is a free log retrieval operation binding the contract event 0x1ff66a89a0dcb0d94c8284280cbf0fb7190e7d935e15b6b48513e08b84fd9c7b.
+// FilterRentalPeriodLimitsChanged is a free log retrieval operation binding the contract event 0x61db23004a2218e8ecbda348735cc62eaaf3ca857e2705615a8d91acf6d7b817.
 //
-// Solidity: event LoanDurationLimitsChanged(uint32 minDuration, uint32 maxDuration)
-func (_PowerTokenStorage *PowerTokenStorageFilterer) FilterLoanDurationLimitsChanged(opts *bind.FilterOpts) (*PowerTokenStorageLoanDurationLimitsChangedIterator, error) {
+// Solidity: event RentalPeriodLimitsChanged(uint32 minRentalPeriod, uint32 maxRentalPeriod)
+func (_PowerTokenStorage *PowerTokenStorageFilterer) FilterRentalPeriodLimitsChanged(opts *bind.FilterOpts) (*PowerTokenStorageRentalPeriodLimitsChangedIterator, error) {
 
-	logs, sub, err := _PowerTokenStorage.contract.FilterLogs(opts, "LoanDurationLimitsChanged")
+	logs, sub, err := _PowerTokenStorage.contract.FilterLogs(opts, "RentalPeriodLimitsChanged")
 	if err != nil {
 		return nil, err
 	}
-	return &PowerTokenStorageLoanDurationLimitsChangedIterator{contract: _PowerTokenStorage.contract, event: "LoanDurationLimitsChanged", logs: logs, sub: sub}, nil
+	return &PowerTokenStorageRentalPeriodLimitsChangedIterator{contract: _PowerTokenStorage.contract, event: "RentalPeriodLimitsChanged", logs: logs, sub: sub}, nil
 }
 
-// WatchLoanDurationLimitsChanged is a free log subscription operation binding the contract event 0x1ff66a89a0dcb0d94c8284280cbf0fb7190e7d935e15b6b48513e08b84fd9c7b.
+// WatchRentalPeriodLimitsChanged is a free log subscription operation binding the contract event 0x61db23004a2218e8ecbda348735cc62eaaf3ca857e2705615a8d91acf6d7b817.
 //
-// Solidity: event LoanDurationLimitsChanged(uint32 minDuration, uint32 maxDuration)
-func (_PowerTokenStorage *PowerTokenStorageFilterer) WatchLoanDurationLimitsChanged(opts *bind.WatchOpts, sink chan<- *PowerTokenStorageLoanDurationLimitsChanged) (event.Subscription, error) {
+// Solidity: event RentalPeriodLimitsChanged(uint32 minRentalPeriod, uint32 maxRentalPeriod)
+func (_PowerTokenStorage *PowerTokenStorageFilterer) WatchRentalPeriodLimitsChanged(opts *bind.WatchOpts, sink chan<- *PowerTokenStorageRentalPeriodLimitsChanged) (event.Subscription, error) {
 
-	logs, sub, err := _PowerTokenStorage.contract.WatchLogs(opts, "LoanDurationLimitsChanged")
+	logs, sub, err := _PowerTokenStorage.contract.WatchLogs(opts, "RentalPeriodLimitsChanged")
 	if err != nil {
 		return nil, err
 	}
@@ -921,8 +973,8 @@ func (_PowerTokenStorage *PowerTokenStorageFilterer) WatchLoanDurationLimitsChan
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(PowerTokenStorageLoanDurationLimitsChanged)
-				if err := _PowerTokenStorage.contract.UnpackLog(event, "LoanDurationLimitsChanged", log); err != nil {
+				event := new(PowerTokenStorageRentalPeriodLimitsChanged)
+				if err := _PowerTokenStorage.contract.UnpackLog(event, "RentalPeriodLimitsChanged", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -943,145 +995,12 @@ func (_PowerTokenStorage *PowerTokenStorageFilterer) WatchLoanDurationLimitsChan
 	}), nil
 }
 
-// ParseLoanDurationLimitsChanged is a log parse operation binding the contract event 0x1ff66a89a0dcb0d94c8284280cbf0fb7190e7d935e15b6b48513e08b84fd9c7b.
+// ParseRentalPeriodLimitsChanged is a log parse operation binding the contract event 0x61db23004a2218e8ecbda348735cc62eaaf3ca857e2705615a8d91acf6d7b817.
 //
-// Solidity: event LoanDurationLimitsChanged(uint32 minDuration, uint32 maxDuration)
-func (_PowerTokenStorage *PowerTokenStorageFilterer) ParseLoanDurationLimitsChanged(log types.Log) (*PowerTokenStorageLoanDurationLimitsChanged, error) {
-	event := new(PowerTokenStorageLoanDurationLimitsChanged)
-	if err := _PowerTokenStorage.contract.UnpackLog(event, "LoanDurationLimitsChanged", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-// PowerTokenStoragePerpetualAllowedIterator is returned from FilterPerpetualAllowed and is used to iterate over the raw logs and unpacked data for PerpetualAllowed events raised by the PowerTokenStorage contract.
-type PowerTokenStoragePerpetualAllowedIterator struct {
-	Event *PowerTokenStoragePerpetualAllowed // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *PowerTokenStoragePerpetualAllowedIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(PowerTokenStoragePerpetualAllowed)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(PowerTokenStoragePerpetualAllowed)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *PowerTokenStoragePerpetualAllowedIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *PowerTokenStoragePerpetualAllowedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// PowerTokenStoragePerpetualAllowed represents a PerpetualAllowed event raised by the PowerTokenStorage contract.
-type PowerTokenStoragePerpetualAllowed struct {
-	Raw types.Log // Blockchain specific contextual infos
-}
-
-// FilterPerpetualAllowed is a free log retrieval operation binding the contract event 0x772fb13db6d1f0f35034c4b28dbbb01644e39d7e8b38de2a93b3c9d1fbb1ad4a.
-//
-// Solidity: event PerpetualAllowed()
-func (_PowerTokenStorage *PowerTokenStorageFilterer) FilterPerpetualAllowed(opts *bind.FilterOpts) (*PowerTokenStoragePerpetualAllowedIterator, error) {
-
-	logs, sub, err := _PowerTokenStorage.contract.FilterLogs(opts, "PerpetualAllowed")
-	if err != nil {
-		return nil, err
-	}
-	return &PowerTokenStoragePerpetualAllowedIterator{contract: _PowerTokenStorage.contract, event: "PerpetualAllowed", logs: logs, sub: sub}, nil
-}
-
-// WatchPerpetualAllowed is a free log subscription operation binding the contract event 0x772fb13db6d1f0f35034c4b28dbbb01644e39d7e8b38de2a93b3c9d1fbb1ad4a.
-//
-// Solidity: event PerpetualAllowed()
-func (_PowerTokenStorage *PowerTokenStorageFilterer) WatchPerpetualAllowed(opts *bind.WatchOpts, sink chan<- *PowerTokenStoragePerpetualAllowed) (event.Subscription, error) {
-
-	logs, sub, err := _PowerTokenStorage.contract.WatchLogs(opts, "PerpetualAllowed")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(PowerTokenStoragePerpetualAllowed)
-				if err := _PowerTokenStorage.contract.UnpackLog(event, "PerpetualAllowed", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParsePerpetualAllowed is a log parse operation binding the contract event 0x772fb13db6d1f0f35034c4b28dbbb01644e39d7e8b38de2a93b3c9d1fbb1ad4a.
-//
-// Solidity: event PerpetualAllowed()
-func (_PowerTokenStorage *PowerTokenStorageFilterer) ParsePerpetualAllowed(log types.Log) (*PowerTokenStoragePerpetualAllowed, error) {
-	event := new(PowerTokenStoragePerpetualAllowed)
-	if err := _PowerTokenStorage.contract.UnpackLog(event, "PerpetualAllowed", log); err != nil {
+// Solidity: event RentalPeriodLimitsChanged(uint32 minRentalPeriod, uint32 maxRentalPeriod)
+func (_PowerTokenStorage *PowerTokenStorageFilterer) ParseRentalPeriodLimitsChanged(log types.Log) (*PowerTokenStorageRentalPeriodLimitsChanged, error) {
+	event := new(PowerTokenStorageRentalPeriodLimitsChanged)
+	if err := _PowerTokenStorage.contract.UnpackLog(event, "RentalPeriodLimitsChanged", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
@@ -1216,6 +1135,272 @@ func (_PowerTokenStorage *PowerTokenStorageFilterer) WatchServiceFeePercentChang
 func (_PowerTokenStorage *PowerTokenStorageFilterer) ParseServiceFeePercentChanged(log types.Log) (*PowerTokenStorageServiceFeePercentChanged, error) {
 	event := new(PowerTokenStorageServiceFeePercentChanged)
 	if err := _PowerTokenStorage.contract.UnpackLog(event, "ServiceFeePercentChanged", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// PowerTokenStorageSwappingEnabledIterator is returned from FilterSwappingEnabled and is used to iterate over the raw logs and unpacked data for SwappingEnabled events raised by the PowerTokenStorage contract.
+type PowerTokenStorageSwappingEnabledIterator struct {
+	Event *PowerTokenStorageSwappingEnabled // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *PowerTokenStorageSwappingEnabledIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(PowerTokenStorageSwappingEnabled)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(PowerTokenStorageSwappingEnabled)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *PowerTokenStorageSwappingEnabledIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *PowerTokenStorageSwappingEnabledIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// PowerTokenStorageSwappingEnabled represents a SwappingEnabled event raised by the PowerTokenStorage contract.
+type PowerTokenStorageSwappingEnabled struct {
+	Raw types.Log // Blockchain specific contextual infos
+}
+
+// FilterSwappingEnabled is a free log retrieval operation binding the contract event 0x4f8e8d44a98a830b5142e61afa1cc8dacbf21291bcd657e26d2c7780e2c7fac4.
+//
+// Solidity: event SwappingEnabled()
+func (_PowerTokenStorage *PowerTokenStorageFilterer) FilterSwappingEnabled(opts *bind.FilterOpts) (*PowerTokenStorageSwappingEnabledIterator, error) {
+
+	logs, sub, err := _PowerTokenStorage.contract.FilterLogs(opts, "SwappingEnabled")
+	if err != nil {
+		return nil, err
+	}
+	return &PowerTokenStorageSwappingEnabledIterator{contract: _PowerTokenStorage.contract, event: "SwappingEnabled", logs: logs, sub: sub}, nil
+}
+
+// WatchSwappingEnabled is a free log subscription operation binding the contract event 0x4f8e8d44a98a830b5142e61afa1cc8dacbf21291bcd657e26d2c7780e2c7fac4.
+//
+// Solidity: event SwappingEnabled()
+func (_PowerTokenStorage *PowerTokenStorageFilterer) WatchSwappingEnabled(opts *bind.WatchOpts, sink chan<- *PowerTokenStorageSwappingEnabled) (event.Subscription, error) {
+
+	logs, sub, err := _PowerTokenStorage.contract.WatchLogs(opts, "SwappingEnabled")
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(PowerTokenStorageSwappingEnabled)
+				if err := _PowerTokenStorage.contract.UnpackLog(event, "SwappingEnabled", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseSwappingEnabled is a log parse operation binding the contract event 0x4f8e8d44a98a830b5142e61afa1cc8dacbf21291bcd657e26d2c7780e2c7fac4.
+//
+// Solidity: event SwappingEnabled()
+func (_PowerTokenStorage *PowerTokenStorageFilterer) ParseSwappingEnabled(log types.Log) (*PowerTokenStorageSwappingEnabled, error) {
+	event := new(PowerTokenStorageSwappingEnabled)
+	if err := _PowerTokenStorage.contract.UnpackLog(event, "SwappingEnabled", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// PowerTokenStorageTransferEnabledIterator is returned from FilterTransferEnabled and is used to iterate over the raw logs and unpacked data for TransferEnabled events raised by the PowerTokenStorage contract.
+type PowerTokenStorageTransferEnabledIterator struct {
+	Event *PowerTokenStorageTransferEnabled // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *PowerTokenStorageTransferEnabledIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(PowerTokenStorageTransferEnabled)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(PowerTokenStorageTransferEnabled)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *PowerTokenStorageTransferEnabledIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *PowerTokenStorageTransferEnabledIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// PowerTokenStorageTransferEnabled represents a TransferEnabled event raised by the PowerTokenStorage contract.
+type PowerTokenStorageTransferEnabled struct {
+	Raw types.Log // Blockchain specific contextual infos
+}
+
+// FilterTransferEnabled is a free log retrieval operation binding the contract event 0x75fce015c314a132947a3e42f6ab79ab8e05397dabf35b4d742dea228bbadc2d.
+//
+// Solidity: event TransferEnabled()
+func (_PowerTokenStorage *PowerTokenStorageFilterer) FilterTransferEnabled(opts *bind.FilterOpts) (*PowerTokenStorageTransferEnabledIterator, error) {
+
+	logs, sub, err := _PowerTokenStorage.contract.FilterLogs(opts, "TransferEnabled")
+	if err != nil {
+		return nil, err
+	}
+	return &PowerTokenStorageTransferEnabledIterator{contract: _PowerTokenStorage.contract, event: "TransferEnabled", logs: logs, sub: sub}, nil
+}
+
+// WatchTransferEnabled is a free log subscription operation binding the contract event 0x75fce015c314a132947a3e42f6ab79ab8e05397dabf35b4d742dea228bbadc2d.
+//
+// Solidity: event TransferEnabled()
+func (_PowerTokenStorage *PowerTokenStorageFilterer) WatchTransferEnabled(opts *bind.WatchOpts, sink chan<- *PowerTokenStorageTransferEnabled) (event.Subscription, error) {
+
+	logs, sub, err := _PowerTokenStorage.contract.WatchLogs(opts, "TransferEnabled")
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(PowerTokenStorageTransferEnabled)
+				if err := _PowerTokenStorage.contract.UnpackLog(event, "TransferEnabled", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseTransferEnabled is a log parse operation binding the contract event 0x75fce015c314a132947a3e42f6ab79ab8e05397dabf35b4d742dea228bbadc2d.
+//
+// Solidity: event TransferEnabled()
+func (_PowerTokenStorage *PowerTokenStorageFilterer) ParseTransferEnabled(log types.Log) (*PowerTokenStorageTransferEnabled, error) {
+	event := new(PowerTokenStorageTransferEnabled)
+	if err := _PowerTokenStorage.contract.UnpackLog(event, "TransferEnabled", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log

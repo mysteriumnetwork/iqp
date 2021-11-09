@@ -28,29 +28,10 @@ var (
 	_ = event.NewSubscription
 )
 
-// EnterpriseStorageLiquidityInfo is an auto generated low-level Go binding around an user-defined struct.
-type EnterpriseStorageLiquidityInfo struct {
-	Amount *big.Int
-	Shares *big.Int
-	Block  *big.Int
-}
-
-// EnterpriseStorageLoanInfo is an auto generated low-level Go binding around an user-defined struct.
-type EnterpriseStorageLoanInfo struct {
-	Amount                     *big.Int
-	PowerTokenIndex            uint16
-	BorrowingTime              uint32
-	MaturityTime               uint32
-	BorrowerReturnGraceTime    uint32
-	EnterpriseCollectGraceTime uint32
-	GcFee                      *big.Int
-	GcFeeTokenIndex            uint16
-}
-
 // EnterpriseMetaData contains all meta data concerning the Enterprise contract.
 var EnterpriseMetaData = &bind.MetaData{
-	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"baseUri\",\"type\":\"string\"}],\"name\":\"BaseUriChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"pole\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"slope\",\"type\":\"uint256\"}],\"name\":\"BondingChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"powerToken\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"borrowTokenId\",\"type\":\"uint256\"}],\"name\":\"Borrowed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"period\",\"type\":\"uint32\"}],\"name\":\"BorrowerLoanReturnGracePeriodChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"converter\",\"type\":\"address\"}],\"name\":\"ConverterChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"collector\",\"type\":\"address\"}],\"name\":\"EnterpriseCollectorChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"period\",\"type\":\"uint32\"}],\"name\":\"EnterpriseLoanCollectGracePeriodChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"EnterpriseShutdown\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"vault\",\"type\":\"address\"}],\"name\":\"EnterpriseVaultChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"fixedReserve\",\"type\":\"uint256\"}],\"name\":\"FixedReserveChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"percent\",\"type\":\"uint16\"}],\"name\":\"GcFeePercentChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"period\",\"type\":\"uint32\"}],\"name\":\"InterestGapHalvingPeriodChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"interestTokenId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"enumEnterprise.LiquidityChangeType\",\"name\":\"changeType\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"LiquidityChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"borrowTokenId\",\"type\":\"uint256\"}],\"name\":\"LoanReturned\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"paymentToken\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"enabled\",\"type\":\"bool\"}],\"name\":\"PaymentTokenChange\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"powerToken\",\"type\":\"address\"}],\"name\":\"ServiceRegistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint112\",\"name\":\"streamingReserve\",\"type\":\"uint112\"},{\"indexed\":false,\"internalType\":\"uint112\",\"name\":\"streamingReserveTarget\",\"type\":\"uint112\"}],\"name\":\"StreamingReserveChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"totalShares\",\"type\":\"uint256\"}],\"name\":\"TotalSharesChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"fixedReserve\",\"type\":\"uint256\"}],\"name\":\"UsedReserveChanged\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"liquidityAmount\",\"type\":\"uint256\"}],\"name\":\"addLiquidity\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractPowerToken\",\"name\":\"powerToken\",\"type\":\"address\"},{\"internalType\":\"contractIERC20\",\"name\":\"paymentToken\",\"type\":\"address\"},{\"internalType\":\"uint112\",\"name\":\"amount\",\"type\":\"uint112\"},{\"internalType\":\"uint32\",\"name\":\"duration\",\"type\":\"uint32\"},{\"internalType\":\"uint256\",\"name\":\"maxPayment\",\"type\":\"uint256\"}],\"name\":\"borrow\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"interestTokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"decreaseLiquidity\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"disablePaymentToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"enablePaymentToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractPowerToken\",\"name\":\"powerToken\",\"type\":\"address\"},{\"internalType\":\"contractIERC20\",\"name\":\"paymentToken\",\"type\":\"address\"},{\"internalType\":\"uint112\",\"name\":\"amount\",\"type\":\"uint112\"},{\"internalType\":\"uint32\",\"name\":\"duration\",\"type\":\"uint32\"}],\"name\":\"estimateLoan\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"interestTokenId\",\"type\":\"uint256\"}],\"name\":\"getAccruedInterest\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAvailableReserve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBaseUri\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBondingCurve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"pole\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"slope\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBorrowToken\",\"outputs\":[{\"internalType\":\"contractIBorrowToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBorrowerLoanReturnGracePeriod\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getConverter\",\"outputs\":[{\"internalType\":\"contractIConverter\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnterpriseCollector\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnterpriseLoanCollectGracePeriod\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnterpriseVault\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getGCFeePercent\",\"outputs\":[{\"internalType\":\"uint16\",\"name\":\"\",\"type\":\"uint16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getInfo\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"baseUri\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"totalShares\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"interestGapHalvingPeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"borrowerLoanReturnGracePeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"enterpriseLoanCollectGracePeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint16\",\"name\":\"gcFeePercent\",\"type\":\"uint16\"},{\"internalType\":\"uint256\",\"name\":\"fixedReserve\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"usedReserve\",\"type\":\"uint256\"},{\"internalType\":\"uint112\",\"name\":\"streamingReserve\",\"type\":\"uint112\"},{\"internalType\":\"uint112\",\"name\":\"streamingReserveTarget\",\"type\":\"uint112\"},{\"internalType\":\"uint32\",\"name\":\"streamingReserveUpdated\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getInterestGapHalvingPeriod\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getInterestToken\",\"outputs\":[{\"internalType\":\"contractIInterestToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"interestTokenId\",\"type\":\"uint256\"}],\"name\":\"getLiquidityInfo\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"shares\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"block\",\"type\":\"uint256\"}],\"internalType\":\"structEnterpriseStorage.LiquidityInfo\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLiquidityToken\",\"outputs\":[{\"internalType\":\"contractIERC20Metadata\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"borrowTokenId\",\"type\":\"uint256\"}],\"name\":\"getLoanInfo\",\"outputs\":[{\"components\":[{\"internalType\":\"uint112\",\"name\":\"amount\",\"type\":\"uint112\"},{\"internalType\":\"uint16\",\"name\":\"powerTokenIndex\",\"type\":\"uint16\"},{\"internalType\":\"uint32\",\"name\":\"borrowingTime\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maturityTime\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"borrowerReturnGraceTime\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"enterpriseCollectGraceTime\",\"type\":\"uint32\"},{\"internalType\":\"uint112\",\"name\":\"gcFee\",\"type\":\"uint112\"},{\"internalType\":\"uint16\",\"name\":\"gcFeeTokenIndex\",\"type\":\"uint16\"}],\"internalType\":\"structEnterpriseStorage.LoanInfo\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPowerTokens\",\"outputs\":[{\"internalType\":\"contractPowerToken[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getProxyAdmin\",\"outputs\":[{\"internalType\":\"contractProxyAdmin\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getReserve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getUsedReserve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"interestTokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"increaseLiquidity\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"enterpriseName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"baseUri\",\"type\":\"string\"},{\"internalType\":\"uint16\",\"name\":\"gcFeePercent\",\"type\":\"uint16\"},{\"internalType\":\"contractIConverter\",\"name\":\"converter\",\"type\":\"address\"},{\"internalType\":\"contractProxyAdmin\",\"name\":\"proxyAdmin\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"initialOwner\",\"type\":\"address\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIERC20Metadata\",\"name\":\"liquidityToken\",\"type\":\"address\"},{\"internalType\":\"contractIInterestToken\",\"name\":\"interestToken\",\"type\":\"address\"},{\"internalType\":\"contractIBorrowToken\",\"name\":\"borrowToken\",\"type\":\"address\"}],\"name\":\"initializeTokens\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractPowerToken\",\"name\":\"powerToken\",\"type\":\"address\"}],\"name\":\"isRegisteredPowerToken\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"isSupportedPaymentToken\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"borrowTokenId\",\"type\":\"uint256\"}],\"name\":\"loanTransfer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"paymentToken\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIERC20\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"paymentTokenIndex\",\"outputs\":[{\"internalType\":\"int16\",\"name\":\"\",\"type\":\"int16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"borrowTokenId\",\"type\":\"uint256\"},{\"internalType\":\"contractIERC20\",\"name\":\"paymentToken\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"duration\",\"type\":\"uint32\"},{\"internalType\":\"uint256\",\"name\":\"maxPayment\",\"type\":\"uint256\"}],\"name\":\"reborrow\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"serviceName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"symbol\",\"type\":\"string\"},{\"internalType\":\"uint32\",\"name\":\"gapHalvingPeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint112\",\"name\":\"baseRate\",\"type\":\"uint112\"},{\"internalType\":\"contractIERC20Metadata\",\"name\":\"baseToken\",\"type\":\"address\"},{\"internalType\":\"uint16\",\"name\":\"serviceFeePercent\",\"type\":\"uint16\"},{\"internalType\":\"uint32\",\"name\":\"minLoanDuration\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxLoanDuration\",\"type\":\"uint32\"},{\"internalType\":\"uint96\",\"name\":\"minGCFee\",\"type\":\"uint96\"},{\"internalType\":\"bool\",\"name\":\"allowsPerpetualTokensForever\",\"type\":\"bool\"}],\"name\":\"registerService\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"interestTokenId\",\"type\":\"uint256\"}],\"name\":\"removeLiquidity\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"borrowTokenId\",\"type\":\"uint256\"}],\"name\":\"returnLoan\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"baseUri\",\"type\":\"string\"}],\"name\":\"setBaseUri\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"pole\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"slope\",\"type\":\"uint256\"}],\"name\":\"setBondingCurve\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"newPeriod\",\"type\":\"uint32\"}],\"name\":\"setBorrowerLoanReturnGracePeriod\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIConverter\",\"name\":\"newConverter\",\"type\":\"address\"}],\"name\":\"setConverter\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newCollector\",\"type\":\"address\"}],\"name\":\"setEnterpriseCollector\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"newPeriod\",\"type\":\"uint32\"}],\"name\":\"setEnterpriseLoanCollectGracePeriod\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newVault\",\"type\":\"address\"}],\"name\":\"setEnterpriseVault\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint16\",\"name\":\"newGcFeePercent\",\"type\":\"uint16\"}],\"name\":\"setGcFeePercent\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"interestGapHalvingPeriod\",\"type\":\"uint32\"}],\"name\":\"setInterestGapHalvingPeriod\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"shutdownEnterpriseForever\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"}],\"name\":\"upgradeBorrowToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"}],\"name\":\"upgradeEnterprise\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"}],\"name\":\"upgradeInterestToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractPowerToken\",\"name\":\"powerToken\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"}],\"name\":\"upgradePowerToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"interestTokenId\",\"type\":\"uint256\"}],\"name\":\"withdrawInterest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
-	Bin: "0x608060405234801561001057600080fd5b50615baf80620000216000396000f3fe608060405234801561001057600080fd5b50600436106102925760003560e01c8062ca339b146102975780630714012c146102ac57806308669aab146102d55780630cac36b2146102e85780630e101b60146102fd5780630ea1dc9e1461031d5780632261b07f1461032e578063229304dc1461033f5780632b2f6095146103605780632e365ade146103735780632fb2067f146103865780633513e0dc146103a9578063449497ec146103bc5780634741efb3146103cf57806349bd4e89146103d7578063512a53bc146103ea57806351c6590a146103fd57806359bf5d39146104105780635a4598df146104185780635a9b0b891461043657806362c1f38814610456578063644e44df146104695780636815f3371461047a578063696f9c811461048d5780637791c42d146104a05780637b024363146104b15780638188d50d146104c457806389035b61146104d95780638b3240a0146105055780638c0114b01461050d5780638da5cb5b1461052057806390f55edd146105285780639339ea691461053b5780639ab711931461054e5780639c7aa7f8146105615780639c8f9f2314610574578063a0bcfc7f14610587578063a0efd1181461059a578063a554b26d146105af578063aebb5041146105c0578063b19337a4146105c8578063b406bf6d146105db578063b56de97e146105fc578063b96266fa1461060f578063bfd84fb414610624578063c1fc16d814610637578063c22947841461064a578063c4d66de81461065d578063c93d0b9214610670578063df57f2fa14610681578063e1a5fa49146106b6578063e9126154146106c9578063ef1f9f39146106dc578063f2fde38b146106ef578063faac38ef14610702578063fbac9a551461071d578063fcb2884e14610743575b600080fd5b6102aa6102a5366004614f48565b61074b565b005b6102bf6102ba36600461526c565b611052565b6040516102cc919061560c565b60405180910390f35b6102aa6102e336600461526c565b6111a7565b6102f061134b565b6040516102cc9190615521565b61031061030b36600461526c565b6113dd565b6040516102cc91906153ce565b6001546001600160a01b0316610310565b6004546001600160a01b0316610310565b61035261034d366004614eef565b61141b565b6040519081526020016102cc565b6102aa61036e366004614dd9565b611544565b6102aa610381366004615302565b611600565b610399610394366004614dd9565b6116e2565b60405190151581526020016102cc565b6102aa6103b73660046152e1565b611705565b6102aa6103ca366004615234565b611812565b6102aa61189c565b6102aa6103e53660046152e1565b611996565b6102aa6103f8366004614e11565b611bc0565b6102aa61040b36600461526c565b611e47565b610352611fc5565b600354600160a01b900463ffffffff165b6040516102cc91906156b1565b61043e611fea565b6040516102cc9c9b9a99989796959493929190615534565b6102aa610464366004614dd9565b6121ad565b6000546001600160a01b0316610310565b6102aa61048836600461505a565b612273565b6102aa61049b3660046152e1565b61259f565b6006546001600160a01b0316610310565b6102aa6104bf366004614dd9565b61273f565b600654600160a01b900463ffffffff16610429565b6103996104e7366004614dd9565b6001600160a01b031660009081526013602052604090205460ff1690565b6103106127c6565b6102aa61051b36600461529c565b6127e7565b610310612e13565b6102aa610536366004614dd9565b612e29565b61035261054936600461526c565b612eef565b6102aa61055c36600461510c565b612f34565b6102aa61056f366004614dd9565b6133ef565b6102aa61058236600461526c565b613535565b6102aa610595366004614fa9565b613770565b600654600160c01b900463ffffffff16610429565b6005546001600160a01b0316610310565b6103526137e8565b6102aa6105d6366004614dd9565b6137ff565b600654600160e01b900461ffff1660405161ffff90911681526020016102cc565b6102aa61060a366004615302565b6138c5565b61061761399b565b6040516102cc9190615438565b6102aa610632366004614dd9565b6139fc565b6102aa610645366004614dd9565b613a92565b6102aa610658366004614eb7565b613b13565b6102aa61066b366004614dd9565b613c20565b6002546001600160a01b0316610310565b61069461068f36600461526c565b613cf5565b60408051825181526020808401519082015291810151908201526060016102cc565b6102aa6106c4366004615302565b613dcf565b6102aa6106d736600461526c565b613e95565b6102aa6106ea366004614e6d565b614153565b6102aa6106fd366004614dd9565b6141e2565b600e54600d54604080519283526020830191909152016102cc565b61073061072b366004614dd9565b6142d3565b60405160019190910b81526020016102cc565b600a54610352565b600354604080518082019091526002815261373560f01b602082015290600160c01b900460ff16156107995760405162461bcd60e51b81526004016107909190615521565b60405180910390fd5b506001600160a01b03851660009081526013602090815260409182902054825180840190935260018352601b60f91b9183019190915260ff166107ef5760405162461bcd60e51b81526004016107909190615521565b506107f9846116e2565b604051806040016040528060028152602001610d0d60f21b815250906108325760405162461bcd60e51b81526004016107909190615521565b50604051636e4d898360e01b81526001600160a01b03861690636e4d89839061085f9085906004016156b1565b60206040518083038186803b15801561087757600080fd5b505afa15801561088b573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906108af9190614e51565b60405180604001604052806002815260200161343560f01b815250906108e85760405162461bcd60e51b81526004016107909190615521565b506040805180820190915260028152611b9b60f11b60208201526001600160701b0384166109295760405162461bcd60e51b81526004016107909190615521565b506109326137e8565b836001600160701b03161115604051806040016040528060028152602001611a1b60f11b815250906109775760405162461bcd60e51b81526004016107909190615521565b50600080600080886001600160a01b0316639d5513d78989896040518463ffffffff1660e01b81526004016109ae93929190615485565b60606040518083038186803b1580156109c657600080fd5b505afa1580156109da573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906109fe91906151f3565b955090935091508390506000610a148385615719565b6001600160701b0316905085856001600160701b031682610a359190615744565b111560405180604001604052806002815260200161343760f01b81525090610a705760405162461bcd60e51b81526004016107909190615521565b50610a866001600160a01b038a16333084614300565b60005481906001600160a01b038b8116911614610bcf576004805460405163095ea7b360e01b81526001600160a01b03808e169363095ea7b393610acf9392169187910161541f565b602060405180830381600087803b158015610ae957600080fd5b505af1158015610afd573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610b219190614e51565b50600460009054906101000a90046001600160a01b03166001600160a01b031663029b465d8b8460008054906101000a90046001600160a01b03166040518463ffffffff1660e01b8152600401610b7a939291906154b5565b602060405180830381600087803b158015610b9457600080fd5b505af1158015610ba8573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610bcc9190615284565b90505b600082610be5836001600160701b03881661579b565b610bef919061577b565b600654600054919250610c0f916001600160a01b03908116911683614371565b896001600160701b0316600a6000828254610c2a9190615744565b9091555060009050610c3c8284615827565b9050610c4781614390565b5050600254610c7495506001600160a01b038b81169550339450169150506001600160701b038516614300565b426000610c81858361575c565b90506000600260009054906101000a90046001600160a01b03166001600160a01b031663caa0f92a6040518163ffffffff1660e01b8152600401602060405180830381600087803b158015610cd557600080fd5b505af1158015610ce9573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610d0d9190615284565b9050604051806101000160405280886001600160701b031681526020018a6001600160a01b03166381045ead6040518163ffffffff1660e01b815260040160206040518083038186803b158015610d6357600080fd5b505afa158015610d77573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610d9b9190615250565b61ffff16815263ffffffff80861660208301528481166040830152600654606090920191610dd291600160a01b909104168561575c565b63ffffffff168152602001600660189054906101000a900463ffffffff1684610dfb919061575c565b63ffffffff168152602001856001600160701b03168152602001610e1e8a6142d3565b61ffff9081169091526000838152601160209081526040918290208451815492860151868501516060880151608089015160a08a01516001600160701b039586166001600160801b031998891617600160701b958b16860217600160801b600160c01b031916600160801b63ffffffff9586160263ffffffff60a01b191617600160a01b93851693909302929092176001600160c01b0316600160c01b918416919091026001600160e01b031617600160e01b929091169190910217835560c08701516001909301805460e0909801519390921696909316959095179316029190911790915560025490516335313c2160e11b815282916001600160a01b031690636a62784290610f339033906004016153ce565b602060405180830381600087803b158015610f4d57600080fd5b505af1158015610f61573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610f859190615284565b14610fa057634e487b7160e01b600052600160045260246000fd5b60405163f8642f2960e01b8152600481018290526001600160a01b038a169063f8642f2990602401600060405180830381600087803b158015610fe257600080fd5b505af1158015610ff6573d6000803e3d6000fd5b50506040518392506001600160a01b038c16915060008051602061595a83398151915290600090a3600080516020615b3a833981519152600a5460405161103f91815260200190565b60405180910390a1505050505050505050565b6040805161010081018252600080825260208201819052818301819052606082018190526080820181905260a0820181905260c0820181905260e082015260025491516331a9108f60e11b81526004810184905290916001600160a01b031690636352211e9060240160206040518083038186803b1580156110d357600080fd5b505afa1580156110e7573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061110b9190614df5565b505060009081526011602090815260409182902082516101008101845281546001600160701b038082168352600160701b80830461ffff90811696850196909652600160801b830463ffffffff90811697850197909752600160a01b830487166060850152600160c01b830487166080850152600160e01b90920490951660a083015260019092015493841660c082015292041660e082015290565b6001546040516331a9108f60e11b815260048101839052829133916001600160a01b0390911690636352211e9060240160206040518083038186803b1580156111ef57600080fd5b505afa158015611203573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906112279190614df5565b6001600160a01b031614604051806040016040528060018152602001603360f81b815250906112695760405162461bcd60e51b81526004016107909190615521565b5060008281526012602052604081206001810154909161128885612eef565b90506112926137e8565b811115604051806040016040528060028152602001611a1b60f11b815250906112ce5760405162461bcd60e51b81526004016107909190615521565b506000546112e6906001600160a01b03163383614371565b60006112f58460000154614442565b60018501819055905061131061130b8285615827565b614464565b611319826144ae565b60008660008051602061599a8339815191528460405161133b91815260200190565b60405180910390a3505050505050565b60606010805461135a9061586a565b80601f01602080910402602001604051908101604052809291908181526020018280546113869061586a565b80156113d35780601f106113a8576101008083540402835291602001916113d3565b820191906000526020600020905b8154815290600101906020018083116113b657829003601f168201915b5050505050905090565b60006008828154811061140057634e487b7160e01b600052603260045260246000fd5b6000918252602090912001546001600160a01b031692915050565b600354604080518082019091526002815261373560f01b6020820152600091600160c01b900460ff16156114625760405162461bcd60e51b81526004016107909190615521565b506001600160a01b03851660009081526013602090815260409182902054825180840190935260018352601b60f91b9183019190915260ff166114b85760405162461bcd60e51b81526004016107909190615521565b50604051631466370160e01b81526001600160a01b038616906314663701906114e990879087908790600401615485565b60206040518083038186803b15801561150157600080fd5b505afa158015611515573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906115399190615284565b90505b949350505050565b3361154d612e13565b6001600160a01b031614604051806040016040528060018152602001603360f81b8152509061158f5760405162461bcd60e51b81526004016107909190615521565b506115986127c6565b60015460405163266a23b160e21b81526001600160a01b03928316926399a88ec4926115cb9291169085906004016154d8565b600060405180830381600087803b1580156115e557600080fd5b505af11580156115f9573d6000803e3d6000fd5b5050505050565b33611609612e13565b6001600160a01b031614604051806040016040528060018152602001603360f81b8152509061164b5760405162461bcd60e51b81526004016107909190615521565b506006546040805180820190915260028152610d8d60f21b60208201529063ffffffff600160c01b9091048116908316111561169a5760405162461bcd60e51b81526004016107909190615521565b506006805463ffffffff60a01b1916600160a01b63ffffffff841602179055604051600080516020615ada833981519152906116d79083906156b1565b60405180910390a150565b6001600160a01b0316600090815260076020526040812054600190810b900b1390565b3361170e612e13565b6001600160a01b031614604051806040016040528060018152602001603360f81b815250906117505760405162461bcd60e51b81526004016107909190615521565b50611760600a600360401b61577b565b82111560405180604001604052806002815260200161373760f01b8152509061179c5760405162461bcd60e51b81526004016107909190615521565b5060408051808201909152600281526106e760f31b6020820152600160401b8211156117db5760405162461bcd60e51b81526004016107909190615521565b50600e829055600d81905560408051838152602081018390526000805160206159da83398151915291015b60405180910390a15050565b3361181b612e13565b6001600160a01b031614604051806040016040528060018152602001603360f81b8152509061185d5760405162461bcd60e51b81526004016107909190615521565b506006805461ffff60e01b1916600160e01b61ffff841690810291909117909155604051908152600080516020615a1a833981519152906020016116d7565b600354604080518082019091526002815261373560f01b602082015290600160c01b900460ff16156118e15760405162461bcd60e51b81526004016107909190615521565b50336118eb612e13565b6001600160a01b031614604051806040016040528060018152602001603360f81b8152509061192d5760405162461bcd60e51b81526004016107909190615521565b5060038054600160c01b60ff60c01b199091161790556000600a819055600b8054600160701b81046001600160701b03166001600160701b03199091161790556040517f6f6348718c9a361558c634b516777b2b06bb2bf4140ad3d3bfaa44270fc2c0729190a1565b6001546040516331a9108f60e11b815260048101849052839133916001600160a01b0390911690636352211e9060240160206040518083038186803b1580156119de57600080fd5b505afa1580156119f2573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190611a169190614df5565b6001600160a01b031614604051806040016040528060018152602001603360f81b81525090611a585760405162461bcd60e51b81526004016107909190615521565b5060006012600085815260200190815260200160002090504381600201541060405180604001604052806002815260200161035360f41b81525090611ab05760405162461bcd60e51b81526004016107909190615521565b5080546040805180820190915260028152611a1b60f11b602082015290841115611aed5760405162461bcd60e51b81526004016107909190615521565b50611af66137e8565b831115604051806040016040528060028152602001611a1b60f11b81525090611b325760405162461bcd60e51b81526004016107909190615521565b50600054611b4a906001600160a01b03163385614371565b6000611b5584614442565b90508160010154811115611b6a575060018101545b600182018054829003905581548490038255611b8581614464565b611b8e846144ae565b60045b8560008051602061599a83398151915286604051611bb191815260200190565b60405180910390a35050505050565b600280546040805180820190915291825261333960f01b60208301526001600160a01b03163314611c045760405162461bcd60e51b81526004016107909190615521565b506000818152601160209081526040918290205482518084019093526002835261068760f31b918301919091526001600160701b03169081611c595760405162461bcd60e51b81526004016107909190615521565b5060008281526011602052604081205460148054600160a01b830463ffffffff164211936001600160a01b03898116159490891615939192600160701b90910461ffff16908110611cba57634e487b7160e01b600052603260045260246000fd5b6000918252602090912001546001600160a01b031690508115611d3c5760405163079cc67960e41b81526001600160a01b038216906379cc679090611d05908b9089906004016153fd565b600060405180830381600087803b158015611d1f57600080fd5b505af1158015611d33573d6000803e3d6000fd5b50505050611e3d565b8215611d70576040516340c10f1960e01b81526001600160a01b038216906340c10f1990611d05908a9089906004016153fd565b83611e0d576040516333bebb7760e01b81526001600160a01b03898116600483015288811660248301526001600160701b03871660448301528216906333bebb7790606401602060405180830381600087803b158015611dcf57600080fd5b505af1158015611de3573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190611e079190614e51565b50611e3d565b60408051808201825260028152611a9960f11b6020820152905162461bcd60e51b81526107909190600401615521565b5050505050505050565b600354604080518082019091526002815261373560f01b602082015290600160c01b900460ff1615611e8c5760405162461bcd60e51b81526004016107909190615521565b50600054611ea5906001600160a01b0316333084614300565b6000600c54600014611ebf57611eba82614442565b611ec1565b815b9050611ecc82614519565b6001546040516335313c2160e11b81526000916001600160a01b031690636a62784290611efd9033906004016153ce565b602060405180830381600087803b158015611f1757600080fd5b505af1158015611f2b573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190611f4f9190615284565b6040805160608101825285815260208082018681524383850190815260008681526012909352939091209151825551600182015590516002909101559050611f9682614551565b60018160008051602061599a83398151915285604051611fb891815260200190565b60405180910390a3505050565b6000611fcf614563565b6001600160701b0316600954611fe59190615744565b905090565b600c54600354600654600954600a54600b54600f805460609788976000978897889788978897889788978897889788979496601096939563ffffffff600160a01b94859004811696948404811695600160c01b850482169561ffff600160e01b9687900416959394936001600160701b0380841694600160701b8504909116939190910416908c9061207b9061586a565b80601f01602080910402602001604051908101604052809291908181526020018280546120a79061586a565b80156120f45780601f106120c9576101008083540402835291602001916120f4565b820191906000526020600020905b8154815290600101906020018083116120d757829003601f168201915b50505050509b508a80546121079061586a565b80601f01602080910402602001604051908101604052809291908181526020018280546121339061586a565b80156121805780601f1061215557610100808354040283529160200191612180565b820191906000526020600020905b81548152906001019060200180831161216357829003601f168201915b50505050509a509b509b509b509b509b509b509b509b509b509b509b509b50909192939495969798999a9b565b336121b6612e13565b6001600160a01b031614604051806040016040528060018152602001603360f81b815250906121f85760405162461bcd60e51b81526004016107909190615521565b50604080518082019091526002815261363160f01b60208201526001600160a01b0382166122395760405162461bcd60e51b81526004016107909190615521565b50600580546001600160a01b0319166001600160a01b038316179055604051600080516020615aba833981519152906116d79083906153ce565b600f80546122809061586a565b6040805180820190915260018152601960f91b60208201529150156122b85760405162461bcd60e51b81526004016107909190615521565b506122c281613c20565b816000805160206159fa83398151915280546001600160a01b03929092166001600160a01b03199283161790556003805490911633179055865161230d90600f9060208a0190614bd9565b5061231a60108787614c5d565b5060068054600480546001600160a01b03199081166001600160a01b03888116919091179092556005805492861692909116821790556003805463ffffffff60a01b191661127560a71b179055600165ffff0000000160c01b0319909116600160e01b61ffff8816026001600160c01b03191617176102a360a61b1763ffffffff60c01b19166102a360c71b1790556123b86064600560401b61577b565b600e556123ca600a600360401b61577b565b600d5560405160008051602061593a833981519152906123ed90889088906154f2565b60405180910390a1600654604051600160e01b90910461ffff168152600080516020615a1a8339815191529060200160405180910390a1600454604051600080516020615a5a8339815191529161244f916001600160a01b03909116906153ce565b60405180910390a1600654604051600080516020615a3a83398151915291612482916001600160a01b03909116906153ce565b60405180910390a1600554604051600080516020615aba833981519152916124b5916001600160a01b03909116906153ce565b60405180910390a1600080516020615b1a833981519152600360149054906101000a900463ffffffff166040516124ec91906156b1565b60405180910390a1600080516020615ada833981519152600660149054906101000a900463ffffffff1660405161252391906156b1565b60405180910390a16000805160206159ba833981519152600660189054906101000a900463ffffffff1660405161255a91906156b1565b60405180910390a16000805160206159da833981519152600e54600d5460405161258e929190918252602082015260400190565b60405180910390a150505050505050565b600354604080518082019091526002815261373560f01b602082015290600160c01b900460ff16156125e45760405162461bcd60e51b81526004016107909190615521565b506001546040516331a9108f60e11b815260048101849052839133916001600160a01b0390911690636352211e9060240160206040518083038186803b15801561262d57600080fd5b505afa158015612641573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906126659190614df5565b6001600160a01b031614604051806040016040528060018152602001603360f81b815250906126a75760405162461bcd60e51b81526004016107909190615521565b506000546126c0906001600160a01b0316333085614300565b6000600c546000146126da576126d583614442565b6126dc565b825b90506126e783614519565b6000848152601260205260408120805490918591839190612709908490615744565b92505081905550818160010160008282546127249190615744565b909155505043600282015561273882614551565b6003611b91565b33612748612e13565b6001600160a01b031614604051806040016040528060018152602001603360f81b8152509061278a5760405162461bcd60e51b81526004016107909190615521565b506127936127c6565b60025460405163266a23b160e21b81526001600160a01b03928316926399a88ec4926115cb9291169085906004016154d8565b60006000805160206159fa8339815191525b546001600160a01b0316919050565b600354604080518082019091526002815261373560f01b602082015290600160c01b900460ff161561282c5760405162461bcd60e51b81526004016107909190615521565b50612836836116e2565b604051806040016040528060028152602001610d0d60f21b8152509061286f5760405162461bcd60e51b81526004016107909190615521565b50600084815260116020908152604091829020805483518085019094526002845261068760f31b9284019290925291906001600160701b03166128c55760405162461bcd60e51b81526004016107909190615521565b50805460148054600092600160701b900461ffff169081106128f757634e487b7160e01b600052603260045260246000fd5b600091825260209091200154604051636e4d898360e01b81526001600160a01b0390911691508190636e4d8983906129339087906004016156b1565b60206040518083038186803b15801561294b57600080fd5b505afa15801561295f573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906129839190614e51565b60405180604001604052806002815260200161343560f01b815250906129bc5760405162461bcd60e51b81526004016107909190615521565b50815442906129d9908690600160a01b900463ffffffff1661575c565b63ffffffff16101560405180604001604052806002815260200161343960f01b81525090612a1a5760405162461bcd60e51b81526004016107909190615521565b508154600a80546001600160701b0390921691600090612a3b908490615827565b90915550508154604051639d5513d760e01b815260009182916001600160a01b03851691639d5513d791612a81918b916001600160701b03909116908b90600401615485565b60606040518083038186803b158015612a9957600080fd5b505afa158015612aad573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190612ad191906151f3565b508554600a80546001600160701b03909216909101905590925090506000612af98284615719565b6001600160701b031690508581111560405180604001604052806002815260200161343760f01b81525090612b415760405162461bcd60e51b81526004016107909190615521565b50612b576001600160a01b038916333084614300565b60005481906001600160a01b038a8116911614612c81576004805460405163095ea7b360e01b81526001600160a01b03808d169363095ea7b393612ba09392169187910161541f565b602060405180830381600087803b158015612bba57600080fd5b505af1158015612bce573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190612bf29190614e51565b506004805460005460405163029b465d60e01b81526001600160a01b039283169363029b465d93612c2c938f9389939190921691016154b5565b602060405180830381600087803b158015612c4657600080fd5b505af1158015612c5a573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190612c7e9190615284565b90505b600082612c97836001600160701b03871661579b565b612ca1919061577b565b600654600054919250612cc1916001600160a01b03908116911683614371565b6000612ccd8284615827565b9050612cd881614390565b8754612cf2908b90600160a01b900463ffffffff1661575c565b885463ffffffff60a01b1916600160a01b63ffffffff928316810291909117808b55600654612d2b93908390048116929091041661575c565b885463ffffffff60c01b1916600160c01b63ffffffff928316810291909117808b55600654612d6893929004821691600160a01b9091041661575c565b885463ffffffff91909116600160e01b026001600160e01b0390911617885560405163f8642f2960e01b8152600481018d90526001600160a01b0388169063f8642f2990602401600060405180830381600087803b158015612dc957600080fd5b505af1158015612ddd573d6000803e3d6000fd5b50506040518e92506001600160a01b038a16915060008051602061595a83398151915290600090a3505050505050505050505050565b600060008051602061597a8339815191526127d8565b33612e32612e13565b6001600160a01b031614604051806040016040528060018152602001603360f81b81525090612e745760405162461bcd60e51b81526004016107909190615521565b506040805180820190915260028152611b1960f11b60208201526001600160a01b038216612eb55760405162461bcd60e51b81526004016107909190615521565b50600680546001600160a01b0319166001600160a01b038316179055604051600080516020615a3a833981519152906116d79083906153ce565b600081815260126020526040812060018101548290612f0d906145cb565b8254909150811115612f2a578154612f259082615827565b61153c565b6000949350505050565b33612f3d612e13565b6001600160a01b031614604051806040016040528060018152602001603360f81b81525090612f7f5760405162461bcd60e51b81526004016107909190615521565b50600354604080518082019091526002815261373560f01b602082015290600160c01b900460ff1615612fc55760405162461bcd60e51b81526004016107909190615521565b50604080518082019091526002815261034360f41b60208201526001600160a01b0387166130065760405162461bcd60e51b81526004016107909190615521565b50601454604080518082019091526002815261343160f01b60208201529061ffff116130455760405162461bcd60e51b81526004016107909190615521565b506003546000906001600160a01b031663c31011cc6130626127c6565b6040518263ffffffff1660e01b815260040161307e91906153ce565b602060405180830381600087803b15801561309857600080fd5b505af11580156130ac573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906130d09190614df5565b905060008060009054906101000a90046001600160a01b03166001600160a01b03166395d89b416040518163ffffffff1660e01b815260040160006040518083038186803b15801561312157600080fd5b505afa158015613135573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f1916820160405261315d9190810190614fe8565b90506000818c604051602001613174929190615392565b6040516020818303038152906040529050826001600160a01b0316631624f6c68e8360008054906101000a90046001600160a01b03166001600160a01b031663313ce5676040518163ffffffff1660e01b815260040160206040518083038186803b1580156131e257600080fd5b505afa1580156131f6573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061321a919061531c565b6040518463ffffffff1660e01b8152600401613238939291906155d3565b600060405180830381600087803b15801561325257600080fd5b505af1158015613266573d6000803e3d6000fd5b505050505050806001600160a01b0316632ef0cf8b308a868d6014805490508d8c8c8f8c6040518b63ffffffff1660e01b81526004016133249a999897969594939291906001600160a01b039a8b1681526001600160701b039990991660208a01526001600160601b0397909716604089015263ffffffff958616606089015261ffff94851660808901529290971660a0870152831660c08601529490911660e0840152929092166101008201529015156101208201526101400190565b600060405180830381600087803b15801561333e57600080fd5b505af1158015613352573d6000803e3d6000fd5b50506014805460018082019092557fce6d7b5282bd9a3661ae061feed1dbda4e52ab073b1f9285be6e155d9c38d4ec0180546001600160a01b0319166001600160a01b038616908117909155600081815260136020526040808220805460ff191690941790935591519093507f2fa31fbaacf5eaf61d648ea7528ada6efb69bfb06d2c3bd35ce511a820fce53e9250a25050505050505050505050565b336133f8612e13565b6001600160a01b031614604051806040016040528060018152602001603360f81b8152509061343a5760405162461bcd60e51b81526004016107909190615521565b506001600160a01b03811660009081526007602090815260409182902054825180840190935260028352611b9960f11b91830191909152600190810b900b6134955760405162461bcd60e51b81526004016107909190615521565b506001600160a01b038116600090815260076020526040812054600190810b900b1315613532576001600160a01b0381166000908152600760205260409020546134e19060010b6158a5565b6001600160a01b038216600090815260076020526040808220805460019490940b61ffff1661ffff19909416939093179092559051600080516020615afa833981519152916116d7918491906153e2565b50565b6001546040516331a9108f60e11b815260048101839052829133916001600160a01b0390911690636352211e9060240160206040518083038186803b15801561357d57600080fd5b505afa158015613591573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906135b59190614df5565b6001600160a01b031614604051806040016040528060018152602001603360f81b815250906135f75760405162461bcd60e51b81526004016107909190615521565b5060006012600084815260200190815260200160002090504381600201541060405180604001604052806002815260200161035360f41b8152509061364f5760405162461bcd60e51b81526004016107909190615521565b5060018101546000613660826145cb565b905061366a6137e8565b811115604051806040016040528060028152602001611a1b60f11b815250906136a65760405162461bcd60e51b81526004016107909190615521565b50600154604051630852cd8d60e31b8152600481018790526001600160a01b03909116906342966c6890602401600060405180830381600087803b1580156136ed57600080fd5b505af1158015613701573d6000803e3d6000fd5b505060005461371d92506001600160a01b031690503383614371565b61372682614464565b61372f816144ae565b6000858152601260205260408120818155600181018290556002908101919091558560008051602061599a83398151915283604051611bb191815260200190565b33613779612e13565b6001600160a01b031614604051806040016040528060018152602001603360f81b815250906137bb5760405162461bcd60e51b81526004016107909190615521565b506137c860108383614c5d565b5060008051602061593a83398151915282826040516118069291906154f2565b6000600a546137f5611fc5565b611fe59190615827565b33613808612e13565b6001600160a01b031614604051806040016040528060018152602001603360f81b8152509061384a5760405162461bcd60e51b81526004016107909190615521565b50604080518082019091526002815261363360f01b60208201526001600160a01b03821661388b5760405162461bcd60e51b81526004016107909190615521565b50600480546001600160a01b0319166001600160a01b038316179055604051600080516020615a5a833981519152906116d79083906153ce565b336138ce612e13565b6001600160a01b031614604051806040016040528060018152602001603360f81b815250906139105760405162461bcd60e51b81526004016107909190615521565b50600654604080518082019091526002815261363560f01b60208201529063ffffffff808416600160a01b90920416111561395e5760405162461bcd60e51b81526004016107909190615521565b506006805463ffffffff60c01b1916600160c01b63ffffffff8416021790556040516000805160206159ba833981519152906116d79083906156b1565b606060148054806020026020016040519081016040528092919081815260200182805480156113d357602002820191906000526020600020905b81546001600160a01b031681526001909101906020018083116139d5575050505050905090565b33613a05612e13565b6001600160a01b031614604051806040016040528060018152602001603360f81b81525090613a475760405162461bcd60e51b81526004016107909190615521565b50604080518082019091526002815261373160f01b60208201526001600160a01b038216613a885760405162461bcd60e51b81526004016107909190615521565b50613532816145e3565b33613a9b612e13565b6001600160a01b031614604051806040016040528060018152602001603360f81b81525090613add5760405162461bcd60e51b81526004016107909190615521565b50613ae66127c6565b6001600160a01b03166399a88ec430836040518363ffffffff1660e01b81526004016115cb9291906154d8565b33613b1c612e13565b6001600160a01b031614604051806040016040528060018152602001603360f81b81525090613b5e5760405162461bcd60e51b81526004016107909190615521565b506001600160a01b03821660009081526013602090815260409182902054825180840190935260018352601b60f91b9183019190915260ff16613bb45760405162461bcd60e51b81526004016107909190615521565b50613bbd6127c6565b6001600160a01b03166399a88ec483836040518363ffffffff1660e01b8152600401613bea9291906154d8565b600060405180830381600087803b158015613c0457600080fd5b505af1158015613c18573d6000803e3d6000fd5b505050505050565b6000613c2a612e13565b6001600160a01b031614604051806040016040528060018152602001601960f91b81525090613c6c5760405162461bcd60e51b81526004016107909190615521565b50604080518082019091526002815261373360f01b60208201526001600160a01b038216613cad5760405162461bcd60e51b81526004016107909190615521565b5060008051602061597a83398151915280546001600160a01b0319166001600160a01b038316908117909155604051600090600080516020615a9a833981519152908290a350565b613d1960405180606001604052806000815260200160008152602001600081525090565b6001546040516331a9108f60e11b8152600481018490526001600160a01b0390911690636352211e9060240160206040518083038186803b158015613d5d57600080fd5b505afa158015613d71573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190613d959190614df5565b5050600090815260126020908152604091829020825160608101845281548152600182015492810192909252600201549181019190915290565b33613dd8612e13565b6001600160a01b031614604051806040016040528060018152602001603360f81b81525090613e1a5760405162461bcd60e51b81526004016107909190615521565b506040805180820190915260028152611b1b60f11b602082015263ffffffff8216613e585760405162461bcd60e51b81526004016107909190615521565b506003805463ffffffff60a01b1916600160a01b63ffffffff841602179055604051600080516020615b1a833981519152906116d79083906156b1565b600081815260116020908152604091829020805483518085019094526002845261068760f31b9284019290925291906001600160701b0316613eea5760405162461bcd60e51b81526004016107909190615521565b506002546040516331a9108f60e11b8152600481018490526000916001600160a01b031690636352211e9060240160206040518083038186803b158015613f3057600080fd5b505afa158015613f44573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190613f689190614df5565b8254909150429063ffffffff808316600160c01b909204161080613f945750336001600160a01b038316145b60405180604001604052806002815260200161353360f01b81525090613fcd5760405162461bcd60e51b81526004016107909190615521565b50825463ffffffff808316600160e01b909204161080613ff55750336001600160a01b038316145b8061400a57506005546001600160a01b031633145b604051806040016040528060028152602001610d4d60f21b815250906140435760405162461bcd60e51b81526004016107909190615521565b50600354600160c01b900460ff1661409f578254600a80546001600160701b0390921691600090614075908490615827565b9091555050600a54604051908152600080516020615b3a8339815191529060200160405180910390a15b600254604051633f34d4cf60e21b8152600481018690523360248201526001600160a01b039091169063fcd3533c90604401600060405180830381600087803b1580156140eb57600080fd5b505af11580156140ff573d6000803e3d6000fd5b50505060008581526011602052604080822082815560010180546001600160801b0319169055518692507f80fadef8be1cf6508244c1bbb67077973d214a1462d3ade2908699c3750cd94b9190a250505050565b6000546040805180820190915260018152601960f91b6020820152906001600160a01b0316156141965760405162461bcd60e51b81526004016107909190615521565b50600080546001600160a01b038086166001600160a01b0319928316179092556001805485841690831617905560028054928416929091169190911790556141dd836145e3565b505050565b336141eb612e13565b6001600160a01b031614604051806040016040528060018152602001603360f81b8152509061422d5760405162461bcd60e51b81526004016107909190615521565b50604080518082019091526002815261373360f01b60208201526001600160a01b03821661426e5760405162461bcd60e51b81526004016107909190615521565b50806001600160a01b0316614281612e13565b6001600160a01b0316600080516020615a9a83398151915260405160405180910390a360008051602061597a83398151915280546001600160a01b0319166001600160a01b0392909216919091179055565b6001600160a01b0381166000908152600760205260408120546142fa90600190810b6157ba565b92915050565b6040516001600160a01b038085166024830152831660448201526064810182905261436b9085906323b872dd60e01b906084015b60408051601f198184030181529190526020810180516001600160e01b03166001600160e01b03199093169290921790915261472e565b50505050565b6141dd8363a9059cbb60e01b848460405160240161433492919061541f565b614398614563565b600b80546001600160701b0319166001600160701b03928316178082558392600e916143cd918591600160701b900416615719565b82546001600160701b039182166101009390930a928302928202191691909117909155600b805463ffffffff4216600160e01b026001600160e01b038216811792839055604051600080516020615a7a83398151915295506116d7949182169282169290921792600160701b90041690615697565b600061444c611fc5565b82600c5461445a919061579b565b6142fa919061577b565b80600c60008282546144769190615827565b9091555050600c546040519081527ff75b433a747ade2e089a9382669e86292bab6b6218af81254ef18440992bb264906020016116d7565b80600954106144c5576009805482900390556144f8565b60006144cf614800565b6001600160701b0316905081816009546144e99190615744565b6144f39190615827565b600955505b600080516020615b5a8339815191526009546040516116d791815260200190565b806009600082825461452b9190615744565b9091555050600954604051908152600080516020615b5a833981519152906020016116d7565b80600c60008282546144769190615744565b600b546000906145ae9063ffffffff600160e01b82041690614598906001600160701b0380821691600160701b9004166157ff565b600354600160a01b900463ffffffff16426148be565b600b54611fe59190600160701b90046001600160701b03166157ff565b6000600c54826145d9611fc5565b61445a919061579b565b6001600160a01b038116600090815260076020526040902054600190810b900b6146995760088054600181810183557ff3f7a9fe364faab93b216da50a3214154f22a0a2b415b23a84c8169e8b636ee390910180546001600160a01b0385166001600160a01b03199091168117909155915460009283526007602052604092839020805491830b61ffff1661ffff199092169190911790559051600080516020615afa833981519152916116d7918491906153e2565b6001600160a01b038116600090815260076020526040812054600190810b900b1215613532576001600160a01b0381166000908152600760205260409020546146e49060010b6158a5565b6001600160a01b03821660009081526007602052604090819020805461ffff191661ffff600194850b1617905551600080516020615afa833981519152916116d7918491906153e2565b6000614783826040518060400160405280602081526020017f5361666545524332303a206c6f772d6c6576656c2063616c6c206661696c6564815250856001600160a01b0316614a5f9092919063ffffffff16565b8051909150156141dd57808060200190518101906147a19190614e51565b6141dd5760405162461bcd60e51b815260206004820152602a60248201527f5361666545524332303a204552433230206f7065726174696f6e20646964206e6044820152691bdd081cdd58d8d9595960b21b6064820152608401610790565b600061480a614563565b600b80546001600160701b0319168082559192508291600e9061483e908490600160701b90046001600160701b03166157ff565b82546001600160701b039182166101009390930a928302928202191691909117909155600b805463ffffffff4216600160e01b026001600160e01b038216811792839055604051600080516020615a7a83398151915295506148b3949182169282169290921792600160701b90041690615697565b60405180910390a190565b60008463ffffffff168263ffffffff161015604051806040016040528060018152602001600760fb1b815250906149085760405162461bcd60e51b81526004016107909190615521565b5084820391508263ffffffff168263ffffffff168161493757634e487b7160e01b600052601260045260246000fd5b0463ffffffff16846001600160701b0316901c93508263ffffffff168263ffffffff168161497557634e487b7160e01b600052601260045260246000fd5b06915063ffffffff8216158061499257506001600160701b038416155b1561499e57508261153c565b60006001600160701b0385168163ffffffff86811690861671b17217f7d1cf79abc9e3b39803f2f6af40f302816149e557634e487b7160e01b600052601260045260246000fd5b049050600160901b5b8215614a5257928201928082840281614a1757634e487b7160e01b600052601260045260246000fd5b0493849003939250600160901b018082840281614a4457634e487b7160e01b600052601260045260246000fd5b049250600160901b016149ee565b5091979650505050505050565b6060614a6e8484600085614a78565b90505b9392505050565b606082471015614ad95760405162461bcd60e51b815260206004820152602660248201527f416464726573733a20696e73756666696369656e742062616c616e636520666f6044820152651c8818d85b1b60d21b6064820152608401610790565b843b614b275760405162461bcd60e51b815260206004820152601d60248201527f416464726573733a2063616c6c20746f206e6f6e2d636f6e74726163740000006044820152606401610790565b600080866001600160a01b03168587604051614b439190615376565b60006040518083038185875af1925050503d8060008114614b80576040519150601f19603f3d011682016040523d82523d6000602084013e614b85565b606091505b5091509150614b95828286614ba0565b979650505050505050565b60608315614baf575081614a71565b825115614bbf5782518084602001fd5b8160405162461bcd60e51b81526004016107909190615521565b828054614be59061586a565b90600052602060002090601f016020900481019282614c075760008555614c4d565b82601f10614c2057805160ff1916838001178555614c4d565b82800160010185558215614c4d579182015b82811115614c4d578251825591602001919060010190614c32565b50614c59929150614cd1565b5090565b828054614c699061586a565b90600052602060002090601f016020900481019282614c8b5760008555614c4d565b82601f10614ca45782800160ff19823516178555614c4d565b82800160010185558215614c4d579182015b82811115614c4d578235825591602001919060010190614cb6565b5b80821115614c595760008155600101614cd2565b8035614cf181615906565b919050565b8035614cf1816158f1565b60008083601f840112614d12578182fd5b5081356001600160401b03811115614d28578182fd5b602083019150836020828501011115614d4057600080fd5b9250929050565b600082601f830112614d57578081fd5b8135614d6a614d65826156f2565b6156c2565b818152846020838601011115614d7e578283fd5b816020850160208301379081016020019190915292915050565b8035614cf181615914565b8035614cf181615929565b803563ffffffff81168114614cf157600080fd5b80356001600160601b0381168114614cf157600080fd5b600060208284031215614dea578081fd5b8135614a71816158f1565b600060208284031215614e06578081fd5b8151614a71816158f1565b600080600060608486031215614e25578182fd5b8335614e30816158f1565b92506020840135614e40816158f1565b929592945050506040919091013590565b600060208284031215614e62578081fd5b8151614a7181615906565b600080600060608486031215614e81578081fd5b8335614e8c816158f1565b92506020840135614e9c816158f1565b91506040840135614eac816158f1565b809150509250925092565b60008060408385031215614ec9578182fd5b8235614ed4816158f1565b91506020830135614ee4816158f1565b809150509250929050565b60008060008060808587031215614f04578182fd5b8435614f0f816158f1565b93506020850135614f1f816158f1565b92506040850135614f2f81615914565b9150614f3d60608601614dae565b905092959194509250565b600080600080600060a08688031215614f5f578283fd5b8535614f6a816158f1565b94506020860135614f7a816158f1565b93506040860135614f8a81615914565b9250614f9860608701614dae565b949793965091946080013592915050565b60008060208385031215614fbb578182fd5b82356001600160401b03811115614fd0578283fd5b614fdc85828601614d01565b90969095509350505050565b600060208284031215614ff9578081fd5b81516001600160401b0381111561500e578182fd5b8201601f8101841361501e578182fd5b805161502c614d65826156f2565b818152856020838501011115615040578384fd5b61505182602083016020860161583e565b95945050505050565b600080600080600080600060c0888a031215615074578485fd5b87356001600160401b038082111561508a578687fd5b6150968b838c01614d47565b985060208a01359150808211156150ab578687fd5b506150b88a828b01614d01565b90975095505060408801356150cc81615929565b935060608801356150dc816158f1565b925060808801356150ec816158f1565b915060a08801356150fc816158f1565b8091505092959891949750929550565b6000806000806000806000806000806101408b8d03121561512b578384fd5b8a356001600160401b0380821115615141578586fd5b61514d8e838f01614d47565b9b5060208d0135915080821115615162578586fd5b5061516f8d828e01614d47565b99505061517e60408c01614dae565b975061518c60608c01614d98565b965061519a60808c01614cf6565b95506151a860a08c01614da3565b94506151b660c08c01614dae565b93506151c460e08c01614dae565b92506151d36101008c01614dc2565b91506151e26101208c01614ce6565b90509295989b9194979a5092959850565b600080600060608486031215615207578081fd5b835161521281615914565b602085015190935061522381615914565b6040850151909250614eac81615914565b600060208284031215615245578081fd5b8135614a7181615929565b600060208284031215615261578081fd5b8151614a7181615929565b60006020828403121561527d578081fd5b5035919050565b600060208284031215615295578081fd5b5051919050565b600080600080608085870312156152b1578182fd5b8435935060208501356152c3816158f1565b92506152d160408601614dae565b9396929550929360600135925050565b600080604083850312156152f3578182fd5b50508035926020909101359150565b600060208284031215615313578081fd5b614a7182614dae565b60006020828403121561532d578081fd5b815160ff81168114614a71578182fd5b6000815180845261535581602086016020860161583e565b601f01601f19169290920160200192915050565b6001600160701b03169052565b6000825161538881846020870161583e565b9190910192915050565b600083516153a481846020880161583e565b600160fd1b90830190815283516153c281600184016020880161583e565b01600101949350505050565b6001600160a01b0391909116815260200190565b6001600160a01b039290921682521515602082015260400190565b6001600160a01b039290921682526001600160701b0316602082015260400190565b6001600160a01b03929092168252602082015260400190565b6020808252825182820181905260009190848201906040850190845b818110156154795783516001600160a01b031683529284019291840191600101615454565b50909695505050505050565b6001600160a01b039390931683526001600160701b0391909116602083015263ffffffff16604082015260600190565b6001600160a01b0393841681526020810192909252909116604082015260600190565b6001600160a01b0392831681529116602082015260400190565b60208152816020820152818360408301376000818301604090810191909152601f909201601f19160101919050565b602081526000614a71602083018461533d565b6101808152600061554961018083018f61533d565b828103602084015261555b818f61533d565b9150508b604083015263ffffffff808c166060840152808b166080840152808a1660a08401525061ffff881660c08301528660e0830152856101008301526155a7610120830186615369565b6155b5610140830185615369565b63ffffffff83166101608301529d9c50505050505050505050505050565b6060815260006155e6606083018661533d565b82810360208401526155f8818661533d565b91505060ff83166040830152949350505050565b81516001600160701b0316815260208083015161ffff169082015260408083015163ffffffff9081169183019190915260608084015182169083015260808084015182169083015260a080840151918216908301526101008201905060c083015161567a60c0840182615369565b5060e083015161569060e084018261ffff169052565b5092915050565b6001600160701b0392831681529116602082015260400190565b63ffffffff91909116815260200190565b604051601f8201601f191681016001600160401b03811182821017156156ea576156ea6158db565b604052919050565b60006001600160401b0382111561570b5761570b6158db565b50601f01601f191660200190565b60006001600160701b0382811684821680830382111561573b5761573b6158c5565b01949350505050565b60008219821115615757576157576158c5565b500190565b600063ffffffff80831681851680830382111561573b5761573b6158c5565b60008261579657634e487b7160e01b81526012600452602481fd5b500490565b60008160001904831182151516156157b5576157b56158c5565b500290565b60008160010b8360010b82811281617fff19018312811516156157df576157df6158c5565b81617fff0183138116156157f5576157f56158c5565b5090039392505050565b60006001600160701b038381169083168181101561581f5761581f6158c5565b039392505050565b600082821015615839576158396158c5565b500390565b60005b83811015615859578181015183820152602001615841565b8381111561436b5750506000910152565b600181811c9082168061587e57607f821691505b6020821081141561589f57634e487b7160e01b600052602260045260246000fd5b50919050565b60008160010b617fff198114156158be576158be6158c5565b9003919050565b634e487b7160e01b600052601160045260246000fd5b634e487b7160e01b600052604160045260246000fd5b6001600160a01b038116811461353257600080fd5b801515811461353257600080fd5b6001600160701b038116811461353257600080fd5b61ffff8116811461353257600080fdfe87cdeaffd8e70903d6ce7cc983fac3b09ca79e83818124c98e47a1d70f8027d6ac59582e5396aca512fa873a2047e7f4c80f8f55d4a06cb34a78a0187f62719f4f471908b72bb76dae5bd24599026e7bf3ddb256497722888ffa422f83729ede5fbe47a2294bb165359bd422c05af7405a9f2c0e0f397deef39ade4da37b27647c5a703a1928f0d18042c0454d90ddfe036b518c756a39cd82aca939b71d801b926b69b9f7735227079a308fce165b111b96e2983e70a86a381ee047675ff39fd1248cccb5fef9131c731321e43e9a924840ffee7dc68c7d1d3e5cb7dedcae0327894f6b9c469a3eddbe98dd0df54563b6437b20982876e0c2cd60c211a156460dc14fdd751203f0c4dac8cc93c303e991c5f8e60af35674d5c82061929762ddbefcd50991bb64333037879282220d78a901bb4809351643f56628af8a4656dfc8dfab451067f726e1077626e126c7f77149630cc1b0056cf60307a289a118298be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e07aa9698a01d2094fb8a580e2c72a6fc3f3bfecfd4cbdc457461118c59a6fefe4f6ae16e9e9771497fc501d1caac6168e19c36e4639d7273813e3b57066035f2a92a4dc1fa715a8cafb0cdc060f729eb1dfdddcbc9effbdc8d822cdf5ebcf4907971f32e7fcf39ef3d42dd88b6e08b31dd4bd8f53e7299c95b669c82e23807e2f80a06b510f93a5f9143990fd9bd6b2020b17681a30b6420dac3d79b20ce73585a70de76be90dc9c5d9243b0bc73c3d963ba703a0a396f29134bf5b4e6197c180a2646970667358221220fbe8100e6a7c4692daaa17f9579527f8ce5498f05782b57298a53f0b93aa40ff64736f6c63430008040033",
+	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"baseUri\",\"type\":\"string\"}],\"name\":\"BaseUriChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"pole\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"slope\",\"type\":\"uint256\"}],\"name\":\"BondingChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"converter\",\"type\":\"address\"}],\"name\":\"ConverterChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"collector\",\"type\":\"address\"}],\"name\":\"EnterpriseCollectorChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"period\",\"type\":\"uint32\"}],\"name\":\"EnterpriseOnlyCollectionPeriodChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"EnterpriseShutdown\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"wallet\",\"type\":\"address\"}],\"name\":\"EnterpriseWalletChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"fixedReserve\",\"type\":\"uint256\"}],\"name\":\"FixedReserveChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"percent\",\"type\":\"uint16\"}],\"name\":\"GcFeePercentChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"paymentToken\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"enabled\",\"type\":\"bool\"}],\"name\":\"PaymentTokenChange\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"rentalTokenId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"renter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"paymentToken\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint112\",\"name\":\"poolFee\",\"type\":\"uint112\"},{\"indexed\":false,\"internalType\":\"uint112\",\"name\":\"serviceFee\",\"type\":\"uint112\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"endTime\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"renterOnlyReturnTime\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"enterpriseOnlyCollectionTime\",\"type\":\"uint32\"}],\"name\":\"RentalPeriodExtended\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"rentalTokenId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"returner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"powerToken\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint112\",\"name\":\"rentalAmount\",\"type\":\"uint112\"},{\"indexed\":false,\"internalType\":\"uint112\",\"name\":\"gcRewardAmount\",\"type\":\"uint112\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"gcRewardToken\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"totalReserve\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"totalUsedReserve\",\"type\":\"uint256\"}],\"name\":\"RentalReturned\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"rentalTokenId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"renter\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"powerToken\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"paymentToken\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint112\",\"name\":\"rentalAmount\",\"type\":\"uint112\"},{\"indexed\":false,\"internalType\":\"uint112\",\"name\":\"poolFee\",\"type\":\"uint112\"},{\"indexed\":false,\"internalType\":\"uint112\",\"name\":\"serviceFee\",\"type\":\"uint112\"},{\"indexed\":false,\"internalType\":\"uint112\",\"name\":\"gcFee\",\"type\":\"uint112\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"startTime\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"endTime\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"renterOnlyReturnTime\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"enterpriseOnlyCollectionTime\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"totalReserve\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"totalUsedReserve\",\"type\":\"uint256\"}],\"name\":\"Rented\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"period\",\"type\":\"uint32\"}],\"name\":\"RenterOnlyReturnPeriodChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"powerToken\",\"type\":\"address\"}],\"name\":\"ServiceRegistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"stakeTokenId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"staker\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"enumEnterprise.StakeOperation\",\"name\":\"operation\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amountDelta\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"sharesDelta\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"shares\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"totalShares\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"totalReserve\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"totalUsedReserve\",\"type\":\"uint256\"}],\"name\":\"StakeChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint112\",\"name\":\"streamingReserve\",\"type\":\"uint112\"},{\"indexed\":false,\"internalType\":\"uint112\",\"name\":\"streamingReserveTarget\",\"type\":\"uint112\"}],\"name\":\"StreamingReserveChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"period\",\"type\":\"uint32\"}],\"name\":\"StreamingReserveHalvingPeriodChanged\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"stakeTokenId\",\"type\":\"uint256\"}],\"name\":\"claimStakingReward\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"stakeTokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"stakeAmountDelta\",\"type\":\"uint256\"}],\"name\":\"decreaseStake\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"disablePaymentToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"enablePaymentToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"powerToken\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"paymentToken\",\"type\":\"address\"},{\"internalType\":\"uint112\",\"name\":\"rentalAmount\",\"type\":\"uint112\"},{\"internalType\":\"uint32\",\"name\":\"rentalPeriod\",\"type\":\"uint32\"}],\"name\":\"estimateRentalFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"rentalTokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"paymentToken\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"rentalPeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint256\",\"name\":\"maxPayment\",\"type\":\"uint256\"}],\"name\":\"extendRentalPeriod\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAvailableReserve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBaseUri\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBondingCurve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"pole\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"slope\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getConverter\",\"outputs\":[{\"internalType\":\"contractIConverter\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnterpriseCollector\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnterpriseOnlyCollectionPeriod\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnterpriseToken\",\"outputs\":[{\"internalType\":\"contractIERC20Metadata\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnterpriseWallet\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getFactory\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getGCFeePercent\",\"outputs\":[{\"internalType\":\"uint16\",\"name\":\"\",\"type\":\"uint16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getInfo\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"baseUri\",\"type\":\"string\"},{\"internalType\":\"uint32\",\"name\":\"streamingReserveHalvingPeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"renterOnlyReturnPeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"enterpriseOnlyCollectionPeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint16\",\"name\":\"gcFeePercent\",\"type\":\"uint16\"},{\"internalType\":\"uint256\",\"name\":\"totalShares\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"fixedReserve\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"usedReserve\",\"type\":\"uint256\"},{\"internalType\":\"uint112\",\"name\":\"streamingReserve\",\"type\":\"uint112\"},{\"internalType\":\"uint112\",\"name\":\"streamingReserveTarget\",\"type\":\"uint112\"},{\"internalType\":\"uint32\",\"name\":\"streamingReserveUpdated\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"getPaymentToken\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"getPaymentTokenIndex\",\"outputs\":[{\"internalType\":\"int16\",\"name\":\"\",\"type\":\"int16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPowerTokens\",\"outputs\":[{\"internalType\":\"contractIPowerToken[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getProxyAdmin\",\"outputs\":[{\"internalType\":\"contractProxyAdmin\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"rentalTokenId\",\"type\":\"uint256\"}],\"name\":\"getRentalAgreement\",\"outputs\":[{\"components\":[{\"internalType\":\"uint112\",\"name\":\"rentalAmount\",\"type\":\"uint112\"},{\"internalType\":\"uint16\",\"name\":\"powerTokenIndex\",\"type\":\"uint16\"},{\"internalType\":\"uint32\",\"name\":\"startTime\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"endTime\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"renterOnlyReturnTime\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"enterpriseOnlyCollectionTime\",\"type\":\"uint32\"},{\"internalType\":\"uint112\",\"name\":\"gcRewardAmount\",\"type\":\"uint112\"},{\"internalType\":\"uint16\",\"name\":\"gcRewardTokenIndex\",\"type\":\"uint16\"}],\"internalType\":\"structIEnterpriseStorage.RentalAgreement\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getRentalToken\",\"outputs\":[{\"internalType\":\"contractIRentalToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getRenterOnlyReturnPeriod\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getReserve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"stakeTokenId\",\"type\":\"uint256\"}],\"name\":\"getStake\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"shares\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"block\",\"type\":\"uint256\"}],\"internalType\":\"structEnterpriseStorage.Stake\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getStakeToken\",\"outputs\":[{\"internalType\":\"contractIStakeToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"stakeTokenId\",\"type\":\"uint256\"}],\"name\":\"getStakingReward\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getStreamingReserveHalvingPeriod\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getUsedReserve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"stakeTokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"stakeAmountDelta\",\"type\":\"uint256\"}],\"name\":\"increaseStake\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"enterpriseName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"baseUri\",\"type\":\"string\"},{\"internalType\":\"uint16\",\"name\":\"gcFeePercent\",\"type\":\"uint16\"},{\"internalType\":\"contractIConverter\",\"name\":\"converter\",\"type\":\"address\"},{\"internalType\":\"contractProxyAdmin\",\"name\":\"proxyAdmin\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"initialOwner\",\"type\":\"address\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIERC20Metadata\",\"name\":\"enterpriseToken\",\"type\":\"address\"},{\"internalType\":\"contractIStakeToken\",\"name\":\"stakeToken\",\"type\":\"address\"},{\"internalType\":\"contractIRentalToken\",\"name\":\"rentalToken\",\"type\":\"address\"}],\"name\":\"initializeTokens\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"powerToken\",\"type\":\"address\"}],\"name\":\"isRegisteredPowerToken\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"isSupportedPaymentToken\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"serviceName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"serviceSymbol\",\"type\":\"string\"},{\"internalType\":\"uint32\",\"name\":\"energyGapHalvingPeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint112\",\"name\":\"baseRate\",\"type\":\"uint112\"},{\"internalType\":\"address\",\"name\":\"baseToken\",\"type\":\"address\"},{\"internalType\":\"uint16\",\"name\":\"serviceFeePercent\",\"type\":\"uint16\"},{\"internalType\":\"uint32\",\"name\":\"minRentalPeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxRentalPeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint96\",\"name\":\"minGCFee\",\"type\":\"uint96\"},{\"internalType\":\"bool\",\"name\":\"swappingEnabledForever\",\"type\":\"bool\"}],\"name\":\"registerService\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"powerToken\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"paymentToken\",\"type\":\"address\"},{\"internalType\":\"uint112\",\"name\":\"rentalAmount\",\"type\":\"uint112\"},{\"internalType\":\"uint32\",\"name\":\"rentalPeriod\",\"type\":\"uint32\"},{\"internalType\":\"uint256\",\"name\":\"maxPayment\",\"type\":\"uint256\"}],\"name\":\"rent\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"rentalTokenId\",\"type\":\"uint256\"}],\"name\":\"returnRental\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"baseUri\",\"type\":\"string\"}],\"name\":\"setBaseUri\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"pole\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"slope\",\"type\":\"uint256\"}],\"name\":\"setBondingCurve\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIConverter\",\"name\":\"newConverter\",\"type\":\"address\"}],\"name\":\"setConverter\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newCollector\",\"type\":\"address\"}],\"name\":\"setEnterpriseCollector\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"newPeriod\",\"type\":\"uint32\"}],\"name\":\"setEnterpriseOnlyCollectionPeriod\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newWallet\",\"type\":\"address\"}],\"name\":\"setEnterpriseWallet\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint16\",\"name\":\"newGcFeePercent\",\"type\":\"uint16\"}],\"name\":\"setGcFeePercent\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"newPeriod\",\"type\":\"uint32\"}],\"name\":\"setRenterOnlyReturnPeriod\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"streamingReserveHalvingPeriod\",\"type\":\"uint32\"}],\"name\":\"setStreamingReserveHalvingPeriod\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"shutdownEnterpriseForever\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"stakeAmount\",\"type\":\"uint256\"}],\"name\":\"stake\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"rentalTokenId\",\"type\":\"uint256\"}],\"name\":\"transferRental\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"stakeTokenId\",\"type\":\"uint256\"}],\"name\":\"unstake\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"enterpriseFactory\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"enterpriseImplementation\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"rentalTokenImplementation\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"stakeTokenImplementation\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"powerTokenImplementation\",\"type\":\"address\"},{\"internalType\":\"address[]\",\"name\":\"powerTokens\",\"type\":\"address[]\"}],\"name\":\"upgrade\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	Bin: "0x608060405234801561001057600080fd5b50615c9580620000216000396000f3fe608060405234801561001057600080fd5b506004361061027d5760003560e01c80630103f313146102825780630cac36b2146102ad57806318a8a6cf146102c25780632107730c146102e25780632261b07f146102f7578063239cd4a41461031157806324d86f00146103245780632e17de78146103375780632fb2067f1461034a5780633310df9e1461038b5780633513e0dc1461039e578063449497ec146103b15780634741efb3146103c4578063500a1564146103cc57806359bf5d39146103dd5780635a9b0b89146103f357806360f870871461041357806362c1f388146104245780636815f337146104375780636df0bb141461044a5780637c14d9911461045d5780637e6a7cbb146104705780638245ca1e1461048e57806388cc58e4146104a157806389035b61146104b25780638b3240a0146104de5780638da5cb5b146104e65780638fc49ad2146104ee578063960970c7146105015780639ab71193146105145780639c7aa7f8146105275780639f52673c1461053a578063a0bcfc7f1461054f578063a554b26d14610562578063a694fc3a14610573578063abfe35ad14610586578063aebb504114610599578063b19337a4146105a1578063b406bf6d146105b4578063b714ff53146105d5578063b96266fa146105e6578063bec10cde146105fb578063bfd84fb41461060e578063c4d66de814610621578063c852d20014610634578063c9a304cb14610647578063cdc2aebf1461065a578063ce325bf81461066d578063dccdc7d9146106a2578063dd9919e7146106b3578063ef1f9f39146106c8578063f2fde38b146106db578063f87c4261146106ee578063faac38ef14610701578063fcb2884e1461071c575b600080fd5b610295610290366004614e4c565b610724565b60405160019190910b81526020015b60405180910390f35b6102b5610751565b6040516102a491906155f0565b6102d56102d036600461536b565b6107e3565b6040516102a491906156df565b6102f56102f0366004614e4c565b610938565b005b6004546001600160a01b03165b6040516102a491906154c0565b6102f561031f36600461536b565b610a12565b6102f56103323660046153e0565b610bea565b6102f561034536600461536b565b610e6f565b61037b610358366004614e4c565b6001600160a01b0316600090815260076020526040812054600190810b900b1390565b60405190151581526020016102a4565b6102f561039936600461536b565b6110bf565b6102f56103ac3660046153e0565b6114b4565b6102f56103bf366004615333565b6115c1565b6102f561164b565b6001546001600160a01b0316610304565b6103e5611745565b6040519081526020016102a4565b6103fb61176a565b6040516102a49c9b9a99989796959493929190615603565b6000546001600160a01b0316610304565b6102f5610432366004614e4c565b61192b565b6102f5610445366004615159565b6119f1565b6102f5610458366004614e84565b611d5c565b6102f561046b366004615401565b6120c9565b600654600160a01b900463ffffffff165b6040516102a491906157bc565b6103e561049c366004614f51565b6121a0565b6003546001600160a01b0316610304565b61037b6104c0366004614e4c565b6001600160a01b031660009081526013602052604090205460ff1690565b6103046122f6565b610304612317565b6102f56104fc366004614faa565b61232d565b6102f561050f36600461500b565b612a00565b6102f561052236600461520b565b612cea565b6102f5610535366004614e4c565b6131a2565b600654600160c01b900463ffffffff16610481565b6102f561055d3660046150b1565b6132e8565b6005546001600160a01b0316610304565b6102f561058136600461536b565b613360565b6103e561059436600461536b565b61350a565b6103e5613538565b6102f56105af366004614e4c565b61354a565b600654600160e01b900461ffff1660405161ffff90911681526020016102a4565b6002546001600160a01b0316610304565b6105ee613610565b6040516102a4919061555a565b6102f56106093660046153e0565b613671565b6102f561061c366004614e4c565b613862565b6102f561062f366004614e4c565b6138f8565b6102f561064236600461539b565b6139cd565b6102f5610655366004615401565b613db9565b61030461066836600461536b565b613e8f565b61068061067b36600461536b565b613ecd565b60408051825181526020808401519082015291810151908201526060016102a4565b6006546001600160a01b0316610304565b600354600160a01b900463ffffffff16610481565b6102f56106d6366004615067565b613fa7565b6102f56106e9366004614e4c565b614076565b6102f56106fc366004615401565b614167565b600e54600d54604080519283526020830191909152016102a4565b600a546103e5565b6001600160a01b03811660009081526007602052604081205461074b90600190810b6158c5565b92915050565b60606010805461076090615975565b80601f016020809104026020016040519081016040528092919081815260200182805461078c90615975565b80156107d95780601f106107ae576101008083540402835291602001916107d9565b820191906000526020600020905b8154815290600101906020018083116107bc57829003601f168201915b5050505050905090565b6040805161010081018252600080825260208201819052818301819052606082018190526080820181905260a0820181905260c0820181905260e082015260025491516331a9108f60e11b81526004810184905290916001600160a01b031690636352211e9060240160206040518083038186803b15801561086457600080fd5b505afa158015610878573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061089c9190614e68565b505060009081526011602090815260409182902082516101008101845281546001600160701b038082168352600160701b80830461ffff90811696850196909652600160801b830463ffffffff90811697850197909752600160a01b830487166060850152600160c01b830487166080850152600160e01b90920490951660a083015260019092015493841660c082015292041660e082015290565b33610941612317565b6001600160a01b031614604051806040016040528060018152602001603360f81b8152509061098c5760405162461bcd60e51b815260040161098391906155f0565b60405180910390fd5b506040805180820190915260028152611b1960f11b60208201526001600160a01b0382166109cd5760405162461bcd60e51b815260040161098391906155f0565b50600680546001600160a01b0319166001600160a01b038316179055604051600080516020615c4083398151915290610a079083906154c0565b60405180910390a150565b6001546040516331a9108f60e11b815260048101839052829133916001600160a01b0390911690636352211e9060240160206040518083038186803b158015610a5a57600080fd5b505afa158015610a6e573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610a929190614e68565b6001600160a01b031614604051806040016040528060018152602001603360f81b81525090610ad45760405162461bcd60e51b815260040161098391906155f0565b506000828152601260205260408120805460018201549192909190610af7611745565b90506000610b0683858461422d565b9050610b118261425f565b811115604051806040016040528060028152602001611a1b60f11b81525090610b4d5760405162461bcd60e51b815260040161098391906155f0565b50600054610b65906001600160a01b0316338361426f565b6000610b7185846142c5565b90506000610b7f8286615932565b9050610b8b83826142e0565b600187018290556000336001600160a01b03168a600080516020615a80833981519152868a8688600c548b8d610bc19190615932565b600a54604051610bd7979695949392919061578c565b60405180910390a4505050505050505050565b6001546040516331a9108f60e11b815260048101849052839133916001600160a01b0390911690636352211e9060240160206040518083038186803b158015610c3257600080fd5b505afa158015610c46573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610c6a9190614e68565b6001600160a01b031614604051806040016040528060018152602001603360f81b81525090610cac5760405162461bcd60e51b815260040161098391906155f0565b50600083815260126020908152604091829020825160608101845281548152600182015481840152600291820154818501819052845180860190955291845261035360f41b928401929092529091904311610d1a5760405162461bcd60e51b815260040161098391906155f0565b5080516040805180820190915260028152611a1b60f11b602082015290841115610d575760405162461bcd60e51b815260040161098391906155f0565b506000610d62611745565b9050610d6d8161425f565b841115604051806040016040528060028152602001611a1b60f11b81525090610da95760405162461bcd60e51b815260040161098391906155f0565b50600054610dc1906001600160a01b0316338661426f565b6000610dcd85836142c5565b90508260200151811115610de2575060208201515b610dec85826142e0565b6020838101805183900380825285518890038652600089815260129093526040909220600181019290925584519182905551600c5460049233928a92600080516020615a80833981519152928b929091889190610e49858c615932565b600a54604051610e5f979695949392919061578c565b60405180910390a4505050505050565b6001546040516331a9108f60e11b815260048101839052829133916001600160a01b0390911690636352211e9060240160206040518083038186803b158015610eb757600080fd5b505afa158015610ecb573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610eef9190614e68565b6001600160a01b031614604051806040016040528060018152602001603360f81b81525090610f315760405162461bcd60e51b815260040161098391906155f0565b5060006012600084815260200190815260200160002090504381600201541060405180604001604052806002815260200161035360f41b81525090610f895760405162461bcd60e51b815260040161098391906155f0565b5060018101546000610f99611745565b90506000610fa78383614367565b9050610fb28261425f565b811115604051806040016040528060028152602001611a1b60f11b81525090610fee5760405162461bcd60e51b815260040161098391906155f0565b50600054611006906001600160a01b0316338361426f565b61101081846142e0565b600154604051630852cd8d60e31b8152600481018890526001600160a01b03909116906342966c6890602401600060405180830381600087803b15801561105657600080fd5b505af115801561106a573d6000803e3d6000fd5b5050506000878152601260205260408120818155600181018290556002908101919091559050336001600160a01b031687600080516020615a80833981519152846000886000600c54898b610e499190615932565b60008181526011602090815260409182902082516101008101845281546001600160701b0380821680845261ffff600160701b80850482168689015263ffffffff600160801b86048116878b0152600160a01b860481166060880152600160c01b860481166080880152600160e01b90950490941660a086015260019095015491821660c085015291900490921660e082015283518085019094526002845261068760f31b9284019290925290919061118b5760405162461bcd60e51b815260040161098391906155f0565b506002546040516331a9108f60e11b8152600481018490526000916001600160a01b031690636352211e9060240160206040518083038186803b1580156111d157600080fd5b505afa1580156111e5573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906112099190614e68565b905060004290508063ffffffff16836080015163ffffffff1610806112365750336001600160a01b038316145b60405180604001604052806002815260200161353360f01b8152509061126f5760405162461bcd60e51b815260040161098391906155f0565b508063ffffffff168360a0015163ffffffff1610806112965750336001600160a01b038316145b806112ab57506005546001600160a01b031633145b604051806040016040528060028152602001610d4d60f21b815250906112e45760405162461bcd60e51b815260040161098391906155f0565b50600354600160c01b900460ff1661131b5782600001516001600160701b0316600a60008282546113159190615932565b90915550505b6014836020015161ffff168154811061134457634e487b7160e01b600052603260045260246000fd5b9060005260206000200160009054906101000a90046001600160a01b03166001600160a01b0316336001600160a01b0316857fe8c3d212180d23288b990f9938fef98c64caec34bc128fccea9f7eea006ba73886600001518760c0015160088960e0015161ffff16815481106113ca57634e487b7160e01b600052603260045260246000fd5b6000918252602090912001546001600160a01b03166113e7611745565b600a54604080516001600160701b0396871681529490951660208501526001600160a01b0392909216838501526060830152608082015290519081900360a00190a4600254604051633f34d4cf60e21b8152600481018690523360248201526001600160a01b039091169063fcd3533c90604401600060405180830381600087803b15801561147557600080fd5b505af1158015611489573d6000803e3d6000fd5b50505060009485525050601160205250506040812090815560010180546001600160801b0319169055565b336114bd612317565b6001600160a01b031614604051806040016040528060018152602001603360f81b815250906114ff5760405162461bcd60e51b815260040161098391906155f0565b5061150f600a600360401b615886565b82111560405180604001604052806002815260200161373760f01b8152509061154b5760405162461bcd60e51b815260040161098391906155f0565b5060408051808201909152600281526106e760f31b6020820152600160401b82111561158a5760405162461bcd60e51b815260040161098391906155f0565b50600e829055600d8190556040805183815260208101839052600080516020615ae083398151915291015b60405180910390a15050565b336115ca612317565b6001600160a01b031614604051806040016040528060018152602001603360f81b8152509061160c5760405162461bcd60e51b815260040161098391906155f0565b506006805461ffff60e01b1916600160e01b61ffff841690810291909117909155604051908152600080516020615b2083398151915290602001610a07565b600354604080518082019091526002815261373560f01b602082015290600160c01b900460ff16156116905760405162461bcd60e51b815260040161098391906155f0565b503361169a612317565b6001600160a01b031614604051806040016040528060018152602001603360f81b815250906116dc5760405162461bcd60e51b815260040161098391906155f0565b5060038054600160c01b60ff60c01b199091161790556000600a819055600b8054600160701b81046001600160701b03166001600160701b03199091161790556040517f6f6348718c9a361558c634b516777b2b06bb2bf4140ad3d3bfaa44270fc2c0729190a1565b600061174f614377565b6001600160701b0316600954611765919061584f565b905090565b600354600654600c54600954600a54600b54600f80546060978897600097889788978897889788978897889788978897949660109663ffffffff600160a01b95869004811697958504811696600160c01b860482169661ffff600160e01b9788900416969094936001600160701b0380821694600160701b8304909116939290910416908c906117f990615975565b80601f016020809104026020016040519081016040528092919081815260200182805461182590615975565b80156118725780601f1061184757610100808354040283529160200191611872565b820191906000526020600020905b81548152906001019060200180831161185557829003601f168201915b50505050509b508a805461188590615975565b80601f01602080910402602001604051908101604052809291908181526020018280546118b190615975565b80156118fe5780601f106118d3576101008083540402835291602001916118fe565b820191906000526020600020905b8154815290600101906020018083116118e157829003601f168201915b50505050509a509b509b509b509b509b509b509b509b509b509b509b509b50909192939495969798999a9b565b33611934612317565b6001600160a01b031614604051806040016040528060018152602001603360f81b815250906119765760405162461bcd60e51b815260040161098391906155f0565b50604080518082019091526002815261363160f01b60208201526001600160a01b0382166119b75760405162461bcd60e51b815260040161098391906155f0565b50600580546001600160a01b0319166001600160a01b038316179055604051600080516020615bc083398151915290610a079083906154c0565b600f80546119fe90615975565b6040805180820190915260018152601960f91b6020820152915015611a365760405162461bcd60e51b815260040161098391906155f0565b50600087511160405180604001604052806002815260200161383160f01b81525090611a755760405162461bcd60e51b815260040161098391906155f0565b50611a7f816138f8565b81600080516020615b0083398151915280546001600160a01b03929092166001600160a01b031992831617905560038054909116331790558651611aca90600f9060208a0190614c4c565b50611ad760108787614cd0565b5060068054600480546001600160a01b03199081166001600160a01b03888116919091179092556005805492861692909116821790556003805463ffffffff60a01b191661127560a71b179055600165ffff0000000160c01b0319909116600160e01b61ffff8816026001600160c01b03191617176102a360a61b1763ffffffff60c01b19166102a360c71b179055611b756064600560401b615886565b600e55611b87600a600360401b615886565b600d55604051600080516020615a6083398151915290611baa90889088906155c1565b60405180910390a1600654604051600160e01b90910461ffff168152600080516020615b208339815191529060200160405180910390a1600454604051600080516020615b6083398151915291611c0c916001600160a01b03909116906154c0565b60405180910390a1600654604051600080516020615c4083398151915291611c3f916001600160a01b03909116906154c0565b60405180910390a1600554604051600080516020615bc083398151915291611c72916001600160a01b03909116906154c0565b60405180910390a1600080516020615b40833981519152600360149054906101000a900463ffffffff16604051611ca991906157bc565b60405180910390a1600080516020615ac0833981519152600660149054906101000a900463ffffffff16604051611ce091906157bc565b60405180910390a1600080516020615be0833981519152600660189054906101000a900463ffffffff16604051611d1791906157bc565b60405180910390a1600080516020615ae0833981519152600e54600d54604051611d4b929190918252602082015260400190565b60405180910390a150505050505050565b33611d65612317565b6001600160a01b031614604051806040016040528060018152602001603360f81b81525090611da75760405162461bcd60e51b815260040161098391906155f0565b50604080518082019091526002815261383360f01b60208201526001600160a01b038816611de85760405162461bcd60e51b815260040161098391906155f0565b50600380546001600160a01b0319166001600160a01b0389161790556000611e0e6122f6565b90506001600160a01b03871615611e805760405163266a23b160e21b81526001600160a01b038216906399a88ec490611e4d9030908b906004016155a7565b600060405180830381600087803b158015611e6757600080fd5b505af1158015611e7b573d6000803e3d6000fd5b505050505b6001600160a01b03861615611ef65760025460405163266a23b160e21b81526001600160a01b03838116926399a88ec492611ec392909116908a906004016155a7565b600060405180830381600087803b158015611edd57600080fd5b505af1158015611ef1573d6000803e3d6000fd5b505050505b6001600160a01b03851615611f6c5760015460405163266a23b160e21b81526001600160a01b03838116926399a88ec492611f39929091169089906004016155a7565b600060405180830381600087803b158015611f5357600080fd5b505af1158015611f67573d6000803e3d6000fd5b505050505b6001600160a01b038416156120bf5760005b828110156120bd5760136000858584818110611faa57634e487b7160e01b600052603260045260246000fd5b9050602002016020810190611fbf9190614e4c565b6001600160a01b03168152602080820192909252604090810160002054815180830190925260018252601b60f91b928201929092529060ff166120155760405162461bcd60e51b815260040161098391906155f0565b50816001600160a01b03166399a88ec485858481811061204557634e487b7160e01b600052603260045260246000fd5b905060200201602081019061205a9190614e4c565b876040518363ffffffff1660e01b81526004016120789291906155a7565b600060405180830381600087803b15801561209257600080fd5b505af11580156120a6573d6000803e3d6000fd5b5050505080806120b5906159b0565b915050611f7e565b505b5050505050505050565b336120d2612317565b6001600160a01b031614604051806040016040528060018152602001603360f81b815250906121145760405162461bcd60e51b815260040161098391906155f0565b506006546040805180820190915260028152610d8d60f21b60208201529063ffffffff600160c01b909104811690831611156121635760405162461bcd60e51b815260040161098391906155f0565b506006805463ffffffff60a01b1916600160a01b63ffffffff841602179055604051600080516020615ac083398151915290610a079083906157bc565b600354604080518082019091526002815261373560f01b6020820152600091600160c01b900460ff16156121e75760405162461bcd60e51b815260040161098391906155f0565b506001600160a01b03851660009081526013602090815260409182902054825180840190935260018352601b60f91b9183019190915260ff1661223d5760405162461bcd60e51b815260040161098391906155f0565b506000806000876001600160a01b031663ff1fb8868888886040518463ffffffff1660e01b815260040161227393929190615511565b60606040518083038186803b15801561228b57600080fd5b505afa15801561229f573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906122c391906152f2565b91945092509050806122d58385615824565b6122df9190615824565b6001600160701b031693505050505b949350505050565b6000600080516020615b008339815191525b546001600160a01b0316919050565b6000600080516020615aa0833981519152612308565b600354604080518082019091526002815261373560f01b602082015290600160c01b900460ff16156123725760405162461bcd60e51b815260040161098391906155f0565b506040805180820190915260028152611b9b60f11b60208201526001600160701b0384166123b35760405162461bcd60e51b815260040161098391906155f0565b506001600160a01b03851660009081526013602090815260409182902054825180840190935260018352601b60f91b9183019190915260ff166124095760405162461bcd60e51b815260040161098391906155f0565b50612412613538565b836001600160701b03161115604051806040016040528060028152602001611a1b60f11b815250906124575760405162461bcd60e51b815260040161098391906155f0565b506000806000876001600160a01b031663ff1fb8868888886040518463ffffffff1660e01b815260040161248d93929190615511565b60606040518083038186803b1580156124a557600080fd5b505afa1580156124b9573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906124dd91906152f2565b9194509250905083816124f08486615824565b6124fa9190615824565b6001600160701b0316111560405180604001604052806002815260200161343760f01b8152509061253e5760405162461bcd60e51b815260040161098391906155f0565b5061255387836001600160701b0316856143df565b600254612578906001600160a01b03898116913391166001600160701b038516614587565b856001600160701b0316600a6000828254612593919061584f565b90915550600090506125a58642615867565b6006549091506000906125c590600160a01b900463ffffffff1683615867565b6006549091506000906125e590600160c01b900463ffffffff1684615867565b90506000600260009054906101000a90046001600160a01b03166001600160a01b031663caa0f92a6040518163ffffffff1660e01b8152600401602060405180830381600087803b15801561263957600080fd5b505af115801561264d573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906126719190615383565b90506040518061010001604052808b6001600160701b031681526020018d6001600160a01b03166381045ead6040518163ffffffff1660e01b815260040160206040518083038186803b1580156126c757600080fd5b505afa1580156126db573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906126ff919061534f565b61ffff1681526020014263ffffffff1681526020018563ffffffff1681526020018463ffffffff1681526020018363ffffffff168152602001866001600160701b031681526020016127508d610724565b61ffff9081169091526000838152601160209081526040918290208451815492860151868501516060880151608089015160a08a01516001600160701b039586166001600160801b031998891617600160701b958b16860217600160801b600160c01b031916600160801b63ffffffff9586160263ffffffff60a01b191617600160a01b93851693909302929092176001600160c01b0316600160c01b918416919091026001600160e01b031617600160e01b929091169190910217835560c08701516001909301805460e0909801519390921696909316959095179316029190911790915560025490516335313c2160e11b815282916001600160a01b031690636a627842906128659033906004016154c0565b602060405180830381600087803b15801561287f57600080fd5b505af1158015612893573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906128b79190615383565b146128d257634e487b7160e01b600052600160045260246000fd5b604051635a85946560e01b8152600481018290526001600160a01b038d1690635a85946590602401600060405180830381600087803b15801561291457600080fd5b505af1158015612928573d6000803e3d6000fd5b505050508b6001600160a01b0316336001600160a01b0316827f59dee24cee42a5fd3c1be706cc8906676ac6950d523c17fa522275c74e7b9c758e8e8c8c8c428d8d8d612973611745565b600a54604080516001600160a01b03909c168c526001600160701b039a8b1660208d0152988a16988b019890985295881660608a015296909316608088015263ffffffff91821660a0880152811660c087015290811660e08601529092166101008401526101208301919091526101408201526101600160405180910390a4505050505050505050505050565b600280546040805180820190915291825261333960f01b60208301526001600160a01b03163314612a445760405162461bcd60e51b815260040161098391906155f0565b5060008181526011602090815260409182902082516101008101845281546001600160701b0380821680845261ffff600160701b80850482168689015263ffffffff600160801b86048116878b0152600160a01b860481166060880152600160c01b860481166080880152600160e01b90950490941660a086015260019095015491821660c085015291900490921660e082015283518085019094526002845261068760f31b92840192909252909190612b115760405162461bcd60e51b815260040161098391906155f0565b50606081015160208201516014805463ffffffff9093164211926001600160a01b0388811615939088161592600092909161ffff16908110612b6357634e487b7160e01b600052603260045260246000fd5b6000918252602090912001546001600160a01b031690508115612be557845160405163079cc67960e41b81526001600160a01b038316916379cc679091612bae918c916004016154ef565b600060405180830381600087803b158015612bc857600080fd5b505af1158015612bdc573d6000803e3d6000fd5b505050506120bf565b8215612c195784516040516340c10f1960e01b81526001600160a01b038316916340c10f1991612bae918b916004016154ef565b83612cba5784516040516333bebb7760e01b81526001600160a01b038a8116600483015289811660248301526001600160701b039092166044820152908216906333bebb7790606401602060405180830381600087803b158015612c7c57600080fd5b505af1158015612c90573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190612cb4919061504b565b506120bf565b60408051808201825260028152611a9960f11b6020820152905162461bcd60e51b815261098391906004016155f0565b33612cf3612317565b6001600160a01b031614604051806040016040528060018152602001603360f81b81525090612d355760405162461bcd60e51b815260040161098391906155f0565b50600354604080518082019091526002815261373560f01b602082015290600160c01b900460ff1615612d7b5760405162461bcd60e51b815260040161098391906155f0565b50604080518082019091526002815261034360f41b60208201526001600160a01b038716612dbc5760405162461bcd60e51b815260040161098391906155f0565b50601454604080518082019091526002815261343160f01b60208201529061ffff11612dfb5760405162461bcd60e51b815260040161098391906155f0565b506003546000906001600160a01b031663c31011cc612e186122f6565b6040518263ffffffff1660e01b8152600401612e3491906154c0565b602060405180830381600087803b158015612e4e57600080fd5b505af1158015612e62573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190612e869190614e68565b905060008060009054906101000a90046001600160a01b03166001600160a01b03166395d89b416040518163ffffffff1660e01b815260040160006040518083038186803b158015612ed757600080fd5b505afa158015612eeb573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f19168201604052612f1391908101906150f0565b90506000818c604051602001612f2a929190615484565b6040516020818303038152906040529050826001600160a01b0316631624f6c68e8360008054906101000a90046001600160a01b03166001600160a01b031663313ce5676040518163ffffffff1660e01b815260040160206040518083038186803b158015612f9857600080fd5b505afa158015612fac573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190612fd0919061541b565b6040518463ffffffff1660e01b8152600401612fee939291906156a6565b600060405180830381600087803b15801561300857600080fd5b505af115801561301c573d6000803e3d6000fd5b505050505050806001600160a01b031663b29c98ad30898b878b8f6014805490508d8d8c6040518b63ffffffff1660e01b81526004016130d79a999897969594939291906001600160a01b039a8b1681529890991660208901526001600160701b039690961660408801526001600160601b0394909416606087015261ffff928316608087015263ffffffff91821660a087015290911660c085015290811660e0840152166101008201529015156101208201526101400190565b600060405180830381600087803b1580156130f157600080fd5b505af1158015613105573d6000803e3d6000fd5b50506014805460018082019092557fce6d7b5282bd9a3661ae061feed1dbda4e52ab073b1f9285be6e155d9c38d4ec0180546001600160a01b0319166001600160a01b038616908117909155600081815260136020526040808220805460ff191690941790935591519093507f2fa31fbaacf5eaf61d648ea7528ada6efb69bfb06d2c3bd35ce511a820fce53e9250a25050505050505050505050565b336131ab612317565b6001600160a01b031614604051806040016040528060018152602001603360f81b815250906131ed5760405162461bcd60e51b815260040161098391906155f0565b506001600160a01b03811660009081526007602090815260409182902054825180840190935260028352611b9960f11b91830191909152600190810b900b6132485760405162461bcd60e51b815260040161098391906155f0565b506001600160a01b038116600090815260076020526040812054600190810b900b13156132e5576001600160a01b0381166000908152600760205260409020546132949060010b6159cb565b6001600160a01b038216600090815260076020526040808220805460019490940b61ffff1661ffff19909416939093179092559051600080516020615c0083398151915291610a07918491906154d4565b50565b336132f1612317565b6001600160a01b031614604051806040016040528060018152602001603360f81b815250906133335760405162461bcd60e51b815260040161098391906155f0565b5061334060108383614cd0565b50600080516020615a6083398151915282826040516115b59291906155c1565b600354604080518082019091526002815261373560f01b602082015290600160c01b900460ff16156133a55760405162461bcd60e51b815260040161098391906155f0565b506000546133be906001600160a01b0316333084614587565b60006133c8611745565b90506000600c546000146133e5576133e083836142c5565b6133e7565b825b90506133f383826145c5565b6001546040516335313c2160e11b81526000916001600160a01b031690636a627842906134249033906004016154c0565b602060405180830381600087803b15801561343e57600080fd5b505af1158015613452573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906134769190615383565b60408051606081018252868152602080820186815243838501908152600086815260129093529390912091518255516001808301919091559151600290910155909150336001600160a01b031682600080516020615a8083398151915287888788600c548c8c6134e6919061584f565b600a546040516134fc979695949392919061578c565b60405180910390a450505050565b600081815260126020526040812060018101548154613531919061352c611745565b61422d565b9392505050565b6000611765613545611745565b61425f565b33613553612317565b6001600160a01b031614604051806040016040528060018152602001603360f81b815250906135955760405162461bcd60e51b815260040161098391906155f0565b50604080518082019091526002815261363360f01b60208201526001600160a01b0382166135d65760405162461bcd60e51b815260040161098391906155f0565b50600480546001600160a01b0319166001600160a01b038316179055604051600080516020615b6083398151915290610a079083906154c0565b606060148054806020026020016040519081016040528092919081815260200182805480156107d957602002820191906000526020600020905b81546001600160a01b0316815260019091019060200180831161364a575050505050905090565b600354604080518082019091526002815261373560f01b602082015290600160c01b900460ff16156136b65760405162461bcd60e51b815260040161098391906155f0565b506001546040516331a9108f60e11b815260048101849052839133916001600160a01b0390911690636352211e9060240160206040518083038186803b1580156136ff57600080fd5b505afa158015613713573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906137379190614e68565b6001600160a01b031614604051806040016040528060018152602001603360f81b815250906137795760405162461bcd60e51b815260040161098391906155f0565b50600054613792906001600160a01b0316333085614587565b600061379c611745565b90506000600c546000146137b9576137b484836142c5565b6137bb565b835b90506137c784826145c5565b600085815260126020526040812080549091906137e590879061584f565b905060008383600101546137f9919061584f565b8284556001840181905543600285015590506003336001600160a01b031689600080516020615a808339815191528a868987600c548f8e61383a919061584f565b600a54604051613850979695949392919061578c565b60405180910390a45050505050505050565b3361386b612317565b6001600160a01b031614604051806040016040528060018152602001603360f81b815250906138ad5760405162461bcd60e51b815260040161098391906155f0565b50604080518082019091526002815261373160f01b60208201526001600160a01b0382166138ee5760405162461bcd60e51b815260040161098391906155f0565b506132e581614613565b6000613902612317565b6001600160a01b031614604051806040016040528060018152602001601960f91b815250906139445760405162461bcd60e51b815260040161098391906155f0565b50604080518082019091526002815261373360f01b60208201526001600160a01b0382166139855760405162461bcd60e51b815260040161098391906155f0565b50600080516020615aa083398151915280546001600160a01b0319166001600160a01b038316908117909155604051600090600080516020615ba0833981519152908290a350565b600354604080518082019091526002815261373560f01b602082015290600160c01b900460ff1615613a125760405162461bcd60e51b815260040161098391906155f0565b50600084815260116020908152604091829020805483518085019094526002845261068760f31b9284019290925291906001600160701b0316613a685760405162461bcd60e51b815260040161098391906155f0565b50805460148054600092600160701b900461ffff16908110613a9a57634e487b7160e01b600052603260045260246000fd5b60009182526020909120015482546001600160a01b0390911691504290613acf908690600160a01b900463ffffffff16615867565b63ffffffff16101560405180604001604052806002815260200161343960f01b81525090613b105760405162461bcd60e51b815260040161098391906155f0565b50600a548254613b29906001600160701b031682615932565b600a5582546040516001627023bd60e11b0319815260009182916001600160a01b0386169163ff1fb88691613b70918c916001600160701b03909116908c90600401615511565b60606040518083038186803b158015613b8857600080fd5b505afa158015613b9c573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190613bc091906152f2565b50600a859055909250905085613bd68284615824565b6001600160701b0316111560405180604001604052806002815260200161343760f01b81525090613c1a5760405162461bcd60e51b815260040161098391906155f0565b50613c2f88826001600160701b0316846143df565b8454600090613c4c908990600160a01b900463ffffffff16615867565b600654909150600090613c6c90600160a01b900463ffffffff1683615867565b600654909150600090613c8c90600160c01b900463ffffffff1684615867565b8854600160a01b600160e01b031916600160a01b63ffffffff8681169190910263ffffffff60c01b191691909117600160c01b85831602176001600160e01b0316600160e01b91831691909102178955604051635a85946560e01b8152600481018e90529091506001600160a01b03881690635a85946590602401600060405180830381600087803b158015613d2157600080fd5b505af1158015613d35573d6000803e3d6000fd5b5050604080516001600160a01b038f1681526001600160701b03898116602083015288168183015263ffffffff87811660608301528681166080830152851660a082015290513393508f92507f012ee01e680dee236f33567d88889822f7521f77a65adc92142abf5a2005d3ef9181900360c00190a3505050505050505050505050565b33613dc2612317565b6001600160a01b031614604051806040016040528060018152602001603360f81b81525090613e045760405162461bcd60e51b815260040161098391906155f0565b50600654604080518082019091526002815261363560f01b60208201529063ffffffff808416600160a01b909204161115613e525760405162461bcd60e51b815260040161098391906155f0565b506006805463ffffffff60c01b1916600160c01b63ffffffff841602179055604051600080516020615be083398151915290610a079083906157bc565b600060088281548110613eb257634e487b7160e01b600052603260045260246000fd5b6000918252602090912001546001600160a01b031692915050565b613ef160405180606001604052806000815260200160008152602001600081525090565b6001546040516331a9108f60e11b8152600481018490526001600160a01b0390911690636352211e9060240160206040518083038186803b158015613f3557600080fd5b505afa158015613f49573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190613f6d9190614e68565b5050600090815260126020908152604091829020825160608101845281548152600182015492810192909252600201549181019190915290565b6000546040805180820190915260018152601960f91b6020820152906001600160a01b031615613fea5760405162461bcd60e51b815260040161098391906155f0565b506040805180820190915260018152603560f81b60208201526001600160a01b03841661402a5760405162461bcd60e51b815260040161098391906155f0565b50600080546001600160a01b038086166001600160a01b03199283161790925560018054858416908316179055600280549284169290911691909117905561407183614613565b505050565b3361407f612317565b6001600160a01b031614604051806040016040528060018152602001603360f81b815250906140c15760405162461bcd60e51b815260040161098391906155f0565b50604080518082019091526002815261373360f01b60208201526001600160a01b0382166141025760405162461bcd60e51b815260040161098391906155f0565b50806001600160a01b0316614115612317565b6001600160a01b0316600080516020615ba083398151915260405160405180910390a3600080516020615aa083398151915280546001600160a01b0319166001600160a01b0392909216919091179055565b33614170612317565b6001600160a01b031614604051806040016040528060018152602001603360f81b815250906141b25760405162461bcd60e51b815260040161098391906155f0565b506040805180820190915260028152611b1b60f11b602082015263ffffffff82166141f05760405162461bcd60e51b815260040161098391906155f0565b506003805463ffffffff60a01b1916600160a01b63ffffffff841602179055604051600080516020615b4083398151915290610a079083906157bc565b60008061423a8584614367565b9050838111156142535761424e8482615932565b614256565b60005b95945050505050565b6000600a548261074b9190615932565b6140718363a9059cbb60e01b848460405160240161428e929190615541565b60408051601f198184030181529190526020810180516001600160e01b03166001600160e01b03199093169290921790915261475e565b60008183600c546142d691906158a6565b6135319190615886565b6000600954905081600c60008282546142f99190615932565b909155505082811061430d5782900361433b565b6000614317614830565b6001600160701b031690508361432d828461584f565b6143379190615932565b9150505b6009819055604051818152600080516020615c20833981519152906020015b60405180910390a1505050565b600c546000906142d684846158a6565b600b546000906143c29063ffffffff600160e01b820416906143ac906001600160701b0380821691600160701b90041661590a565b600354600160a01b900463ffffffff16426148ee565b600b546117659190600160701b90046001600160701b031661590a565b6001600160701b03811682016144006001600160a01b038516333084614587565b6000546001600160a01b0390811690849084908716831461455b576004805460405163095ea7b360e01b81526001600160a01b03808b169363095ea7b39361444d93921691899101615541565b602060405180830381600087803b15801561446757600080fd5b505af115801561447b573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061449f919061504b565b506004805460405163029b465d60e01b81526001600160a01b038a8116938201939093526024810187905285831660448201526000929091169063029b465d90606401602060405180830381600087803b1580156144fc57600080fd5b505af1158015614510573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906145349190615383565b90508461454182896158a6565b61454b9190615886565b92506145578382615932565b9150505b600654614575906001600160a01b0385811691168461426f565b61457e81614a8f565b50505050505050565b6040516001600160a01b03808516602483015283166044820152606481018290526145bf9085906323b872dd60e01b9060840161428e565b50505050565b80600c60008282546145d7919061584f565b90915550506009546000906145ed90849061584f565b6009819055604051818152909150600080516020615c208339815191529060200161435a565b6001600160a01b038116600090815260076020526040902054600190810b900b6146c95760088054600181810183557ff3f7a9fe364faab93b216da50a3214154f22a0a2b415b23a84c8169e8b636ee390910180546001600160a01b0385166001600160a01b03199091168117909155915460009283526007602052604092839020805491830b61ffff1661ffff199092169190911790559051600080516020615c0083398151915291610a07918491906154d4565b6001600160a01b038116600090815260076020526040812054600190810b900b12156132e5576001600160a01b0381166000908152600760205260409020546147149060010b6159cb565b6001600160a01b03821660009081526007602052604090819020805461ffff191661ffff600194850b1617905551600080516020615c0083398151915291610a07918491906154d4565b60006147b3826040518060400160405280602081526020017f5361666545524332303a206c6f772d6c6576656c2063616c6c206661696c6564815250856001600160a01b0316614b419092919063ffffffff16565b80519091501561407157808060200190518101906147d1919061504b565b6140715760405162461bcd60e51b815260206004820152602a60248201527f5361666545524332303a204552433230206f7065726174696f6e20646964206e6044820152691bdd081cdd58d8d9595960b21b6064820152608401610983565b600061483a614377565b600b80546001600160701b0319168082559192508291600e9061486e908490600160701b90046001600160701b031661590a565b82546001600160701b039182166101009390930a928302928202191691909117909155600b805463ffffffff4216600160e01b026001600160e01b038216811792839055604051600080516020615b8083398151915295506148e3949182169282169290921792600160701b90041690615772565b60405180910390a190565b60008463ffffffff168263ffffffff161015604051806040016040528060018152602001600760fb1b815250906149385760405162461bcd60e51b815260040161098391906155f0565b5084820391508263ffffffff168263ffffffff168161496757634e487b7160e01b600052601260045260246000fd5b0463ffffffff16846001600160701b0316901c93508263ffffffff168263ffffffff16816149a557634e487b7160e01b600052601260045260246000fd5b06915063ffffffff821615806149c257506001600160701b038416155b156149ce5750826122ee565b60006001600160701b0385168163ffffffff86811690861671b17217f7d1cf79abc9e3b39803f2f6af40f30281614a1557634e487b7160e01b600052601260045260246000fd5b049050600160901b5b8215614a8257928201928082840281614a4757634e487b7160e01b600052601260045260246000fd5b0493849003939250600160901b018082840281614a7457634e487b7160e01b600052601260045260246000fd5b049250600160901b01614a1e565b5091979650505050505050565b614a97614377565b600b80546001600160701b0319166001600160701b03928316178082558392600e91614acc918591600160701b900416615824565b82546001600160701b039182166101009390930a928302928202191691909117909155600b805463ffffffff4216600160e01b026001600160e01b038216811792839055604051600080516020615b808339815191529550610a07949182169282169290921792600160701b90041690615772565b60606122ee848460008585843b614b9a5760405162461bcd60e51b815260206004820152601d60248201527f416464726573733a2063616c6c20746f206e6f6e2d636f6e74726163740000006044820152606401610983565b600080866001600160a01b03168587604051614bb69190615468565b60006040518083038185875af1925050503d8060008114614bf3576040519150601f19603f3d011682016040523d82523d6000602084013e614bf8565b606091505b5091509150614c08828286614c13565b979650505050505050565b60608315614c22575081613531565b825115614c325782518084602001fd5b8160405162461bcd60e51b815260040161098391906155f0565b828054614c5890615975565b90600052602060002090601f016020900481019282614c7a5760008555614cc0565b82601f10614c9357805160ff1916838001178555614cc0565b82800160010185558215614cc0579182015b82811115614cc0578251825591602001919060010190614ca5565b50614ccc929150614d44565b5090565b828054614cdc90615975565b90600052602060002090601f016020900481019282614cfe5760008555614cc0565b82601f10614d175782800160ff19823516178555614cc0565b82800160010185558215614cc0579182015b82811115614cc0578235825591602001919060010190614d29565b5b80821115614ccc5760008155600101614d45565b8035614d6481615a17565b919050565b8035614d6481615a2c565b60008083601f840112614d85578182fd5b5081356001600160401b03811115614d9b578182fd5b602083019150836020828501011115614db357600080fd5b9250929050565b600082601f830112614dca578081fd5b8135614ddd614dd8826157fd565b6157cd565b818152846020838601011115614df1578283fd5b816020850160208301379081016020019190915292915050565b8035614d6481615a3a565b8035614d6481615a4f565b803563ffffffff81168114614d6457600080fd5b80356001600160601b0381168114614d6457600080fd5b600060208284031215614e5d578081fd5b813561353181615a17565b600060208284031215614e79578081fd5b815161353181615a17565b600080600080600080600060c0888a031215614e9e578283fd5b8735614ea981615a17565b96506020880135614eb981615a17565b95506040880135614ec981615a17565b94506060880135614ed981615a17565b93506080880135614ee981615a17565b925060a08801356001600160401b0380821115614f04578384fd5b818a0191508a601f830112614f17578384fd5b813581811115614f25578485fd5b8b60208260051b8501011115614f39578485fd5b60208301945080935050505092959891949750929550565b60008060008060808587031215614f66578384fd5b8435614f7181615a17565b93506020850135614f8181615a17565b92506040850135614f9181615a3a565b9150614f9f60608601614e21565b905092959194509250565b600080600080600060a08688031215614fc1578283fd5b8535614fcc81615a17565b94506020860135614fdc81615a17565b93506040860135614fec81615a3a565b9250614ffa60608701614e21565b949793965091946080013592915050565b60008060006060848603121561501f578081fd5b833561502a81615a17565b9250602084013561503a81615a17565b929592945050506040919091013590565b60006020828403121561505c578081fd5b815161353181615a2c565b60008060006060848603121561507b578081fd5b833561508681615a17565b9250602084013561509681615a17565b915060408401356150a681615a17565b809150509250925092565b600080602083850312156150c3578182fd5b82356001600160401b038111156150d8578283fd5b6150e485828601614d74565b90969095509350505050565b600060208284031215615101578081fd5b81516001600160401b03811115615116578182fd5b8201601f81018413615126578182fd5b8051615134614dd8826157fd565b818152856020838501011115615148578384fd5b614256826020830160208601615949565b600080600080600080600060c0888a031215615173578081fd5b87356001600160401b0380821115615189578283fd5b6151958b838c01614dba565b985060208a01359150808211156151aa578283fd5b506151b78a828b01614d74565b90975095505060408801356151cb81615a4f565b935060608801356151db81615a17565b925060808801356151eb81615a17565b915060a08801356151fb81615a17565b8091505092959891949750929550565b6000806000806000806000806000806101408b8d03121561522a578384fd5b8a356001600160401b0380821115615240578586fd5b61524c8e838f01614dba565b9b5060208d0135915080821115615261578586fd5b5061526e8d828e01614dba565b99505061527d60408c01614e21565b975061528b60608c01614e0b565b965061529960808c01614d59565b95506152a760a08c01614e16565b94506152b560c08c01614e21565b93506152c360e08c01614e21565b92506152d26101008c01614e35565b91506152e16101208c01614d69565b90509295989b9194979a5092959850565b600080600060608486031215615306578081fd5b835161531181615a3a565b602085015190935061532281615a3a565b60408501519092506150a681615a3a565b600060208284031215615344578081fd5b813561353181615a4f565b600060208284031215615360578081fd5b815161353181615a4f565b60006020828403121561537c578081fd5b5035919050565b600060208284031215615394578081fd5b5051919050565b600080600080608085870312156153b0578182fd5b8435935060208501356153c281615a17565b92506153d060408601614e21565b9396929550929360600135925050565b600080604083850312156153f2578182fd5b50508035926020909101359150565b600060208284031215615412578081fd5b61353182614e21565b60006020828403121561542c578081fd5b815160ff81168114613531578182fd5b60008151808452615454816020860160208601615949565b601f01601f19169290920160200192915050565b6000825161547a818460208701615949565b9190910192915050565b60008351615496818460208801615949565b600160fd1b90830190815283516154b4816001840160208801615949565b01600101949350505050565b6001600160a01b0391909116815260200190565b6001600160a01b039290921682521515602082015260400190565b6001600160a01b039290921682526001600160701b0316602082015260400190565b6001600160a01b039390931683526001600160701b0391909116602083015263ffffffff16604082015260600190565b6001600160a01b03929092168252602082015260400190565b6020808252825182820181905260009190848201906040850190845b8181101561559b5783516001600160a01b031683529284019291840191600101615576565b50909695505050505050565b6001600160a01b0392831681529116602082015260400190565b60208152816020820152818360408301376000818301604090810191909152601f909201601f19160101919050565b602081526000613531602083018461543c565b6101808152600061561861018083018f61543c565b828103602084015261562a818f61543c565b63ffffffff8e811660408601528d811660608601528c16608085015261ffff8b1660a085015260c084018a905260e0840189905261010084018890526001600160701b03878116610120860152861661014085015291506156889050565b63ffffffff83166101608301529d9c50505050505050505050505050565b6060815260006156b9606083018661543c565b82810360208401526156cb818661543c565b91505060ff83166040830152949350505050565b81516001600160701b0316815260208083015161ffff169082015260408083015163ffffffff9081169183019190915260608084015182169083015260808084015182169083015260a080840151918216908301526101008201905060c083015161575560c08401826001600160701b03169052565b5060e083015161576b60e084018261ffff169052565b5092915050565b6001600160701b0392831681529116602082015260400190565b968752602087019590955260408601939093526060850191909152608084015260a083015260c082015260e00190565b63ffffffff91909116815260200190565b604051601f8201601f191681016001600160401b03811182821017156157f5576157f5615a01565b604052919050565b60006001600160401b0382111561581657615816615a01565b50601f01601f191660200190565b60006001600160701b03828116848216808303821115615846576158466159eb565b01949350505050565b60008219821115615862576158626159eb565b500190565b600063ffffffff808316818516808303821115615846576158466159eb565b6000826158a157634e487b7160e01b81526012600452602481fd5b500490565b60008160001904831182151516156158c0576158c06159eb565b500290565b60008160010b8360010b82811281617fff19018312811516156158ea576158ea6159eb565b81617fff018313811615615900576159006159eb565b5090039392505050565b60006001600160701b038381169083168181101561592a5761592a6159eb565b039392505050565b600082821015615944576159446159eb565b500390565b60005b8381101561596457818101518382015260200161594c565b838111156145bf5750506000910152565b600181811c9082168061598957607f821691505b602082108114156159aa57634e487b7160e01b600052602260045260246000fd5b50919050565b60006000198214156159c4576159c46159eb565b5060010190565b60008160010b617fff198114156159e4576159e46159eb565b9003919050565b634e487b7160e01b600052601160045260246000fd5b634e487b7160e01b600052604160045260246000fd5b6001600160a01b03811681146132e557600080fd5b80151581146132e557600080fd5b6001600160701b03811681146132e557600080fd5b61ffff811681146132e557600080fdfe87cdeaffd8e70903d6ce7cc983fac3b09ca79e83818124c98e47a1d70f8027d603429b4bf882467b990034c9cdcf7d1c4c3f189e62ce27af5e9bd563659fa2864f471908b72bb76dae5bd24599026e7bf3ddb256497722888ffa422f83729ede745abdabfd9615abf44cc5ea5223a16cd377282452510a2de5121d44b8c097f1926b69b9f7735227079a308fce165b111b96e2983e70a86a381ee047675ff39fd1248cccb5fef9131c731321e43e9a924840ffee7dc68c7d1d3e5cb7dedcae0327894f6b9c469a3eddbe98dd0df54563b6437b20982876e0c2cd60c211a156469b2baf1f9580f11e84f351d1ac9c543726f7023ba5d6d278fc487898fac055b6befcd50991bb64333037879282220d78a901bb4809351643f56628af8a4656dfc8dfab451067f726e1077626e126c7f77149630cc1b0056cf60307a289a118298be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e07aa9698a01d2094fb8a580e2c72a6fc3f3bfecfd4cbdc457461118c59a6fefe4d076b5bc77c447b04d82e76a12ec958bfe6d48418cce446aaf9ebeb3136638eb92a4dc1fa715a8cafb0cdc060f729eb1dfdddcbc9effbdc8d822cdf5ebcf4907a70de76be90dc9c5d9243b0bc73c3d963ba703a0a396f29134bf5b4e6197c180471e342623158b92281274ef7263e4f9a0e0b748c1c328113afbb58742c1789fa264697066735822122071e9212e43e9b067e465ad6cfe91cd6ab698473f75bc13d411aff98c714cda1264736f6c63430008040033",
 }
 
 // EnterpriseABI is the input ABI used to generate the binding from.
@@ -220,12 +201,12 @@ func (_Enterprise *EnterpriseTransactorRaw) Transact(opts *bind.TransactOpts, me
 	return _Enterprise.Contract.contract.Transact(opts, method, params...)
 }
 
-// EstimateLoan is a free data retrieval call binding the contract method 0x229304dc.
+// EstimateRentalFee is a free data retrieval call binding the contract method 0x8245ca1e.
 //
-// Solidity: function estimateLoan(address powerToken, address paymentToken, uint112 amount, uint32 duration) view returns(uint256)
-func (_Enterprise *EnterpriseCaller) EstimateLoan(opts *bind.CallOpts, powerToken common.Address, paymentToken common.Address, amount *big.Int, duration uint32) (*big.Int, error) {
+// Solidity: function estimateRentalFee(address powerToken, address paymentToken, uint112 rentalAmount, uint32 rentalPeriod) view returns(uint256)
+func (_Enterprise *EnterpriseCaller) EstimateRentalFee(opts *bind.CallOpts, powerToken common.Address, paymentToken common.Address, rentalAmount *big.Int, rentalPeriod uint32) (*big.Int, error) {
 	var out []interface{}
-	err := _Enterprise.contract.Call(opts, &out, "estimateLoan", powerToken, paymentToken, amount, duration)
+	err := _Enterprise.contract.Call(opts, &out, "estimateRentalFee", powerToken, paymentToken, rentalAmount, rentalPeriod)
 
 	if err != nil {
 		return *new(*big.Int), err
@@ -237,49 +218,18 @@ func (_Enterprise *EnterpriseCaller) EstimateLoan(opts *bind.CallOpts, powerToke
 
 }
 
-// EstimateLoan is a free data retrieval call binding the contract method 0x229304dc.
+// EstimateRentalFee is a free data retrieval call binding the contract method 0x8245ca1e.
 //
-// Solidity: function estimateLoan(address powerToken, address paymentToken, uint112 amount, uint32 duration) view returns(uint256)
-func (_Enterprise *EnterpriseSession) EstimateLoan(powerToken common.Address, paymentToken common.Address, amount *big.Int, duration uint32) (*big.Int, error) {
-	return _Enterprise.Contract.EstimateLoan(&_Enterprise.CallOpts, powerToken, paymentToken, amount, duration)
+// Solidity: function estimateRentalFee(address powerToken, address paymentToken, uint112 rentalAmount, uint32 rentalPeriod) view returns(uint256)
+func (_Enterprise *EnterpriseSession) EstimateRentalFee(powerToken common.Address, paymentToken common.Address, rentalAmount *big.Int, rentalPeriod uint32) (*big.Int, error) {
+	return _Enterprise.Contract.EstimateRentalFee(&_Enterprise.CallOpts, powerToken, paymentToken, rentalAmount, rentalPeriod)
 }
 
-// EstimateLoan is a free data retrieval call binding the contract method 0x229304dc.
+// EstimateRentalFee is a free data retrieval call binding the contract method 0x8245ca1e.
 //
-// Solidity: function estimateLoan(address powerToken, address paymentToken, uint112 amount, uint32 duration) view returns(uint256)
-func (_Enterprise *EnterpriseCallerSession) EstimateLoan(powerToken common.Address, paymentToken common.Address, amount *big.Int, duration uint32) (*big.Int, error) {
-	return _Enterprise.Contract.EstimateLoan(&_Enterprise.CallOpts, powerToken, paymentToken, amount, duration)
-}
-
-// GetAccruedInterest is a free data retrieval call binding the contract method 0x9339ea69.
-//
-// Solidity: function getAccruedInterest(uint256 interestTokenId) view returns(uint256)
-func (_Enterprise *EnterpriseCaller) GetAccruedInterest(opts *bind.CallOpts, interestTokenId *big.Int) (*big.Int, error) {
-	var out []interface{}
-	err := _Enterprise.contract.Call(opts, &out, "getAccruedInterest", interestTokenId)
-
-	if err != nil {
-		return *new(*big.Int), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
-
-	return out0, err
-
-}
-
-// GetAccruedInterest is a free data retrieval call binding the contract method 0x9339ea69.
-//
-// Solidity: function getAccruedInterest(uint256 interestTokenId) view returns(uint256)
-func (_Enterprise *EnterpriseSession) GetAccruedInterest(interestTokenId *big.Int) (*big.Int, error) {
-	return _Enterprise.Contract.GetAccruedInterest(&_Enterprise.CallOpts, interestTokenId)
-}
-
-// GetAccruedInterest is a free data retrieval call binding the contract method 0x9339ea69.
-//
-// Solidity: function getAccruedInterest(uint256 interestTokenId) view returns(uint256)
-func (_Enterprise *EnterpriseCallerSession) GetAccruedInterest(interestTokenId *big.Int) (*big.Int, error) {
-	return _Enterprise.Contract.GetAccruedInterest(&_Enterprise.CallOpts, interestTokenId)
+// Solidity: function estimateRentalFee(address powerToken, address paymentToken, uint112 rentalAmount, uint32 rentalPeriod) view returns(uint256)
+func (_Enterprise *EnterpriseCallerSession) EstimateRentalFee(powerToken common.Address, paymentToken common.Address, rentalAmount *big.Int, rentalPeriod uint32) (*big.Int, error) {
+	return _Enterprise.Contract.EstimateRentalFee(&_Enterprise.CallOpts, powerToken, paymentToken, rentalAmount, rentalPeriod)
 }
 
 // GetAvailableReserve is a free data retrieval call binding the contract method 0xaebb5041.
@@ -389,68 +339,6 @@ func (_Enterprise *EnterpriseCallerSession) GetBondingCurve() (struct {
 	return _Enterprise.Contract.GetBondingCurve(&_Enterprise.CallOpts)
 }
 
-// GetBorrowToken is a free data retrieval call binding the contract method 0xc93d0b92.
-//
-// Solidity: function getBorrowToken() view returns(address)
-func (_Enterprise *EnterpriseCaller) GetBorrowToken(opts *bind.CallOpts) (common.Address, error) {
-	var out []interface{}
-	err := _Enterprise.contract.Call(opts, &out, "getBorrowToken")
-
-	if err != nil {
-		return *new(common.Address), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-
-	return out0, err
-
-}
-
-// GetBorrowToken is a free data retrieval call binding the contract method 0xc93d0b92.
-//
-// Solidity: function getBorrowToken() view returns(address)
-func (_Enterprise *EnterpriseSession) GetBorrowToken() (common.Address, error) {
-	return _Enterprise.Contract.GetBorrowToken(&_Enterprise.CallOpts)
-}
-
-// GetBorrowToken is a free data retrieval call binding the contract method 0xc93d0b92.
-//
-// Solidity: function getBorrowToken() view returns(address)
-func (_Enterprise *EnterpriseCallerSession) GetBorrowToken() (common.Address, error) {
-	return _Enterprise.Contract.GetBorrowToken(&_Enterprise.CallOpts)
-}
-
-// GetBorrowerLoanReturnGracePeriod is a free data retrieval call binding the contract method 0x8188d50d.
-//
-// Solidity: function getBorrowerLoanReturnGracePeriod() view returns(uint32)
-func (_Enterprise *EnterpriseCaller) GetBorrowerLoanReturnGracePeriod(opts *bind.CallOpts) (uint32, error) {
-	var out []interface{}
-	err := _Enterprise.contract.Call(opts, &out, "getBorrowerLoanReturnGracePeriod")
-
-	if err != nil {
-		return *new(uint32), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(uint32)).(*uint32)
-
-	return out0, err
-
-}
-
-// GetBorrowerLoanReturnGracePeriod is a free data retrieval call binding the contract method 0x8188d50d.
-//
-// Solidity: function getBorrowerLoanReturnGracePeriod() view returns(uint32)
-func (_Enterprise *EnterpriseSession) GetBorrowerLoanReturnGracePeriod() (uint32, error) {
-	return _Enterprise.Contract.GetBorrowerLoanReturnGracePeriod(&_Enterprise.CallOpts)
-}
-
-// GetBorrowerLoanReturnGracePeriod is a free data retrieval call binding the contract method 0x8188d50d.
-//
-// Solidity: function getBorrowerLoanReturnGracePeriod() view returns(uint32)
-func (_Enterprise *EnterpriseCallerSession) GetBorrowerLoanReturnGracePeriod() (uint32, error) {
-	return _Enterprise.Contract.GetBorrowerLoanReturnGracePeriod(&_Enterprise.CallOpts)
-}
-
 // GetConverter is a free data retrieval call binding the contract method 0x2261b07f.
 //
 // Solidity: function getConverter() view returns(address)
@@ -513,12 +401,12 @@ func (_Enterprise *EnterpriseCallerSession) GetEnterpriseCollector() (common.Add
 	return _Enterprise.Contract.GetEnterpriseCollector(&_Enterprise.CallOpts)
 }
 
-// GetEnterpriseLoanCollectGracePeriod is a free data retrieval call binding the contract method 0xa0efd118.
+// GetEnterpriseOnlyCollectionPeriod is a free data retrieval call binding the contract method 0x9f52673c.
 //
-// Solidity: function getEnterpriseLoanCollectGracePeriod() view returns(uint32)
-func (_Enterprise *EnterpriseCaller) GetEnterpriseLoanCollectGracePeriod(opts *bind.CallOpts) (uint32, error) {
+// Solidity: function getEnterpriseOnlyCollectionPeriod() view returns(uint32)
+func (_Enterprise *EnterpriseCaller) GetEnterpriseOnlyCollectionPeriod(opts *bind.CallOpts) (uint32, error) {
 	var out []interface{}
-	err := _Enterprise.contract.Call(opts, &out, "getEnterpriseLoanCollectGracePeriod")
+	err := _Enterprise.contract.Call(opts, &out, "getEnterpriseOnlyCollectionPeriod")
 
 	if err != nil {
 		return *new(uint32), err
@@ -530,26 +418,26 @@ func (_Enterprise *EnterpriseCaller) GetEnterpriseLoanCollectGracePeriod(opts *b
 
 }
 
-// GetEnterpriseLoanCollectGracePeriod is a free data retrieval call binding the contract method 0xa0efd118.
+// GetEnterpriseOnlyCollectionPeriod is a free data retrieval call binding the contract method 0x9f52673c.
 //
-// Solidity: function getEnterpriseLoanCollectGracePeriod() view returns(uint32)
-func (_Enterprise *EnterpriseSession) GetEnterpriseLoanCollectGracePeriod() (uint32, error) {
-	return _Enterprise.Contract.GetEnterpriseLoanCollectGracePeriod(&_Enterprise.CallOpts)
+// Solidity: function getEnterpriseOnlyCollectionPeriod() view returns(uint32)
+func (_Enterprise *EnterpriseSession) GetEnterpriseOnlyCollectionPeriod() (uint32, error) {
+	return _Enterprise.Contract.GetEnterpriseOnlyCollectionPeriod(&_Enterprise.CallOpts)
 }
 
-// GetEnterpriseLoanCollectGracePeriod is a free data retrieval call binding the contract method 0xa0efd118.
+// GetEnterpriseOnlyCollectionPeriod is a free data retrieval call binding the contract method 0x9f52673c.
 //
-// Solidity: function getEnterpriseLoanCollectGracePeriod() view returns(uint32)
-func (_Enterprise *EnterpriseCallerSession) GetEnterpriseLoanCollectGracePeriod() (uint32, error) {
-	return _Enterprise.Contract.GetEnterpriseLoanCollectGracePeriod(&_Enterprise.CallOpts)
+// Solidity: function getEnterpriseOnlyCollectionPeriod() view returns(uint32)
+func (_Enterprise *EnterpriseCallerSession) GetEnterpriseOnlyCollectionPeriod() (uint32, error) {
+	return _Enterprise.Contract.GetEnterpriseOnlyCollectionPeriod(&_Enterprise.CallOpts)
 }
 
-// GetEnterpriseVault is a free data retrieval call binding the contract method 0x7791c42d.
+// GetEnterpriseToken is a free data retrieval call binding the contract method 0x60f87087.
 //
-// Solidity: function getEnterpriseVault() view returns(address)
-func (_Enterprise *EnterpriseCaller) GetEnterpriseVault(opts *bind.CallOpts) (common.Address, error) {
+// Solidity: function getEnterpriseToken() view returns(address)
+func (_Enterprise *EnterpriseCaller) GetEnterpriseToken(opts *bind.CallOpts) (common.Address, error) {
 	var out []interface{}
-	err := _Enterprise.contract.Call(opts, &out, "getEnterpriseVault")
+	err := _Enterprise.contract.Call(opts, &out, "getEnterpriseToken")
 
 	if err != nil {
 		return *new(common.Address), err
@@ -561,18 +449,80 @@ func (_Enterprise *EnterpriseCaller) GetEnterpriseVault(opts *bind.CallOpts) (co
 
 }
 
-// GetEnterpriseVault is a free data retrieval call binding the contract method 0x7791c42d.
+// GetEnterpriseToken is a free data retrieval call binding the contract method 0x60f87087.
 //
-// Solidity: function getEnterpriseVault() view returns(address)
-func (_Enterprise *EnterpriseSession) GetEnterpriseVault() (common.Address, error) {
-	return _Enterprise.Contract.GetEnterpriseVault(&_Enterprise.CallOpts)
+// Solidity: function getEnterpriseToken() view returns(address)
+func (_Enterprise *EnterpriseSession) GetEnterpriseToken() (common.Address, error) {
+	return _Enterprise.Contract.GetEnterpriseToken(&_Enterprise.CallOpts)
 }
 
-// GetEnterpriseVault is a free data retrieval call binding the contract method 0x7791c42d.
+// GetEnterpriseToken is a free data retrieval call binding the contract method 0x60f87087.
 //
-// Solidity: function getEnterpriseVault() view returns(address)
-func (_Enterprise *EnterpriseCallerSession) GetEnterpriseVault() (common.Address, error) {
-	return _Enterprise.Contract.GetEnterpriseVault(&_Enterprise.CallOpts)
+// Solidity: function getEnterpriseToken() view returns(address)
+func (_Enterprise *EnterpriseCallerSession) GetEnterpriseToken() (common.Address, error) {
+	return _Enterprise.Contract.GetEnterpriseToken(&_Enterprise.CallOpts)
+}
+
+// GetEnterpriseWallet is a free data retrieval call binding the contract method 0xdccdc7d9.
+//
+// Solidity: function getEnterpriseWallet() view returns(address)
+func (_Enterprise *EnterpriseCaller) GetEnterpriseWallet(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _Enterprise.contract.Call(opts, &out, "getEnterpriseWallet")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// GetEnterpriseWallet is a free data retrieval call binding the contract method 0xdccdc7d9.
+//
+// Solidity: function getEnterpriseWallet() view returns(address)
+func (_Enterprise *EnterpriseSession) GetEnterpriseWallet() (common.Address, error) {
+	return _Enterprise.Contract.GetEnterpriseWallet(&_Enterprise.CallOpts)
+}
+
+// GetEnterpriseWallet is a free data retrieval call binding the contract method 0xdccdc7d9.
+//
+// Solidity: function getEnterpriseWallet() view returns(address)
+func (_Enterprise *EnterpriseCallerSession) GetEnterpriseWallet() (common.Address, error) {
+	return _Enterprise.Contract.GetEnterpriseWallet(&_Enterprise.CallOpts)
+}
+
+// GetFactory is a free data retrieval call binding the contract method 0x88cc58e4.
+//
+// Solidity: function getFactory() view returns(address)
+func (_Enterprise *EnterpriseCaller) GetFactory(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _Enterprise.contract.Call(opts, &out, "getFactory")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// GetFactory is a free data retrieval call binding the contract method 0x88cc58e4.
+//
+// Solidity: function getFactory() view returns(address)
+func (_Enterprise *EnterpriseSession) GetFactory() (common.Address, error) {
+	return _Enterprise.Contract.GetFactory(&_Enterprise.CallOpts)
+}
+
+// GetFactory is a free data retrieval call binding the contract method 0x88cc58e4.
+//
+// Solidity: function getFactory() view returns(address)
+func (_Enterprise *EnterpriseCallerSession) GetFactory() (common.Address, error) {
+	return _Enterprise.Contract.GetFactory(&_Enterprise.CallOpts)
 }
 
 // GetGCFeePercent is a free data retrieval call binding the contract method 0xb406bf6d.
@@ -608,37 +558,37 @@ func (_Enterprise *EnterpriseCallerSession) GetGCFeePercent() (uint16, error) {
 
 // GetInfo is a free data retrieval call binding the contract method 0x5a9b0b89.
 //
-// Solidity: function getInfo() view returns(string name, string baseUri, uint256 totalShares, uint32 interestGapHalvingPeriod, uint32 borrowerLoanReturnGracePeriod, uint32 enterpriseLoanCollectGracePeriod, uint16 gcFeePercent, uint256 fixedReserve, uint256 usedReserve, uint112 streamingReserve, uint112 streamingReserveTarget, uint32 streamingReserveUpdated)
+// Solidity: function getInfo() view returns(string name, string baseUri, uint32 streamingReserveHalvingPeriod, uint32 renterOnlyReturnPeriod, uint32 enterpriseOnlyCollectionPeriod, uint16 gcFeePercent, uint256 totalShares, uint256 fixedReserve, uint256 usedReserve, uint112 streamingReserve, uint112 streamingReserveTarget, uint32 streamingReserveUpdated)
 func (_Enterprise *EnterpriseCaller) GetInfo(opts *bind.CallOpts) (struct {
-	Name                             string
-	BaseUri                          string
-	TotalShares                      *big.Int
-	InterestGapHalvingPeriod         uint32
-	BorrowerLoanReturnGracePeriod    uint32
-	EnterpriseLoanCollectGracePeriod uint32
-	GcFeePercent                     uint16
-	FixedReserve                     *big.Int
-	UsedReserve                      *big.Int
-	StreamingReserve                 *big.Int
-	StreamingReserveTarget           *big.Int
-	StreamingReserveUpdated          uint32
+	Name                           string
+	BaseUri                        string
+	StreamingReserveHalvingPeriod  uint32
+	RenterOnlyReturnPeriod         uint32
+	EnterpriseOnlyCollectionPeriod uint32
+	GcFeePercent                   uint16
+	TotalShares                    *big.Int
+	FixedReserve                   *big.Int
+	UsedReserve                    *big.Int
+	StreamingReserve               *big.Int
+	StreamingReserveTarget         *big.Int
+	StreamingReserveUpdated        uint32
 }, error) {
 	var out []interface{}
 	err := _Enterprise.contract.Call(opts, &out, "getInfo")
 
 	outstruct := new(struct {
-		Name                             string
-		BaseUri                          string
-		TotalShares                      *big.Int
-		InterestGapHalvingPeriod         uint32
-		BorrowerLoanReturnGracePeriod    uint32
-		EnterpriseLoanCollectGracePeriod uint32
-		GcFeePercent                     uint16
-		FixedReserve                     *big.Int
-		UsedReserve                      *big.Int
-		StreamingReserve                 *big.Int
-		StreamingReserveTarget           *big.Int
-		StreamingReserveUpdated          uint32
+		Name                           string
+		BaseUri                        string
+		StreamingReserveHalvingPeriod  uint32
+		RenterOnlyReturnPeriod         uint32
+		EnterpriseOnlyCollectionPeriod uint32
+		GcFeePercent                   uint16
+		TotalShares                    *big.Int
+		FixedReserve                   *big.Int
+		UsedReserve                    *big.Int
+		StreamingReserve               *big.Int
+		StreamingReserveTarget         *big.Int
+		StreamingReserveUpdated        uint32
 	})
 	if err != nil {
 		return *outstruct, err
@@ -646,11 +596,11 @@ func (_Enterprise *EnterpriseCaller) GetInfo(opts *bind.CallOpts) (struct {
 
 	outstruct.Name = *abi.ConvertType(out[0], new(string)).(*string)
 	outstruct.BaseUri = *abi.ConvertType(out[1], new(string)).(*string)
-	outstruct.TotalShares = *abi.ConvertType(out[2], new(*big.Int)).(**big.Int)
-	outstruct.InterestGapHalvingPeriod = *abi.ConvertType(out[3], new(uint32)).(*uint32)
-	outstruct.BorrowerLoanReturnGracePeriod = *abi.ConvertType(out[4], new(uint32)).(*uint32)
-	outstruct.EnterpriseLoanCollectGracePeriod = *abi.ConvertType(out[5], new(uint32)).(*uint32)
-	outstruct.GcFeePercent = *abi.ConvertType(out[6], new(uint16)).(*uint16)
+	outstruct.StreamingReserveHalvingPeriod = *abi.ConvertType(out[2], new(uint32)).(*uint32)
+	outstruct.RenterOnlyReturnPeriod = *abi.ConvertType(out[3], new(uint32)).(*uint32)
+	outstruct.EnterpriseOnlyCollectionPeriod = *abi.ConvertType(out[4], new(uint32)).(*uint32)
+	outstruct.GcFeePercent = *abi.ConvertType(out[5], new(uint16)).(*uint16)
+	outstruct.TotalShares = *abi.ConvertType(out[6], new(*big.Int)).(**big.Int)
 	outstruct.FixedReserve = *abi.ConvertType(out[7], new(*big.Int)).(**big.Int)
 	outstruct.UsedReserve = *abi.ConvertType(out[8], new(*big.Int)).(**big.Int)
 	outstruct.StreamingReserve = *abi.ConvertType(out[9], new(*big.Int)).(**big.Int)
@@ -663,81 +613,50 @@ func (_Enterprise *EnterpriseCaller) GetInfo(opts *bind.CallOpts) (struct {
 
 // GetInfo is a free data retrieval call binding the contract method 0x5a9b0b89.
 //
-// Solidity: function getInfo() view returns(string name, string baseUri, uint256 totalShares, uint32 interestGapHalvingPeriod, uint32 borrowerLoanReturnGracePeriod, uint32 enterpriseLoanCollectGracePeriod, uint16 gcFeePercent, uint256 fixedReserve, uint256 usedReserve, uint112 streamingReserve, uint112 streamingReserveTarget, uint32 streamingReserveUpdated)
+// Solidity: function getInfo() view returns(string name, string baseUri, uint32 streamingReserveHalvingPeriod, uint32 renterOnlyReturnPeriod, uint32 enterpriseOnlyCollectionPeriod, uint16 gcFeePercent, uint256 totalShares, uint256 fixedReserve, uint256 usedReserve, uint112 streamingReserve, uint112 streamingReserveTarget, uint32 streamingReserveUpdated)
 func (_Enterprise *EnterpriseSession) GetInfo() (struct {
-	Name                             string
-	BaseUri                          string
-	TotalShares                      *big.Int
-	InterestGapHalvingPeriod         uint32
-	BorrowerLoanReturnGracePeriod    uint32
-	EnterpriseLoanCollectGracePeriod uint32
-	GcFeePercent                     uint16
-	FixedReserve                     *big.Int
-	UsedReserve                      *big.Int
-	StreamingReserve                 *big.Int
-	StreamingReserveTarget           *big.Int
-	StreamingReserveUpdated          uint32
+	Name                           string
+	BaseUri                        string
+	StreamingReserveHalvingPeriod  uint32
+	RenterOnlyReturnPeriod         uint32
+	EnterpriseOnlyCollectionPeriod uint32
+	GcFeePercent                   uint16
+	TotalShares                    *big.Int
+	FixedReserve                   *big.Int
+	UsedReserve                    *big.Int
+	StreamingReserve               *big.Int
+	StreamingReserveTarget         *big.Int
+	StreamingReserveUpdated        uint32
 }, error) {
 	return _Enterprise.Contract.GetInfo(&_Enterprise.CallOpts)
 }
 
 // GetInfo is a free data retrieval call binding the contract method 0x5a9b0b89.
 //
-// Solidity: function getInfo() view returns(string name, string baseUri, uint256 totalShares, uint32 interestGapHalvingPeriod, uint32 borrowerLoanReturnGracePeriod, uint32 enterpriseLoanCollectGracePeriod, uint16 gcFeePercent, uint256 fixedReserve, uint256 usedReserve, uint112 streamingReserve, uint112 streamingReserveTarget, uint32 streamingReserveUpdated)
+// Solidity: function getInfo() view returns(string name, string baseUri, uint32 streamingReserveHalvingPeriod, uint32 renterOnlyReturnPeriod, uint32 enterpriseOnlyCollectionPeriod, uint16 gcFeePercent, uint256 totalShares, uint256 fixedReserve, uint256 usedReserve, uint112 streamingReserve, uint112 streamingReserveTarget, uint32 streamingReserveUpdated)
 func (_Enterprise *EnterpriseCallerSession) GetInfo() (struct {
-	Name                             string
-	BaseUri                          string
-	TotalShares                      *big.Int
-	InterestGapHalvingPeriod         uint32
-	BorrowerLoanReturnGracePeriod    uint32
-	EnterpriseLoanCollectGracePeriod uint32
-	GcFeePercent                     uint16
-	FixedReserve                     *big.Int
-	UsedReserve                      *big.Int
-	StreamingReserve                 *big.Int
-	StreamingReserveTarget           *big.Int
-	StreamingReserveUpdated          uint32
+	Name                           string
+	BaseUri                        string
+	StreamingReserveHalvingPeriod  uint32
+	RenterOnlyReturnPeriod         uint32
+	EnterpriseOnlyCollectionPeriod uint32
+	GcFeePercent                   uint16
+	TotalShares                    *big.Int
+	FixedReserve                   *big.Int
+	UsedReserve                    *big.Int
+	StreamingReserve               *big.Int
+	StreamingReserveTarget         *big.Int
+	StreamingReserveUpdated        uint32
 }, error) {
 	return _Enterprise.Contract.GetInfo(&_Enterprise.CallOpts)
 }
 
-// GetInterestGapHalvingPeriod is a free data retrieval call binding the contract method 0x5a4598df.
+// GetPaymentToken is a free data retrieval call binding the contract method 0xcdc2aebf.
 //
-// Solidity: function getInterestGapHalvingPeriod() view returns(uint32)
-func (_Enterprise *EnterpriseCaller) GetInterestGapHalvingPeriod(opts *bind.CallOpts) (uint32, error) {
+// Solidity: function getPaymentToken(uint256 index) view returns(address)
+func (_Enterprise *EnterpriseCaller) GetPaymentToken(opts *bind.CallOpts, index *big.Int) (common.Address, error) {
 	var out []interface{}
-	err := _Enterprise.contract.Call(opts, &out, "getInterestGapHalvingPeriod")
-
-	if err != nil {
-		return *new(uint32), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(uint32)).(*uint32)
-
-	return out0, err
-
-}
-
-// GetInterestGapHalvingPeriod is a free data retrieval call binding the contract method 0x5a4598df.
-//
-// Solidity: function getInterestGapHalvingPeriod() view returns(uint32)
-func (_Enterprise *EnterpriseSession) GetInterestGapHalvingPeriod() (uint32, error) {
-	return _Enterprise.Contract.GetInterestGapHalvingPeriod(&_Enterprise.CallOpts)
-}
-
-// GetInterestGapHalvingPeriod is a free data retrieval call binding the contract method 0x5a4598df.
-//
-// Solidity: function getInterestGapHalvingPeriod() view returns(uint32)
-func (_Enterprise *EnterpriseCallerSession) GetInterestGapHalvingPeriod() (uint32, error) {
-	return _Enterprise.Contract.GetInterestGapHalvingPeriod(&_Enterprise.CallOpts)
-}
-
-// GetInterestToken is a free data retrieval call binding the contract method 0x0ea1dc9e.
-//
-// Solidity: function getInterestToken() view returns(address)
-func (_Enterprise *EnterpriseCaller) GetInterestToken(opts *bind.CallOpts) (common.Address, error) {
-	var out []interface{}
-	err := _Enterprise.contract.Call(opts, &out, "getInterestToken")
+	err := _Enterprise.contract.Call(opts, &out, "getPaymentToken", index)
 
 	if err != nil {
 		return *new(common.Address), err
@@ -749,111 +668,49 @@ func (_Enterprise *EnterpriseCaller) GetInterestToken(opts *bind.CallOpts) (comm
 
 }
 
-// GetInterestToken is a free data retrieval call binding the contract method 0x0ea1dc9e.
+// GetPaymentToken is a free data retrieval call binding the contract method 0xcdc2aebf.
 //
-// Solidity: function getInterestToken() view returns(address)
-func (_Enterprise *EnterpriseSession) GetInterestToken() (common.Address, error) {
-	return _Enterprise.Contract.GetInterestToken(&_Enterprise.CallOpts)
+// Solidity: function getPaymentToken(uint256 index) view returns(address)
+func (_Enterprise *EnterpriseSession) GetPaymentToken(index *big.Int) (common.Address, error) {
+	return _Enterprise.Contract.GetPaymentToken(&_Enterprise.CallOpts, index)
 }
 
-// GetInterestToken is a free data retrieval call binding the contract method 0x0ea1dc9e.
+// GetPaymentToken is a free data retrieval call binding the contract method 0xcdc2aebf.
 //
-// Solidity: function getInterestToken() view returns(address)
-func (_Enterprise *EnterpriseCallerSession) GetInterestToken() (common.Address, error) {
-	return _Enterprise.Contract.GetInterestToken(&_Enterprise.CallOpts)
+// Solidity: function getPaymentToken(uint256 index) view returns(address)
+func (_Enterprise *EnterpriseCallerSession) GetPaymentToken(index *big.Int) (common.Address, error) {
+	return _Enterprise.Contract.GetPaymentToken(&_Enterprise.CallOpts, index)
 }
 
-// GetLiquidityInfo is a free data retrieval call binding the contract method 0xdf57f2fa.
+// GetPaymentTokenIndex is a free data retrieval call binding the contract method 0x0103f313.
 //
-// Solidity: function getLiquidityInfo(uint256 interestTokenId) view returns((uint256,uint256,uint256))
-func (_Enterprise *EnterpriseCaller) GetLiquidityInfo(opts *bind.CallOpts, interestTokenId *big.Int) (EnterpriseStorageLiquidityInfo, error) {
+// Solidity: function getPaymentTokenIndex(address token) view returns(int16)
+func (_Enterprise *EnterpriseCaller) GetPaymentTokenIndex(opts *bind.CallOpts, token common.Address) (int16, error) {
 	var out []interface{}
-	err := _Enterprise.contract.Call(opts, &out, "getLiquidityInfo", interestTokenId)
+	err := _Enterprise.contract.Call(opts, &out, "getPaymentTokenIndex", token)
 
 	if err != nil {
-		return *new(EnterpriseStorageLiquidityInfo), err
+		return *new(int16), err
 	}
 
-	out0 := *abi.ConvertType(out[0], new(EnterpriseStorageLiquidityInfo)).(*EnterpriseStorageLiquidityInfo)
+	out0 := *abi.ConvertType(out[0], new(int16)).(*int16)
 
 	return out0, err
 
 }
 
-// GetLiquidityInfo is a free data retrieval call binding the contract method 0xdf57f2fa.
+// GetPaymentTokenIndex is a free data retrieval call binding the contract method 0x0103f313.
 //
-// Solidity: function getLiquidityInfo(uint256 interestTokenId) view returns((uint256,uint256,uint256))
-func (_Enterprise *EnterpriseSession) GetLiquidityInfo(interestTokenId *big.Int) (EnterpriseStorageLiquidityInfo, error) {
-	return _Enterprise.Contract.GetLiquidityInfo(&_Enterprise.CallOpts, interestTokenId)
+// Solidity: function getPaymentTokenIndex(address token) view returns(int16)
+func (_Enterprise *EnterpriseSession) GetPaymentTokenIndex(token common.Address) (int16, error) {
+	return _Enterprise.Contract.GetPaymentTokenIndex(&_Enterprise.CallOpts, token)
 }
 
-// GetLiquidityInfo is a free data retrieval call binding the contract method 0xdf57f2fa.
+// GetPaymentTokenIndex is a free data retrieval call binding the contract method 0x0103f313.
 //
-// Solidity: function getLiquidityInfo(uint256 interestTokenId) view returns((uint256,uint256,uint256))
-func (_Enterprise *EnterpriseCallerSession) GetLiquidityInfo(interestTokenId *big.Int) (EnterpriseStorageLiquidityInfo, error) {
-	return _Enterprise.Contract.GetLiquidityInfo(&_Enterprise.CallOpts, interestTokenId)
-}
-
-// GetLiquidityToken is a free data retrieval call binding the contract method 0x644e44df.
-//
-// Solidity: function getLiquidityToken() view returns(address)
-func (_Enterprise *EnterpriseCaller) GetLiquidityToken(opts *bind.CallOpts) (common.Address, error) {
-	var out []interface{}
-	err := _Enterprise.contract.Call(opts, &out, "getLiquidityToken")
-
-	if err != nil {
-		return *new(common.Address), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-
-	return out0, err
-
-}
-
-// GetLiquidityToken is a free data retrieval call binding the contract method 0x644e44df.
-//
-// Solidity: function getLiquidityToken() view returns(address)
-func (_Enterprise *EnterpriseSession) GetLiquidityToken() (common.Address, error) {
-	return _Enterprise.Contract.GetLiquidityToken(&_Enterprise.CallOpts)
-}
-
-// GetLiquidityToken is a free data retrieval call binding the contract method 0x644e44df.
-//
-// Solidity: function getLiquidityToken() view returns(address)
-func (_Enterprise *EnterpriseCallerSession) GetLiquidityToken() (common.Address, error) {
-	return _Enterprise.Contract.GetLiquidityToken(&_Enterprise.CallOpts)
-}
-
-// GetLoanInfo is a free data retrieval call binding the contract method 0x0714012c.
-//
-// Solidity: function getLoanInfo(uint256 borrowTokenId) view returns((uint112,uint16,uint32,uint32,uint32,uint32,uint112,uint16))
-func (_Enterprise *EnterpriseCaller) GetLoanInfo(opts *bind.CallOpts, borrowTokenId *big.Int) (EnterpriseStorageLoanInfo, error) {
-	var out []interface{}
-	err := _Enterprise.contract.Call(opts, &out, "getLoanInfo", borrowTokenId)
-
-	if err != nil {
-		return *new(EnterpriseStorageLoanInfo), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(EnterpriseStorageLoanInfo)).(*EnterpriseStorageLoanInfo)
-
-	return out0, err
-
-}
-
-// GetLoanInfo is a free data retrieval call binding the contract method 0x0714012c.
-//
-// Solidity: function getLoanInfo(uint256 borrowTokenId) view returns((uint112,uint16,uint32,uint32,uint32,uint32,uint112,uint16))
-func (_Enterprise *EnterpriseSession) GetLoanInfo(borrowTokenId *big.Int) (EnterpriseStorageLoanInfo, error) {
-	return _Enterprise.Contract.GetLoanInfo(&_Enterprise.CallOpts, borrowTokenId)
-}
-
-// GetLoanInfo is a free data retrieval call binding the contract method 0x0714012c.
-//
-// Solidity: function getLoanInfo(uint256 borrowTokenId) view returns((uint112,uint16,uint32,uint32,uint32,uint32,uint112,uint16))
-func (_Enterprise *EnterpriseCallerSession) GetLoanInfo(borrowTokenId *big.Int) (EnterpriseStorageLoanInfo, error) {
-	return _Enterprise.Contract.GetLoanInfo(&_Enterprise.CallOpts, borrowTokenId)
+// Solidity: function getPaymentTokenIndex(address token) view returns(int16)
+func (_Enterprise *EnterpriseCallerSession) GetPaymentTokenIndex(token common.Address) (int16, error) {
+	return _Enterprise.Contract.GetPaymentTokenIndex(&_Enterprise.CallOpts, token)
 }
 
 // GetPowerTokens is a free data retrieval call binding the contract method 0xb96266fa.
@@ -918,6 +775,99 @@ func (_Enterprise *EnterpriseCallerSession) GetProxyAdmin() (common.Address, err
 	return _Enterprise.Contract.GetProxyAdmin(&_Enterprise.CallOpts)
 }
 
+// GetRentalAgreement is a free data retrieval call binding the contract method 0x18a8a6cf.
+//
+// Solidity: function getRentalAgreement(uint256 rentalTokenId) view returns((uint112,uint16,uint32,uint32,uint32,uint32,uint112,uint16))
+func (_Enterprise *EnterpriseCaller) GetRentalAgreement(opts *bind.CallOpts, rentalTokenId *big.Int) (IEnterpriseStorageRentalAgreement, error) {
+	var out []interface{}
+	err := _Enterprise.contract.Call(opts, &out, "getRentalAgreement", rentalTokenId)
+
+	if err != nil {
+		return *new(IEnterpriseStorageRentalAgreement), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(IEnterpriseStorageRentalAgreement)).(*IEnterpriseStorageRentalAgreement)
+
+	return out0, err
+
+}
+
+// GetRentalAgreement is a free data retrieval call binding the contract method 0x18a8a6cf.
+//
+// Solidity: function getRentalAgreement(uint256 rentalTokenId) view returns((uint112,uint16,uint32,uint32,uint32,uint32,uint112,uint16))
+func (_Enterprise *EnterpriseSession) GetRentalAgreement(rentalTokenId *big.Int) (IEnterpriseStorageRentalAgreement, error) {
+	return _Enterprise.Contract.GetRentalAgreement(&_Enterprise.CallOpts, rentalTokenId)
+}
+
+// GetRentalAgreement is a free data retrieval call binding the contract method 0x18a8a6cf.
+//
+// Solidity: function getRentalAgreement(uint256 rentalTokenId) view returns((uint112,uint16,uint32,uint32,uint32,uint32,uint112,uint16))
+func (_Enterprise *EnterpriseCallerSession) GetRentalAgreement(rentalTokenId *big.Int) (IEnterpriseStorageRentalAgreement, error) {
+	return _Enterprise.Contract.GetRentalAgreement(&_Enterprise.CallOpts, rentalTokenId)
+}
+
+// GetRentalToken is a free data retrieval call binding the contract method 0xb714ff53.
+//
+// Solidity: function getRentalToken() view returns(address)
+func (_Enterprise *EnterpriseCaller) GetRentalToken(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _Enterprise.contract.Call(opts, &out, "getRentalToken")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// GetRentalToken is a free data retrieval call binding the contract method 0xb714ff53.
+//
+// Solidity: function getRentalToken() view returns(address)
+func (_Enterprise *EnterpriseSession) GetRentalToken() (common.Address, error) {
+	return _Enterprise.Contract.GetRentalToken(&_Enterprise.CallOpts)
+}
+
+// GetRentalToken is a free data retrieval call binding the contract method 0xb714ff53.
+//
+// Solidity: function getRentalToken() view returns(address)
+func (_Enterprise *EnterpriseCallerSession) GetRentalToken() (common.Address, error) {
+	return _Enterprise.Contract.GetRentalToken(&_Enterprise.CallOpts)
+}
+
+// GetRenterOnlyReturnPeriod is a free data retrieval call binding the contract method 0x7e6a7cbb.
+//
+// Solidity: function getRenterOnlyReturnPeriod() view returns(uint32)
+func (_Enterprise *EnterpriseCaller) GetRenterOnlyReturnPeriod(opts *bind.CallOpts) (uint32, error) {
+	var out []interface{}
+	err := _Enterprise.contract.Call(opts, &out, "getRenterOnlyReturnPeriod")
+
+	if err != nil {
+		return *new(uint32), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(uint32)).(*uint32)
+
+	return out0, err
+
+}
+
+// GetRenterOnlyReturnPeriod is a free data retrieval call binding the contract method 0x7e6a7cbb.
+//
+// Solidity: function getRenterOnlyReturnPeriod() view returns(uint32)
+func (_Enterprise *EnterpriseSession) GetRenterOnlyReturnPeriod() (uint32, error) {
+	return _Enterprise.Contract.GetRenterOnlyReturnPeriod(&_Enterprise.CallOpts)
+}
+
+// GetRenterOnlyReturnPeriod is a free data retrieval call binding the contract method 0x7e6a7cbb.
+//
+// Solidity: function getRenterOnlyReturnPeriod() view returns(uint32)
+func (_Enterprise *EnterpriseCallerSession) GetRenterOnlyReturnPeriod() (uint32, error) {
+	return _Enterprise.Contract.GetRenterOnlyReturnPeriod(&_Enterprise.CallOpts)
+}
+
 // GetReserve is a free data retrieval call binding the contract method 0x59bf5d39.
 //
 // Solidity: function getReserve() view returns(uint256)
@@ -947,6 +897,130 @@ func (_Enterprise *EnterpriseSession) GetReserve() (*big.Int, error) {
 // Solidity: function getReserve() view returns(uint256)
 func (_Enterprise *EnterpriseCallerSession) GetReserve() (*big.Int, error) {
 	return _Enterprise.Contract.GetReserve(&_Enterprise.CallOpts)
+}
+
+// GetStake is a free data retrieval call binding the contract method 0xce325bf8.
+//
+// Solidity: function getStake(uint256 stakeTokenId) view returns((uint256,uint256,uint256))
+func (_Enterprise *EnterpriseCaller) GetStake(opts *bind.CallOpts, stakeTokenId *big.Int) (EnterpriseStorageStake, error) {
+	var out []interface{}
+	err := _Enterprise.contract.Call(opts, &out, "getStake", stakeTokenId)
+
+	if err != nil {
+		return *new(EnterpriseStorageStake), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(EnterpriseStorageStake)).(*EnterpriseStorageStake)
+
+	return out0, err
+
+}
+
+// GetStake is a free data retrieval call binding the contract method 0xce325bf8.
+//
+// Solidity: function getStake(uint256 stakeTokenId) view returns((uint256,uint256,uint256))
+func (_Enterprise *EnterpriseSession) GetStake(stakeTokenId *big.Int) (EnterpriseStorageStake, error) {
+	return _Enterprise.Contract.GetStake(&_Enterprise.CallOpts, stakeTokenId)
+}
+
+// GetStake is a free data retrieval call binding the contract method 0xce325bf8.
+//
+// Solidity: function getStake(uint256 stakeTokenId) view returns((uint256,uint256,uint256))
+func (_Enterprise *EnterpriseCallerSession) GetStake(stakeTokenId *big.Int) (EnterpriseStorageStake, error) {
+	return _Enterprise.Contract.GetStake(&_Enterprise.CallOpts, stakeTokenId)
+}
+
+// GetStakeToken is a free data retrieval call binding the contract method 0x500a1564.
+//
+// Solidity: function getStakeToken() view returns(address)
+func (_Enterprise *EnterpriseCaller) GetStakeToken(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _Enterprise.contract.Call(opts, &out, "getStakeToken")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// GetStakeToken is a free data retrieval call binding the contract method 0x500a1564.
+//
+// Solidity: function getStakeToken() view returns(address)
+func (_Enterprise *EnterpriseSession) GetStakeToken() (common.Address, error) {
+	return _Enterprise.Contract.GetStakeToken(&_Enterprise.CallOpts)
+}
+
+// GetStakeToken is a free data retrieval call binding the contract method 0x500a1564.
+//
+// Solidity: function getStakeToken() view returns(address)
+func (_Enterprise *EnterpriseCallerSession) GetStakeToken() (common.Address, error) {
+	return _Enterprise.Contract.GetStakeToken(&_Enterprise.CallOpts)
+}
+
+// GetStakingReward is a free data retrieval call binding the contract method 0xabfe35ad.
+//
+// Solidity: function getStakingReward(uint256 stakeTokenId) view returns(uint256)
+func (_Enterprise *EnterpriseCaller) GetStakingReward(opts *bind.CallOpts, stakeTokenId *big.Int) (*big.Int, error) {
+	var out []interface{}
+	err := _Enterprise.contract.Call(opts, &out, "getStakingReward", stakeTokenId)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// GetStakingReward is a free data retrieval call binding the contract method 0xabfe35ad.
+//
+// Solidity: function getStakingReward(uint256 stakeTokenId) view returns(uint256)
+func (_Enterprise *EnterpriseSession) GetStakingReward(stakeTokenId *big.Int) (*big.Int, error) {
+	return _Enterprise.Contract.GetStakingReward(&_Enterprise.CallOpts, stakeTokenId)
+}
+
+// GetStakingReward is a free data retrieval call binding the contract method 0xabfe35ad.
+//
+// Solidity: function getStakingReward(uint256 stakeTokenId) view returns(uint256)
+func (_Enterprise *EnterpriseCallerSession) GetStakingReward(stakeTokenId *big.Int) (*big.Int, error) {
+	return _Enterprise.Contract.GetStakingReward(&_Enterprise.CallOpts, stakeTokenId)
+}
+
+// GetStreamingReserveHalvingPeriod is a free data retrieval call binding the contract method 0xdd9919e7.
+//
+// Solidity: function getStreamingReserveHalvingPeriod() view returns(uint32)
+func (_Enterprise *EnterpriseCaller) GetStreamingReserveHalvingPeriod(opts *bind.CallOpts) (uint32, error) {
+	var out []interface{}
+	err := _Enterprise.contract.Call(opts, &out, "getStreamingReserveHalvingPeriod")
+
+	if err != nil {
+		return *new(uint32), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(uint32)).(*uint32)
+
+	return out0, err
+
+}
+
+// GetStreamingReserveHalvingPeriod is a free data retrieval call binding the contract method 0xdd9919e7.
+//
+// Solidity: function getStreamingReserveHalvingPeriod() view returns(uint32)
+func (_Enterprise *EnterpriseSession) GetStreamingReserveHalvingPeriod() (uint32, error) {
+	return _Enterprise.Contract.GetStreamingReserveHalvingPeriod(&_Enterprise.CallOpts)
+}
+
+// GetStreamingReserveHalvingPeriod is a free data retrieval call binding the contract method 0xdd9919e7.
+//
+// Solidity: function getStreamingReserveHalvingPeriod() view returns(uint32)
+func (_Enterprise *EnterpriseCallerSession) GetStreamingReserveHalvingPeriod() (uint32, error) {
+	return _Enterprise.Contract.GetStreamingReserveHalvingPeriod(&_Enterprise.CallOpts)
 }
 
 // GetUsedReserve is a free data retrieval call binding the contract method 0xfcb2884e.
@@ -1073,129 +1147,46 @@ func (_Enterprise *EnterpriseCallerSession) Owner() (common.Address, error) {
 	return _Enterprise.Contract.Owner(&_Enterprise.CallOpts)
 }
 
-// PaymentToken is a free data retrieval call binding the contract method 0x0e101b60.
+// ClaimStakingReward is a paid mutator transaction binding the contract method 0x239cd4a4.
 //
-// Solidity: function paymentToken(uint256 index) view returns(address)
-func (_Enterprise *EnterpriseCaller) PaymentToken(opts *bind.CallOpts, index *big.Int) (common.Address, error) {
-	var out []interface{}
-	err := _Enterprise.contract.Call(opts, &out, "paymentToken", index)
-
-	if err != nil {
-		return *new(common.Address), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-
-	return out0, err
-
+// Solidity: function claimStakingReward(uint256 stakeTokenId) returns()
+func (_Enterprise *EnterpriseTransactor) ClaimStakingReward(opts *bind.TransactOpts, stakeTokenId *big.Int) (*types.Transaction, error) {
+	return _Enterprise.contract.Transact(opts, "claimStakingReward", stakeTokenId)
 }
 
-// PaymentToken is a free data retrieval call binding the contract method 0x0e101b60.
+// ClaimStakingReward is a paid mutator transaction binding the contract method 0x239cd4a4.
 //
-// Solidity: function paymentToken(uint256 index) view returns(address)
-func (_Enterprise *EnterpriseSession) PaymentToken(index *big.Int) (common.Address, error) {
-	return _Enterprise.Contract.PaymentToken(&_Enterprise.CallOpts, index)
+// Solidity: function claimStakingReward(uint256 stakeTokenId) returns()
+func (_Enterprise *EnterpriseSession) ClaimStakingReward(stakeTokenId *big.Int) (*types.Transaction, error) {
+	return _Enterprise.Contract.ClaimStakingReward(&_Enterprise.TransactOpts, stakeTokenId)
 }
 
-// PaymentToken is a free data retrieval call binding the contract method 0x0e101b60.
+// ClaimStakingReward is a paid mutator transaction binding the contract method 0x239cd4a4.
 //
-// Solidity: function paymentToken(uint256 index) view returns(address)
-func (_Enterprise *EnterpriseCallerSession) PaymentToken(index *big.Int) (common.Address, error) {
-	return _Enterprise.Contract.PaymentToken(&_Enterprise.CallOpts, index)
+// Solidity: function claimStakingReward(uint256 stakeTokenId) returns()
+func (_Enterprise *EnterpriseTransactorSession) ClaimStakingReward(stakeTokenId *big.Int) (*types.Transaction, error) {
+	return _Enterprise.Contract.ClaimStakingReward(&_Enterprise.TransactOpts, stakeTokenId)
 }
 
-// PaymentTokenIndex is a free data retrieval call binding the contract method 0xfbac9a55.
+// DecreaseStake is a paid mutator transaction binding the contract method 0x24d86f00.
 //
-// Solidity: function paymentTokenIndex(address token) view returns(int16)
-func (_Enterprise *EnterpriseCaller) PaymentTokenIndex(opts *bind.CallOpts, token common.Address) (int16, error) {
-	var out []interface{}
-	err := _Enterprise.contract.Call(opts, &out, "paymentTokenIndex", token)
-
-	if err != nil {
-		return *new(int16), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(int16)).(*int16)
-
-	return out0, err
-
+// Solidity: function decreaseStake(uint256 stakeTokenId, uint256 stakeAmountDelta) returns()
+func (_Enterprise *EnterpriseTransactor) DecreaseStake(opts *bind.TransactOpts, stakeTokenId *big.Int, stakeAmountDelta *big.Int) (*types.Transaction, error) {
+	return _Enterprise.contract.Transact(opts, "decreaseStake", stakeTokenId, stakeAmountDelta)
 }
 
-// PaymentTokenIndex is a free data retrieval call binding the contract method 0xfbac9a55.
+// DecreaseStake is a paid mutator transaction binding the contract method 0x24d86f00.
 //
-// Solidity: function paymentTokenIndex(address token) view returns(int16)
-func (_Enterprise *EnterpriseSession) PaymentTokenIndex(token common.Address) (int16, error) {
-	return _Enterprise.Contract.PaymentTokenIndex(&_Enterprise.CallOpts, token)
+// Solidity: function decreaseStake(uint256 stakeTokenId, uint256 stakeAmountDelta) returns()
+func (_Enterprise *EnterpriseSession) DecreaseStake(stakeTokenId *big.Int, stakeAmountDelta *big.Int) (*types.Transaction, error) {
+	return _Enterprise.Contract.DecreaseStake(&_Enterprise.TransactOpts, stakeTokenId, stakeAmountDelta)
 }
 
-// PaymentTokenIndex is a free data retrieval call binding the contract method 0xfbac9a55.
+// DecreaseStake is a paid mutator transaction binding the contract method 0x24d86f00.
 //
-// Solidity: function paymentTokenIndex(address token) view returns(int16)
-func (_Enterprise *EnterpriseCallerSession) PaymentTokenIndex(token common.Address) (int16, error) {
-	return _Enterprise.Contract.PaymentTokenIndex(&_Enterprise.CallOpts, token)
-}
-
-// AddLiquidity is a paid mutator transaction binding the contract method 0x51c6590a.
-//
-// Solidity: function addLiquidity(uint256 liquidityAmount) returns()
-func (_Enterprise *EnterpriseTransactor) AddLiquidity(opts *bind.TransactOpts, liquidityAmount *big.Int) (*types.Transaction, error) {
-	return _Enterprise.contract.Transact(opts, "addLiquidity", liquidityAmount)
-}
-
-// AddLiquidity is a paid mutator transaction binding the contract method 0x51c6590a.
-//
-// Solidity: function addLiquidity(uint256 liquidityAmount) returns()
-func (_Enterprise *EnterpriseSession) AddLiquidity(liquidityAmount *big.Int) (*types.Transaction, error) {
-	return _Enterprise.Contract.AddLiquidity(&_Enterprise.TransactOpts, liquidityAmount)
-}
-
-// AddLiquidity is a paid mutator transaction binding the contract method 0x51c6590a.
-//
-// Solidity: function addLiquidity(uint256 liquidityAmount) returns()
-func (_Enterprise *EnterpriseTransactorSession) AddLiquidity(liquidityAmount *big.Int) (*types.Transaction, error) {
-	return _Enterprise.Contract.AddLiquidity(&_Enterprise.TransactOpts, liquidityAmount)
-}
-
-// Borrow is a paid mutator transaction binding the contract method 0x00ca339b.
-//
-// Solidity: function borrow(address powerToken, address paymentToken, uint112 amount, uint32 duration, uint256 maxPayment) returns()
-func (_Enterprise *EnterpriseTransactor) Borrow(opts *bind.TransactOpts, powerToken common.Address, paymentToken common.Address, amount *big.Int, duration uint32, maxPayment *big.Int) (*types.Transaction, error) {
-	return _Enterprise.contract.Transact(opts, "borrow", powerToken, paymentToken, amount, duration, maxPayment)
-}
-
-// Borrow is a paid mutator transaction binding the contract method 0x00ca339b.
-//
-// Solidity: function borrow(address powerToken, address paymentToken, uint112 amount, uint32 duration, uint256 maxPayment) returns()
-func (_Enterprise *EnterpriseSession) Borrow(powerToken common.Address, paymentToken common.Address, amount *big.Int, duration uint32, maxPayment *big.Int) (*types.Transaction, error) {
-	return _Enterprise.Contract.Borrow(&_Enterprise.TransactOpts, powerToken, paymentToken, amount, duration, maxPayment)
-}
-
-// Borrow is a paid mutator transaction binding the contract method 0x00ca339b.
-//
-// Solidity: function borrow(address powerToken, address paymentToken, uint112 amount, uint32 duration, uint256 maxPayment) returns()
-func (_Enterprise *EnterpriseTransactorSession) Borrow(powerToken common.Address, paymentToken common.Address, amount *big.Int, duration uint32, maxPayment *big.Int) (*types.Transaction, error) {
-	return _Enterprise.Contract.Borrow(&_Enterprise.TransactOpts, powerToken, paymentToken, amount, duration, maxPayment)
-}
-
-// DecreaseLiquidity is a paid mutator transaction binding the contract method 0x49bd4e89.
-//
-// Solidity: function decreaseLiquidity(uint256 interestTokenId, uint256 amount) returns()
-func (_Enterprise *EnterpriseTransactor) DecreaseLiquidity(opts *bind.TransactOpts, interestTokenId *big.Int, amount *big.Int) (*types.Transaction, error) {
-	return _Enterprise.contract.Transact(opts, "decreaseLiquidity", interestTokenId, amount)
-}
-
-// DecreaseLiquidity is a paid mutator transaction binding the contract method 0x49bd4e89.
-//
-// Solidity: function decreaseLiquidity(uint256 interestTokenId, uint256 amount) returns()
-func (_Enterprise *EnterpriseSession) DecreaseLiquidity(interestTokenId *big.Int, amount *big.Int) (*types.Transaction, error) {
-	return _Enterprise.Contract.DecreaseLiquidity(&_Enterprise.TransactOpts, interestTokenId, amount)
-}
-
-// DecreaseLiquidity is a paid mutator transaction binding the contract method 0x49bd4e89.
-//
-// Solidity: function decreaseLiquidity(uint256 interestTokenId, uint256 amount) returns()
-func (_Enterprise *EnterpriseTransactorSession) DecreaseLiquidity(interestTokenId *big.Int, amount *big.Int) (*types.Transaction, error) {
-	return _Enterprise.Contract.DecreaseLiquidity(&_Enterprise.TransactOpts, interestTokenId, amount)
+// Solidity: function decreaseStake(uint256 stakeTokenId, uint256 stakeAmountDelta) returns()
+func (_Enterprise *EnterpriseTransactorSession) DecreaseStake(stakeTokenId *big.Int, stakeAmountDelta *big.Int) (*types.Transaction, error) {
+	return _Enterprise.Contract.DecreaseStake(&_Enterprise.TransactOpts, stakeTokenId, stakeAmountDelta)
 }
 
 // DisablePaymentToken is a paid mutator transaction binding the contract method 0x9c7aa7f8.
@@ -1240,25 +1231,46 @@ func (_Enterprise *EnterpriseTransactorSession) EnablePaymentToken(token common.
 	return _Enterprise.Contract.EnablePaymentToken(&_Enterprise.TransactOpts, token)
 }
 
-// IncreaseLiquidity is a paid mutator transaction binding the contract method 0x696f9c81.
+// ExtendRentalPeriod is a paid mutator transaction binding the contract method 0xc852d200.
 //
-// Solidity: function increaseLiquidity(uint256 interestTokenId, uint256 amount) returns()
-func (_Enterprise *EnterpriseTransactor) IncreaseLiquidity(opts *bind.TransactOpts, interestTokenId *big.Int, amount *big.Int) (*types.Transaction, error) {
-	return _Enterprise.contract.Transact(opts, "increaseLiquidity", interestTokenId, amount)
+// Solidity: function extendRentalPeriod(uint256 rentalTokenId, address paymentToken, uint32 rentalPeriod, uint256 maxPayment) returns()
+func (_Enterprise *EnterpriseTransactor) ExtendRentalPeriod(opts *bind.TransactOpts, rentalTokenId *big.Int, paymentToken common.Address, rentalPeriod uint32, maxPayment *big.Int) (*types.Transaction, error) {
+	return _Enterprise.contract.Transact(opts, "extendRentalPeriod", rentalTokenId, paymentToken, rentalPeriod, maxPayment)
 }
 
-// IncreaseLiquidity is a paid mutator transaction binding the contract method 0x696f9c81.
+// ExtendRentalPeriod is a paid mutator transaction binding the contract method 0xc852d200.
 //
-// Solidity: function increaseLiquidity(uint256 interestTokenId, uint256 amount) returns()
-func (_Enterprise *EnterpriseSession) IncreaseLiquidity(interestTokenId *big.Int, amount *big.Int) (*types.Transaction, error) {
-	return _Enterprise.Contract.IncreaseLiquidity(&_Enterprise.TransactOpts, interestTokenId, amount)
+// Solidity: function extendRentalPeriod(uint256 rentalTokenId, address paymentToken, uint32 rentalPeriod, uint256 maxPayment) returns()
+func (_Enterprise *EnterpriseSession) ExtendRentalPeriod(rentalTokenId *big.Int, paymentToken common.Address, rentalPeriod uint32, maxPayment *big.Int) (*types.Transaction, error) {
+	return _Enterprise.Contract.ExtendRentalPeriod(&_Enterprise.TransactOpts, rentalTokenId, paymentToken, rentalPeriod, maxPayment)
 }
 
-// IncreaseLiquidity is a paid mutator transaction binding the contract method 0x696f9c81.
+// ExtendRentalPeriod is a paid mutator transaction binding the contract method 0xc852d200.
 //
-// Solidity: function increaseLiquidity(uint256 interestTokenId, uint256 amount) returns()
-func (_Enterprise *EnterpriseTransactorSession) IncreaseLiquidity(interestTokenId *big.Int, amount *big.Int) (*types.Transaction, error) {
-	return _Enterprise.Contract.IncreaseLiquidity(&_Enterprise.TransactOpts, interestTokenId, amount)
+// Solidity: function extendRentalPeriod(uint256 rentalTokenId, address paymentToken, uint32 rentalPeriod, uint256 maxPayment) returns()
+func (_Enterprise *EnterpriseTransactorSession) ExtendRentalPeriod(rentalTokenId *big.Int, paymentToken common.Address, rentalPeriod uint32, maxPayment *big.Int) (*types.Transaction, error) {
+	return _Enterprise.Contract.ExtendRentalPeriod(&_Enterprise.TransactOpts, rentalTokenId, paymentToken, rentalPeriod, maxPayment)
+}
+
+// IncreaseStake is a paid mutator transaction binding the contract method 0xbec10cde.
+//
+// Solidity: function increaseStake(uint256 stakeTokenId, uint256 stakeAmountDelta) returns()
+func (_Enterprise *EnterpriseTransactor) IncreaseStake(opts *bind.TransactOpts, stakeTokenId *big.Int, stakeAmountDelta *big.Int) (*types.Transaction, error) {
+	return _Enterprise.contract.Transact(opts, "increaseStake", stakeTokenId, stakeAmountDelta)
+}
+
+// IncreaseStake is a paid mutator transaction binding the contract method 0xbec10cde.
+//
+// Solidity: function increaseStake(uint256 stakeTokenId, uint256 stakeAmountDelta) returns()
+func (_Enterprise *EnterpriseSession) IncreaseStake(stakeTokenId *big.Int, stakeAmountDelta *big.Int) (*types.Transaction, error) {
+	return _Enterprise.Contract.IncreaseStake(&_Enterprise.TransactOpts, stakeTokenId, stakeAmountDelta)
+}
+
+// IncreaseStake is a paid mutator transaction binding the contract method 0xbec10cde.
+//
+// Solidity: function increaseStake(uint256 stakeTokenId, uint256 stakeAmountDelta) returns()
+func (_Enterprise *EnterpriseTransactorSession) IncreaseStake(stakeTokenId *big.Int, stakeAmountDelta *big.Int) (*types.Transaction, error) {
+	return _Enterprise.Contract.IncreaseStake(&_Enterprise.TransactOpts, stakeTokenId, stakeAmountDelta)
 }
 
 // Initialize is a paid mutator transaction binding the contract method 0x6815f337.
@@ -1305,128 +1317,86 @@ func (_Enterprise *EnterpriseTransactorSession) Initialize0(initialOwner common.
 
 // InitializeTokens is a paid mutator transaction binding the contract method 0xef1f9f39.
 //
-// Solidity: function initializeTokens(address liquidityToken, address interestToken, address borrowToken) returns()
-func (_Enterprise *EnterpriseTransactor) InitializeTokens(opts *bind.TransactOpts, liquidityToken common.Address, interestToken common.Address, borrowToken common.Address) (*types.Transaction, error) {
-	return _Enterprise.contract.Transact(opts, "initializeTokens", liquidityToken, interestToken, borrowToken)
+// Solidity: function initializeTokens(address enterpriseToken, address stakeToken, address rentalToken) returns()
+func (_Enterprise *EnterpriseTransactor) InitializeTokens(opts *bind.TransactOpts, enterpriseToken common.Address, stakeToken common.Address, rentalToken common.Address) (*types.Transaction, error) {
+	return _Enterprise.contract.Transact(opts, "initializeTokens", enterpriseToken, stakeToken, rentalToken)
 }
 
 // InitializeTokens is a paid mutator transaction binding the contract method 0xef1f9f39.
 //
-// Solidity: function initializeTokens(address liquidityToken, address interestToken, address borrowToken) returns()
-func (_Enterprise *EnterpriseSession) InitializeTokens(liquidityToken common.Address, interestToken common.Address, borrowToken common.Address) (*types.Transaction, error) {
-	return _Enterprise.Contract.InitializeTokens(&_Enterprise.TransactOpts, liquidityToken, interestToken, borrowToken)
+// Solidity: function initializeTokens(address enterpriseToken, address stakeToken, address rentalToken) returns()
+func (_Enterprise *EnterpriseSession) InitializeTokens(enterpriseToken common.Address, stakeToken common.Address, rentalToken common.Address) (*types.Transaction, error) {
+	return _Enterprise.Contract.InitializeTokens(&_Enterprise.TransactOpts, enterpriseToken, stakeToken, rentalToken)
 }
 
 // InitializeTokens is a paid mutator transaction binding the contract method 0xef1f9f39.
 //
-// Solidity: function initializeTokens(address liquidityToken, address interestToken, address borrowToken) returns()
-func (_Enterprise *EnterpriseTransactorSession) InitializeTokens(liquidityToken common.Address, interestToken common.Address, borrowToken common.Address) (*types.Transaction, error) {
-	return _Enterprise.Contract.InitializeTokens(&_Enterprise.TransactOpts, liquidityToken, interestToken, borrowToken)
-}
-
-// LoanTransfer is a paid mutator transaction binding the contract method 0x512a53bc.
-//
-// Solidity: function loanTransfer(address from, address to, uint256 borrowTokenId) returns()
-func (_Enterprise *EnterpriseTransactor) LoanTransfer(opts *bind.TransactOpts, from common.Address, to common.Address, borrowTokenId *big.Int) (*types.Transaction, error) {
-	return _Enterprise.contract.Transact(opts, "loanTransfer", from, to, borrowTokenId)
-}
-
-// LoanTransfer is a paid mutator transaction binding the contract method 0x512a53bc.
-//
-// Solidity: function loanTransfer(address from, address to, uint256 borrowTokenId) returns()
-func (_Enterprise *EnterpriseSession) LoanTransfer(from common.Address, to common.Address, borrowTokenId *big.Int) (*types.Transaction, error) {
-	return _Enterprise.Contract.LoanTransfer(&_Enterprise.TransactOpts, from, to, borrowTokenId)
-}
-
-// LoanTransfer is a paid mutator transaction binding the contract method 0x512a53bc.
-//
-// Solidity: function loanTransfer(address from, address to, uint256 borrowTokenId) returns()
-func (_Enterprise *EnterpriseTransactorSession) LoanTransfer(from common.Address, to common.Address, borrowTokenId *big.Int) (*types.Transaction, error) {
-	return _Enterprise.Contract.LoanTransfer(&_Enterprise.TransactOpts, from, to, borrowTokenId)
-}
-
-// Reborrow is a paid mutator transaction binding the contract method 0x8c0114b0.
-//
-// Solidity: function reborrow(uint256 borrowTokenId, address paymentToken, uint32 duration, uint256 maxPayment) returns()
-func (_Enterprise *EnterpriseTransactor) Reborrow(opts *bind.TransactOpts, borrowTokenId *big.Int, paymentToken common.Address, duration uint32, maxPayment *big.Int) (*types.Transaction, error) {
-	return _Enterprise.contract.Transact(opts, "reborrow", borrowTokenId, paymentToken, duration, maxPayment)
-}
-
-// Reborrow is a paid mutator transaction binding the contract method 0x8c0114b0.
-//
-// Solidity: function reborrow(uint256 borrowTokenId, address paymentToken, uint32 duration, uint256 maxPayment) returns()
-func (_Enterprise *EnterpriseSession) Reborrow(borrowTokenId *big.Int, paymentToken common.Address, duration uint32, maxPayment *big.Int) (*types.Transaction, error) {
-	return _Enterprise.Contract.Reborrow(&_Enterprise.TransactOpts, borrowTokenId, paymentToken, duration, maxPayment)
-}
-
-// Reborrow is a paid mutator transaction binding the contract method 0x8c0114b0.
-//
-// Solidity: function reborrow(uint256 borrowTokenId, address paymentToken, uint32 duration, uint256 maxPayment) returns()
-func (_Enterprise *EnterpriseTransactorSession) Reborrow(borrowTokenId *big.Int, paymentToken common.Address, duration uint32, maxPayment *big.Int) (*types.Transaction, error) {
-	return _Enterprise.Contract.Reborrow(&_Enterprise.TransactOpts, borrowTokenId, paymentToken, duration, maxPayment)
+// Solidity: function initializeTokens(address enterpriseToken, address stakeToken, address rentalToken) returns()
+func (_Enterprise *EnterpriseTransactorSession) InitializeTokens(enterpriseToken common.Address, stakeToken common.Address, rentalToken common.Address) (*types.Transaction, error) {
+	return _Enterprise.Contract.InitializeTokens(&_Enterprise.TransactOpts, enterpriseToken, stakeToken, rentalToken)
 }
 
 // RegisterService is a paid mutator transaction binding the contract method 0x9ab71193.
 //
-// Solidity: function registerService(string serviceName, string symbol, uint32 gapHalvingPeriod, uint112 baseRate, address baseToken, uint16 serviceFeePercent, uint32 minLoanDuration, uint32 maxLoanDuration, uint96 minGCFee, bool allowsPerpetualTokensForever) returns()
-func (_Enterprise *EnterpriseTransactor) RegisterService(opts *bind.TransactOpts, serviceName string, symbol string, gapHalvingPeriod uint32, baseRate *big.Int, baseToken common.Address, serviceFeePercent uint16, minLoanDuration uint32, maxLoanDuration uint32, minGCFee *big.Int, allowsPerpetualTokensForever bool) (*types.Transaction, error) {
-	return _Enterprise.contract.Transact(opts, "registerService", serviceName, symbol, gapHalvingPeriod, baseRate, baseToken, serviceFeePercent, minLoanDuration, maxLoanDuration, minGCFee, allowsPerpetualTokensForever)
+// Solidity: function registerService(string serviceName, string serviceSymbol, uint32 energyGapHalvingPeriod, uint112 baseRate, address baseToken, uint16 serviceFeePercent, uint32 minRentalPeriod, uint32 maxRentalPeriod, uint96 minGCFee, bool swappingEnabledForever) returns()
+func (_Enterprise *EnterpriseTransactor) RegisterService(opts *bind.TransactOpts, serviceName string, serviceSymbol string, energyGapHalvingPeriod uint32, baseRate *big.Int, baseToken common.Address, serviceFeePercent uint16, minRentalPeriod uint32, maxRentalPeriod uint32, minGCFee *big.Int, swappingEnabledForever bool) (*types.Transaction, error) {
+	return _Enterprise.contract.Transact(opts, "registerService", serviceName, serviceSymbol, energyGapHalvingPeriod, baseRate, baseToken, serviceFeePercent, minRentalPeriod, maxRentalPeriod, minGCFee, swappingEnabledForever)
 }
 
 // RegisterService is a paid mutator transaction binding the contract method 0x9ab71193.
 //
-// Solidity: function registerService(string serviceName, string symbol, uint32 gapHalvingPeriod, uint112 baseRate, address baseToken, uint16 serviceFeePercent, uint32 minLoanDuration, uint32 maxLoanDuration, uint96 minGCFee, bool allowsPerpetualTokensForever) returns()
-func (_Enterprise *EnterpriseSession) RegisterService(serviceName string, symbol string, gapHalvingPeriod uint32, baseRate *big.Int, baseToken common.Address, serviceFeePercent uint16, minLoanDuration uint32, maxLoanDuration uint32, minGCFee *big.Int, allowsPerpetualTokensForever bool) (*types.Transaction, error) {
-	return _Enterprise.Contract.RegisterService(&_Enterprise.TransactOpts, serviceName, symbol, gapHalvingPeriod, baseRate, baseToken, serviceFeePercent, minLoanDuration, maxLoanDuration, minGCFee, allowsPerpetualTokensForever)
+// Solidity: function registerService(string serviceName, string serviceSymbol, uint32 energyGapHalvingPeriod, uint112 baseRate, address baseToken, uint16 serviceFeePercent, uint32 minRentalPeriod, uint32 maxRentalPeriod, uint96 minGCFee, bool swappingEnabledForever) returns()
+func (_Enterprise *EnterpriseSession) RegisterService(serviceName string, serviceSymbol string, energyGapHalvingPeriod uint32, baseRate *big.Int, baseToken common.Address, serviceFeePercent uint16, minRentalPeriod uint32, maxRentalPeriod uint32, minGCFee *big.Int, swappingEnabledForever bool) (*types.Transaction, error) {
+	return _Enterprise.Contract.RegisterService(&_Enterprise.TransactOpts, serviceName, serviceSymbol, energyGapHalvingPeriod, baseRate, baseToken, serviceFeePercent, minRentalPeriod, maxRentalPeriod, minGCFee, swappingEnabledForever)
 }
 
 // RegisterService is a paid mutator transaction binding the contract method 0x9ab71193.
 //
-// Solidity: function registerService(string serviceName, string symbol, uint32 gapHalvingPeriod, uint112 baseRate, address baseToken, uint16 serviceFeePercent, uint32 minLoanDuration, uint32 maxLoanDuration, uint96 minGCFee, bool allowsPerpetualTokensForever) returns()
-func (_Enterprise *EnterpriseTransactorSession) RegisterService(serviceName string, symbol string, gapHalvingPeriod uint32, baseRate *big.Int, baseToken common.Address, serviceFeePercent uint16, minLoanDuration uint32, maxLoanDuration uint32, minGCFee *big.Int, allowsPerpetualTokensForever bool) (*types.Transaction, error) {
-	return _Enterprise.Contract.RegisterService(&_Enterprise.TransactOpts, serviceName, symbol, gapHalvingPeriod, baseRate, baseToken, serviceFeePercent, minLoanDuration, maxLoanDuration, minGCFee, allowsPerpetualTokensForever)
+// Solidity: function registerService(string serviceName, string serviceSymbol, uint32 energyGapHalvingPeriod, uint112 baseRate, address baseToken, uint16 serviceFeePercent, uint32 minRentalPeriod, uint32 maxRentalPeriod, uint96 minGCFee, bool swappingEnabledForever) returns()
+func (_Enterprise *EnterpriseTransactorSession) RegisterService(serviceName string, serviceSymbol string, energyGapHalvingPeriod uint32, baseRate *big.Int, baseToken common.Address, serviceFeePercent uint16, minRentalPeriod uint32, maxRentalPeriod uint32, minGCFee *big.Int, swappingEnabledForever bool) (*types.Transaction, error) {
+	return _Enterprise.Contract.RegisterService(&_Enterprise.TransactOpts, serviceName, serviceSymbol, energyGapHalvingPeriod, baseRate, baseToken, serviceFeePercent, minRentalPeriod, maxRentalPeriod, minGCFee, swappingEnabledForever)
 }
 
-// RemoveLiquidity is a paid mutator transaction binding the contract method 0x9c8f9f23.
+// Rent is a paid mutator transaction binding the contract method 0x8fc49ad2.
 //
-// Solidity: function removeLiquidity(uint256 interestTokenId) returns()
-func (_Enterprise *EnterpriseTransactor) RemoveLiquidity(opts *bind.TransactOpts, interestTokenId *big.Int) (*types.Transaction, error) {
-	return _Enterprise.contract.Transact(opts, "removeLiquidity", interestTokenId)
+// Solidity: function rent(address powerToken, address paymentToken, uint112 rentalAmount, uint32 rentalPeriod, uint256 maxPayment) returns()
+func (_Enterprise *EnterpriseTransactor) Rent(opts *bind.TransactOpts, powerToken common.Address, paymentToken common.Address, rentalAmount *big.Int, rentalPeriod uint32, maxPayment *big.Int) (*types.Transaction, error) {
+	return _Enterprise.contract.Transact(opts, "rent", powerToken, paymentToken, rentalAmount, rentalPeriod, maxPayment)
 }
 
-// RemoveLiquidity is a paid mutator transaction binding the contract method 0x9c8f9f23.
+// Rent is a paid mutator transaction binding the contract method 0x8fc49ad2.
 //
-// Solidity: function removeLiquidity(uint256 interestTokenId) returns()
-func (_Enterprise *EnterpriseSession) RemoveLiquidity(interestTokenId *big.Int) (*types.Transaction, error) {
-	return _Enterprise.Contract.RemoveLiquidity(&_Enterprise.TransactOpts, interestTokenId)
+// Solidity: function rent(address powerToken, address paymentToken, uint112 rentalAmount, uint32 rentalPeriod, uint256 maxPayment) returns()
+func (_Enterprise *EnterpriseSession) Rent(powerToken common.Address, paymentToken common.Address, rentalAmount *big.Int, rentalPeriod uint32, maxPayment *big.Int) (*types.Transaction, error) {
+	return _Enterprise.Contract.Rent(&_Enterprise.TransactOpts, powerToken, paymentToken, rentalAmount, rentalPeriod, maxPayment)
 }
 
-// RemoveLiquidity is a paid mutator transaction binding the contract method 0x9c8f9f23.
+// Rent is a paid mutator transaction binding the contract method 0x8fc49ad2.
 //
-// Solidity: function removeLiquidity(uint256 interestTokenId) returns()
-func (_Enterprise *EnterpriseTransactorSession) RemoveLiquidity(interestTokenId *big.Int) (*types.Transaction, error) {
-	return _Enterprise.Contract.RemoveLiquidity(&_Enterprise.TransactOpts, interestTokenId)
+// Solidity: function rent(address powerToken, address paymentToken, uint112 rentalAmount, uint32 rentalPeriod, uint256 maxPayment) returns()
+func (_Enterprise *EnterpriseTransactorSession) Rent(powerToken common.Address, paymentToken common.Address, rentalAmount *big.Int, rentalPeriod uint32, maxPayment *big.Int) (*types.Transaction, error) {
+	return _Enterprise.Contract.Rent(&_Enterprise.TransactOpts, powerToken, paymentToken, rentalAmount, rentalPeriod, maxPayment)
 }
 
-// ReturnLoan is a paid mutator transaction binding the contract method 0xe9126154.
+// ReturnRental is a paid mutator transaction binding the contract method 0x3310df9e.
 //
-// Solidity: function returnLoan(uint256 borrowTokenId) returns()
-func (_Enterprise *EnterpriseTransactor) ReturnLoan(opts *bind.TransactOpts, borrowTokenId *big.Int) (*types.Transaction, error) {
-	return _Enterprise.contract.Transact(opts, "returnLoan", borrowTokenId)
+// Solidity: function returnRental(uint256 rentalTokenId) returns()
+func (_Enterprise *EnterpriseTransactor) ReturnRental(opts *bind.TransactOpts, rentalTokenId *big.Int) (*types.Transaction, error) {
+	return _Enterprise.contract.Transact(opts, "returnRental", rentalTokenId)
 }
 
-// ReturnLoan is a paid mutator transaction binding the contract method 0xe9126154.
+// ReturnRental is a paid mutator transaction binding the contract method 0x3310df9e.
 //
-// Solidity: function returnLoan(uint256 borrowTokenId) returns()
-func (_Enterprise *EnterpriseSession) ReturnLoan(borrowTokenId *big.Int) (*types.Transaction, error) {
-	return _Enterprise.Contract.ReturnLoan(&_Enterprise.TransactOpts, borrowTokenId)
+// Solidity: function returnRental(uint256 rentalTokenId) returns()
+func (_Enterprise *EnterpriseSession) ReturnRental(rentalTokenId *big.Int) (*types.Transaction, error) {
+	return _Enterprise.Contract.ReturnRental(&_Enterprise.TransactOpts, rentalTokenId)
 }
 
-// ReturnLoan is a paid mutator transaction binding the contract method 0xe9126154.
+// ReturnRental is a paid mutator transaction binding the contract method 0x3310df9e.
 //
-// Solidity: function returnLoan(uint256 borrowTokenId) returns()
-func (_Enterprise *EnterpriseTransactorSession) ReturnLoan(borrowTokenId *big.Int) (*types.Transaction, error) {
-	return _Enterprise.Contract.ReturnLoan(&_Enterprise.TransactOpts, borrowTokenId)
+// Solidity: function returnRental(uint256 rentalTokenId) returns()
+func (_Enterprise *EnterpriseTransactorSession) ReturnRental(rentalTokenId *big.Int) (*types.Transaction, error) {
+	return _Enterprise.Contract.ReturnRental(&_Enterprise.TransactOpts, rentalTokenId)
 }
 
 // SetBaseUri is a paid mutator transaction binding the contract method 0xa0bcfc7f.
@@ -1471,27 +1441,6 @@ func (_Enterprise *EnterpriseTransactorSession) SetBondingCurve(pole *big.Int, s
 	return _Enterprise.Contract.SetBondingCurve(&_Enterprise.TransactOpts, pole, slope)
 }
 
-// SetBorrowerLoanReturnGracePeriod is a paid mutator transaction binding the contract method 0x2e365ade.
-//
-// Solidity: function setBorrowerLoanReturnGracePeriod(uint32 newPeriod) returns()
-func (_Enterprise *EnterpriseTransactor) SetBorrowerLoanReturnGracePeriod(opts *bind.TransactOpts, newPeriod uint32) (*types.Transaction, error) {
-	return _Enterprise.contract.Transact(opts, "setBorrowerLoanReturnGracePeriod", newPeriod)
-}
-
-// SetBorrowerLoanReturnGracePeriod is a paid mutator transaction binding the contract method 0x2e365ade.
-//
-// Solidity: function setBorrowerLoanReturnGracePeriod(uint32 newPeriod) returns()
-func (_Enterprise *EnterpriseSession) SetBorrowerLoanReturnGracePeriod(newPeriod uint32) (*types.Transaction, error) {
-	return _Enterprise.Contract.SetBorrowerLoanReturnGracePeriod(&_Enterprise.TransactOpts, newPeriod)
-}
-
-// SetBorrowerLoanReturnGracePeriod is a paid mutator transaction binding the contract method 0x2e365ade.
-//
-// Solidity: function setBorrowerLoanReturnGracePeriod(uint32 newPeriod) returns()
-func (_Enterprise *EnterpriseTransactorSession) SetBorrowerLoanReturnGracePeriod(newPeriod uint32) (*types.Transaction, error) {
-	return _Enterprise.Contract.SetBorrowerLoanReturnGracePeriod(&_Enterprise.TransactOpts, newPeriod)
-}
-
 // SetConverter is a paid mutator transaction binding the contract method 0xb19337a4.
 //
 // Solidity: function setConverter(address newConverter) returns()
@@ -1534,46 +1483,46 @@ func (_Enterprise *EnterpriseTransactorSession) SetEnterpriseCollector(newCollec
 	return _Enterprise.Contract.SetEnterpriseCollector(&_Enterprise.TransactOpts, newCollector)
 }
 
-// SetEnterpriseLoanCollectGracePeriod is a paid mutator transaction binding the contract method 0xb56de97e.
+// SetEnterpriseOnlyCollectionPeriod is a paid mutator transaction binding the contract method 0xc9a304cb.
 //
-// Solidity: function setEnterpriseLoanCollectGracePeriod(uint32 newPeriod) returns()
-func (_Enterprise *EnterpriseTransactor) SetEnterpriseLoanCollectGracePeriod(opts *bind.TransactOpts, newPeriod uint32) (*types.Transaction, error) {
-	return _Enterprise.contract.Transact(opts, "setEnterpriseLoanCollectGracePeriod", newPeriod)
+// Solidity: function setEnterpriseOnlyCollectionPeriod(uint32 newPeriod) returns()
+func (_Enterprise *EnterpriseTransactor) SetEnterpriseOnlyCollectionPeriod(opts *bind.TransactOpts, newPeriod uint32) (*types.Transaction, error) {
+	return _Enterprise.contract.Transact(opts, "setEnterpriseOnlyCollectionPeriod", newPeriod)
 }
 
-// SetEnterpriseLoanCollectGracePeriod is a paid mutator transaction binding the contract method 0xb56de97e.
+// SetEnterpriseOnlyCollectionPeriod is a paid mutator transaction binding the contract method 0xc9a304cb.
 //
-// Solidity: function setEnterpriseLoanCollectGracePeriod(uint32 newPeriod) returns()
-func (_Enterprise *EnterpriseSession) SetEnterpriseLoanCollectGracePeriod(newPeriod uint32) (*types.Transaction, error) {
-	return _Enterprise.Contract.SetEnterpriseLoanCollectGracePeriod(&_Enterprise.TransactOpts, newPeriod)
+// Solidity: function setEnterpriseOnlyCollectionPeriod(uint32 newPeriod) returns()
+func (_Enterprise *EnterpriseSession) SetEnterpriseOnlyCollectionPeriod(newPeriod uint32) (*types.Transaction, error) {
+	return _Enterprise.Contract.SetEnterpriseOnlyCollectionPeriod(&_Enterprise.TransactOpts, newPeriod)
 }
 
-// SetEnterpriseLoanCollectGracePeriod is a paid mutator transaction binding the contract method 0xb56de97e.
+// SetEnterpriseOnlyCollectionPeriod is a paid mutator transaction binding the contract method 0xc9a304cb.
 //
-// Solidity: function setEnterpriseLoanCollectGracePeriod(uint32 newPeriod) returns()
-func (_Enterprise *EnterpriseTransactorSession) SetEnterpriseLoanCollectGracePeriod(newPeriod uint32) (*types.Transaction, error) {
-	return _Enterprise.Contract.SetEnterpriseLoanCollectGracePeriod(&_Enterprise.TransactOpts, newPeriod)
+// Solidity: function setEnterpriseOnlyCollectionPeriod(uint32 newPeriod) returns()
+func (_Enterprise *EnterpriseTransactorSession) SetEnterpriseOnlyCollectionPeriod(newPeriod uint32) (*types.Transaction, error) {
+	return _Enterprise.Contract.SetEnterpriseOnlyCollectionPeriod(&_Enterprise.TransactOpts, newPeriod)
 }
 
-// SetEnterpriseVault is a paid mutator transaction binding the contract method 0x90f55edd.
+// SetEnterpriseWallet is a paid mutator transaction binding the contract method 0x2107730c.
 //
-// Solidity: function setEnterpriseVault(address newVault) returns()
-func (_Enterprise *EnterpriseTransactor) SetEnterpriseVault(opts *bind.TransactOpts, newVault common.Address) (*types.Transaction, error) {
-	return _Enterprise.contract.Transact(opts, "setEnterpriseVault", newVault)
+// Solidity: function setEnterpriseWallet(address newWallet) returns()
+func (_Enterprise *EnterpriseTransactor) SetEnterpriseWallet(opts *bind.TransactOpts, newWallet common.Address) (*types.Transaction, error) {
+	return _Enterprise.contract.Transact(opts, "setEnterpriseWallet", newWallet)
 }
 
-// SetEnterpriseVault is a paid mutator transaction binding the contract method 0x90f55edd.
+// SetEnterpriseWallet is a paid mutator transaction binding the contract method 0x2107730c.
 //
-// Solidity: function setEnterpriseVault(address newVault) returns()
-func (_Enterprise *EnterpriseSession) SetEnterpriseVault(newVault common.Address) (*types.Transaction, error) {
-	return _Enterprise.Contract.SetEnterpriseVault(&_Enterprise.TransactOpts, newVault)
+// Solidity: function setEnterpriseWallet(address newWallet) returns()
+func (_Enterprise *EnterpriseSession) SetEnterpriseWallet(newWallet common.Address) (*types.Transaction, error) {
+	return _Enterprise.Contract.SetEnterpriseWallet(&_Enterprise.TransactOpts, newWallet)
 }
 
-// SetEnterpriseVault is a paid mutator transaction binding the contract method 0x90f55edd.
+// SetEnterpriseWallet is a paid mutator transaction binding the contract method 0x2107730c.
 //
-// Solidity: function setEnterpriseVault(address newVault) returns()
-func (_Enterprise *EnterpriseTransactorSession) SetEnterpriseVault(newVault common.Address) (*types.Transaction, error) {
-	return _Enterprise.Contract.SetEnterpriseVault(&_Enterprise.TransactOpts, newVault)
+// Solidity: function setEnterpriseWallet(address newWallet) returns()
+func (_Enterprise *EnterpriseTransactorSession) SetEnterpriseWallet(newWallet common.Address) (*types.Transaction, error) {
+	return _Enterprise.Contract.SetEnterpriseWallet(&_Enterprise.TransactOpts, newWallet)
 }
 
 // SetGcFeePercent is a paid mutator transaction binding the contract method 0x449497ec.
@@ -1597,25 +1546,46 @@ func (_Enterprise *EnterpriseTransactorSession) SetGcFeePercent(newGcFeePercent 
 	return _Enterprise.Contract.SetGcFeePercent(&_Enterprise.TransactOpts, newGcFeePercent)
 }
 
-// SetInterestGapHalvingPeriod is a paid mutator transaction binding the contract method 0xe1a5fa49.
+// SetRenterOnlyReturnPeriod is a paid mutator transaction binding the contract method 0x7c14d991.
 //
-// Solidity: function setInterestGapHalvingPeriod(uint32 interestGapHalvingPeriod) returns()
-func (_Enterprise *EnterpriseTransactor) SetInterestGapHalvingPeriod(opts *bind.TransactOpts, interestGapHalvingPeriod uint32) (*types.Transaction, error) {
-	return _Enterprise.contract.Transact(opts, "setInterestGapHalvingPeriod", interestGapHalvingPeriod)
+// Solidity: function setRenterOnlyReturnPeriod(uint32 newPeriod) returns()
+func (_Enterprise *EnterpriseTransactor) SetRenterOnlyReturnPeriod(opts *bind.TransactOpts, newPeriod uint32) (*types.Transaction, error) {
+	return _Enterprise.contract.Transact(opts, "setRenterOnlyReturnPeriod", newPeriod)
 }
 
-// SetInterestGapHalvingPeriod is a paid mutator transaction binding the contract method 0xe1a5fa49.
+// SetRenterOnlyReturnPeriod is a paid mutator transaction binding the contract method 0x7c14d991.
 //
-// Solidity: function setInterestGapHalvingPeriod(uint32 interestGapHalvingPeriod) returns()
-func (_Enterprise *EnterpriseSession) SetInterestGapHalvingPeriod(interestGapHalvingPeriod uint32) (*types.Transaction, error) {
-	return _Enterprise.Contract.SetInterestGapHalvingPeriod(&_Enterprise.TransactOpts, interestGapHalvingPeriod)
+// Solidity: function setRenterOnlyReturnPeriod(uint32 newPeriod) returns()
+func (_Enterprise *EnterpriseSession) SetRenterOnlyReturnPeriod(newPeriod uint32) (*types.Transaction, error) {
+	return _Enterprise.Contract.SetRenterOnlyReturnPeriod(&_Enterprise.TransactOpts, newPeriod)
 }
 
-// SetInterestGapHalvingPeriod is a paid mutator transaction binding the contract method 0xe1a5fa49.
+// SetRenterOnlyReturnPeriod is a paid mutator transaction binding the contract method 0x7c14d991.
 //
-// Solidity: function setInterestGapHalvingPeriod(uint32 interestGapHalvingPeriod) returns()
-func (_Enterprise *EnterpriseTransactorSession) SetInterestGapHalvingPeriod(interestGapHalvingPeriod uint32) (*types.Transaction, error) {
-	return _Enterprise.Contract.SetInterestGapHalvingPeriod(&_Enterprise.TransactOpts, interestGapHalvingPeriod)
+// Solidity: function setRenterOnlyReturnPeriod(uint32 newPeriod) returns()
+func (_Enterprise *EnterpriseTransactorSession) SetRenterOnlyReturnPeriod(newPeriod uint32) (*types.Transaction, error) {
+	return _Enterprise.Contract.SetRenterOnlyReturnPeriod(&_Enterprise.TransactOpts, newPeriod)
+}
+
+// SetStreamingReserveHalvingPeriod is a paid mutator transaction binding the contract method 0xf87c4261.
+//
+// Solidity: function setStreamingReserveHalvingPeriod(uint32 streamingReserveHalvingPeriod) returns()
+func (_Enterprise *EnterpriseTransactor) SetStreamingReserveHalvingPeriod(opts *bind.TransactOpts, streamingReserveHalvingPeriod uint32) (*types.Transaction, error) {
+	return _Enterprise.contract.Transact(opts, "setStreamingReserveHalvingPeriod", streamingReserveHalvingPeriod)
+}
+
+// SetStreamingReserveHalvingPeriod is a paid mutator transaction binding the contract method 0xf87c4261.
+//
+// Solidity: function setStreamingReserveHalvingPeriod(uint32 streamingReserveHalvingPeriod) returns()
+func (_Enterprise *EnterpriseSession) SetStreamingReserveHalvingPeriod(streamingReserveHalvingPeriod uint32) (*types.Transaction, error) {
+	return _Enterprise.Contract.SetStreamingReserveHalvingPeriod(&_Enterprise.TransactOpts, streamingReserveHalvingPeriod)
+}
+
+// SetStreamingReserveHalvingPeriod is a paid mutator transaction binding the contract method 0xf87c4261.
+//
+// Solidity: function setStreamingReserveHalvingPeriod(uint32 streamingReserveHalvingPeriod) returns()
+func (_Enterprise *EnterpriseTransactorSession) SetStreamingReserveHalvingPeriod(streamingReserveHalvingPeriod uint32) (*types.Transaction, error) {
+	return _Enterprise.Contract.SetStreamingReserveHalvingPeriod(&_Enterprise.TransactOpts, streamingReserveHalvingPeriod)
 }
 
 // ShutdownEnterpriseForever is a paid mutator transaction binding the contract method 0x4741efb3.
@@ -1639,6 +1609,27 @@ func (_Enterprise *EnterpriseTransactorSession) ShutdownEnterpriseForever() (*ty
 	return _Enterprise.Contract.ShutdownEnterpriseForever(&_Enterprise.TransactOpts)
 }
 
+// Stake is a paid mutator transaction binding the contract method 0xa694fc3a.
+//
+// Solidity: function stake(uint256 stakeAmount) returns()
+func (_Enterprise *EnterpriseTransactor) Stake(opts *bind.TransactOpts, stakeAmount *big.Int) (*types.Transaction, error) {
+	return _Enterprise.contract.Transact(opts, "stake", stakeAmount)
+}
+
+// Stake is a paid mutator transaction binding the contract method 0xa694fc3a.
+//
+// Solidity: function stake(uint256 stakeAmount) returns()
+func (_Enterprise *EnterpriseSession) Stake(stakeAmount *big.Int) (*types.Transaction, error) {
+	return _Enterprise.Contract.Stake(&_Enterprise.TransactOpts, stakeAmount)
+}
+
+// Stake is a paid mutator transaction binding the contract method 0xa694fc3a.
+//
+// Solidity: function stake(uint256 stakeAmount) returns()
+func (_Enterprise *EnterpriseTransactorSession) Stake(stakeAmount *big.Int) (*types.Transaction, error) {
+	return _Enterprise.Contract.Stake(&_Enterprise.TransactOpts, stakeAmount)
+}
+
 // TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
 //
 // Solidity: function transferOwnership(address newOwner) returns()
@@ -1660,109 +1651,67 @@ func (_Enterprise *EnterpriseTransactorSession) TransferOwnership(newOwner commo
 	return _Enterprise.Contract.TransferOwnership(&_Enterprise.TransactOpts, newOwner)
 }
 
-// UpgradeBorrowToken is a paid mutator transaction binding the contract method 0x7b024363.
+// TransferRental is a paid mutator transaction binding the contract method 0x960970c7.
 //
-// Solidity: function upgradeBorrowToken(address implementation) returns()
-func (_Enterprise *EnterpriseTransactor) UpgradeBorrowToken(opts *bind.TransactOpts, implementation common.Address) (*types.Transaction, error) {
-	return _Enterprise.contract.Transact(opts, "upgradeBorrowToken", implementation)
+// Solidity: function transferRental(address from, address to, uint256 rentalTokenId) returns()
+func (_Enterprise *EnterpriseTransactor) TransferRental(opts *bind.TransactOpts, from common.Address, to common.Address, rentalTokenId *big.Int) (*types.Transaction, error) {
+	return _Enterprise.contract.Transact(opts, "transferRental", from, to, rentalTokenId)
 }
 
-// UpgradeBorrowToken is a paid mutator transaction binding the contract method 0x7b024363.
+// TransferRental is a paid mutator transaction binding the contract method 0x960970c7.
 //
-// Solidity: function upgradeBorrowToken(address implementation) returns()
-func (_Enterprise *EnterpriseSession) UpgradeBorrowToken(implementation common.Address) (*types.Transaction, error) {
-	return _Enterprise.Contract.UpgradeBorrowToken(&_Enterprise.TransactOpts, implementation)
+// Solidity: function transferRental(address from, address to, uint256 rentalTokenId) returns()
+func (_Enterprise *EnterpriseSession) TransferRental(from common.Address, to common.Address, rentalTokenId *big.Int) (*types.Transaction, error) {
+	return _Enterprise.Contract.TransferRental(&_Enterprise.TransactOpts, from, to, rentalTokenId)
 }
 
-// UpgradeBorrowToken is a paid mutator transaction binding the contract method 0x7b024363.
+// TransferRental is a paid mutator transaction binding the contract method 0x960970c7.
 //
-// Solidity: function upgradeBorrowToken(address implementation) returns()
-func (_Enterprise *EnterpriseTransactorSession) UpgradeBorrowToken(implementation common.Address) (*types.Transaction, error) {
-	return _Enterprise.Contract.UpgradeBorrowToken(&_Enterprise.TransactOpts, implementation)
+// Solidity: function transferRental(address from, address to, uint256 rentalTokenId) returns()
+func (_Enterprise *EnterpriseTransactorSession) TransferRental(from common.Address, to common.Address, rentalTokenId *big.Int) (*types.Transaction, error) {
+	return _Enterprise.Contract.TransferRental(&_Enterprise.TransactOpts, from, to, rentalTokenId)
 }
 
-// UpgradeEnterprise is a paid mutator transaction binding the contract method 0xc1fc16d8.
+// Unstake is a paid mutator transaction binding the contract method 0x2e17de78.
 //
-// Solidity: function upgradeEnterprise(address implementation) returns()
-func (_Enterprise *EnterpriseTransactor) UpgradeEnterprise(opts *bind.TransactOpts, implementation common.Address) (*types.Transaction, error) {
-	return _Enterprise.contract.Transact(opts, "upgradeEnterprise", implementation)
+// Solidity: function unstake(uint256 stakeTokenId) returns()
+func (_Enterprise *EnterpriseTransactor) Unstake(opts *bind.TransactOpts, stakeTokenId *big.Int) (*types.Transaction, error) {
+	return _Enterprise.contract.Transact(opts, "unstake", stakeTokenId)
 }
 
-// UpgradeEnterprise is a paid mutator transaction binding the contract method 0xc1fc16d8.
+// Unstake is a paid mutator transaction binding the contract method 0x2e17de78.
 //
-// Solidity: function upgradeEnterprise(address implementation) returns()
-func (_Enterprise *EnterpriseSession) UpgradeEnterprise(implementation common.Address) (*types.Transaction, error) {
-	return _Enterprise.Contract.UpgradeEnterprise(&_Enterprise.TransactOpts, implementation)
+// Solidity: function unstake(uint256 stakeTokenId) returns()
+func (_Enterprise *EnterpriseSession) Unstake(stakeTokenId *big.Int) (*types.Transaction, error) {
+	return _Enterprise.Contract.Unstake(&_Enterprise.TransactOpts, stakeTokenId)
 }
 
-// UpgradeEnterprise is a paid mutator transaction binding the contract method 0xc1fc16d8.
+// Unstake is a paid mutator transaction binding the contract method 0x2e17de78.
 //
-// Solidity: function upgradeEnterprise(address implementation) returns()
-func (_Enterprise *EnterpriseTransactorSession) UpgradeEnterprise(implementation common.Address) (*types.Transaction, error) {
-	return _Enterprise.Contract.UpgradeEnterprise(&_Enterprise.TransactOpts, implementation)
+// Solidity: function unstake(uint256 stakeTokenId) returns()
+func (_Enterprise *EnterpriseTransactorSession) Unstake(stakeTokenId *big.Int) (*types.Transaction, error) {
+	return _Enterprise.Contract.Unstake(&_Enterprise.TransactOpts, stakeTokenId)
 }
 
-// UpgradeInterestToken is a paid mutator transaction binding the contract method 0x2b2f6095.
+// Upgrade is a paid mutator transaction binding the contract method 0x6df0bb14.
 //
-// Solidity: function upgradeInterestToken(address implementation) returns()
-func (_Enterprise *EnterpriseTransactor) UpgradeInterestToken(opts *bind.TransactOpts, implementation common.Address) (*types.Transaction, error) {
-	return _Enterprise.contract.Transact(opts, "upgradeInterestToken", implementation)
+// Solidity: function upgrade(address enterpriseFactory, address enterpriseImplementation, address rentalTokenImplementation, address stakeTokenImplementation, address powerTokenImplementation, address[] powerTokens) returns()
+func (_Enterprise *EnterpriseTransactor) Upgrade(opts *bind.TransactOpts, enterpriseFactory common.Address, enterpriseImplementation common.Address, rentalTokenImplementation common.Address, stakeTokenImplementation common.Address, powerTokenImplementation common.Address, powerTokens []common.Address) (*types.Transaction, error) {
+	return _Enterprise.contract.Transact(opts, "upgrade", enterpriseFactory, enterpriseImplementation, rentalTokenImplementation, stakeTokenImplementation, powerTokenImplementation, powerTokens)
 }
 
-// UpgradeInterestToken is a paid mutator transaction binding the contract method 0x2b2f6095.
+// Upgrade is a paid mutator transaction binding the contract method 0x6df0bb14.
 //
-// Solidity: function upgradeInterestToken(address implementation) returns()
-func (_Enterprise *EnterpriseSession) UpgradeInterestToken(implementation common.Address) (*types.Transaction, error) {
-	return _Enterprise.Contract.UpgradeInterestToken(&_Enterprise.TransactOpts, implementation)
+// Solidity: function upgrade(address enterpriseFactory, address enterpriseImplementation, address rentalTokenImplementation, address stakeTokenImplementation, address powerTokenImplementation, address[] powerTokens) returns()
+func (_Enterprise *EnterpriseSession) Upgrade(enterpriseFactory common.Address, enterpriseImplementation common.Address, rentalTokenImplementation common.Address, stakeTokenImplementation common.Address, powerTokenImplementation common.Address, powerTokens []common.Address) (*types.Transaction, error) {
+	return _Enterprise.Contract.Upgrade(&_Enterprise.TransactOpts, enterpriseFactory, enterpriseImplementation, rentalTokenImplementation, stakeTokenImplementation, powerTokenImplementation, powerTokens)
 }
 
-// UpgradeInterestToken is a paid mutator transaction binding the contract method 0x2b2f6095.
+// Upgrade is a paid mutator transaction binding the contract method 0x6df0bb14.
 //
-// Solidity: function upgradeInterestToken(address implementation) returns()
-func (_Enterprise *EnterpriseTransactorSession) UpgradeInterestToken(implementation common.Address) (*types.Transaction, error) {
-	return _Enterprise.Contract.UpgradeInterestToken(&_Enterprise.TransactOpts, implementation)
-}
-
-// UpgradePowerToken is a paid mutator transaction binding the contract method 0xc2294784.
-//
-// Solidity: function upgradePowerToken(address powerToken, address implementation) returns()
-func (_Enterprise *EnterpriseTransactor) UpgradePowerToken(opts *bind.TransactOpts, powerToken common.Address, implementation common.Address) (*types.Transaction, error) {
-	return _Enterprise.contract.Transact(opts, "upgradePowerToken", powerToken, implementation)
-}
-
-// UpgradePowerToken is a paid mutator transaction binding the contract method 0xc2294784.
-//
-// Solidity: function upgradePowerToken(address powerToken, address implementation) returns()
-func (_Enterprise *EnterpriseSession) UpgradePowerToken(powerToken common.Address, implementation common.Address) (*types.Transaction, error) {
-	return _Enterprise.Contract.UpgradePowerToken(&_Enterprise.TransactOpts, powerToken, implementation)
-}
-
-// UpgradePowerToken is a paid mutator transaction binding the contract method 0xc2294784.
-//
-// Solidity: function upgradePowerToken(address powerToken, address implementation) returns()
-func (_Enterprise *EnterpriseTransactorSession) UpgradePowerToken(powerToken common.Address, implementation common.Address) (*types.Transaction, error) {
-	return _Enterprise.Contract.UpgradePowerToken(&_Enterprise.TransactOpts, powerToken, implementation)
-}
-
-// WithdrawInterest is a paid mutator transaction binding the contract method 0x08669aab.
-//
-// Solidity: function withdrawInterest(uint256 interestTokenId) returns()
-func (_Enterprise *EnterpriseTransactor) WithdrawInterest(opts *bind.TransactOpts, interestTokenId *big.Int) (*types.Transaction, error) {
-	return _Enterprise.contract.Transact(opts, "withdrawInterest", interestTokenId)
-}
-
-// WithdrawInterest is a paid mutator transaction binding the contract method 0x08669aab.
-//
-// Solidity: function withdrawInterest(uint256 interestTokenId) returns()
-func (_Enterprise *EnterpriseSession) WithdrawInterest(interestTokenId *big.Int) (*types.Transaction, error) {
-	return _Enterprise.Contract.WithdrawInterest(&_Enterprise.TransactOpts, interestTokenId)
-}
-
-// WithdrawInterest is a paid mutator transaction binding the contract method 0x08669aab.
-//
-// Solidity: function withdrawInterest(uint256 interestTokenId) returns()
-func (_Enterprise *EnterpriseTransactorSession) WithdrawInterest(interestTokenId *big.Int) (*types.Transaction, error) {
-	return _Enterprise.Contract.WithdrawInterest(&_Enterprise.TransactOpts, interestTokenId)
+// Solidity: function upgrade(address enterpriseFactory, address enterpriseImplementation, address rentalTokenImplementation, address stakeTokenImplementation, address powerTokenImplementation, address[] powerTokens) returns()
+func (_Enterprise *EnterpriseTransactorSession) Upgrade(enterpriseFactory common.Address, enterpriseImplementation common.Address, rentalTokenImplementation common.Address, stakeTokenImplementation common.Address, powerTokenImplementation common.Address, powerTokens []common.Address) (*types.Transaction, error) {
+	return _Enterprise.Contract.Upgrade(&_Enterprise.TransactOpts, enterpriseFactory, enterpriseImplementation, rentalTokenImplementation, stakeTokenImplementation, powerTokenImplementation, powerTokens)
 }
 
 // EnterpriseBaseUriChangedIterator is returned from FilterBaseUriChanged and is used to iterate over the raw logs and unpacked data for BaseUriChanged events raised by the Enterprise contract.
@@ -2028,293 +1977,6 @@ func (_Enterprise *EnterpriseFilterer) WatchBondingChanged(opts *bind.WatchOpts,
 func (_Enterprise *EnterpriseFilterer) ParseBondingChanged(log types.Log) (*EnterpriseBondingChanged, error) {
 	event := new(EnterpriseBondingChanged)
 	if err := _Enterprise.contract.UnpackLog(event, "BondingChanged", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-// EnterpriseBorrowedIterator is returned from FilterBorrowed and is used to iterate over the raw logs and unpacked data for Borrowed events raised by the Enterprise contract.
-type EnterpriseBorrowedIterator struct {
-	Event *EnterpriseBorrowed // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *EnterpriseBorrowedIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(EnterpriseBorrowed)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(EnterpriseBorrowed)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *EnterpriseBorrowedIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *EnterpriseBorrowedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// EnterpriseBorrowed represents a Borrowed event raised by the Enterprise contract.
-type EnterpriseBorrowed struct {
-	PowerToken    common.Address
-	BorrowTokenId *big.Int
-	Raw           types.Log // Blockchain specific contextual infos
-}
-
-// FilterBorrowed is a free log retrieval operation binding the contract event 0xac59582e5396aca512fa873a2047e7f4c80f8f55d4a06cb34a78a0187f62719f.
-//
-// Solidity: event Borrowed(address indexed powerToken, uint256 indexed borrowTokenId)
-func (_Enterprise *EnterpriseFilterer) FilterBorrowed(opts *bind.FilterOpts, powerToken []common.Address, borrowTokenId []*big.Int) (*EnterpriseBorrowedIterator, error) {
-
-	var powerTokenRule []interface{}
-	for _, powerTokenItem := range powerToken {
-		powerTokenRule = append(powerTokenRule, powerTokenItem)
-	}
-	var borrowTokenIdRule []interface{}
-	for _, borrowTokenIdItem := range borrowTokenId {
-		borrowTokenIdRule = append(borrowTokenIdRule, borrowTokenIdItem)
-	}
-
-	logs, sub, err := _Enterprise.contract.FilterLogs(opts, "Borrowed", powerTokenRule, borrowTokenIdRule)
-	if err != nil {
-		return nil, err
-	}
-	return &EnterpriseBorrowedIterator{contract: _Enterprise.contract, event: "Borrowed", logs: logs, sub: sub}, nil
-}
-
-// WatchBorrowed is a free log subscription operation binding the contract event 0xac59582e5396aca512fa873a2047e7f4c80f8f55d4a06cb34a78a0187f62719f.
-//
-// Solidity: event Borrowed(address indexed powerToken, uint256 indexed borrowTokenId)
-func (_Enterprise *EnterpriseFilterer) WatchBorrowed(opts *bind.WatchOpts, sink chan<- *EnterpriseBorrowed, powerToken []common.Address, borrowTokenId []*big.Int) (event.Subscription, error) {
-
-	var powerTokenRule []interface{}
-	for _, powerTokenItem := range powerToken {
-		powerTokenRule = append(powerTokenRule, powerTokenItem)
-	}
-	var borrowTokenIdRule []interface{}
-	for _, borrowTokenIdItem := range borrowTokenId {
-		borrowTokenIdRule = append(borrowTokenIdRule, borrowTokenIdItem)
-	}
-
-	logs, sub, err := _Enterprise.contract.WatchLogs(opts, "Borrowed", powerTokenRule, borrowTokenIdRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(EnterpriseBorrowed)
-				if err := _Enterprise.contract.UnpackLog(event, "Borrowed", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseBorrowed is a log parse operation binding the contract event 0xac59582e5396aca512fa873a2047e7f4c80f8f55d4a06cb34a78a0187f62719f.
-//
-// Solidity: event Borrowed(address indexed powerToken, uint256 indexed borrowTokenId)
-func (_Enterprise *EnterpriseFilterer) ParseBorrowed(log types.Log) (*EnterpriseBorrowed, error) {
-	event := new(EnterpriseBorrowed)
-	if err := _Enterprise.contract.UnpackLog(event, "Borrowed", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-// EnterpriseBorrowerLoanReturnGracePeriodChangedIterator is returned from FilterBorrowerLoanReturnGracePeriodChanged and is used to iterate over the raw logs and unpacked data for BorrowerLoanReturnGracePeriodChanged events raised by the Enterprise contract.
-type EnterpriseBorrowerLoanReturnGracePeriodChangedIterator struct {
-	Event *EnterpriseBorrowerLoanReturnGracePeriodChanged // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *EnterpriseBorrowerLoanReturnGracePeriodChangedIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(EnterpriseBorrowerLoanReturnGracePeriodChanged)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(EnterpriseBorrowerLoanReturnGracePeriodChanged)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *EnterpriseBorrowerLoanReturnGracePeriodChangedIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *EnterpriseBorrowerLoanReturnGracePeriodChangedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// EnterpriseBorrowerLoanReturnGracePeriodChanged represents a BorrowerLoanReturnGracePeriodChanged event raised by the Enterprise contract.
-type EnterpriseBorrowerLoanReturnGracePeriodChanged struct {
-	Period uint32
-	Raw    types.Log // Blockchain specific contextual infos
-}
-
-// FilterBorrowerLoanReturnGracePeriodChanged is a free log retrieval operation binding the contract event 0xf6ae16e9e9771497fc501d1caac6168e19c36e4639d7273813e3b57066035f2a.
-//
-// Solidity: event BorrowerLoanReturnGracePeriodChanged(uint32 period)
-func (_Enterprise *EnterpriseFilterer) FilterBorrowerLoanReturnGracePeriodChanged(opts *bind.FilterOpts) (*EnterpriseBorrowerLoanReturnGracePeriodChangedIterator, error) {
-
-	logs, sub, err := _Enterprise.contract.FilterLogs(opts, "BorrowerLoanReturnGracePeriodChanged")
-	if err != nil {
-		return nil, err
-	}
-	return &EnterpriseBorrowerLoanReturnGracePeriodChangedIterator{contract: _Enterprise.contract, event: "BorrowerLoanReturnGracePeriodChanged", logs: logs, sub: sub}, nil
-}
-
-// WatchBorrowerLoanReturnGracePeriodChanged is a free log subscription operation binding the contract event 0xf6ae16e9e9771497fc501d1caac6168e19c36e4639d7273813e3b57066035f2a.
-//
-// Solidity: event BorrowerLoanReturnGracePeriodChanged(uint32 period)
-func (_Enterprise *EnterpriseFilterer) WatchBorrowerLoanReturnGracePeriodChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseBorrowerLoanReturnGracePeriodChanged) (event.Subscription, error) {
-
-	logs, sub, err := _Enterprise.contract.WatchLogs(opts, "BorrowerLoanReturnGracePeriodChanged")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(EnterpriseBorrowerLoanReturnGracePeriodChanged)
-				if err := _Enterprise.contract.UnpackLog(event, "BorrowerLoanReturnGracePeriodChanged", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseBorrowerLoanReturnGracePeriodChanged is a log parse operation binding the contract event 0xf6ae16e9e9771497fc501d1caac6168e19c36e4639d7273813e3b57066035f2a.
-//
-// Solidity: event BorrowerLoanReturnGracePeriodChanged(uint32 period)
-func (_Enterprise *EnterpriseFilterer) ParseBorrowerLoanReturnGracePeriodChanged(log types.Log) (*EnterpriseBorrowerLoanReturnGracePeriodChanged, error) {
-	event := new(EnterpriseBorrowerLoanReturnGracePeriodChanged)
-	if err := _Enterprise.contract.UnpackLog(event, "BorrowerLoanReturnGracePeriodChanged", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
@@ -2589,9 +2251,9 @@ func (_Enterprise *EnterpriseFilterer) ParseEnterpriseCollectorChanged(log types
 	return event, nil
 }
 
-// EnterpriseEnterpriseLoanCollectGracePeriodChangedIterator is returned from FilterEnterpriseLoanCollectGracePeriodChanged and is used to iterate over the raw logs and unpacked data for EnterpriseLoanCollectGracePeriodChanged events raised by the Enterprise contract.
-type EnterpriseEnterpriseLoanCollectGracePeriodChangedIterator struct {
-	Event *EnterpriseEnterpriseLoanCollectGracePeriodChanged // Event containing the contract specifics and raw log
+// EnterpriseEnterpriseOnlyCollectionPeriodChangedIterator is returned from FilterEnterpriseOnlyCollectionPeriodChanged and is used to iterate over the raw logs and unpacked data for EnterpriseOnlyCollectionPeriodChanged events raised by the Enterprise contract.
+type EnterpriseEnterpriseOnlyCollectionPeriodChangedIterator struct {
+	Event *EnterpriseEnterpriseOnlyCollectionPeriodChanged // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -2605,7 +2267,7 @@ type EnterpriseEnterpriseLoanCollectGracePeriodChangedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *EnterpriseEnterpriseLoanCollectGracePeriodChangedIterator) Next() bool {
+func (it *EnterpriseEnterpriseOnlyCollectionPeriodChangedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -2614,7 +2276,7 @@ func (it *EnterpriseEnterpriseLoanCollectGracePeriodChangedIterator) Next() bool
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(EnterpriseEnterpriseLoanCollectGracePeriodChanged)
+			it.Event = new(EnterpriseEnterpriseOnlyCollectionPeriodChanged)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -2629,7 +2291,7 @@ func (it *EnterpriseEnterpriseLoanCollectGracePeriodChangedIterator) Next() bool
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(EnterpriseEnterpriseLoanCollectGracePeriodChanged)
+		it.Event = new(EnterpriseEnterpriseOnlyCollectionPeriodChanged)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -2645,41 +2307,41 @@ func (it *EnterpriseEnterpriseLoanCollectGracePeriodChangedIterator) Next() bool
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *EnterpriseEnterpriseLoanCollectGracePeriodChangedIterator) Error() error {
+func (it *EnterpriseEnterpriseOnlyCollectionPeriodChangedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *EnterpriseEnterpriseLoanCollectGracePeriodChangedIterator) Close() error {
+func (it *EnterpriseEnterpriseOnlyCollectionPeriodChangedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// EnterpriseEnterpriseLoanCollectGracePeriodChanged represents a EnterpriseLoanCollectGracePeriodChanged event raised by the Enterprise contract.
-type EnterpriseEnterpriseLoanCollectGracePeriodChanged struct {
+// EnterpriseEnterpriseOnlyCollectionPeriodChanged represents a EnterpriseOnlyCollectionPeriodChanged event raised by the Enterprise contract.
+type EnterpriseEnterpriseOnlyCollectionPeriodChanged struct {
 	Period uint32
 	Raw    types.Log // Blockchain specific contextual infos
 }
 
-// FilterEnterpriseLoanCollectGracePeriodChanged is a free log retrieval operation binding the contract event 0x7c5a703a1928f0d18042c0454d90ddfe036b518c756a39cd82aca939b71d801b.
+// FilterEnterpriseOnlyCollectionPeriodChanged is a free log retrieval operation binding the contract event 0xd076b5bc77c447b04d82e76a12ec958bfe6d48418cce446aaf9ebeb3136638eb.
 //
-// Solidity: event EnterpriseLoanCollectGracePeriodChanged(uint32 period)
-func (_Enterprise *EnterpriseFilterer) FilterEnterpriseLoanCollectGracePeriodChanged(opts *bind.FilterOpts) (*EnterpriseEnterpriseLoanCollectGracePeriodChangedIterator, error) {
+// Solidity: event EnterpriseOnlyCollectionPeriodChanged(uint32 period)
+func (_Enterprise *EnterpriseFilterer) FilterEnterpriseOnlyCollectionPeriodChanged(opts *bind.FilterOpts) (*EnterpriseEnterpriseOnlyCollectionPeriodChangedIterator, error) {
 
-	logs, sub, err := _Enterprise.contract.FilterLogs(opts, "EnterpriseLoanCollectGracePeriodChanged")
+	logs, sub, err := _Enterprise.contract.FilterLogs(opts, "EnterpriseOnlyCollectionPeriodChanged")
 	if err != nil {
 		return nil, err
 	}
-	return &EnterpriseEnterpriseLoanCollectGracePeriodChangedIterator{contract: _Enterprise.contract, event: "EnterpriseLoanCollectGracePeriodChanged", logs: logs, sub: sub}, nil
+	return &EnterpriseEnterpriseOnlyCollectionPeriodChangedIterator{contract: _Enterprise.contract, event: "EnterpriseOnlyCollectionPeriodChanged", logs: logs, sub: sub}, nil
 }
 
-// WatchEnterpriseLoanCollectGracePeriodChanged is a free log subscription operation binding the contract event 0x7c5a703a1928f0d18042c0454d90ddfe036b518c756a39cd82aca939b71d801b.
+// WatchEnterpriseOnlyCollectionPeriodChanged is a free log subscription operation binding the contract event 0xd076b5bc77c447b04d82e76a12ec958bfe6d48418cce446aaf9ebeb3136638eb.
 //
-// Solidity: event EnterpriseLoanCollectGracePeriodChanged(uint32 period)
-func (_Enterprise *EnterpriseFilterer) WatchEnterpriseLoanCollectGracePeriodChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseEnterpriseLoanCollectGracePeriodChanged) (event.Subscription, error) {
+// Solidity: event EnterpriseOnlyCollectionPeriodChanged(uint32 period)
+func (_Enterprise *EnterpriseFilterer) WatchEnterpriseOnlyCollectionPeriodChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseEnterpriseOnlyCollectionPeriodChanged) (event.Subscription, error) {
 
-	logs, sub, err := _Enterprise.contract.WatchLogs(opts, "EnterpriseLoanCollectGracePeriodChanged")
+	logs, sub, err := _Enterprise.contract.WatchLogs(opts, "EnterpriseOnlyCollectionPeriodChanged")
 	if err != nil {
 		return nil, err
 	}
@@ -2689,8 +2351,8 @@ func (_Enterprise *EnterpriseFilterer) WatchEnterpriseLoanCollectGracePeriodChan
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(EnterpriseEnterpriseLoanCollectGracePeriodChanged)
-				if err := _Enterprise.contract.UnpackLog(event, "EnterpriseLoanCollectGracePeriodChanged", log); err != nil {
+				event := new(EnterpriseEnterpriseOnlyCollectionPeriodChanged)
+				if err := _Enterprise.contract.UnpackLog(event, "EnterpriseOnlyCollectionPeriodChanged", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -2711,12 +2373,12 @@ func (_Enterprise *EnterpriseFilterer) WatchEnterpriseLoanCollectGracePeriodChan
 	}), nil
 }
 
-// ParseEnterpriseLoanCollectGracePeriodChanged is a log parse operation binding the contract event 0x7c5a703a1928f0d18042c0454d90ddfe036b518c756a39cd82aca939b71d801b.
+// ParseEnterpriseOnlyCollectionPeriodChanged is a log parse operation binding the contract event 0xd076b5bc77c447b04d82e76a12ec958bfe6d48418cce446aaf9ebeb3136638eb.
 //
-// Solidity: event EnterpriseLoanCollectGracePeriodChanged(uint32 period)
-func (_Enterprise *EnterpriseFilterer) ParseEnterpriseLoanCollectGracePeriodChanged(log types.Log) (*EnterpriseEnterpriseLoanCollectGracePeriodChanged, error) {
-	event := new(EnterpriseEnterpriseLoanCollectGracePeriodChanged)
-	if err := _Enterprise.contract.UnpackLog(event, "EnterpriseLoanCollectGracePeriodChanged", log); err != nil {
+// Solidity: event EnterpriseOnlyCollectionPeriodChanged(uint32 period)
+func (_Enterprise *EnterpriseFilterer) ParseEnterpriseOnlyCollectionPeriodChanged(log types.Log) (*EnterpriseEnterpriseOnlyCollectionPeriodChanged, error) {
+	event := new(EnterpriseEnterpriseOnlyCollectionPeriodChanged)
+	if err := _Enterprise.contract.UnpackLog(event, "EnterpriseOnlyCollectionPeriodChanged", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
@@ -2856,9 +2518,9 @@ func (_Enterprise *EnterpriseFilterer) ParseEnterpriseShutdown(log types.Log) (*
 	return event, nil
 }
 
-// EnterpriseEnterpriseVaultChangedIterator is returned from FilterEnterpriseVaultChanged and is used to iterate over the raw logs and unpacked data for EnterpriseVaultChanged events raised by the Enterprise contract.
-type EnterpriseEnterpriseVaultChangedIterator struct {
-	Event *EnterpriseEnterpriseVaultChanged // Event containing the contract specifics and raw log
+// EnterpriseEnterpriseWalletChangedIterator is returned from FilterEnterpriseWalletChanged and is used to iterate over the raw logs and unpacked data for EnterpriseWalletChanged events raised by the Enterprise contract.
+type EnterpriseEnterpriseWalletChangedIterator struct {
+	Event *EnterpriseEnterpriseWalletChanged // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -2872,7 +2534,7 @@ type EnterpriseEnterpriseVaultChangedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *EnterpriseEnterpriseVaultChangedIterator) Next() bool {
+func (it *EnterpriseEnterpriseWalletChangedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -2881,7 +2543,7 @@ func (it *EnterpriseEnterpriseVaultChangedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(EnterpriseEnterpriseVaultChanged)
+			it.Event = new(EnterpriseEnterpriseWalletChanged)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -2896,7 +2558,7 @@ func (it *EnterpriseEnterpriseVaultChangedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(EnterpriseEnterpriseVaultChanged)
+		it.Event = new(EnterpriseEnterpriseWalletChanged)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -2912,41 +2574,41 @@ func (it *EnterpriseEnterpriseVaultChangedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *EnterpriseEnterpriseVaultChangedIterator) Error() error {
+func (it *EnterpriseEnterpriseWalletChangedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *EnterpriseEnterpriseVaultChangedIterator) Close() error {
+func (it *EnterpriseEnterpriseWalletChangedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// EnterpriseEnterpriseVaultChanged represents a EnterpriseVaultChanged event raised by the Enterprise contract.
-type EnterpriseEnterpriseVaultChanged struct {
-	Vault common.Address
-	Raw   types.Log // Blockchain specific contextual infos
+// EnterpriseEnterpriseWalletChanged represents a EnterpriseWalletChanged event raised by the Enterprise contract.
+type EnterpriseEnterpriseWalletChanged struct {
+	Wallet common.Address
+	Raw    types.Log // Blockchain specific contextual infos
 }
 
-// FilterEnterpriseVaultChanged is a free log retrieval operation binding the contract event 0x0dc14fdd751203f0c4dac8cc93c303e991c5f8e60af35674d5c82061929762dd.
+// FilterEnterpriseWalletChanged is a free log retrieval operation binding the contract event 0x471e342623158b92281274ef7263e4f9a0e0b748c1c328113afbb58742c1789f.
 //
-// Solidity: event EnterpriseVaultChanged(address vault)
-func (_Enterprise *EnterpriseFilterer) FilterEnterpriseVaultChanged(opts *bind.FilterOpts) (*EnterpriseEnterpriseVaultChangedIterator, error) {
+// Solidity: event EnterpriseWalletChanged(address wallet)
+func (_Enterprise *EnterpriseFilterer) FilterEnterpriseWalletChanged(opts *bind.FilterOpts) (*EnterpriseEnterpriseWalletChangedIterator, error) {
 
-	logs, sub, err := _Enterprise.contract.FilterLogs(opts, "EnterpriseVaultChanged")
+	logs, sub, err := _Enterprise.contract.FilterLogs(opts, "EnterpriseWalletChanged")
 	if err != nil {
 		return nil, err
 	}
-	return &EnterpriseEnterpriseVaultChangedIterator{contract: _Enterprise.contract, event: "EnterpriseVaultChanged", logs: logs, sub: sub}, nil
+	return &EnterpriseEnterpriseWalletChangedIterator{contract: _Enterprise.contract, event: "EnterpriseWalletChanged", logs: logs, sub: sub}, nil
 }
 
-// WatchEnterpriseVaultChanged is a free log subscription operation binding the contract event 0x0dc14fdd751203f0c4dac8cc93c303e991c5f8e60af35674d5c82061929762dd.
+// WatchEnterpriseWalletChanged is a free log subscription operation binding the contract event 0x471e342623158b92281274ef7263e4f9a0e0b748c1c328113afbb58742c1789f.
 //
-// Solidity: event EnterpriseVaultChanged(address vault)
-func (_Enterprise *EnterpriseFilterer) WatchEnterpriseVaultChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseEnterpriseVaultChanged) (event.Subscription, error) {
+// Solidity: event EnterpriseWalletChanged(address wallet)
+func (_Enterprise *EnterpriseFilterer) WatchEnterpriseWalletChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseEnterpriseWalletChanged) (event.Subscription, error) {
 
-	logs, sub, err := _Enterprise.contract.WatchLogs(opts, "EnterpriseVaultChanged")
+	logs, sub, err := _Enterprise.contract.WatchLogs(opts, "EnterpriseWalletChanged")
 	if err != nil {
 		return nil, err
 	}
@@ -2956,8 +2618,8 @@ func (_Enterprise *EnterpriseFilterer) WatchEnterpriseVaultChanged(opts *bind.Wa
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(EnterpriseEnterpriseVaultChanged)
-				if err := _Enterprise.contract.UnpackLog(event, "EnterpriseVaultChanged", log); err != nil {
+				event := new(EnterpriseEnterpriseWalletChanged)
+				if err := _Enterprise.contract.UnpackLog(event, "EnterpriseWalletChanged", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -2978,12 +2640,12 @@ func (_Enterprise *EnterpriseFilterer) WatchEnterpriseVaultChanged(opts *bind.Wa
 	}), nil
 }
 
-// ParseEnterpriseVaultChanged is a log parse operation binding the contract event 0x0dc14fdd751203f0c4dac8cc93c303e991c5f8e60af35674d5c82061929762dd.
+// ParseEnterpriseWalletChanged is a log parse operation binding the contract event 0x471e342623158b92281274ef7263e4f9a0e0b748c1c328113afbb58742c1789f.
 //
-// Solidity: event EnterpriseVaultChanged(address vault)
-func (_Enterprise *EnterpriseFilterer) ParseEnterpriseVaultChanged(log types.Log) (*EnterpriseEnterpriseVaultChanged, error) {
-	event := new(EnterpriseEnterpriseVaultChanged)
-	if err := _Enterprise.contract.UnpackLog(event, "EnterpriseVaultChanged", log); err != nil {
+// Solidity: event EnterpriseWalletChanged(address wallet)
+func (_Enterprise *EnterpriseFilterer) ParseEnterpriseWalletChanged(log types.Log) (*EnterpriseEnterpriseWalletChanged, error) {
+	event := new(EnterpriseEnterpriseWalletChanged)
+	if err := _Enterprise.contract.UnpackLog(event, "EnterpriseWalletChanged", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
@@ -3252,438 +2914,6 @@ func (_Enterprise *EnterpriseFilterer) WatchGcFeePercentChanged(opts *bind.Watch
 func (_Enterprise *EnterpriseFilterer) ParseGcFeePercentChanged(log types.Log) (*EnterpriseGcFeePercentChanged, error) {
 	event := new(EnterpriseGcFeePercentChanged)
 	if err := _Enterprise.contract.UnpackLog(event, "GcFeePercentChanged", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-// EnterpriseInterestGapHalvingPeriodChangedIterator is returned from FilterInterestGapHalvingPeriodChanged and is used to iterate over the raw logs and unpacked data for InterestGapHalvingPeriodChanged events raised by the Enterprise contract.
-type EnterpriseInterestGapHalvingPeriodChangedIterator struct {
-	Event *EnterpriseInterestGapHalvingPeriodChanged // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *EnterpriseInterestGapHalvingPeriodChangedIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(EnterpriseInterestGapHalvingPeriodChanged)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(EnterpriseInterestGapHalvingPeriodChanged)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *EnterpriseInterestGapHalvingPeriodChangedIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *EnterpriseInterestGapHalvingPeriodChangedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// EnterpriseInterestGapHalvingPeriodChanged represents a InterestGapHalvingPeriodChanged event raised by the Enterprise contract.
-type EnterpriseInterestGapHalvingPeriodChanged struct {
-	Period uint32
-	Raw    types.Log // Blockchain specific contextual infos
-}
-
-// FilterInterestGapHalvingPeriodChanged is a free log retrieval operation binding the contract event 0x971f32e7fcf39ef3d42dd88b6e08b31dd4bd8f53e7299c95b669c82e23807e2f.
-//
-// Solidity: event InterestGapHalvingPeriodChanged(uint32 period)
-func (_Enterprise *EnterpriseFilterer) FilterInterestGapHalvingPeriodChanged(opts *bind.FilterOpts) (*EnterpriseInterestGapHalvingPeriodChangedIterator, error) {
-
-	logs, sub, err := _Enterprise.contract.FilterLogs(opts, "InterestGapHalvingPeriodChanged")
-	if err != nil {
-		return nil, err
-	}
-	return &EnterpriseInterestGapHalvingPeriodChangedIterator{contract: _Enterprise.contract, event: "InterestGapHalvingPeriodChanged", logs: logs, sub: sub}, nil
-}
-
-// WatchInterestGapHalvingPeriodChanged is a free log subscription operation binding the contract event 0x971f32e7fcf39ef3d42dd88b6e08b31dd4bd8f53e7299c95b669c82e23807e2f.
-//
-// Solidity: event InterestGapHalvingPeriodChanged(uint32 period)
-func (_Enterprise *EnterpriseFilterer) WatchInterestGapHalvingPeriodChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseInterestGapHalvingPeriodChanged) (event.Subscription, error) {
-
-	logs, sub, err := _Enterprise.contract.WatchLogs(opts, "InterestGapHalvingPeriodChanged")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(EnterpriseInterestGapHalvingPeriodChanged)
-				if err := _Enterprise.contract.UnpackLog(event, "InterestGapHalvingPeriodChanged", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseInterestGapHalvingPeriodChanged is a log parse operation binding the contract event 0x971f32e7fcf39ef3d42dd88b6e08b31dd4bd8f53e7299c95b669c82e23807e2f.
-//
-// Solidity: event InterestGapHalvingPeriodChanged(uint32 period)
-func (_Enterprise *EnterpriseFilterer) ParseInterestGapHalvingPeriodChanged(log types.Log) (*EnterpriseInterestGapHalvingPeriodChanged, error) {
-	event := new(EnterpriseInterestGapHalvingPeriodChanged)
-	if err := _Enterprise.contract.UnpackLog(event, "InterestGapHalvingPeriodChanged", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-// EnterpriseLiquidityChangedIterator is returned from FilterLiquidityChanged and is used to iterate over the raw logs and unpacked data for LiquidityChanged events raised by the Enterprise contract.
-type EnterpriseLiquidityChangedIterator struct {
-	Event *EnterpriseLiquidityChanged // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *EnterpriseLiquidityChangedIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(EnterpriseLiquidityChanged)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(EnterpriseLiquidityChanged)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *EnterpriseLiquidityChangedIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *EnterpriseLiquidityChangedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// EnterpriseLiquidityChanged represents a LiquidityChanged event raised by the Enterprise contract.
-type EnterpriseLiquidityChanged struct {
-	InterestTokenId *big.Int
-	ChangeType      uint8
-	Amount          *big.Int
-	Raw             types.Log // Blockchain specific contextual infos
-}
-
-// FilterLiquidityChanged is a free log retrieval operation binding the contract event 0x5fbe47a2294bb165359bd422c05af7405a9f2c0e0f397deef39ade4da37b2764.
-//
-// Solidity: event LiquidityChanged(uint256 indexed interestTokenId, uint8 indexed changeType, uint256 amount)
-func (_Enterprise *EnterpriseFilterer) FilterLiquidityChanged(opts *bind.FilterOpts, interestTokenId []*big.Int, changeType []uint8) (*EnterpriseLiquidityChangedIterator, error) {
-
-	var interestTokenIdRule []interface{}
-	for _, interestTokenIdItem := range interestTokenId {
-		interestTokenIdRule = append(interestTokenIdRule, interestTokenIdItem)
-	}
-	var changeTypeRule []interface{}
-	for _, changeTypeItem := range changeType {
-		changeTypeRule = append(changeTypeRule, changeTypeItem)
-	}
-
-	logs, sub, err := _Enterprise.contract.FilterLogs(opts, "LiquidityChanged", interestTokenIdRule, changeTypeRule)
-	if err != nil {
-		return nil, err
-	}
-	return &EnterpriseLiquidityChangedIterator{contract: _Enterprise.contract, event: "LiquidityChanged", logs: logs, sub: sub}, nil
-}
-
-// WatchLiquidityChanged is a free log subscription operation binding the contract event 0x5fbe47a2294bb165359bd422c05af7405a9f2c0e0f397deef39ade4da37b2764.
-//
-// Solidity: event LiquidityChanged(uint256 indexed interestTokenId, uint8 indexed changeType, uint256 amount)
-func (_Enterprise *EnterpriseFilterer) WatchLiquidityChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseLiquidityChanged, interestTokenId []*big.Int, changeType []uint8) (event.Subscription, error) {
-
-	var interestTokenIdRule []interface{}
-	for _, interestTokenIdItem := range interestTokenId {
-		interestTokenIdRule = append(interestTokenIdRule, interestTokenIdItem)
-	}
-	var changeTypeRule []interface{}
-	for _, changeTypeItem := range changeType {
-		changeTypeRule = append(changeTypeRule, changeTypeItem)
-	}
-
-	logs, sub, err := _Enterprise.contract.WatchLogs(opts, "LiquidityChanged", interestTokenIdRule, changeTypeRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(EnterpriseLiquidityChanged)
-				if err := _Enterprise.contract.UnpackLog(event, "LiquidityChanged", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseLiquidityChanged is a log parse operation binding the contract event 0x5fbe47a2294bb165359bd422c05af7405a9f2c0e0f397deef39ade4da37b2764.
-//
-// Solidity: event LiquidityChanged(uint256 indexed interestTokenId, uint8 indexed changeType, uint256 amount)
-func (_Enterprise *EnterpriseFilterer) ParseLiquidityChanged(log types.Log) (*EnterpriseLiquidityChanged, error) {
-	event := new(EnterpriseLiquidityChanged)
-	if err := _Enterprise.contract.UnpackLog(event, "LiquidityChanged", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-// EnterpriseLoanReturnedIterator is returned from FilterLoanReturned and is used to iterate over the raw logs and unpacked data for LoanReturned events raised by the Enterprise contract.
-type EnterpriseLoanReturnedIterator struct {
-	Event *EnterpriseLoanReturned // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *EnterpriseLoanReturnedIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(EnterpriseLoanReturned)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(EnterpriseLoanReturned)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *EnterpriseLoanReturnedIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *EnterpriseLoanReturnedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// EnterpriseLoanReturned represents a LoanReturned event raised by the Enterprise contract.
-type EnterpriseLoanReturned struct {
-	BorrowTokenId *big.Int
-	Raw           types.Log // Blockchain specific contextual infos
-}
-
-// FilterLoanReturned is a free log retrieval operation binding the contract event 0x80fadef8be1cf6508244c1bbb67077973d214a1462d3ade2908699c3750cd94b.
-//
-// Solidity: event LoanReturned(uint256 indexed borrowTokenId)
-func (_Enterprise *EnterpriseFilterer) FilterLoanReturned(opts *bind.FilterOpts, borrowTokenId []*big.Int) (*EnterpriseLoanReturnedIterator, error) {
-
-	var borrowTokenIdRule []interface{}
-	for _, borrowTokenIdItem := range borrowTokenId {
-		borrowTokenIdRule = append(borrowTokenIdRule, borrowTokenIdItem)
-	}
-
-	logs, sub, err := _Enterprise.contract.FilterLogs(opts, "LoanReturned", borrowTokenIdRule)
-	if err != nil {
-		return nil, err
-	}
-	return &EnterpriseLoanReturnedIterator{contract: _Enterprise.contract, event: "LoanReturned", logs: logs, sub: sub}, nil
-}
-
-// WatchLoanReturned is a free log subscription operation binding the contract event 0x80fadef8be1cf6508244c1bbb67077973d214a1462d3ade2908699c3750cd94b.
-//
-// Solidity: event LoanReturned(uint256 indexed borrowTokenId)
-func (_Enterprise *EnterpriseFilterer) WatchLoanReturned(opts *bind.WatchOpts, sink chan<- *EnterpriseLoanReturned, borrowTokenId []*big.Int) (event.Subscription, error) {
-
-	var borrowTokenIdRule []interface{}
-	for _, borrowTokenIdItem := range borrowTokenId {
-		borrowTokenIdRule = append(borrowTokenIdRule, borrowTokenIdItem)
-	}
-
-	logs, sub, err := _Enterprise.contract.WatchLogs(opts, "LoanReturned", borrowTokenIdRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(EnterpriseLoanReturned)
-				if err := _Enterprise.contract.UnpackLog(event, "LoanReturned", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseLoanReturned is a log parse operation binding the contract event 0x80fadef8be1cf6508244c1bbb67077973d214a1462d3ade2908699c3750cd94b.
-//
-// Solidity: event LoanReturned(uint256 indexed borrowTokenId)
-func (_Enterprise *EnterpriseFilterer) ParseLoanReturned(log types.Log) (*EnterpriseLoanReturned, error) {
-	event := new(EnterpriseLoanReturned)
-	if err := _Enterprise.contract.UnpackLog(event, "LoanReturned", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
@@ -3978,6 +3208,639 @@ func (_Enterprise *EnterpriseFilterer) ParsePaymentTokenChange(log types.Log) (*
 	return event, nil
 }
 
+// EnterpriseRentalPeriodExtendedIterator is returned from FilterRentalPeriodExtended and is used to iterate over the raw logs and unpacked data for RentalPeriodExtended events raised by the Enterprise contract.
+type EnterpriseRentalPeriodExtendedIterator struct {
+	Event *EnterpriseRentalPeriodExtended // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *EnterpriseRentalPeriodExtendedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(EnterpriseRentalPeriodExtended)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(EnterpriseRentalPeriodExtended)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *EnterpriseRentalPeriodExtendedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *EnterpriseRentalPeriodExtendedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// EnterpriseRentalPeriodExtended represents a RentalPeriodExtended event raised by the Enterprise contract.
+type EnterpriseRentalPeriodExtended struct {
+	RentalTokenId                *big.Int
+	Renter                       common.Address
+	PaymentToken                 common.Address
+	PoolFee                      *big.Int
+	ServiceFee                   *big.Int
+	EndTime                      uint32
+	RenterOnlyReturnTime         uint32
+	EnterpriseOnlyCollectionTime uint32
+	Raw                          types.Log // Blockchain specific contextual infos
+}
+
+// FilterRentalPeriodExtended is a free log retrieval operation binding the contract event 0x012ee01e680dee236f33567d88889822f7521f77a65adc92142abf5a2005d3ef.
+//
+// Solidity: event RentalPeriodExtended(uint256 indexed rentalTokenId, address indexed renter, address paymentToken, uint112 poolFee, uint112 serviceFee, uint32 endTime, uint32 renterOnlyReturnTime, uint32 enterpriseOnlyCollectionTime)
+func (_Enterprise *EnterpriseFilterer) FilterRentalPeriodExtended(opts *bind.FilterOpts, rentalTokenId []*big.Int, renter []common.Address) (*EnterpriseRentalPeriodExtendedIterator, error) {
+
+	var rentalTokenIdRule []interface{}
+	for _, rentalTokenIdItem := range rentalTokenId {
+		rentalTokenIdRule = append(rentalTokenIdRule, rentalTokenIdItem)
+	}
+	var renterRule []interface{}
+	for _, renterItem := range renter {
+		renterRule = append(renterRule, renterItem)
+	}
+
+	logs, sub, err := _Enterprise.contract.FilterLogs(opts, "RentalPeriodExtended", rentalTokenIdRule, renterRule)
+	if err != nil {
+		return nil, err
+	}
+	return &EnterpriseRentalPeriodExtendedIterator{contract: _Enterprise.contract, event: "RentalPeriodExtended", logs: logs, sub: sub}, nil
+}
+
+// WatchRentalPeriodExtended is a free log subscription operation binding the contract event 0x012ee01e680dee236f33567d88889822f7521f77a65adc92142abf5a2005d3ef.
+//
+// Solidity: event RentalPeriodExtended(uint256 indexed rentalTokenId, address indexed renter, address paymentToken, uint112 poolFee, uint112 serviceFee, uint32 endTime, uint32 renterOnlyReturnTime, uint32 enterpriseOnlyCollectionTime)
+func (_Enterprise *EnterpriseFilterer) WatchRentalPeriodExtended(opts *bind.WatchOpts, sink chan<- *EnterpriseRentalPeriodExtended, rentalTokenId []*big.Int, renter []common.Address) (event.Subscription, error) {
+
+	var rentalTokenIdRule []interface{}
+	for _, rentalTokenIdItem := range rentalTokenId {
+		rentalTokenIdRule = append(rentalTokenIdRule, rentalTokenIdItem)
+	}
+	var renterRule []interface{}
+	for _, renterItem := range renter {
+		renterRule = append(renterRule, renterItem)
+	}
+
+	logs, sub, err := _Enterprise.contract.WatchLogs(opts, "RentalPeriodExtended", rentalTokenIdRule, renterRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(EnterpriseRentalPeriodExtended)
+				if err := _Enterprise.contract.UnpackLog(event, "RentalPeriodExtended", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseRentalPeriodExtended is a log parse operation binding the contract event 0x012ee01e680dee236f33567d88889822f7521f77a65adc92142abf5a2005d3ef.
+//
+// Solidity: event RentalPeriodExtended(uint256 indexed rentalTokenId, address indexed renter, address paymentToken, uint112 poolFee, uint112 serviceFee, uint32 endTime, uint32 renterOnlyReturnTime, uint32 enterpriseOnlyCollectionTime)
+func (_Enterprise *EnterpriseFilterer) ParseRentalPeriodExtended(log types.Log) (*EnterpriseRentalPeriodExtended, error) {
+	event := new(EnterpriseRentalPeriodExtended)
+	if err := _Enterprise.contract.UnpackLog(event, "RentalPeriodExtended", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// EnterpriseRentalReturnedIterator is returned from FilterRentalReturned and is used to iterate over the raw logs and unpacked data for RentalReturned events raised by the Enterprise contract.
+type EnterpriseRentalReturnedIterator struct {
+	Event *EnterpriseRentalReturned // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *EnterpriseRentalReturnedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(EnterpriseRentalReturned)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(EnterpriseRentalReturned)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *EnterpriseRentalReturnedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *EnterpriseRentalReturnedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// EnterpriseRentalReturned represents a RentalReturned event raised by the Enterprise contract.
+type EnterpriseRentalReturned struct {
+	RentalTokenId    *big.Int
+	Returner         common.Address
+	PowerToken       common.Address
+	RentalAmount     *big.Int
+	GcRewardAmount   *big.Int
+	GcRewardToken    common.Address
+	TotalReserve     *big.Int
+	TotalUsedReserve *big.Int
+	Raw              types.Log // Blockchain specific contextual infos
+}
+
+// FilterRentalReturned is a free log retrieval operation binding the contract event 0xe8c3d212180d23288b990f9938fef98c64caec34bc128fccea9f7eea006ba738.
+//
+// Solidity: event RentalReturned(uint256 indexed rentalTokenId, address indexed returner, address indexed powerToken, uint112 rentalAmount, uint112 gcRewardAmount, address gcRewardToken, uint256 totalReserve, uint256 totalUsedReserve)
+func (_Enterprise *EnterpriseFilterer) FilterRentalReturned(opts *bind.FilterOpts, rentalTokenId []*big.Int, returner []common.Address, powerToken []common.Address) (*EnterpriseRentalReturnedIterator, error) {
+
+	var rentalTokenIdRule []interface{}
+	for _, rentalTokenIdItem := range rentalTokenId {
+		rentalTokenIdRule = append(rentalTokenIdRule, rentalTokenIdItem)
+	}
+	var returnerRule []interface{}
+	for _, returnerItem := range returner {
+		returnerRule = append(returnerRule, returnerItem)
+	}
+	var powerTokenRule []interface{}
+	for _, powerTokenItem := range powerToken {
+		powerTokenRule = append(powerTokenRule, powerTokenItem)
+	}
+
+	logs, sub, err := _Enterprise.contract.FilterLogs(opts, "RentalReturned", rentalTokenIdRule, returnerRule, powerTokenRule)
+	if err != nil {
+		return nil, err
+	}
+	return &EnterpriseRentalReturnedIterator{contract: _Enterprise.contract, event: "RentalReturned", logs: logs, sub: sub}, nil
+}
+
+// WatchRentalReturned is a free log subscription operation binding the contract event 0xe8c3d212180d23288b990f9938fef98c64caec34bc128fccea9f7eea006ba738.
+//
+// Solidity: event RentalReturned(uint256 indexed rentalTokenId, address indexed returner, address indexed powerToken, uint112 rentalAmount, uint112 gcRewardAmount, address gcRewardToken, uint256 totalReserve, uint256 totalUsedReserve)
+func (_Enterprise *EnterpriseFilterer) WatchRentalReturned(opts *bind.WatchOpts, sink chan<- *EnterpriseRentalReturned, rentalTokenId []*big.Int, returner []common.Address, powerToken []common.Address) (event.Subscription, error) {
+
+	var rentalTokenIdRule []interface{}
+	for _, rentalTokenIdItem := range rentalTokenId {
+		rentalTokenIdRule = append(rentalTokenIdRule, rentalTokenIdItem)
+	}
+	var returnerRule []interface{}
+	for _, returnerItem := range returner {
+		returnerRule = append(returnerRule, returnerItem)
+	}
+	var powerTokenRule []interface{}
+	for _, powerTokenItem := range powerToken {
+		powerTokenRule = append(powerTokenRule, powerTokenItem)
+	}
+
+	logs, sub, err := _Enterprise.contract.WatchLogs(opts, "RentalReturned", rentalTokenIdRule, returnerRule, powerTokenRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(EnterpriseRentalReturned)
+				if err := _Enterprise.contract.UnpackLog(event, "RentalReturned", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseRentalReturned is a log parse operation binding the contract event 0xe8c3d212180d23288b990f9938fef98c64caec34bc128fccea9f7eea006ba738.
+//
+// Solidity: event RentalReturned(uint256 indexed rentalTokenId, address indexed returner, address indexed powerToken, uint112 rentalAmount, uint112 gcRewardAmount, address gcRewardToken, uint256 totalReserve, uint256 totalUsedReserve)
+func (_Enterprise *EnterpriseFilterer) ParseRentalReturned(log types.Log) (*EnterpriseRentalReturned, error) {
+	event := new(EnterpriseRentalReturned)
+	if err := _Enterprise.contract.UnpackLog(event, "RentalReturned", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// EnterpriseRentedIterator is returned from FilterRented and is used to iterate over the raw logs and unpacked data for Rented events raised by the Enterprise contract.
+type EnterpriseRentedIterator struct {
+	Event *EnterpriseRented // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *EnterpriseRentedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(EnterpriseRented)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(EnterpriseRented)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *EnterpriseRentedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *EnterpriseRentedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// EnterpriseRented represents a Rented event raised by the Enterprise contract.
+type EnterpriseRented struct {
+	RentalTokenId                *big.Int
+	Renter                       common.Address
+	PowerToken                   common.Address
+	PaymentToken                 common.Address
+	RentalAmount                 *big.Int
+	PoolFee                      *big.Int
+	ServiceFee                   *big.Int
+	GcFee                        *big.Int
+	StartTime                    uint32
+	EndTime                      uint32
+	RenterOnlyReturnTime         uint32
+	EnterpriseOnlyCollectionTime uint32
+	TotalReserve                 *big.Int
+	TotalUsedReserve             *big.Int
+	Raw                          types.Log // Blockchain specific contextual infos
+}
+
+// FilterRented is a free log retrieval operation binding the contract event 0x59dee24cee42a5fd3c1be706cc8906676ac6950d523c17fa522275c74e7b9c75.
+//
+// Solidity: event Rented(uint256 indexed rentalTokenId, address indexed renter, address indexed powerToken, address paymentToken, uint112 rentalAmount, uint112 poolFee, uint112 serviceFee, uint112 gcFee, uint32 startTime, uint32 endTime, uint32 renterOnlyReturnTime, uint32 enterpriseOnlyCollectionTime, uint256 totalReserve, uint256 totalUsedReserve)
+func (_Enterprise *EnterpriseFilterer) FilterRented(opts *bind.FilterOpts, rentalTokenId []*big.Int, renter []common.Address, powerToken []common.Address) (*EnterpriseRentedIterator, error) {
+
+	var rentalTokenIdRule []interface{}
+	for _, rentalTokenIdItem := range rentalTokenId {
+		rentalTokenIdRule = append(rentalTokenIdRule, rentalTokenIdItem)
+	}
+	var renterRule []interface{}
+	for _, renterItem := range renter {
+		renterRule = append(renterRule, renterItem)
+	}
+	var powerTokenRule []interface{}
+	for _, powerTokenItem := range powerToken {
+		powerTokenRule = append(powerTokenRule, powerTokenItem)
+	}
+
+	logs, sub, err := _Enterprise.contract.FilterLogs(opts, "Rented", rentalTokenIdRule, renterRule, powerTokenRule)
+	if err != nil {
+		return nil, err
+	}
+	return &EnterpriseRentedIterator{contract: _Enterprise.contract, event: "Rented", logs: logs, sub: sub}, nil
+}
+
+// WatchRented is a free log subscription operation binding the contract event 0x59dee24cee42a5fd3c1be706cc8906676ac6950d523c17fa522275c74e7b9c75.
+//
+// Solidity: event Rented(uint256 indexed rentalTokenId, address indexed renter, address indexed powerToken, address paymentToken, uint112 rentalAmount, uint112 poolFee, uint112 serviceFee, uint112 gcFee, uint32 startTime, uint32 endTime, uint32 renterOnlyReturnTime, uint32 enterpriseOnlyCollectionTime, uint256 totalReserve, uint256 totalUsedReserve)
+func (_Enterprise *EnterpriseFilterer) WatchRented(opts *bind.WatchOpts, sink chan<- *EnterpriseRented, rentalTokenId []*big.Int, renter []common.Address, powerToken []common.Address) (event.Subscription, error) {
+
+	var rentalTokenIdRule []interface{}
+	for _, rentalTokenIdItem := range rentalTokenId {
+		rentalTokenIdRule = append(rentalTokenIdRule, rentalTokenIdItem)
+	}
+	var renterRule []interface{}
+	for _, renterItem := range renter {
+		renterRule = append(renterRule, renterItem)
+	}
+	var powerTokenRule []interface{}
+	for _, powerTokenItem := range powerToken {
+		powerTokenRule = append(powerTokenRule, powerTokenItem)
+	}
+
+	logs, sub, err := _Enterprise.contract.WatchLogs(opts, "Rented", rentalTokenIdRule, renterRule, powerTokenRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(EnterpriseRented)
+				if err := _Enterprise.contract.UnpackLog(event, "Rented", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseRented is a log parse operation binding the contract event 0x59dee24cee42a5fd3c1be706cc8906676ac6950d523c17fa522275c74e7b9c75.
+//
+// Solidity: event Rented(uint256 indexed rentalTokenId, address indexed renter, address indexed powerToken, address paymentToken, uint112 rentalAmount, uint112 poolFee, uint112 serviceFee, uint112 gcFee, uint32 startTime, uint32 endTime, uint32 renterOnlyReturnTime, uint32 enterpriseOnlyCollectionTime, uint256 totalReserve, uint256 totalUsedReserve)
+func (_Enterprise *EnterpriseFilterer) ParseRented(log types.Log) (*EnterpriseRented, error) {
+	event := new(EnterpriseRented)
+	if err := _Enterprise.contract.UnpackLog(event, "Rented", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// EnterpriseRenterOnlyReturnPeriodChangedIterator is returned from FilterRenterOnlyReturnPeriodChanged and is used to iterate over the raw logs and unpacked data for RenterOnlyReturnPeriodChanged events raised by the Enterprise contract.
+type EnterpriseRenterOnlyReturnPeriodChangedIterator struct {
+	Event *EnterpriseRenterOnlyReturnPeriodChanged // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *EnterpriseRenterOnlyReturnPeriodChangedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(EnterpriseRenterOnlyReturnPeriodChanged)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(EnterpriseRenterOnlyReturnPeriodChanged)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *EnterpriseRenterOnlyReturnPeriodChangedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *EnterpriseRenterOnlyReturnPeriodChangedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// EnterpriseRenterOnlyReturnPeriodChanged represents a RenterOnlyReturnPeriodChanged event raised by the Enterprise contract.
+type EnterpriseRenterOnlyReturnPeriodChanged struct {
+	Period uint32
+	Raw    types.Log // Blockchain specific contextual infos
+}
+
+// FilterRenterOnlyReturnPeriodChanged is a free log retrieval operation binding the contract event 0x745abdabfd9615abf44cc5ea5223a16cd377282452510a2de5121d44b8c097f1.
+//
+// Solidity: event RenterOnlyReturnPeriodChanged(uint32 period)
+func (_Enterprise *EnterpriseFilterer) FilterRenterOnlyReturnPeriodChanged(opts *bind.FilterOpts) (*EnterpriseRenterOnlyReturnPeriodChangedIterator, error) {
+
+	logs, sub, err := _Enterprise.contract.FilterLogs(opts, "RenterOnlyReturnPeriodChanged")
+	if err != nil {
+		return nil, err
+	}
+	return &EnterpriseRenterOnlyReturnPeriodChangedIterator{contract: _Enterprise.contract, event: "RenterOnlyReturnPeriodChanged", logs: logs, sub: sub}, nil
+}
+
+// WatchRenterOnlyReturnPeriodChanged is a free log subscription operation binding the contract event 0x745abdabfd9615abf44cc5ea5223a16cd377282452510a2de5121d44b8c097f1.
+//
+// Solidity: event RenterOnlyReturnPeriodChanged(uint32 period)
+func (_Enterprise *EnterpriseFilterer) WatchRenterOnlyReturnPeriodChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseRenterOnlyReturnPeriodChanged) (event.Subscription, error) {
+
+	logs, sub, err := _Enterprise.contract.WatchLogs(opts, "RenterOnlyReturnPeriodChanged")
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(EnterpriseRenterOnlyReturnPeriodChanged)
+				if err := _Enterprise.contract.UnpackLog(event, "RenterOnlyReturnPeriodChanged", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseRenterOnlyReturnPeriodChanged is a log parse operation binding the contract event 0x745abdabfd9615abf44cc5ea5223a16cd377282452510a2de5121d44b8c097f1.
+//
+// Solidity: event RenterOnlyReturnPeriodChanged(uint32 period)
+func (_Enterprise *EnterpriseFilterer) ParseRenterOnlyReturnPeriodChanged(log types.Log) (*EnterpriseRenterOnlyReturnPeriodChanged, error) {
+	event := new(EnterpriseRenterOnlyReturnPeriodChanged)
+	if err := _Enterprise.contract.UnpackLog(event, "RenterOnlyReturnPeriodChanged", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
 // EnterpriseServiceRegisteredIterator is returned from FilterServiceRegistered and is used to iterate over the raw logs and unpacked data for ServiceRegistered events raised by the Enterprise contract.
 type EnterpriseServiceRegisteredIterator struct {
 	Event *EnterpriseServiceRegistered // Event containing the contract specifics and raw log
@@ -4122,6 +3985,175 @@ func (_Enterprise *EnterpriseFilterer) ParseServiceRegistered(log types.Log) (*E
 	return event, nil
 }
 
+// EnterpriseStakeChangedIterator is returned from FilterStakeChanged and is used to iterate over the raw logs and unpacked data for StakeChanged events raised by the Enterprise contract.
+type EnterpriseStakeChangedIterator struct {
+	Event *EnterpriseStakeChanged // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *EnterpriseStakeChangedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(EnterpriseStakeChanged)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(EnterpriseStakeChanged)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *EnterpriseStakeChangedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *EnterpriseStakeChangedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// EnterpriseStakeChanged represents a StakeChanged event raised by the Enterprise contract.
+type EnterpriseStakeChanged struct {
+	StakeTokenId     *big.Int
+	Staker           common.Address
+	Operation        uint8
+	AmountDelta      *big.Int
+	Amount           *big.Int
+	SharesDelta      *big.Int
+	Shares           *big.Int
+	TotalShares      *big.Int
+	TotalReserve     *big.Int
+	TotalUsedReserve *big.Int
+	Raw              types.Log // Blockchain specific contextual infos
+}
+
+// FilterStakeChanged is a free log retrieval operation binding the contract event 0x03429b4bf882467b990034c9cdcf7d1c4c3f189e62ce27af5e9bd563659fa286.
+//
+// Solidity: event StakeChanged(uint256 indexed stakeTokenId, address indexed staker, uint8 indexed operation, uint256 amountDelta, uint256 amount, uint256 sharesDelta, uint256 shares, uint256 totalShares, uint256 totalReserve, uint256 totalUsedReserve)
+func (_Enterprise *EnterpriseFilterer) FilterStakeChanged(opts *bind.FilterOpts, stakeTokenId []*big.Int, staker []common.Address, operation []uint8) (*EnterpriseStakeChangedIterator, error) {
+
+	var stakeTokenIdRule []interface{}
+	for _, stakeTokenIdItem := range stakeTokenId {
+		stakeTokenIdRule = append(stakeTokenIdRule, stakeTokenIdItem)
+	}
+	var stakerRule []interface{}
+	for _, stakerItem := range staker {
+		stakerRule = append(stakerRule, stakerItem)
+	}
+	var operationRule []interface{}
+	for _, operationItem := range operation {
+		operationRule = append(operationRule, operationItem)
+	}
+
+	logs, sub, err := _Enterprise.contract.FilterLogs(opts, "StakeChanged", stakeTokenIdRule, stakerRule, operationRule)
+	if err != nil {
+		return nil, err
+	}
+	return &EnterpriseStakeChangedIterator{contract: _Enterprise.contract, event: "StakeChanged", logs: logs, sub: sub}, nil
+}
+
+// WatchStakeChanged is a free log subscription operation binding the contract event 0x03429b4bf882467b990034c9cdcf7d1c4c3f189e62ce27af5e9bd563659fa286.
+//
+// Solidity: event StakeChanged(uint256 indexed stakeTokenId, address indexed staker, uint8 indexed operation, uint256 amountDelta, uint256 amount, uint256 sharesDelta, uint256 shares, uint256 totalShares, uint256 totalReserve, uint256 totalUsedReserve)
+func (_Enterprise *EnterpriseFilterer) WatchStakeChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseStakeChanged, stakeTokenId []*big.Int, staker []common.Address, operation []uint8) (event.Subscription, error) {
+
+	var stakeTokenIdRule []interface{}
+	for _, stakeTokenIdItem := range stakeTokenId {
+		stakeTokenIdRule = append(stakeTokenIdRule, stakeTokenIdItem)
+	}
+	var stakerRule []interface{}
+	for _, stakerItem := range staker {
+		stakerRule = append(stakerRule, stakerItem)
+	}
+	var operationRule []interface{}
+	for _, operationItem := range operation {
+		operationRule = append(operationRule, operationItem)
+	}
+
+	logs, sub, err := _Enterprise.contract.WatchLogs(opts, "StakeChanged", stakeTokenIdRule, stakerRule, operationRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(EnterpriseStakeChanged)
+				if err := _Enterprise.contract.UnpackLog(event, "StakeChanged", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseStakeChanged is a log parse operation binding the contract event 0x03429b4bf882467b990034c9cdcf7d1c4c3f189e62ce27af5e9bd563659fa286.
+//
+// Solidity: event StakeChanged(uint256 indexed stakeTokenId, address indexed staker, uint8 indexed operation, uint256 amountDelta, uint256 amount, uint256 sharesDelta, uint256 shares, uint256 totalShares, uint256 totalReserve, uint256 totalUsedReserve)
+func (_Enterprise *EnterpriseFilterer) ParseStakeChanged(log types.Log) (*EnterpriseStakeChanged, error) {
+	event := new(EnterpriseStakeChanged)
+	if err := _Enterprise.contract.UnpackLog(event, "StakeChanged", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
 // EnterpriseStreamingReserveChangedIterator is returned from FilterStreamingReserveChanged and is used to iterate over the raw logs and unpacked data for StreamingReserveChanged events raised by the Enterprise contract.
 type EnterpriseStreamingReserveChangedIterator struct {
 	Event *EnterpriseStreamingReserveChanged // Event containing the contract specifics and raw log
@@ -4257,9 +4289,9 @@ func (_Enterprise *EnterpriseFilterer) ParseStreamingReserveChanged(log types.Lo
 	return event, nil
 }
 
-// EnterpriseTotalSharesChangedIterator is returned from FilterTotalSharesChanged and is used to iterate over the raw logs and unpacked data for TotalSharesChanged events raised by the Enterprise contract.
-type EnterpriseTotalSharesChangedIterator struct {
-	Event *EnterpriseTotalSharesChanged // Event containing the contract specifics and raw log
+// EnterpriseStreamingReserveHalvingPeriodChangedIterator is returned from FilterStreamingReserveHalvingPeriodChanged and is used to iterate over the raw logs and unpacked data for StreamingReserveHalvingPeriodChanged events raised by the Enterprise contract.
+type EnterpriseStreamingReserveHalvingPeriodChangedIterator struct {
+	Event *EnterpriseStreamingReserveHalvingPeriodChanged // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -4273,7 +4305,7 @@ type EnterpriseTotalSharesChangedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *EnterpriseTotalSharesChangedIterator) Next() bool {
+func (it *EnterpriseStreamingReserveHalvingPeriodChangedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -4282,7 +4314,7 @@ func (it *EnterpriseTotalSharesChangedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(EnterpriseTotalSharesChanged)
+			it.Event = new(EnterpriseStreamingReserveHalvingPeriodChanged)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -4297,7 +4329,7 @@ func (it *EnterpriseTotalSharesChangedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(EnterpriseTotalSharesChanged)
+		it.Event = new(EnterpriseStreamingReserveHalvingPeriodChanged)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -4313,41 +4345,41 @@ func (it *EnterpriseTotalSharesChangedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *EnterpriseTotalSharesChangedIterator) Error() error {
+func (it *EnterpriseStreamingReserveHalvingPeriodChangedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *EnterpriseTotalSharesChangedIterator) Close() error {
+func (it *EnterpriseStreamingReserveHalvingPeriodChangedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// EnterpriseTotalSharesChanged represents a TotalSharesChanged event raised by the Enterprise contract.
-type EnterpriseTotalSharesChanged struct {
-	TotalShares *big.Int
-	Raw         types.Log // Blockchain specific contextual infos
+// EnterpriseStreamingReserveHalvingPeriodChanged represents a StreamingReserveHalvingPeriodChanged event raised by the Enterprise contract.
+type EnterpriseStreamingReserveHalvingPeriodChanged struct {
+	Period uint32
+	Raw    types.Log // Blockchain specific contextual infos
 }
 
-// FilterTotalSharesChanged is a free log retrieval operation binding the contract event 0xf75b433a747ade2e089a9382669e86292bab6b6218af81254ef18440992bb264.
+// FilterStreamingReserveHalvingPeriodChanged is a free log retrieval operation binding the contract event 0x9b2baf1f9580f11e84f351d1ac9c543726f7023ba5d6d278fc487898fac055b6.
 //
-// Solidity: event TotalSharesChanged(uint256 totalShares)
-func (_Enterprise *EnterpriseFilterer) FilterTotalSharesChanged(opts *bind.FilterOpts) (*EnterpriseTotalSharesChangedIterator, error) {
+// Solidity: event StreamingReserveHalvingPeriodChanged(uint32 period)
+func (_Enterprise *EnterpriseFilterer) FilterStreamingReserveHalvingPeriodChanged(opts *bind.FilterOpts) (*EnterpriseStreamingReserveHalvingPeriodChangedIterator, error) {
 
-	logs, sub, err := _Enterprise.contract.FilterLogs(opts, "TotalSharesChanged")
+	logs, sub, err := _Enterprise.contract.FilterLogs(opts, "StreamingReserveHalvingPeriodChanged")
 	if err != nil {
 		return nil, err
 	}
-	return &EnterpriseTotalSharesChangedIterator{contract: _Enterprise.contract, event: "TotalSharesChanged", logs: logs, sub: sub}, nil
+	return &EnterpriseStreamingReserveHalvingPeriodChangedIterator{contract: _Enterprise.contract, event: "StreamingReserveHalvingPeriodChanged", logs: logs, sub: sub}, nil
 }
 
-// WatchTotalSharesChanged is a free log subscription operation binding the contract event 0xf75b433a747ade2e089a9382669e86292bab6b6218af81254ef18440992bb264.
+// WatchStreamingReserveHalvingPeriodChanged is a free log subscription operation binding the contract event 0x9b2baf1f9580f11e84f351d1ac9c543726f7023ba5d6d278fc487898fac055b6.
 //
-// Solidity: event TotalSharesChanged(uint256 totalShares)
-func (_Enterprise *EnterpriseFilterer) WatchTotalSharesChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseTotalSharesChanged) (event.Subscription, error) {
+// Solidity: event StreamingReserveHalvingPeriodChanged(uint32 period)
+func (_Enterprise *EnterpriseFilterer) WatchStreamingReserveHalvingPeriodChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseStreamingReserveHalvingPeriodChanged) (event.Subscription, error) {
 
-	logs, sub, err := _Enterprise.contract.WatchLogs(opts, "TotalSharesChanged")
+	logs, sub, err := _Enterprise.contract.WatchLogs(opts, "StreamingReserveHalvingPeriodChanged")
 	if err != nil {
 		return nil, err
 	}
@@ -4357,8 +4389,8 @@ func (_Enterprise *EnterpriseFilterer) WatchTotalSharesChanged(opts *bind.WatchO
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(EnterpriseTotalSharesChanged)
-				if err := _Enterprise.contract.UnpackLog(event, "TotalSharesChanged", log); err != nil {
+				event := new(EnterpriseStreamingReserveHalvingPeriodChanged)
+				if err := _Enterprise.contract.UnpackLog(event, "StreamingReserveHalvingPeriodChanged", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -4379,146 +4411,12 @@ func (_Enterprise *EnterpriseFilterer) WatchTotalSharesChanged(opts *bind.WatchO
 	}), nil
 }
 
-// ParseTotalSharesChanged is a log parse operation binding the contract event 0xf75b433a747ade2e089a9382669e86292bab6b6218af81254ef18440992bb264.
+// ParseStreamingReserveHalvingPeriodChanged is a log parse operation binding the contract event 0x9b2baf1f9580f11e84f351d1ac9c543726f7023ba5d6d278fc487898fac055b6.
 //
-// Solidity: event TotalSharesChanged(uint256 totalShares)
-func (_Enterprise *EnterpriseFilterer) ParseTotalSharesChanged(log types.Log) (*EnterpriseTotalSharesChanged, error) {
-	event := new(EnterpriseTotalSharesChanged)
-	if err := _Enterprise.contract.UnpackLog(event, "TotalSharesChanged", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-// EnterpriseUsedReserveChangedIterator is returned from FilterUsedReserveChanged and is used to iterate over the raw logs and unpacked data for UsedReserveChanged events raised by the Enterprise contract.
-type EnterpriseUsedReserveChangedIterator struct {
-	Event *EnterpriseUsedReserveChanged // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *EnterpriseUsedReserveChangedIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(EnterpriseUsedReserveChanged)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(EnterpriseUsedReserveChanged)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *EnterpriseUsedReserveChangedIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *EnterpriseUsedReserveChangedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// EnterpriseUsedReserveChanged represents a UsedReserveChanged event raised by the Enterprise contract.
-type EnterpriseUsedReserveChanged struct {
-	FixedReserve *big.Int
-	Raw          types.Log // Blockchain specific contextual infos
-}
-
-// FilterUsedReserveChanged is a free log retrieval operation binding the contract event 0x80a06b510f93a5f9143990fd9bd6b2020b17681a30b6420dac3d79b20ce73585.
-//
-// Solidity: event UsedReserveChanged(uint256 fixedReserve)
-func (_Enterprise *EnterpriseFilterer) FilterUsedReserveChanged(opts *bind.FilterOpts) (*EnterpriseUsedReserveChangedIterator, error) {
-
-	logs, sub, err := _Enterprise.contract.FilterLogs(opts, "UsedReserveChanged")
-	if err != nil {
-		return nil, err
-	}
-	return &EnterpriseUsedReserveChangedIterator{contract: _Enterprise.contract, event: "UsedReserveChanged", logs: logs, sub: sub}, nil
-}
-
-// WatchUsedReserveChanged is a free log subscription operation binding the contract event 0x80a06b510f93a5f9143990fd9bd6b2020b17681a30b6420dac3d79b20ce73585.
-//
-// Solidity: event UsedReserveChanged(uint256 fixedReserve)
-func (_Enterprise *EnterpriseFilterer) WatchUsedReserveChanged(opts *bind.WatchOpts, sink chan<- *EnterpriseUsedReserveChanged) (event.Subscription, error) {
-
-	logs, sub, err := _Enterprise.contract.WatchLogs(opts, "UsedReserveChanged")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(EnterpriseUsedReserveChanged)
-				if err := _Enterprise.contract.UnpackLog(event, "UsedReserveChanged", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseUsedReserveChanged is a log parse operation binding the contract event 0x80a06b510f93a5f9143990fd9bd6b2020b17681a30b6420dac3d79b20ce73585.
-//
-// Solidity: event UsedReserveChanged(uint256 fixedReserve)
-func (_Enterprise *EnterpriseFilterer) ParseUsedReserveChanged(log types.Log) (*EnterpriseUsedReserveChanged, error) {
-	event := new(EnterpriseUsedReserveChanged)
-	if err := _Enterprise.contract.UnpackLog(event, "UsedReserveChanged", log); err != nil {
+// Solidity: event StreamingReserveHalvingPeriodChanged(uint32 period)
+func (_Enterprise *EnterpriseFilterer) ParseStreamingReserveHalvingPeriodChanged(log types.Log) (*EnterpriseStreamingReserveHalvingPeriodChanged, error) {
+	event := new(EnterpriseStreamingReserveHalvingPeriodChanged)
+	if err := _Enterprise.contract.UnpackLog(event, "StreamingReserveHalvingPeriodChanged", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log

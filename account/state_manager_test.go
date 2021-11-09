@@ -25,24 +25,23 @@ func TestAccountStateManager(t *testing.T) {
 		Timestamp:      time.Now().Unix(),
 	}
 	mockBCServiceState := blockchain.ServiceInfo{
-		Address:           serviceAccountID.address,
-		Name:              "Test Service",
-		Symbol:            "TST",
-		BaseRate:          big.NewInt(1),
-		MinGCFee:          big.NewInt(1),
-		GapHalvingPeriod:  3600,
-		Index:             0,
-		BaseToken:         common.HexToAddress("0x6238F38c32fd76E3189D1EAd943B8342Ff33055D"),
-		MinLoanDuration:   3600,
-		MaxLoanDuration:   864000,
-		ServiceFeePercent: 5000,
-		AllowsPerpetual:   false,
+		Name:                   "Test Service",
+		Symbol:                 "TST",
+		BaseRate:               big.NewInt(1),
+		MinGCFee:               big.NewInt(1),
+		EnergyGapHalvingPeriod: 3600,
+		Index:                  0,
+		BaseToken:              common.HexToAddress("0x6238F38c32fd76E3189D1EAd943B8342Ff33055D"),
+		MinRentalPeriod:        3600,
+		MaxRentalPeriod:        864000,
+		ServiceFeePercent:      5000,
+		SwappingEnabled:        false,
 	}
 
 	defaultAccountState := AccountState{
 		AccountID:          accountID.String(),
 		ServiceID:          serviceAccountID.String(),
-		GapHalvingPeriod:   mockBCServiceState.GapHalvingPeriod,
+		GapHalvingPeriod:   int64(mockBCServiceState.EnergyGapHalvingPeriod),
 		Power:              big.NewInt(1000),
 		LockedPower:        big.NewInt(0),
 		EnergyCap:          big.NewInt(500),
@@ -168,7 +167,7 @@ func TestAccountStateManager(t *testing.T) {
 			assert.NoError(t, err)
 
 			changeTimestamp := time.Now().Unix()
-			changeTimestamp = (changeTimestamp + mockBCServiceState.GapHalvingPeriod)
+			changeTimestamp = (changeTimestamp + int64(mockBCServiceState.EnergyGapHalvingPeriod))
 
 			initialState := defaultAccountState
 			initialState.Power = big.NewInt(1500)
