@@ -427,6 +427,10 @@ func (c *Client) Rent(enterpriseAddress, serviceAddress, paymentTokenAddress com
 }
 
 func (c *Client) GetRentalTokenIDs(enterpriseAddress, accountAddress common.Address) ([]*big.Int, error) {
+	return c.GetRentalTokenIDsWithSleep(enterpriseAddress, accountAddress, 0)
+}
+
+func (c *Client) GetRentalTokenIDsWithSleep(enterpriseAddress, accountAddress common.Address, sleepFor time.Duration) ([]*big.Int, error) {
 	caller, opts, cancel, err := c.newEnterpriseCaller(enterpriseAddress)
 	if err != nil {
 		return nil, err
@@ -454,6 +458,7 @@ func (c *Client) GetRentalTokenIDs(enterpriseAddress, accountAddress common.Addr
 			return nil, err
 		}
 		tokenIDs = append(tokenIDs, tknID)
+		time.Sleep(sleepFor)
 	}
 	return tokenIDs, nil
 }
